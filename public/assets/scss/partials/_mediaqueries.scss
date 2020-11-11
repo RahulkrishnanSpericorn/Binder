@@ -1,0 +1,182 @@
+@media(max-width:1440px){
+    .box-ara {
+        article.cont-ara {
+            .top-nav {
+                .slider {
+                    .slick-list{
+                        .slide {
+                            a{
+                                font-size: 14px;
+                            }
+                        }
+                    }
+                }
+            }
+            .cnt-sec{
+                .nme-ara {
+                    .name{
+                        font-size: 22px;
+                    }
+                    .badge {
+                        span{
+                            font-size: 20px;
+                            margin-top: 5px;
+                        }
+                    }
+                }
+            }
+            .bok-ara{
+                .items{
+                    .item-head{
+                        .count{
+                            margin-top: 0px;
+                        }
+                    }
+                    .itm-btm{
+                        .head {
+                            h2{
+                                font-size: 18px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+@media(max-width:991px){
+    body::before{
+        background-position: center;
+    }
+    .mnu-ico{
+        margin-right: 20px;
+        display: flex;
+    }
+    .icn-sec {
+        width: 50px;
+    }
+    .box-ara {
+        aside{
+            //display: none;
+            width: 100%;
+            padding: 30px 15px;
+            position: absolute;
+            z-index: 999;
+            background-color: #103bb5;
+            ul{
+                li {
+                    margin-bottom: 20px;
+                    a{
+                        flex-direction: row;
+                        align-items: center;
+                        img{
+                            margin-right: 10px;
+                            margin-top: 0px;
+                        }
+                    }
+                }
+            }
+        }
+        article.cont-ara {
+            width: 100% !important;
+            min-height: auto;
+            .cnt-sec {
+                .nme-ara {
+                    .name {
+                        font-size: 20px;
+                    }
+                }
+            }
+            .bok-ara {
+                .items {
+                    .item-head {
+                        padding: 15px 10px 10px 25px;
+                        .icon {
+                            max-width: 50px;
+                        }
+                    }
+                    .itm-btm {
+                        .head{
+                            h2 {
+                                font-size: 15px;
+                            }
+                        }
+                    }
+                }   
+            }
+            .btm-ara{
+                .pge-nav-ara{
+                    ul.pagnation{
+                        li{
+                            a{
+                                font-size: 14px;
+                            }
+                        }
+                    }
+                    ul.prv-nxt{
+                        li{
+                            a{
+                                font-size: 14px;
+                            }
+                        } 
+                    }
+                }
+            }
+            .four .items{
+                width: calc(50% - 15px);
+            }
+            .five .items{
+                width: calc(50% - 15px);
+            }
+            .six .items{
+                width:calc(50% - 15px);
+            }  
+            
+        }
+    }
+} 
+@media(max-width:767px){
+    .box-ara {
+        article.cont-ara {
+            .btm-ara {
+                padding: 20px 10px;
+                .pge-nav-ara{
+                    justify-content: flex-end;
+                    flex-wrap: wrap;
+                    ul.pagnation{
+                        margin-bottom: 10px;
+                    }
+                }
+            }
+            .two .items{
+                width: 100%;
+            }
+            .three .items{
+                width: 100%;
+            }
+            .four .items{
+                width: 100%;
+            }
+            .five .items{
+                width: 100%;
+            }
+            .six .items{
+                width: 100%;
+            }  
+        }
+    }
+
+}
+
+@media(min-width:992px){
+    .mnu-ico{
+        display: none;
+    }
+    .box-ara aside{
+        display: block !important;
+        flex-basis: 100px;
+    }
+    .sidenav {
+        position: fixed;
+    }
+}
