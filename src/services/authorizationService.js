@@ -1,13 +1,13 @@
 /* eslint-disable no-unused-vars */
 import axios from "axios";
-import { API_ROUTE, ORIGIN_URL } from "../config/constants";
+import { API_ROUTE, ORIGIN_URL } from "../config/contstants";
 
 export const binderGateWay = axios.create({
     baseURL: API_ROUTE,
     timeout: 300000,
     withCredentials: true,
     headers: {
-        "Access-Control-Allow-Origin": ORIGIN_URL
+        "Access-Control-Allow-Origin": ORIGIN_URL,
     }
 
 });
