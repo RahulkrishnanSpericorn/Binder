@@ -1,5 +1,7 @@
 import React, { Fragment } from "react";
 import { Route, Redirect } from "react-router-dom";
+import Header from "./Header";
+import SideNav from "./SideNav";
 
 
 class PrivateRoute extends React.Component {
@@ -13,10 +15,14 @@ class PrivateRoute extends React.Component {
             <Route
                 {...rest}
                 render={props =>
-                    localStorage.getItem("binder-token") ? (
+                   ( localStorage.getItem("binder-token"))  ? (
                         <Fragment>
                             <div >
+                                <Header/>
+                                <section class="box-ara">
+                                <SideNav />
                                 <Component {...props} />
+                                </section>
                             </div>
 
                         </Fragment>

@@ -6,6 +6,7 @@ import history from "./config/history";
 import PrivateRoute from "./components/common/components/PrivateRoute";
 import PublicRoute from "./components/common/components/publicRoute";
 import LoginForm from "./components/login/index"
+import Dashboard from "./components/dashboard/index"
 
 
 
@@ -16,6 +17,7 @@ function App() {
       <Switch>
         <PublicRoute exact path="/" component={LoginForm} />
         <PublicRoute exact path="/login" component={LoginForm} />
+        <PrivateRoute exact path="/dashboard" component={Dashboard} />
       </Switch>
     </Router>
   );
