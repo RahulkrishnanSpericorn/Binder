@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { API_ROUTE } from "../../config/contstants";
 import actions from "./actions";
+import { ToastContainer } from 'react-toastify';
+import Toastmsg from '../common/ToastMessage'
 
 const mapStateToProps = state => {
     const { loginReducer } = state;
@@ -65,7 +66,7 @@ class Index extends Component {
                 //dont add token to storage
             }
         } else {
-            alert(this.props.loginReducer.loginUser.error)
+            Toastmsg(this.props.loginReducer.loginUser.error)
         }
 
         console.log('this.props.loginReducer', this.props.loginReducer)
@@ -79,6 +80,7 @@ class Index extends Component {
     render() {
         return (
             <div className="login">
+                <ToastContainer />
                 <header>
                     <nav className="navbar fixed-top">
                         <a className="navbar-brand" href="#">

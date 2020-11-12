@@ -1,10 +1,18 @@
 import React, { Component } from 'react';
+import { ToastContainer } from 'react-toastify';
+import Toastmsg from '../common/ToastMessage'
 
 class index extends Component {
+
+    componentDidMount() {
+        Toastmsg("Login success !");
+    }
+    
 
     render() {
         return (
             <article className="cont-ara">
+                <ToastContainer />
                 <div className="top-nav">
                     <div className="customer-logos slider">
                         <div className="slide">
