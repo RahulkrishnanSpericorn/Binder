@@ -15,13 +15,13 @@ class PrivateRoute extends React.Component {
             <Route
                 {...rest}
                 render={props =>
-                   ( localStorage.getItem("binder-token"))  ? (
+                    (localStorage.getItem("binder-token")) ? (
                         <Fragment>
                             <div >
-                                <Header/>
+                                <Header />
                                 <section class="box-ara">
-                                <SideNav />
-                                <Component {...props} />
+                                    <SideNav />
+                                    <Component {...props} />
                                 </section>
                             </div>
 

@@ -7,7 +7,7 @@ const PublicRoute = ({ component: Component, ...rest }) => {
             {...rest}
             render={props =>
                 localStorage.getItem("binder-token")
-                    ? (<Redirect to={{ pathname: "/dashboard" }} />)  
+                    ? (<Redirect to={{ pathname: "/dashboard" }} />)
                     : (<Component {...props} />)
             }
         />
