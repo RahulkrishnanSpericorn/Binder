@@ -6,19 +6,19 @@ export default class Header extends Component {
             <header>
                 <nav className="navbar">
                     <a className="navbar-brand" href="#">
-                        <img src="/assets/images/logo.svg" />
+                        <img src="/images/logo.svg" />
                     </a>
                     <div className="mnu-info ml-auto">
                         <ul className="prf-lst">
                             <li className="nav-item mnu-ico">
                                 <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                                    <img src="assets/images/menu.svg" />
+                                    <img src="/images/menu.svg" />
                                 </button>
                             </li>
                             <li className="nav-item dropdown">
                                 <a className="nav-link dropdown-toggle" href="#" id="profile-info" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" >
                                     <div className="prf-img">
-                                        <img src="assets/images/profileimg.jpg" />
+                                        <img src="/images/profileimg.jpg" />
                                     </div>
                                     <div className="pdf-name">Mathew John</div>
                                 </a>

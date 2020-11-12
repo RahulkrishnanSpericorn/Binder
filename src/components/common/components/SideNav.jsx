@@ -19,7 +19,7 @@ export default class SideNav extends Component {
                         <li>
                             <a>
                                 <div className="icn-sec">
-                                    <img src="assets/images/Dashboard.svg" />
+                                    <img src="/images/Dashboard.svg" />
                                 </div>
                                 <span>Dashboard</span>
                             </a>
@@ -27,7 +27,7 @@ export default class SideNav extends Component {
                         <li>
                             <a>
                                 <div className="icn-sec">
-                                    <img src="assets/images/user.svg" />
+                                    <img src="/images/user.svg" />
                                 </div>
                                 <span>Binders</span>
                             </a>
@@ -35,7 +35,7 @@ export default class SideNav extends Component {
                         <li>
                             <a>
                                 <div className="icn-sec">
-                                    <img src="assets/images/Report.svg" />
+                                    <img src="/images/Report.svg" />
                                 </div>
                                 <span>Reports</span>
                             </a>
@@ -43,7 +43,7 @@ export default class SideNav extends Component {
                         <li>
                             <a>
                                 <div className="icn-sec">
-                                    <img src="assets/images/setting.svg" />
+                                    <img src="/images/setting.svg" />
                                 </div>
                                 <span>Settings</span>
                             </a>
@@ -51,7 +51,7 @@ export default class SideNav extends Component {
                         <li>
                             <a onClick={() => { this.logOut() }}>
                                 <div className="icn-sec">
-                                    <img src="assets/images/logout.svg" />
+                                    <img src="/images/logout.svg" />
                                 </div>
                                 <span >Logout</span>
                             </a>

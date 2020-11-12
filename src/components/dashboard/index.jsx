@@ -5,14 +5,14 @@ import Toastmsg from '../common/ToastMessage'
 class index extends Component {
 
     componentDidMount() {
-        Toastmsg("Login success !");
+        // Toastmsg("Login success !");
     }
     
 
     render() {
         return (
             <article className="cont-ara">
-                <ToastContainer />
+                {/* <ToastContainer /> */}
                 <div className="top-nav">
                     <div className="customer-logos slider">
                         <div className="slide">
@@ -60,12 +60,12 @@ class index extends Component {
                             <div className="items">
                                 <div className="item-head">
                                     <div className="icon">
-                                        <img src="assets/images/blu-logo.svg" />
+                                        <img src="/images/blu-logo.svg" />
                                     </div>
                                     <div className="count"> 01</div>
                                 </div>
                                 <div className="itm-cnt">
-                                    <img src="assets/images/background-1.svg" className="img-resposive" />
+                                    <img src="/images/background-1.svg" className="img-resposive" />
                                 </div>
                                 <div className="itm-btm">
                                     <div className="head">
@@ -73,7 +73,7 @@ class index extends Component {
                                     </div>
                                     <div className="lnk-mor">
                                         <a href="#">
-                                            <img src="assets/images/blu-rig.svg" />
+                                            <img src="/images/blu-rig.svg" />
                                         </a>
                                     </div>
                                 </div>
@@ -81,12 +81,12 @@ class index extends Component {
                             <div className="items">
                                 <div className="item-head">
                                     <div className="icon">
-                                        <img src="assets/images/blu-logo.svg" />
+                                        <img src="/images/blu-logo.svg" />
                                     </div>
                                     <div className="count"> 01</div>
                                 </div>
                                 <div className="itm-cnt">
-                                    <img src="assets/images/background-1.svg" className="img-resposive" />
+                                    <img src="/images/background-1.svg" className="img-resposive" />
                                 </div>
                                 <div className="itm-btm">
                                     <div className="head">
@@ -94,7 +94,7 @@ class index extends Component {
                                     </div>
                                     <div className="lnk-mor">
                                         <a href="#">
-                                            <img src="assets/images/blu-rig.svg" />
+                                            <img src="/images/blu-rig.svg" />
                                         </a>
                                     </div>
                                 </div>
@@ -103,12 +103,12 @@ class index extends Component {
                             <div className="items">
                                 <div className="item-head">
                                     <div className="icon">
-                                        <img src="assets/images/blu-logo.svg" />
+                                        <img src="/images/blu-logo.svg" />
                                     </div>
                                     <div className="count"> 01</div>
                                 </div>
                                 <div className="itm-cnt">
-                                    <img src="assets/images/background-1.svg" className="img-resposive" />
+                                    <img src="/images/background-1.svg" className="img-resposive" />
                                 </div>
                                 <div className="itm-btm">
                                     <div className="head">
@@ -116,7 +116,7 @@ class index extends Component {
                                     </div>
                                     <div className="lnk-mor">
                                         <a href="#">
-                                            <img src="assets/images/blu-rig.svg" />
+                                            <img src="/images/blu-rig.svg" />
                                         </a>
                                     </div>
                                 </div>
@@ -126,12 +126,12 @@ class index extends Component {
                             <div className="items">
                                 <div className="item-head">
                                     <div className="icon">
-                                        <img src="assets/images/blu-logo.svg" />
+                                        <img src="/images/blu-logo.svg" />
                                     </div>
                                     <div className="count"> 01</div>
                                 </div>
                                 <div className="itm-cnt">
-                                    <img src="assets/images/background-1.svg" className="img-resposive" />
+                                    <img src="/images/background-1.svg" className="img-resposive" />
                                 </div>
                                 <div className="itm-btm">
                                     <div className="head">
@@ -139,7 +139,7 @@ class index extends Component {
                                     </div>
                                     <div className="lnk-mor">
                                         <a href="#">
-                                            <img src="assets/images/blu-rig.svg" />
+                                            <img src="/images/blu-rig.svg" />
                                         </a>
                                     </div>
                                 </div>
@@ -147,12 +147,12 @@ class index extends Component {
                             <div className="items">
                                 <div className="item-head">
                                     <div className="icon">
-                                        <img src="assets/images/blu-logo.svg" />
+                                        <img src="/images/blu-logo.svg" />
                                     </div>
                                     <div className="count"> 01</div>
                                 </div>
                                 <div className="itm-cnt">
-                                    <img src="assets/images/background-1.svg" className="img-resposive" />
+                                    <img src="/images/background-1.svg" className="img-resposive" />
                                 </div>
                                 <div className="itm-btm">
                                     <div className="head">
@@ -160,7 +160,7 @@ class index extends Component {
                                     </div>
                                     <div className="lnk-mor">
                                         <a href="#">
-                                            <img src="assets/images/blu-rig.svg" />
+                                            <img src="/images/blu-rig.svg" />
                                         </a>
                                     </div>
                                 </div>
@@ -169,12 +169,12 @@ class index extends Component {
                             <div className="items">
                                 <div className="item-head">
                                     <div className="icon">
-                                        <img src="assets/images/blu-logo.svg" />
+                                        <img src="/images/blu-logo.svg" />
                                     </div>
                                     <div className="count"> 01</div>
                                 </div>
                                 <div className="itm-cnt">
-                                    <img src="assets/images/background-1.svg" className="img-resposive" />
+                                    <img src="/images/background-1.svg" className="img-resposive" />
                                 </div>
                                 <div className="itm-btm">
                                     <div className="head">
@@ -182,7 +182,7 @@ class index extends Component {
                                     </div>
                                     <div className="lnk-mor">
                                         <a href="#">
-                                            <img src="assets/images/blu-rig.svg" />
+                                            <img src="/images/blu-rig.svg" />
                                         </a>
                                     </div>
                                 </div>
@@ -205,10 +205,10 @@ class index extends Component {
                             </ul>
                             <ul className="pagnation prv-nxt">
                                 <li>
-                                    <a href="#" className="prv"> <img src="assets/images/lft-arrow.svg" /> Prev</a>
+                                    <a href="#" className="prv"> <img src="/images/lft-arrow.svg" /> Prev</a>
                                 </li>
                                 <li>
-                                    <a href="#" className="nxt">Next <img src="assets/images/rgt-arrow.svg" /></a>
+                                    <a href="#" className="nxt">Next <img src="/images/rgt-arrow.svg" /></a>
                                 </li>
                             </ul>
                         </div>

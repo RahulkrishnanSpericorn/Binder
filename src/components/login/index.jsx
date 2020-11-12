@@ -25,11 +25,12 @@ class Index extends Component {
 
     validate = async () => {
         let passExp = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{8,20}$/;
+        let emailExp = /^\w+([\.-]?\w+)*@\w+([\.-]?(\.\w{2,3})+)*(\.\w{2,3})+$/;
 
         if (this.state.email === "") {
             this.setState({ emailErrorMessage: "Please enter email" })
         }
-        if (this.state.email != "" && !(/[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,15}/g).test(this.state.email)) {
+        if (this.state.email != "" && !emailExp.test(this.state.email)) {
             this.setState({ emailErrorMessage: "Please enter vaild email" })
         }
         if (this.state.password === "") {
@@ -84,7 +85,7 @@ class Index extends Component {
                 <header>
                     <nav className="navbar fixed-top">
                         <a className="navbar-brand" href="#">
-                            <img src="assets/images/logo-login.svg" />
+                            <img src="/images/logo-login.svg" />
                         </a>
                     </nav>
                 </header>
