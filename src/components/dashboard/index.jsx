@@ -1,12 +1,23 @@
 import React, { Component } from 'react';
 import { ToastContainer } from 'react-toastify';
 import Toastmsg from '../common/ToastMessage'
+import Slider from "react-slick";
+
+const settings = {
+    // dots: true,
+    infinite: true,
+    speed: 1000,
+    slidesToShow: 3,
+    slidesToScroll: 1,
+    arrows:false
+  };
 
 class index extends Component {
 
     componentDidMount() {
         // Toastmsg("Login success !");
     }
+   
     
 
     render() {
@@ -14,7 +25,7 @@ class index extends Component {
             <article className="cont-ara">
                 {/* <ToastContainer /> */}
                 <div className="top-nav">
-                    <div className="customer-logos slider">
+                    {/* <div className="customer-logos slider">
                         <div className="slide">
                             <a href="">Fire Systems Testing</a>
                         </div>
@@ -42,7 +53,36 @@ class index extends Component {
                         <div className="slide">
                             <a href="">Fire Drills</a>
                         </div>
-                    </div>
+                    </div> */}
+                    <Slider {...settings}>
+                        <div className="slide">
+                            <a href="">Fire Systems Testing</a>
+                        </div>
+                        <div className="slide">
+                            <a href="">Fire Drills</a>
+                        </div>
+                        <div className="slide">
+                            <a href="">Generator Testing</a>
+                        </div>
+                        <div className="slide">
+                            <a href="">EOC Logbook</a>
+                        </div>
+                        <div className="slide">
+                            <a href="">Account Control</a>
+                        </div>
+                        <div className="slide">
+                            <a href="">Department P & P</a>
+                        </div>
+                        <div className="slide">
+                            <a href="">BMP</a>
+                        </div>
+                        <div className="slide">
+                            <a href="">Employee Training</a>
+                        </div>
+                        <div className="slide">
+                            <a href="">Fire Drills</a>
+                        </div>
+    </Slider>
                 </div>
 
                 <div className="cnt-sec">
