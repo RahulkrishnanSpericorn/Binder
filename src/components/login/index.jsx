@@ -18,7 +18,8 @@ class Index extends Component {
             grant_type: "password",
             emailErrorMessage: "",
             passwordErrorMessage: "",
-            rememberMe: true
+            rememberMe: true,
+            errorMsg:""
         }
     }
 
@@ -67,7 +68,10 @@ class Index extends Component {
                 //dont add token to storage
             }
         } else {
-            Toastmsg(this.props.loginReducer.loginUser.error)
+            this.setState({
+                errorMsg :this.props.loginReducer.loginUser.error
+            })
+            // Toastmsg(this.props.loginReducer.loginUser.error)
         }
 
         console.log('this.props.loginReducer', this.props.loginReducer)
@@ -97,18 +101,20 @@ class Index extends Component {
                         </div>
                         <div className="form-row">
                             <div className="form-group col-md-12">
-                                <input type="text" className="form-control" onChange={email => this.setState({ email: email.target.value, emailErrorMessage: "" })} placeholder="EMAIL" />
+                                <input type="text" className="form-control" onChange={email => this.setState({ email: email.target.value, emailErrorMessage: "",errorMsg:"" })} placeholder="EMAIL" />
                                 <span style={{ color: "red" }}>{this.state.emailErrorMessage}</span>
                             </div>
 
                             <div className="form-group col-md-12">
-                                <input type="password" className="form-control" onChange={password => this.setState({ password: password.target.value, passwordErrorMessage: "" })} placeholder="PASSWORD" />
+                                <input type="password" className="form-control" onChange={password => this.setState({ password: password.target.value, passwordErrorMessage: "",errorMsg:"" })} placeholder="PASSWORD" />
                                 <span style={{ color: "red" }}>{this.state.passwordErrorMessage}</span>
                             </div>
                             <div className="form-group col-md-12">
                                 <label className="container-check ml-1"> Remember me
                             <input type="checkbox" checked={this.state.rememberMe} onClick={() => this.rememberMeClick()} /><span className="checkmark"></span></label>
+                            <span style={{ color: "red" }}>{this.state.errorMsg}</span>
                             </div>
+
                             <div className="form-group col-md-12">
                                 <button onClick={() => { this.validate() }} className="btn btn-log">Login</button>
                             </div>

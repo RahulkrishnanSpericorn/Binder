@@ -199,6 +199,12 @@ body {
   margin: 0px;
   padding: 0px;
 }
+body .login {
+  color: #E6EAF2;
+  background-color: #fff;
+  z-index: 1;
+  position: relative;
+}
 body .login header nav .navbar-brand img {
   width: 130px;
 }
