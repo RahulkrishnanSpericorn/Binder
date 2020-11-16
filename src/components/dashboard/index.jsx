@@ -5,7 +5,7 @@ const settings = {
     // dots: true,
     infinite: true,
     speed: 1000,
-    slidesToShow: 3,
+    slidesToShow: 4,
     slidesToScroll: 1,
     arrows: false
 };
@@ -17,65 +17,37 @@ class index extends Component {
             <section className="cont-ara">
                 <div className="dash">
                     <div className="top-slider">
-                        <div className="customer-logos slider">
-                            <div className="slide">
+
+                        <Slider className="customer-logos slider" {...settings}>
+                            <div classNameName="slide">
                                 <a href="">Fire Systems Testing</a>
                             </div>
-                            <div className="slide">
+                            <div classNameName="slide">
                                 <a href="">Fire Drills</a>
                             </div>
-                            <div className="slide">
+                            <div classNameName="slide">
                                 <a href="">Generator Testing</a>
                             </div>
-                            <div className="slide">
+                            <div classNameName="slide">
                                 <a href="">EOC Logbook</a>
                             </div>
-                            <div className="slide">
+                            <div classNameName="slide">
                                 <a href="">Account Control</a>
                             </div>
-                            <div className="slide">
+                            <div classNameName="slide">
                                 <a href="">Department P & P</a>
                             </div>
-                            <div className="slide">
+                            <div classNameName="slide">
                                 <a href="">BMP</a>
                             </div>
-                            <div className="slide">
+                            <div classNameName="slide">
                                 <a href="">Employee Training</a>
                             </div>
-                            <div className="slide">
+                            <div classNameName="slide">
                                 <a href="">Fire Drills</a>
                             </div>
+                        </Slider>
 
-                            {/* <Slider {...settings}>
-                        <div classNameName="slide">
-                            <a href="">Fire Systems Testing</a>
-                        </div>
-                        <div classNameName="slide">
-                            <a href="">Fire Drills</a>
-                        </div>
-                        <div classNameName="slide">
-                            <a href="">Generator Testing</a>
-                        </div>
-                        <div classNameName="slide">
-                            <a href="">EOC Logbook</a>
-                        </div>
-                        <div classNameName="slide">
-                            <a href="">Account Control</a>
-                        </div>
-                        <div classNameName="slide">
-                            <a href="">Department P & P</a>
-                        </div>
-                        <div classNameName="slide">
-                            <a href="">BMP</a>
-                        </div>
-                        <div classNameName="slide">
-                            <a href="">Employee Training</a>
-                        </div>
-                        <div classNameName="slide">
-                            <a href="">Fire Drills</a>
-                        </div>
-                    </Slider> */}
-                        </div>
                     </div>
                     <div className="dash-cont">
                         <div className="pub-ara six">
