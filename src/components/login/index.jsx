@@ -1,8 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import actions from "./actions";
-import { ToastContainer } from 'react-toastify';
-import Toastmsg from '../common/ToastMessage'
 
 const mapStateToProps = state => {
     const { loginReducer } = state;
@@ -19,7 +17,7 @@ class Index extends Component {
             emailErrorMessage: "",
             passwordErrorMessage: "",
             rememberMe: true,
-            errorMsg:""
+            errorMsg: ""
         }
     }
 
@@ -69,7 +67,7 @@ class Index extends Component {
             }
         } else {
             this.setState({
-                errorMsg :this.props.loginReducer.loginUser.error
+                errorMsg: this.props.loginReducer.loginUser.error
             })
             // Toastmsg(this.props.loginReducer.loginUser.error)
         }
@@ -85,7 +83,6 @@ class Index extends Component {
     render() {
         return (
             <div className="login">
-                <ToastContainer />
                 <header>
                     <nav className="navbar fixed-top">
                         <a className="navbar-brand" href="#">
@@ -101,18 +98,18 @@ class Index extends Component {
                         </div>
                         <div className="form-row">
                             <div className="form-group col-md-12">
-                                <input type="text" className="form-control" onChange={email => this.setState({ email: email.target.value, emailErrorMessage: "",errorMsg:"" })} placeholder="EMAIL" />
+                                <input type="text" className="form-control" onChange={email => this.setState({ email: email.target.value, emailErrorMessage: "", errorMsg: "" })} placeholder="EMAIL" />
                                 <span style={{ color: "red" }}>{this.state.emailErrorMessage}</span>
                             </div>
 
                             <div className="form-group col-md-12">
-                                <input type="password" className="form-control" onChange={password => this.setState({ password: password.target.value, passwordErrorMessage: "",errorMsg:"" })} placeholder="PASSWORD" />
+                                <input type="password" className="form-control" onChange={password => this.setState({ password: password.target.value, passwordErrorMessage: "", errorMsg: "" })} placeholder="PASSWORD" />
                                 <span style={{ color: "red" }}>{this.state.passwordErrorMessage}</span>
                             </div>
                             <div className="form-group col-md-12">
                                 <label className="container-check ml-1"> Remember me
                             <input type="checkbox" checked={this.state.rememberMe} onClick={() => this.rememberMeClick()} /><span className="checkmark"></span></label>
-                            <span style={{ color: "red" }}>{this.state.errorMsg}</span>
+                                <span style={{ color: "red" }}>{this.state.errorMsg}</span>
                             </div>
 
                             <div className="form-group col-md-12">
