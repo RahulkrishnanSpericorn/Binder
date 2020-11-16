@@ -3,7 +3,6 @@ import { Route, Redirect } from "react-router-dom";
 import Header from "./Header";
 import SideNav from "./SideNav";
 
-
 class PrivateRoute extends React.Component {
     state = {
         showNav: true
@@ -19,10 +18,8 @@ class PrivateRoute extends React.Component {
                         <Fragment>
                             <div >
                                 <Header />
-                                <section class="box-ara">
-                                    <SideNav />
-                                    <Component {...props} />
-                                </section>
+                                <SideNav />
+                                <Component {...props} />
                             </div>
 
                         </Fragment>

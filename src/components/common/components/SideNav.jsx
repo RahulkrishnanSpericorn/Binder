@@ -13,51 +13,64 @@ export default class SideNav extends Component {
 
     render() {
         return (
-            <aside className="collapse navbar-collapse" id="navbarSupportedContent">
-                <div className="sidenav">
-                    <ul>
-                        <li>
-                            <a>
-                                <div className="icn-sec">
-                                    <img src="/images/Dashboard.svg" />
-                                </div>
-                                <span>Dashboard</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a>
-                                <div className="icn-sec">
-                                    <img src="/images/user.svg" />
-                                </div>
-                                <span>Binders</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a>
-                                <div className="icn-sec">
-                                    <img src="/images/Report.svg" />
-                                </div>
-                                <span>Reports</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a>
-                                <div className="icn-sec">
-                                    <img src="/images/setting.svg" />
-                                </div>
-                                <span>Settings</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a onClick={() => { this.logOut() }}>
-                                <div className="icn-sec">
-                                    <img src="/images/logout.svg" />
-                                </div>
-                                <span >Logout</span>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
+            <aside className="sidenav navbar-collapse" id="navbarSupportedContent">
+                <ul className="navbar">
+                    <li className="nav-item">
+                        <a className="nav-link" href="#">
+                            <div className="icn-sec">
+                                <img src="/images/Dashboard.svg" />
+                            </div>
+                            <span>Dashboard</span>
+                        </a>
+                    </li>
+                    <li className="nav-item">
+                        <a className="nav-link" href="#">
+                            <div className="icn-sec">
+                                <img src="/images/user.svg" />
+                            </div>
+                            <span>Binders</span>
+                        </a>
+                    </li>
+                    <li className="nav-item">
+                        <a className="nav-link" href="#">
+                            <div className="icn-sec">
+                                <img src="/images/Report.svg" />
+                            </div>
+                            <span>Reports</span>
+                        </a>
+                    </li>
+                    <li className="nav-item">
+                        <a href="#setting" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="setting" className="nav-link">
+                            <div className="icn-sec">
+                                <img src="/images/setting.svg" />
+                            </div>
+                            <span>Settings</span>
+                        </a>
+                        <div className="viw-sub">
+                            <div className="collapse" id="setting">
+                                <ul className="view">
+                                    <li>
+                                        <a href="#" className="">Building Type</a>
+                                    </li>
+                                    <li>
+                                        <a href="#" className="">Users</a>
+                                    </li>
+                                    <li>
+                                        <a href="#" className="">User Permissions</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </li>
+                    <li className="nav-item">
+                        <a className="nav-link" onClick={() => { this.logOut() }}>
+                            <div className="icn-sec">
+                                <img src="/images/logout.svg" />
+                            </div>
+                            <span>Logout</span>
+                        </a>
+                    </li>
+                </ul>
             </aside>
         )
     }

@@ -14,54 +14,71 @@ class index extends Component {
 
     render() {
         return (
-            <article className="cont-ara">
-                <div className="top-nav">
-                    {/* <div className="customer-logos slider">
-                       
-                    </div> */}
-                    <Slider {...settings}>
-                        <div className="slide">
+            <section className="cont-ara">
+                <div className="dash">
+                    <div className="top-slider">
+                        <div className="customer-logos slider">
+                            <div className="slide">
+                                <a href="">Fire Systems Testing</a>
+                            </div>
+                            <div className="slide">
+                                <a href="">Fire Drills</a>
+                            </div>
+                            <div className="slide">
+                                <a href="">Generator Testing</a>
+                            </div>
+                            <div className="slide">
+                                <a href="">EOC Logbook</a>
+                            </div>
+                            <div className="slide">
+                                <a href="">Account Control</a>
+                            </div>
+                            <div className="slide">
+                                <a href="">Department P & P</a>
+                            </div>
+                            <div className="slide">
+                                <a href="">BMP</a>
+                            </div>
+                            <div className="slide">
+                                <a href="">Employee Training</a>
+                            </div>
+                            <div className="slide">
+                                <a href="">Fire Drills</a>
+                            </div>
+
+                            {/* <Slider {...settings}>
+                        <div classNameName="slide">
                             <a href="">Fire Systems Testing</a>
                         </div>
-                        <div className="slide">
+                        <div classNameName="slide">
                             <a href="">Fire Drills</a>
                         </div>
-                        <div className="slide">
+                        <div classNameName="slide">
                             <a href="">Generator Testing</a>
                         </div>
-                        <div className="slide">
+                        <div classNameName="slide">
                             <a href="">EOC Logbook</a>
                         </div>
-                        <div className="slide">
+                        <div classNameName="slide">
                             <a href="">Account Control</a>
                         </div>
-                        <div className="slide">
+                        <div classNameName="slide">
                             <a href="">Department P & P</a>
                         </div>
-                        <div className="slide">
+                        <div classNameName="slide">
                             <a href="">BMP</a>
                         </div>
-                        <div className="slide">
+                        <div classNameName="slide">
                             <a href="">Employee Training</a>
                         </div>
-                        <div className="slide">
+                        <div classNameName="slide">
                             <a href="">Fire Drills</a>
                         </div>
-                    </Slider>
-                </div>
-
-                <div className="cnt-sec">
-                    <div className="bid-ara">
-                        <div className="nme-ara">
-                            <div className="name">Binders </div>
-                            <div className="badge">
-                                <span>06</span>
-                            </div>
+                    </Slider> */}
                         </div>
                     </div>
-
-                    <div className="ara-pub">
-                        <div className="bok-ara three">
+                    <div className="dash-cont">
+                        <div className="pub-ara six">
                             <div className="items">
                                 <div className="item-head">
                                     <div className="icon">
@@ -70,7 +87,7 @@ class index extends Component {
                                     <div className="count"> 01</div>
                                 </div>
                                 <div className="itm-cnt">
-                                    <img src="/images/background-1.svg" className="img-resposive" />
+                                    <img src="/images/1.png" className="img-resposive" />
                                 </div>
                                 <div className="itm-btm">
                                     <div className="head">
@@ -88,14 +105,14 @@ class index extends Component {
                                     <div className="icon">
                                         <img src="/images/blu-logo.svg" />
                                     </div>
-                                    <div className="count"> 01</div>
+                                    <div className="count"> 02</div>
                                 </div>
                                 <div className="itm-cnt">
-                                    <img src="/images/background-1.svg" className="img-resposive" />
+                                    <img src="/images/2.png" className="img-resposive" />
                                 </div>
                                 <div className="itm-btm">
                                     <div className="head">
-                                        <h2>Fire Systems Testing</h2>
+                                        <h2>Fire Drills</h2>
                                     </div>
                                     <div className="lnk-mor">
                                         <a href="#">
@@ -104,7 +121,153 @@ class index extends Component {
                                     </div>
                                 </div>
                             </div>
-
+                            <div className="items">
+                                <div className="item-head">
+                                    <div className="icon">
+                                        <img src="/images/blu-logo.svg" />
+                                    </div>
+                                    <div className="count"> 03</div>
+                                </div>
+                                <div className="itm-cnt">
+                                    <img src="/images/3.png" className="img-resposive" />
+                                </div>
+                                <div className="itm-btm">
+                                    <div className="head">
+                                        <h2>Generator Testing</h2>
+                                    </div>
+                                    <div className="lnk-mor">
+                                        <a href="#">
+                                            <img src="/images/blu-rig.svg" />
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="items">
+                                <div className="item-head">
+                                    <div className="icon">
+                                        <img src="/images/blu-logo.svg" />
+                                    </div>
+                                    <div className="count"> 03</div>
+                                </div>
+                                <div className="itm-cnt">
+                                    <img src="/images/4.png" className="img-resposive" />
+                                </div>
+                                <div className="itm-btm">
+                                    <div className="head">
+                                        <h2>Construction Safety</h2>
+                                    </div>
+                                    <div className="lnk-mor">
+                                        <a href="#">
+                                            <img src="/images/blu-rig.svg" />
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="items">
+                                <div className="item-head">
+                                    <div className="icon">
+                                        <img src="/images/blu-logo.svg" />
+                                    </div>
+                                    <div className="count"> 02</div>
+                                </div>
+                                <div className="itm-cnt">
+                                    <img src="/images/5.png" className="img-resposive" />
+                                </div>
+                                <div className="itm-btm">
+                                    <div className="head">
+                                        <h2>EOC Logbook</h2>
+                                    </div>
+                                    <div className="lnk-mor">
+                                        <a href="#">
+                                            <img src="/images/blu-rig.svg" />
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="items">
+                                <div className="item-head">
+                                    <div className="icon">
+                                        <img src="/images/blu-logo.svg" />
+                                    </div>
+                                    <div className="count"> 03</div>
+                                </div>
+                                <div className="itm-cnt">
+                                    <img src="/images/6.png" className="img-resposive" />
+                                </div>
+                                <div className="itm-btm">
+                                    <div className="head">
+                                        <h2>Department P & P</h2>
+                                    </div>
+                                    <div className="lnk-mor">
+                                        <a href="#">
+                                            <img src="/images/blu-rig.svg" />
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="items">
+                                <div className="item-head">
+                                    <div className="icon">
+                                        <img src="/images/blu-logo.svg" />
+                                    </div>
+                                    <div className="count"> 02</div>
+                                </div>
+                                <div className="itm-cnt">
+                                    <img src="/images/07.png" className="img-resposive" />
+                                </div>
+                                <div className="itm-btm">
+                                    <div className="head">
+                                        <h2>BMP</h2>
+                                    </div>
+                                    <div className="lnk-mor">
+                                        <a href="#">
+                                            <img src="/images/blu-rig.svg" />
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="items">
+                                <div className="item-head">
+                                    <div className="icon">
+                                        <img src="/images/blu-logo.svg" />
+                                    </div>
+                                    <div className="count"> 02</div>
+                                </div>
+                                <div className="itm-cnt">
+                                    <img src="/images/08.png" className="img-resposive" />
+                                </div>
+                                <div className="itm-btm">
+                                    <div className="head">
+                                        <h2>Employee Training</h2>
+                                    </div>
+                                    <div className="lnk-mor">
+                                        <a href="#">
+                                            <img src="/images/blu-rig.svg" />
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="items">
+                                <div className="item-head">
+                                    <div className="icon">
+                                        <img src="/images/blu-logo.svg" />
+                                    </div>
+                                    <div className="count"> 03</div>
+                                </div>
+                                <div className="itm-cnt">
+                                    <img src="/images/09.png" className="img-resposive" />
+                                </div>
+                                <div className="itm-btm">
+                                    <div className="head">
+                                        <h2>Employee Training</h2>
+                                    </div>
+                                    <div className="lnk-mor">
+                                        <a href="#">
+                                            <img src="/images/blu-rig.svg" />
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
                             <div className="items">
                                 <div className="item-head">
                                     <div className="icon">
@@ -113,11 +276,53 @@ class index extends Component {
                                     <div className="count"> 01</div>
                                 </div>
                                 <div className="itm-cnt">
-                                    <img src="/images/background-1.svg" className="img-resposive" />
+                                    <img src="/images/10.png" className="img-resposive" />
                                 </div>
                                 <div className="itm-btm">
                                     <div className="head">
-                                        <h2>Fire Systems Testing</h2>
+                                        <h2>Employee Training</h2>
+                                    </div>
+                                    <div className="lnk-mor">
+                                        <a href="#">
+                                            <img src="/images/blu-rig.svg" />
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="items">
+                                <div className="item-head">
+                                    <div className="icon">
+                                        <img src="/images/blu-logo.svg" />
+                                    </div>
+                                    <div className="count"> 02</div>
+                                </div>
+                                <div className="itm-cnt">
+                                    <img src="/images/11.png" className="img-resposive" />
+                                </div>
+                                <div className="itm-btm">
+                                    <div className="head">
+                                        <h2>Employee Training</h2>
+                                    </div>
+                                    <div className="lnk-mor">
+                                        <a href="#">
+                                            <img src="/images/blu-rig.svg" />
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="items">
+                                <div className="item-head">
+                                    <div className="icon">
+                                        <img src="/images/blu-logo.svg" />
+                                    </div>
+                                    <div className="count"> 03</div>
+                                </div>
+                                <div className="itm-cnt">
+                                    <img src="/images/12.png" className="img-resposive" />
+                                </div>
+                                <div className="itm-btm">
+                                    <div className="head">
+                                        <h2>Employee Training</h2>
                                     </div>
                                     <div className="lnk-mor">
                                         <a href="#">
@@ -127,76 +332,7 @@ class index extends Component {
                                 </div>
                             </div>
                         </div>
-                        <div className="bok-ara three">
-                            <div className="items">
-                                <div className="item-head">
-                                    <div className="icon">
-                                        <img src="/images/blu-logo.svg" />
-                                    </div>
-                                    <div className="count"> 01</div>
-                                </div>
-                                <div className="itm-cnt">
-                                    <img src="/images/background-1.svg" className="img-resposive" />
-                                </div>
-                                <div className="itm-btm">
-                                    <div className="head">
-                                        <h2>Fire Systems Testing</h2>
-                                    </div>
-                                    <div className="lnk-mor">
-                                        <a href="#">
-                                            <img src="/images/blu-rig.svg" />
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="items">
-                                <div className="item-head">
-                                    <div className="icon">
-                                        <img src="/images/blu-logo.svg" />
-                                    </div>
-                                    <div className="count"> 01</div>
-                                </div>
-                                <div className="itm-cnt">
-                                    <img src="/images/background-1.svg" className="img-resposive" />
-                                </div>
-                                <div className="itm-btm">
-                                    <div className="head">
-                                        <h2>Fire Systems Testing</h2>
-                                    </div>
-                                    <div className="lnk-mor">
-                                        <a href="#">
-                                            <img src="/images/blu-rig.svg" />
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div className="items">
-                                <div className="item-head">
-                                    <div className="icon">
-                                        <img src="/images/blu-logo.svg" />
-                                    </div>
-                                    <div className="count"> 01</div>
-                                </div>
-                                <div className="itm-cnt">
-                                    <img src="/images/background-1.svg" className="img-resposive" />
-                                </div>
-                                <div className="itm-btm">
-                                    <div className="head">
-                                        <h2>Fire Systems Testing</h2>
-                                    </div>
-                                    <div className="lnk-mor">
-                                        <a href="#">
-                                            <img src="/images/blu-rig.svg" />
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div className="btm-ara">
-                        <div className="pge-nav-ara">
+                        <div className="fot-nav">
                             <ul className="pagnation">
                                 <li className="active">
                                     <a href="#">01</a>
@@ -219,7 +355,7 @@ class index extends Component {
                         </div>
                     </div>
                 </div>
-            </article>
+            </section>
         );
     }
 }

@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import actions from "./actions";
+import '../../assets/css/login.css'
 
 const mapStateToProps = state => {
     const { loginReducer } = state;
@@ -20,7 +21,6 @@ class Index extends Component {
             errorMsg: ""
         }
     }
-
 
     validate = async () => {
         let passExp = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{8,20}$/;
@@ -67,7 +67,8 @@ class Index extends Component {
             }
         } else {
             this.setState({
-                errorMsg: this.props.loginReducer.loginUser.error
+                // errorMsg: this.props.loginReducer.loginUser.error
+                errorMsg: "Invalid email or password"
             })
             // Toastmsg(this.props.loginReducer.loginUser.error)
         }

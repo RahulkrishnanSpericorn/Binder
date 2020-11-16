@@ -5,16 +5,17 @@ export default class Header extends Component {
         return (
             <header>
                 <nav className="navbar">
+                    <div className="mnu-ico">
+                        <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                            <img src="/images/menu.svg" className="open" />
+                            <img src="/images/clear.svg" className="close" />
+                        </button>
+                    </div>
                     <a className="navbar-brand" href="#">
                         <img src="/images/logo.svg" />
                     </a>
                     <div className="mnu-info ml-auto">
                         <ul className="prf-lst">
-                            <li className="nav-item mnu-ico">
-                                <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                                    <img src="/images/menu.svg" />
-                                </button>
-                            </li>
                             <li className="nav-item dropdown">
                                 <a className="nav-link dropdown-toggle" href="#" id="profile-info" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" >
                                     <div className="prf-img">
@@ -22,7 +23,9 @@ export default class Header extends Component {
                                     </div>
                                     <div className="pdf-name">Mathew John</div>
                                 </a>
-
+                                <div className="dropdown-menu" aria-labelledby="profile-info">
+                                    <a href="#">Profile</a>
+                                </div>
                             </li>
                         </ul>
                     </div>
