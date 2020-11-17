@@ -146,7 +146,7 @@ class index extends Component {
                                     <div className="icon">
                                         <img src="/images/blu-logo.svg" />
                                     </div>
-                                    <div className="count"> 03</div>
+                                    <div className="count"> 04</div>
                                 </div>
                                 <div className="itm-cnt">
                                     <img src="/images/4.png" className="img-resposive" />
@@ -167,7 +167,7 @@ class index extends Component {
                                     <div className="icon">
                                         <img src="/images/blu-logo.svg" />
                                     </div>
-                                    <div className="count"> 02</div>
+                                    <div className="count"> 05</div>
                                 </div>
                                 <div className="itm-cnt">
                                     <img src="/images/5.png" className="img-resposive" />
@@ -188,7 +188,7 @@ class index extends Component {
                                     <div className="icon">
                                         <img src="/images/blu-logo.svg" />
                                     </div>
-                                    <div className="count"> 03</div>
+                                    <div className="count"> 06</div>
                                 </div>
                                 <div className="itm-cnt">
                                     <img src="/images/6.png" className="img-resposive" />
@@ -209,7 +209,7 @@ class index extends Component {
                                     <div className="icon">
                                         <img src="/images/blu-logo.svg" />
                                     </div>
-                                    <div className="count"> 02</div>
+                                    <div className="count"> 07</div>
                                 </div>
                                 <div className="itm-cnt">
                                     <img src="/images/07.png" className="img-resposive" />
@@ -230,7 +230,7 @@ class index extends Component {
                                     <div className="icon">
                                         <img src="/images/blu-logo.svg" />
                                     </div>
-                                    <div className="count"> 02</div>
+                                    <div className="count"> 08</div>
                                 </div>
                                 <div className="itm-cnt">
                                     <img src="/images/08.png" className="img-resposive" />
@@ -251,14 +251,14 @@ class index extends Component {
                                     <div className="icon">
                                         <img src="/images/blu-logo.svg" />
                                     </div>
-                                    <div className="count"> 03</div>
+                                    <div className="count"> 09</div>
                                 </div>
                                 <div className="itm-cnt">
                                     <img src="/images/09.png" className="img-resposive" />
                                 </div>
                                 <div className="itm-btm">
                                     <div className="head">
-                                        <h2>Employee Training</h2>
+                                        <h2>Utilities Management</h2>
                                     </div>
                                     <div className="lnk-mor">
                                         <a href="#">
@@ -272,14 +272,14 @@ class index extends Component {
                                     <div className="icon">
                                         <img src="/images/blu-logo.svg" />
                                     </div>
-                                    <div className="count"> 01</div>
+                                    <div className="count"> 10</div>
                                 </div>
                                 <div className="itm-cnt">
                                     <img src="/images/10.png" className="img-resposive" />
                                 </div>
                                 <div className="itm-btm">
                                     <div className="head">
-                                        <h2>Employee Training</h2>
+                                        <h2>Account Controll</h2>
                                     </div>
                                     <div className="lnk-mor">
                                         <a href="#">
@@ -293,14 +293,14 @@ class index extends Component {
                                     <div className="icon">
                                         <img src="/images/blu-logo.svg" />
                                     </div>
-                                    <div className="count"> 02</div>
+                                    <div className="count"> 11</div>
                                 </div>
                                 <div className="itm-cnt">
                                     <img src="/images/11.png" className="img-resposive" />
                                 </div>
                                 <div className="itm-btm">
                                     <div className="head">
-                                        <h2>Employee Training</h2>
+                                        <h2>Quality Assurance</h2>
                                     </div>
                                     <div className="lnk-mor">
                                         <a href="#">
@@ -314,14 +314,14 @@ class index extends Component {
                                     <div className="icon">
                                         <img src="/images/blu-logo.svg" />
                                     </div>
-                                    <div className="count"> 03</div>
+                                    <div className="count"> 12</div>
                                 </div>
                                 <div className="itm-cnt">
                                     <img src="/images/12.png" className="img-resposive" />
                                 </div>
                                 <div className="itm-btm">
                                     <div className="head">
-                                        <h2>Employee Training</h2>
+                                        <h2>Construction Safety</h2>
                                     </div>
                                     <div className="lnk-mor">
                                         <a href="#">

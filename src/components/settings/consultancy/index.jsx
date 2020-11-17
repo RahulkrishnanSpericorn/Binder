@@ -12,7 +12,8 @@ class index extends Component {
 
     async componentDidMount() {
         await this.getConsultancies()
-        await this.addConsultancies()
+        // await this.addConsultancies()        //For add consultanices uncomment this line
+        // await this.getConsultanciesById()
      }
      getConsultancies = async() => {
          let params ={
@@ -21,12 +22,18 @@ class index extends Component {
          }
         await this.props.getConsultancies(params)
      }
-    //  addConsultancies = async() => {
+     addConsultancies = async() => {
+        let params ={
+            name:'test',
+            comments:'testing'
+        }
+       await this.props.addConsultancies(params)
+    }
+    // getConsultanciesById = async() => {
     //     let params ={
-    //         name:10,
-    //         comments:0
+         
     //     }
-    //    await this.props.getConsultancies(params)
+    //    await this.props.getConsultanciesById(params)
     // }
 
     render() {

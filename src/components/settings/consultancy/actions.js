@@ -8,13 +8,46 @@ const getConsultancies = params =>{
             dispatch({type : actionTypes.GETCONSULTANCIESREQUEST})
             const res = await Service.getConsultancies(params)
             console.log('res', res)
+            if(res && res.status === 200){
+                const getConsultancyData = res.data;
+                if(getConsultancyData){
+                    dispatch({type : actionTypes.GETCONSULTANCIESSUCCESS, response: getConsultancyData })
+                } else{
+                    dispatch({type : actionTypes.GETCONSULTANCIESFAILURE, error : getConsultancyData})
+                }
+            }else{
+                dispatch({type : actionTypes.GETCONSULTANCIESFAILURE, error : res.response && res.response.data})
+            }
 
         }catch(e){
-    
+            dispatch({type : actionTypes.GETCONSULTANCIESFAILURE, error : e.response && e.response.data})
+        }
+    }
+}
+
+const addConsultancies = params =>{
+
+    return async dispatch =>{
+        try{
+            dispatch({type: actionTypes.ADDCONSULTANCIESREQUEST})
+            const res = await Service.addConsultancies(params)
+            console.log('res', res)
+            if(res && res.status === 200){
+                if(res.data){
+                    dispatch({type: actionTypes.ADDCONSULTANCIESSUCCESS, response:res.data})
+                }else{
+                dispatch({ type: actionTypes.ADDCONSULTANCIESFAILURE, error: res.data })
+                }
+            }else{
+                dispatch({ type: actionTypes.ADDCONSULTANCIESFAILURE, error: res.data })
+            }
+        }catch(e){
+            dispatch({ type: actionTypes.ADDCONSULTANCIESFAILURE, error: e.response && e.response.data })
         }
     }
 }
 
 export default {
-    getConsultancies
+    getConsultancies,
+    addConsultancies
 }
