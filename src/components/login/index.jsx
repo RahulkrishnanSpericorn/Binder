@@ -29,7 +29,7 @@ class Index extends Component {
         if (this.state.email === "") {
             this.setState({ emailErrorMessage: "Please enter email" })
         }
-        if (this.state.email != "" && !emailExp.test(this.state.email)) {
+        if (this.state.email != "" && !emailExp.test(this.state.email.trim())) {
             this.setState({ emailErrorMessage: "Please enter vaild email" })
         }
         if (this.state.password === "") {
@@ -38,7 +38,7 @@ class Index extends Component {
         // if (this.state.password != "" && !passExp.test(this.state.password)) {
         //     this.setState({ passwordErrorMessage: 'Must contain 8 characters, one lowercase letter, one uppercase letter, one numeric digit, and one special character' })
         // }
-        if (this.state.email != "" && this.state.password != "") {
+        if (this.state.email != "" && this.state.password != "" && this.state.email != "" && emailExp.test(this.state.email.trim())) {
             this.login()
         }
     }

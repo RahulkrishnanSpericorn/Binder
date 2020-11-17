@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import Slider from "react-slick";
+import actions from './actions';
 
 const settings = {
     // dots: true,
@@ -10,7 +12,32 @@ const settings = {
     arrows: false
 };
 
+const mapStateToProps =state=>{
+    console.log('state', state)
+    const { dashboardReducer } = state;
+    return { dashboardReducer };
+}
+
 class index extends Component {
+    
+    constructor(props) {
+        super(props);
+        this.state={
+
+        }
+    }
+    
+   async componentDidMount() {
+       await this.getConsultancies()
+    }
+    getConsultancies = async() => {
+        let params ={
+            limit:10,
+            offset:0
+        }
+       await this.props.getConsultancies(params)
+    }
+    
 
     render() {
         return (
@@ -19,31 +46,31 @@ class index extends Component {
                     <div className="top-slider">
 
                         <Slider className="customer-logos slider" {...settings}>
-                            <div classNameName="slide">
+                            <div className="slide">
                                 <a href="">Fire Systems Testing</a>
                             </div>
-                            <div classNameName="slide">
+                            <div className="slide">
                                 <a href="">Fire Drills</a>
                             </div>
-                            <div classNameName="slide">
+                            <div className="slide">
                                 <a href="">Generator Testing</a>
                             </div>
-                            <div classNameName="slide">
+                            <div className="slide">
                                 <a href="">EOC Logbook</a>
                             </div>
-                            <div classNameName="slide">
+                            <div className="slide">
                                 <a href="">Account Control</a>
                             </div>
-                            <div classNameName="slide">
+                            <div className="slide">
                                 <a href="">Department P & P</a>
                             </div>
-                            <div classNameName="slide">
+                            <div className="slide">
                                 <a href="">BMP</a>
                             </div>
-                            <div classNameName="slide">
+                            <div className="slide">
                                 <a href="">Employee Training</a>
                             </div>
-                            <div classNameName="slide">
+                            <div className="slide">
                                 <a href="">Fire Drills</a>
                             </div>
                         </Slider>
@@ -332,4 +359,4 @@ class index extends Component {
     }
 }
 
-export default index;
+export default connect(mapStateToProps, { ...actions })(index);
