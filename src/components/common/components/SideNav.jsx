@@ -10,13 +10,16 @@ export default class SideNav extends Component {
         history.push('/login')
 
     }
+    pageChange = (pageName)=>{
+        history.push('/'+pageName)
+    }
 
     render() {
         return (
             <aside className="sidenav navbar-collapse" id="navbarSupportedContent">
                 <ul className="navbar">
                     <li className="nav-item">
-                        <a className="nav-link" href="#">
+                        <a className="nav-link" onClick={()=>{this.pageChange('dashboard')}}>
                             <div className="icn-sec">
                                 <img src="/images/Dashboard.svg" />
                             </div>
@@ -50,13 +53,16 @@ export default class SideNav extends Component {
                             <div className="collapse" id="setting">
                                 <ul className="view">
                                     <li>
-                                        <a href="#" className="">Building Type</a>
+                                        <a  onClick={()=>{this.pageChange('consultancy')}} className="">Consultancy</a>
                                     </li>
                                     <li>
-                                        <a href="#" className="">Users</a>
+                                        <a onClick={()=>{this.pageChange('consultancy')}} className="">Building Type</a>
                                     </li>
                                     <li>
-                                        <a href="#" className="">User Permissions</a>
+                                        <a onClick={()=>{this.pageChange('consultancy')}} className="">Users</a>
+                                    </li>
+                                    <li>
+                                        <a onClick={()=>{this.pageChange('consultancy')}} className="">User Permissions</a>
                                     </li>
                                 </ul>
                             </div>
