@@ -39,7 +39,7 @@ class index extends Component {
     render() {
         return (
             <section className="cont-ara">
-            <div className="dash">
+            <div className="fst">
                 
                 <div className="dash-cont">
                     <div className="pub-ara six">

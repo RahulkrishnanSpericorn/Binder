@@ -8,6 +8,7 @@ aside {
   display: block !important;
   position: relative;
   z-index: 999;
+  transition: all 0.1s linear;
 }
 aside ul.navbar {
   list-style: none;
@@ -97,9 +98,15 @@ aside ul.navbar li.nav-item .viw-sub ul.view li:last-child {
   border-bottom: none;
 }
 
+aside.navbar-collapse.collapsing {
+  height: auto;
+  transition: all 0.1s linear;
+}
+
 aside.navbar-collapse.show {
   max-width: 100px;
-  min-width: 100px;
+  min-width: 80px;
+  transition: all 0.1s linear;
 }
 aside.navbar-collapse.show ul.navbar li.nav-item a.nav-link {
   flex-direction: column;
@@ -115,6 +122,9 @@ aside.navbar-collapse.show ul.navbar li.nav-item a.nav-link span {
 }
 aside.navbar-collapse.show ul.navbar li.nav-item a.nav-link::after {
   display: none;
+}
+aside.navbar-collapse.show .viw-sub {
+  display: none !important;
 }
 
 @media (max-width: 1000px) {

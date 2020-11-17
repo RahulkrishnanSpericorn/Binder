@@ -44,7 +44,8 @@ class index extends Component {
             <section className="cont-ara">
                 <div className="dash">
                     <div className="top-slider">
-
+                    <i class="material-icons" data-toggle="collapse" data-target="#collapseExample" aria-expanded="true" aria-controls="collapseExample">expand_more</i>
+                    <div class="collapse show" id="collapseExample">
                         <Slider className="customer-logos slider" {...settings}>
                             <div className="slide">
                                 <a href="">Fire Systems Testing</a>
@@ -74,7 +75,7 @@ class index extends Component {
                                 <a href="">Fire Drills</a>
                             </div>
                         </Slider>
-
+                    </div>
                     </div>
                     <div className="dash-cont">
                         <div className="pub-ara six">

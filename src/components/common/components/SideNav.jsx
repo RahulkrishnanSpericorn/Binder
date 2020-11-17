@@ -16,7 +16,7 @@ export default class SideNav extends Component {
 
     render() {
         return (
-            <aside className="sidenav navbar-collapse" id="navbarSupportedContent">
+            <aside className="sidenav navbar-collapse collapse show" id="navbarSupportedContent">
                 <ul className="navbar">
                     <li className="nav-item">
                         <a className="nav-link" onClick={()=>{this.pageChange('dashboard')}}>
@@ -54,6 +54,9 @@ export default class SideNav extends Component {
                                 <ul className="view">
                                     <li>
                                         <a  onClick={()=>{this.pageChange('consultancy')}} className="">Consultancy</a>
+                                    </li>
+                                    <li>
+                                        <a  onClick={()=>{this.pageChange('addBuilding')}} className="">Add Building</a>
                                     </li>
                                     <li>
                                         <a onClick={()=>{this.pageChange('consultancy')}} className="">Building Type</a>

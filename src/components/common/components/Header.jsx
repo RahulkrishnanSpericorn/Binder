@@ -6,9 +6,9 @@ export default class Header extends Component {
             <header>
                 <nav className="navbar">
                     <div className="mnu-ico">
-                        <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                            <img src="/images/menu.svg" className="open" />
-                            <img src="/images/clear.svg" className="close" />
+                        <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="true" aria-label="Toggle navigation">
+                            <img src="/images/menu.svg" className="close" />
+                            <img src="/images/clear.svg" className="open" />
                         </button>
                     </div>
                     <a className="navbar-brand" href="#">

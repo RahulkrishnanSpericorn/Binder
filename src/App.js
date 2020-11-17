@@ -8,6 +8,7 @@ import PublicRoute from "./components/common/components/publicRoute";
 import LoginForm from "./components/login/index"
 import Dashboard from "./components/dashboard/index"
 import Consultancy from "./components/settings/consultancy/index"
+import addBuilding from "./components/addBuilding/index"
 
 
 
@@ -20,6 +21,7 @@ function App() {
         <PublicRoute exact path="/login" component={LoginForm} />
         <PrivateRoute exact path="/dashboard" component={Dashboard} />
         <PrivateRoute exact path="/consultancy" component={Consultancy} />
+        <PrivateRoute exact path="/addBuilding" component={addBuilding} />
       </Switch>
     </Router>
   );
