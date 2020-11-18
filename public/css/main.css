@@ -665,11 +665,27 @@ body::before {
   border: 1px solid #fff;
   transition: transform 0.3s ease-in-out, opacity 0.25s ease-in-out 0.1s, -webkit-transform 0.3s ease-in-out;
   z-index: 9999;
+  transform: rotate(180deg) !important;
   cursor: pointer;
 }
 .top-slider i.material-icons[aria-expanded=true] {
-  transform: rotate(180deg) !important;
+  transform: rotate(0deg) !important;
   transition: transform 0.3s ease-in-out, opacity 0.25s ease-in-out 0.1s, -webkit-transform 0.3s ease-in-out;
+}
+.top-slider .collapse.show {
+  visibility: hidden;
+  height: 0px;
+}
+.top-slider .collapse {
+  height: auto;
+  visibility: visible;
+  display: block;
+}
+.top-slider .collapsing {
+  position: relative;
+  height: auto;
+  overflow: hidden;
+  transition: unset;
 }
 .top-slider .slider {
   width: 100%;
