@@ -51,6 +51,12 @@ class index extends Component {
                     <div className="dash-cont">
                         <div className="pub-ara six">
 
+                        <div className="frm-ara">
+                                <div className="top-ara">
+                                    <h4>Consultancy page</h4>
+                                </div> 
+                            </div>
+
                         </div>
 
                     </div>
