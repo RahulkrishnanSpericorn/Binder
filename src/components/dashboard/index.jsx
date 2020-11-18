@@ -1,17 +1,17 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import Slider from "react-slick";
+// import Slider from "react-slick";
 import TopSlider from '../common/components/TopSlider';
 import actions from './actions';
 
-const settings = {
-    // dots: true,
-    infinite: true,
-    speed: 1000,
-    slidesToShow: 4,
-    slidesToScroll: 1,
-    arrows: false
-};
+// const settings = {
+//     // dots: true,
+//     infinite: true,
+//     speed: 1000,
+//     slidesToShow: 4,
+//     slidesToScroll: 1,
+//     arrows: false
+// };
 
 const mapStateToProps = state => {
     console.log('state', state)

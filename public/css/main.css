@@ -1227,4 +1227,18 @@ input[list]::-webkit-calendar-picker-indicator {
   opacity: 0.7;
 }
 
+.sav .itm .itm-cnt .form-group label.form-control-placeholder-save {
+  font-family: "Inter", sans-serif;
+  font-size: 14px;
+  color: #676A74;
+  margin-left: 0px;
+  margin-top: 10px;
+  margin-bottom: 0px;
+}
+.sav .itm .itm-cnt .form-group h3 {
+  color: #103BB5;
+  font-weight: 600;
+  font-family: "Inter", sans-serif;
+}
+
 /*# sourceMappingURL=main.css.map */

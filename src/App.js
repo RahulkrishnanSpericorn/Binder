@@ -9,6 +9,7 @@ import LoginForm from "./components/login/index"
 import Dashboard from "./components/dashboard/index"
 import Consultancy from "./components/settings/consultancy/index"
 import addBuilding from "./components/addBuilding/index"
+import Clients from "./components/settings/clients/index"
 
 
 
@@ -22,6 +23,7 @@ function App() {
         <PrivateRoute exact path="/dashboard" component={Dashboard} />
         <PrivateRoute exact path="/consultancy" component={Consultancy} />
         <PrivateRoute exact path="/addBuilding" component={addBuilding} />
+        <PrivateRoute exact path="/clients" component={Clients} />
       </Switch>
     </Router>
   );
