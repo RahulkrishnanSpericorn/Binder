@@ -10,8 +10,8 @@ export default class SideNav extends Component {
         history.push('/login')
 
     }
-    pageChange = (pageName)=>{
-        history.push('/'+pageName)
+    pageChange = (pageName) => {
+        history.push('/' + pageName)
     }
 
     render() {
@@ -19,7 +19,7 @@ export default class SideNav extends Component {
             <aside className="sidenav navbar-collapse collapse show" id="navbarSupportedContent">
                 <ul className="navbar">
                     <li className="nav-item">
-                        <a className="nav-link" onClick={()=>{this.pageChange('dashboard')}}>
+                        <a className="nav-link" onClick={() => { this.pageChange('dashboard') }}>
                             <div className="icn-sec">
                                 <img src="/images/Dashboard.svg" />
                             </div>
@@ -53,19 +53,19 @@ export default class SideNav extends Component {
                             <div className="collapse" id="setting">
                                 <ul className="view">
                                     <li>
-                                        <a  onClick={()=>{this.pageChange('consultancy')}} className="">Consultancy</a>
+                                        <a onClick={() => { this.pageChange('consultancy') }} className="">Consultancy</a>
                                     </li>
                                     <li>
-                                        <a  onClick={()=>{this.pageChange('addBuilding')}} className="">Add Building</a>
+                                        <a onClick={() => { this.pageChange('addBuilding') }} className="">Add Building</a>
                                     </li>
                                     <li>
-                                        <a onClick={()=>{this.pageChange('consultancy')}} className="">Building Type</a>
+                                        <a onClick={() => { this.pageChange('consultancy') }} className="">Building Type</a>
                                     </li>
                                     <li>
-                                        <a onClick={()=>{this.pageChange('consultancy')}} className="">Users</a>
+                                        <a onClick={() => { this.pageChange('consultancy') }} className="">Users</a>
                                     </li>
                                     <li>
-                                        <a onClick={()=>{this.pageChange('consultancy')}} className="">User Permissions</a>
+                                        <a onClick={() => { this.pageChange('consultancy') }} className="">User Permissions</a>
                                     </li>
                                 </ul>
                             </div>

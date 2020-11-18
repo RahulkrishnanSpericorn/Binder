@@ -4,8 +4,8 @@ import { addConsultancies } from './services'
 const initialState = {
     consultanciesData: {},
     addConsultanciesData: {},
-    getConsulatancyById:{},
-    editConsultancyById:{}
+    getConsulatancyById: {},
+    editConsultancyById: {}
 }
 
 export default (state = initialState, action) => {
@@ -41,35 +41,35 @@ export default (state = initialState, action) => {
                 addConsultanciesData: { success: false, ...action.error }
             }
 
-            case actionTypes.GETCONSULTANCIESBYIDREQUEST:
-                return {
-                    ...state
-                }
-            case actionTypes.GETCONSULTANCIESBYIDSUCCESS:
-                return {
-                    ...state,
-                    getConsulatancyById: { success: true, ...action.response }
-                }
-            case actionTypes.GETCONSULTANCIESBYIDFAILURE:
-                return {
-                    ...state,
-                    getConsulatancyById: { success: false, ...action.error }
-                }
+        case actionTypes.GETCONSULTANCIESBYIDREQUEST:
+            return {
+                ...state
+            }
+        case actionTypes.GETCONSULTANCIESBYIDSUCCESS:
+            return {
+                ...state,
+                getConsulatancyById: { success: true, ...action.response }
+            }
+        case actionTypes.GETCONSULTANCIESBYIDFAILURE:
+            return {
+                ...state,
+                getConsulatancyById: { success: false, ...action.error }
+            }
 
-                case actionTypes.EDITCONSULTANCIESBYIDREQUEST:
-                return {
-                    ...state
-                }
-            case actionTypes.EDITCONSULTANCIESBYIDSUCCESS:
-                return {
-                    ...state,
-                    editConsultancyById: { success: true, ...action.response }
-                }
-            case actionTypes.EDITCONSULTANCIESBYIDFAILURE:
-                return {
-                    ...state,
-                    editConsultancyById: { success: false, ...action.error }
-                }
+        case actionTypes.EDITCONSULTANCIESBYIDREQUEST:
+            return {
+                ...state
+            }
+        case actionTypes.EDITCONSULTANCIESBYIDSUCCESS:
+            return {
+                ...state,
+                editConsultancyById: { success: true, ...action.response }
+            }
+        case actionTypes.EDITCONSULTANCIESBYIDFAILURE:
+            return {
+                ...state,
+                editConsultancyById: { success: false, ...action.error }
+            }
 
         default:
             return state;

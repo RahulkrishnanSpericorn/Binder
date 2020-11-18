@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Slider from "react-slick";
+import TopSlider from '../common/components/TopSlider';
 import actions from './actions';
 
 const settings = {
@@ -12,71 +13,71 @@ const settings = {
     arrows: false
 };
 
-const mapStateToProps =state=>{
+const mapStateToProps = state => {
     console.log('state', state)
     const { dashboardReducer } = state;
     return { dashboardReducer };
 }
 
 class index extends Component {
-    
+
     constructor(props) {
         super(props);
-        this.state={
+        this.state = {
 
         }
     }
-    
-   async componentDidMount() {
-       await this.getConsultancies()
+
+    async componentDidMount() {
+        await this.getConsultancies()
     }
-    getConsultancies = async() => {
-        let params ={
-            limit:10,
-            offset:0
+    getConsultancies = async () => {
+        let params = {
+            limit: 10,
+            offset: 0
         }
-       await this.props.getConsultancies(params)
+        await this.props.getConsultancies(params)
     }
-    
 
     render() {
         return (
             <section className="cont-ara">
                 <div className="dash">
-                    <div className="top-slider">
-                    <i class="material-icons" data-toggle="collapse" data-target="#collapseExample" aria-expanded="true" aria-controls="collapseExample">expand_more</i>
-                    <div class="collapse show" id="collapseExample">
-                        <Slider className="customer-logos slider" {...settings}>
-                            <div className="slide">
-                                <a href="">Fire Systems Testing</a>
-                            </div>
-                            <div className="slide">
-                                <a href="">Fire Drills</a>
-                            </div>
-                            <div className="slide">
-                                <a href="">Generator Testing</a>
-                            </div>
-                            <div className="slide">
-                                <a href="">EOC Logbook</a>
-                            </div>
-                            <div className="slide">
-                                <a href="">Account Control</a>
-                            </div>
-                            <div className="slide">
-                                <a href="">Department P & P</a>
-                            </div>
-                            <div className="slide">
-                                <a href="">BMP</a>
-                            </div>
-                            <div className="slide">
-                                <a href="">Employee Training</a>
-                            </div>
-                            <div className="slide">
-                                <a href="">Fire Drills</a>
-                            </div>
-                        </Slider>
-                    </div>
-                    </div>
+                    <TopSlider/>
+                    {/* <div className="top-slider">
+                        <i class="material-icons" data-toggle="collapse" data-target="#collapseExample" aria-expanded="true" aria-controls="collapseExample">expand_more</i>
+                        <div class="collapse show" id="collapseExample">
+                            <Slider className="customer-logos slider" {...settings}>
+                                <div className="slide">
+                                    <a href="">Fire Systems Testing</a>
+                                </div>
+                                <div className="slide">
+                                    <a href="">Fire Drills</a>
+                                </div>
+                                <div className="slide">
+                                    <a href="">Generator Testing</a>
+                                </div>
+                                <div className="slide">
+                                    <a href="">EOC Logbook</a>
+                                </div>
+                                <div className="slide">
+                                    <a href="">Account Control</a>
+                                </div>
+                                <div className="slide">
+                                    <a href="">Department P & P</a>
+                                </div>
+                                <div className="slide">
+                                    <a href="">BMP</a>
+                                </div>
+                                <div className="slide">
+                                    <a href="">Employee Training</a>
+                                </div>
+                                <div className="slide">
+                                    <a href="">Fire Drills</a>
+                                </div>
+                            </Slider>
+                        </div>
+                    </div> */}
                     <div className="dash-cont">
                         <div className="pub-ara six">
                             <div className="items">
