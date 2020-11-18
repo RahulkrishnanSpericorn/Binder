@@ -13,7 +13,8 @@ class index extends Component {
     async componentDidMount() {
         await this.getConsultancies()
         // await this.addConsultancies()        //For add consultanices uncomment this line
-        // await this.getConsultanciesById()
+        await this.getConsultanciesById()
+        await this.editConsultanciesById()
      }
      getConsultancies = async() => {
          let params ={
@@ -29,12 +30,18 @@ class index extends Component {
         }
        await this.props.addConsultancies(params)
     }
-    // getConsultanciesById = async() => {
-    //     let params ={
-         
-    //     }
-    //    await this.props.getConsultanciesById(params)
-    // }
+    getConsultanciesById = async() => {
+       let id = 'c0b7f070-df5d-4e9f-9012-bd6dedaf881a'
+       await this.props.getConsultanciesById(id)
+    }
+    editConsultanciesById = async() => {
+        let params={
+            'consultancy[name]':'sgsd',
+            'consultancy[comments]':'commentss'
+        }
+        let id = 'c0b7f070-df5d-4e9f-9012-bd6dedaf881a'
+        await this.props.editConsultanciesById(params,id)
+     }
 
     render() {
         return (

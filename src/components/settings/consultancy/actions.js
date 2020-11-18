@@ -47,7 +47,57 @@ const addConsultancies = params =>{
     }
 }
 
+const getConsultanciesById = id  => {
+
+    return async dispatch =>{
+        
+        try{
+            dispatch({type: actionTypes.GETCONSULTANCIESBYIDREQUEST})
+            const res = await Service.getConsultanciesById(id)
+            console.log('resbyId', res)
+            if(res && res.status === 200){
+                if(res.data){
+                    dispatch({ type : actionTypes.GETCONSULTANCIESBYIDSUCCESS, response:res.data })
+                }else{
+                    dispatch({type : actionTypes.GETCONSULTANCIESBYIDFAILURE, error : res.data})
+                }
+            }else{
+                dispatch({type : actionTypes.GETCONSULTANCIESBYIDFAILURE, error : res.data})
+            }
+        }catch(e){
+            dispatch({type : actionTypes.GETCONSULTANCIESBYIDFAILURE, error : e.response && e.response.data})
+        }
+    }
+}
+
+const editConsultanciesById = (params,id)  => {
+
+    return async dispatch =>{
+        
+        try{
+            dispatch({type: actionTypes.EDITCONSULTANCIESBYIDREQUEST})
+            const res = await Service.editConsultanciesById(params,id)
+            console.log('resUpdate', res)
+            if(res && res.status === 200){
+                if(res.data){
+                    dispatch({ type : actionTypes.EDITCONSULTANCIESBYIDSUCCESS, response:res.data })
+                }else{
+                    dispatch({type : actionTypes.EDITCONSULTANCIESBYIDFAILURE, error : res.data})
+                }
+            }else{
+                dispatch({type : actionTypes.EDITCONSULTANCIESBYIDFAILURE, error : res.data})
+            }
+        }catch(e){
+            dispatch({type : actionTypes.EDITCONSULTANCIESBYIDFAILURE, error : e.response && e.response.data})
+        }
+    }
+}
+
+
+
 export default {
     getConsultancies,
-    addConsultancies
+    addConsultancies,
+    getConsultanciesById,
+    editConsultanciesById
 }
