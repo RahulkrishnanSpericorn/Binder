@@ -1536,10 +1536,58 @@ input[list]::-webkit-calendar-picker-indicator {
 .list-area .usr-vw .amd {
   padding: 10px 10px 10px 0px;
   color: #697489;
+  display: flex;
+  min-width: 75px;
+  align-items: center;
 }
 .list-area .usr-vw .usr-sld {
+  width: 300px;
+}
+.list-area .usr-vw .usr-sld .slider {
+  width: 100%;
+  padding: 0px 20px;
   display: flex;
   align-items: center;
+  height: 50px;
+}
+.list-area .usr-vw .usr-sld .slider .slick-list .slide {
+  border-radius: 5px;
+  overflow: hidden;
+  width: 35px !important;
+  margin-right: 10px !important;
+}
+.list-area .usr-vw .usr-sld .slider .slick-list .slide a {
+  text-align: center;
+  width: 100%;
+  display: block;
+  color: #707070;
+  font-size: 14px;
+  font-family: "Inter", sans-serif;
+  text-decoration: none;
+}
+.list-area .usr-vw .usr-sld .slider .slick-list .slide a img {
+  width: 100%;
+}
+.list-area .usr-vw .usr-sld .slider .prv-arw {
+  background-image: url(../images/lft-arrow.svg);
+  height: 15px;
+  width: 15px;
+  background-size: contain;
+  cursor: pointer;
+  position: absolute;
+  left: -5px;
+}
+.list-area .usr-vw .usr-sld .slider .nxt-arw {
+  background-image: url(../images/rgt-arrow.svg);
+  height: 15px;
+  width: 15px;
+  background-size: contain;
+  cursor: pointer;
+  position: absolute;
+  right: -5px;
+}
+.list-area .usr-vw .usr-sld .slider ul.slick-dots {
+  display: none !important;
 }
 
 /*# sourceMappingURL=main.css.map */

@@ -52,23 +52,30 @@ export default class SideNav extends Component {
                         <div className="viw-sub">
                             <div className="collapse" id="setting">
                                 <ul className="view">
-                                    <li>
-                                        <a onClick={() => { this.pageChange('consultancy') }} className="">Consultancy</a>
+                                <li>
+                                        <a onClick={() => { this.pageChange('regions') }} className="">Regions</a>
                                     </li>
+                                    <li>
+                                        <a onClick={() => { this.pageChange('sites') }} className="">Sites</a>
+                                    </li>
+                                    
                                     <li>
                                         <a onClick={() => { this.pageChange('addBuilding') }} className="">Add Building</a>
                                     </li>
-                                    <li>
+                                    {/* <li>
                                         <a onClick={() => { this.pageChange('saveBuilding') }} className="">Save Building</a>
-                                    </li>
+                                    </li> */}
                                     <li>
                                         <a onClick={() => { this.pageChange('clients') }} className="">Clients</a>
                                     </li>
                                     <li>
-                                        <a onClick={() => { this.pageChange('consultancy') }} className="">Users</a>
+                                        <a onClick={() => { this.pageChange('consultancy') }} className="">Consultancies</a>
                                     </li>
                                     <li>
-                                        <a onClick={() => { this.pageChange('consultancy') }} className="">User Permissions</a>
+                                        <a onClick={() => { this.pageChange('users') }} className="">Users</a>
+                                    </li>
+                                    <li>
+                                        <a onClick={() => { this.pageChange('userPermission') }} className="">User Permissions</a>
                                     </li>
                                 </ul>
                             </div>

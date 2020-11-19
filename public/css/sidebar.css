@@ -90,6 +90,7 @@ aside ul.navbar li.nav-item .viw-sub ul.view li a {
   text-decoration: none;
   font-size: 13px;
   width: 100%;
+  cursor: pointer;
 }
 aside ul.navbar li.nav-item .viw-sub ul.view li a:hover {
   opacity: 0.8;

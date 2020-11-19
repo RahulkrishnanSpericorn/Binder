@@ -12,6 +12,10 @@ import addBuilding from "./components/settings/building/addBuilding"
 import Clients from "./components/settings/clients/index"
 import AddConsultancy from "./components/settings/consultancy/addConsultancy" 
 import AddClients from "./components/settings/clients/addClients" 
+import Regions from "./components/settings/region/index" 
+import Sites from "./components/settings/sites/index" 
+import Users from "./components/settings/users/index" 
+import UserPermission from "./components/settings/userPermission/index" 
 
 
 
@@ -28,6 +32,11 @@ function App() {
         <PrivateRoute exact path="/clients" component={Clients} />
         <PrivateRoute exact path="/addConsultancy" component={AddConsultancy} />
         <PrivateRoute exact path="/addClients" component={AddClients} />
+        <PrivateRoute exact path="/regions" component={Regions} />
+        <PrivateRoute exact path="/sites" component={Sites} />
+        <PrivateRoute exact path="/users" component={Users} />
+        <PrivateRoute exact path="/userPermission" component={UserPermission} />
+        
       </Switch>
     </Router>
   );

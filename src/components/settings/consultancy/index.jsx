@@ -121,6 +121,50 @@ class index extends Component {
                                                         <td>{item.code}</td>
                                                         <td>{item.name}</td>
                                                         <td>{item.comments}</td>
+                                                        {/* <td>
+                                            <div class="usr-vw">
+                                                <div class="amd"> 150 User</div>
+                                                <div class="usr-sld">
+                                                    <div class="slider usr-sld-slider">
+                                                     
+                                                        <div class="slide">
+                                                            <a href="">
+                                                                <img src="/images/profileimg.jpg"/>
+                                                            </a>
+                                                        </div>
+                                                        <div class="slide">
+                                                            <a href="">
+                                                                <img src="/images/profileimg.jpg"/>
+                                                            </a>
+                                                        </div>
+                                                        <div class="slide">
+                                                            <a href="">
+                                                                <img src="/images/profileimg.jpg"/>
+                                                            </a>
+                                                        </div>
+                                                        <div class="slide">
+                                                            <a href="">
+                                                                <img src="/images/profileimg.jpg"/>
+                                                            </a>
+                                                        </div>
+                                                        <div class="slide">
+                                                            <a href="">
+                                                                <img src="/images/profileimg.jpg"/>
+                                                            </a>
+                                                        </div> <div class="slide">
+                                                            <a href="">
+                                                                <img src="/images/profileimg.jpg"/>
+                                                            </a>
+                                                        </div> <div class="slide">
+                                                            <a href="">
+                                                                <img src="/images/profileimg.jpg"/>
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </td> */}
+
                                                         <td class="action">
                                                             <img src="/images/three-dots.svg" data-toggle="dropdown" />
                                                             <ul class="dropdown-menu" role="menu">
