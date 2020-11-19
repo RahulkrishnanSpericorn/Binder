@@ -46,7 +46,9 @@ export default (state = initialState, action) => {
                 ...state
             }
         case actionTypes.GETCONSULTANCIESBYIDSUCCESS:
+           
             return {
+                
                 ...state,
                 getConsulatancyById: { success: true, ...action.response }
             }
