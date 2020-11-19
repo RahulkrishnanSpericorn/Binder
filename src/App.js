@@ -11,6 +11,7 @@ import Consultancy from "./components/settings/consultancy/index"
 import addBuilding from "./components/settings/building/addBuilding"
 import Clients from "./components/settings/clients/index"
 import AddConsultancy from "./components/settings/consultancy/addConsultancy" 
+import AddClients from "./components/settings/clients/addClients" 
 
 
 
@@ -26,6 +27,7 @@ function App() {
         <PrivateRoute exact path="/addBuilding" component={addBuilding} />
         <PrivateRoute exact path="/clients" component={Clients} />
         <PrivateRoute exact path="/addConsultancy" component={AddConsultancy} />
+        <PrivateRoute exact path="/addClients" component={AddClients} />
       </Switch>
     </Router>
   );

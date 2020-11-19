@@ -1,5 +1,4 @@
-import * as actionTypes from './constants'
-import { addConsultancies } from './services'
+import * as actionTypes from './constants' 
 
 const initialState = {
     consultanciesData: {},
@@ -16,11 +15,12 @@ export default (state = initialState, action) => {
                 ...state
             }
         case actionTypes.GETCONSULTANCIESSUCCESS:
-            let tempArray =
-                action.response.consultancies && action.response.consultancies.length ? action.response.consultancies.map(temp => { return JSON.parse(temp) }) : []
+            // let tempArray =
+            //     action.response.consultancies && action.response.consultancies.length ? action.response.consultancies.map(temp => { return JSON.parse(temp) }) : []
             return {
                 ...state,
-                consultanciesData: { success: true, consultancies: tempArray, count: action.response.count }
+                // consultanciesData: { success: true, consultancies: tempArray, count: action.response.count }
+                consultanciesData: { success: true, ...action.response }
             }
         case actionTypes.GETCONSULTANCIESFAILURE:
             return {

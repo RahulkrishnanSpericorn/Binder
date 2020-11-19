@@ -22,6 +22,29 @@ const getClients = params => {
     }
 }
 
+const addClients = params => {
+
+    return async dispatch => {
+        try {
+            dispatch({ type: actionTypes.ADDCLIENTSREQUEST })
+            const res = await Service.addClients(params)
+            console.log('res', res)
+            if (res && res.status === 200) {
+                if (res.data) {
+                    dispatch({ type: actionTypes.ADDCLIENTSSUCCESS, response: res.data })
+                } else {
+                    dispatch({ type: actionTypes.ADDCLIENTSFAILURE, error: res.data })
+                }
+            } else {
+                dispatch({ type: actionTypes.ADDCLIENTSFAILURE, error: res.data })
+            }
+        } catch (e) {
+            dispatch({ type: actionTypes.ADDCLIENTSFAILURE, error: e.response && e.response.data })
+        }
+    }
+}
+
 export default {
-    getClients
+    getClients,
+    addClients
 }

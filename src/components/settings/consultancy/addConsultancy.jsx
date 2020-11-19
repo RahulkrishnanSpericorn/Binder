@@ -59,8 +59,6 @@ const mapStateToProps = state => {
                     <div className="dash-cont">
                         <div className="pub-ara six">
 
-
-
                         <div className="frm-ara">
                                 <div className="top-ara">
                                     <h4>Add Consultancy</h4>
@@ -77,7 +75,7 @@ const mapStateToProps = state => {
                                         <div className="itm-cnt">
                                             <div className="form-group">
                                                 <input type="text" id="text" onChange={(e)=>{this.setState({name:e.target.value,nameErrorMsg:false})}} className="form-control" placeholder=" " />
-                                                <label className="form-control-placeholder" style={{color:this.state.nameErrorMsg && 'red'}} for="f-name">Full  Name *</label>
+                                                <label className="form-control-placeholder" style={{color:this.state.nameErrorMsg && 'red'}} for="f-name">Consultancy Name *</label>
                                             </div>
                                         </div>
                                     </div>
