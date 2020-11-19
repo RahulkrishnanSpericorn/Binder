@@ -122,7 +122,7 @@ class index extends Component {
                                         </div>
                                         <div className="itm-cnt">
                                             <div className="form-group">
-                                                <input type="text" id="text" className="form-control" placeholder=" " list="buildigNumber" name="buildigNumber" />
+                                                <input type="number" id="text" className="form-control" placeholder=" " list="buildigNumber" name="buildigNumber" />
                                                 <label className="form-control-placeholder" for="f-name">Building Number</label>
                                                 <span className="material-icons">keyboard_arrow_down </span>
                                                 <datalist id="buildigNumber">
@@ -190,7 +190,7 @@ class index extends Component {
                                         </div>
                                         <div className="itm-cnt">
                                             <div className="form-group">
-                                                <input type="text" id="text" className="form-control" placeholder=" " />
+                                                <input type="number" id="text" className="form-control" placeholder=" " />
                                                 <label className="form-control-placeholder" for="f-name">Area (Sq)</label>
                                             </div>
                                         </div>
@@ -201,7 +201,7 @@ class index extends Component {
                                         </div>
                                         <div className="itm-cnt">
                                             <div className="form-group">
-                                                <input type="text" id="text" className="form-control" placeholder=" " />
+                                                <input type="number" id="text" className="form-control" placeholder=" " />
                                                 <label className="form-control-placeholder" for="f-name">Cost</label>
                                             </div>
                                         </div>
@@ -270,7 +270,7 @@ class index extends Component {
                                         </div>
                                         <div className="itm-cnt">
                                             <div className="form-group">
-                                                <input type="text" id="text" className="form-control" placeholder=" " />
+                                                <input type="number" id="text" className="form-control" placeholder=" " />
                                                 <label className="form-control-placeholder" for="f-name">Year Built</label>
                                             </div>
                                         </div>
@@ -344,7 +344,7 @@ class index extends Component {
                                         </div>
                                         <div className="itm-cnt">
                                             <div className="form-group">
-                                                <input type="text" id="text" className="form-control" placeholder=" " list="zip" name="zip" />
+                                                <input type="number" id="text" className="form-control" placeholder=" " list="zip" name="zip" />
                                                 <label className="form-control-placeholder" for="f-name">Zip Code</label>
                                                 <span className="material-icons">keyboard_arrow_down </span>
                                                 <datalist id="zip">
@@ -361,7 +361,7 @@ class index extends Component {
                                         <div className="itm-cnt">
                                             <div className="form-group">
                                                 <input type="text" id="text" className="form-control" placeholder=" " />
-                                                <label className="form-control-placeholder" for="f-name">Comment</label>
+                                                <label className="form-control-placeholder" for="f-name">Comments</label>
                                             </div>
                                         </div>
                                     </div>
