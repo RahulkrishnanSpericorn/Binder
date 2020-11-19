@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import TopSlider from '../common/components/TopSlider';
+import TopSlider from '../../common/components/TopSlider';
 
 class index extends Component {
     render() {
@@ -37,7 +37,7 @@ class index extends Component {
                                         <div className="itm-cnt">
                                             <div className="form-group">
                                                 <input type="text" id="text" className="form-control" placeholder=" " list="buildigNumber" name="buildigNumber" />
-                                                <label className="form-control-placeholder" for="f-name">Cosultancy*</label>
+                                                <label className="form-control-placeholder" for="f-name">Consultancy*</label>
                                                 <span className="material-icons">keyboard_arrow_down </span>
                                                 <datalist id="cosultancy">
                                                     <option value="Cosultancy" />
@@ -67,7 +67,7 @@ class index extends Component {
                                         <div className="itm-cnt">
                                             <div className="form-group">
                                                 <input type="text" id="text" className="form-control" placeholder=" " list="builiding" name="builiding" />
-                                                <label className="form-control-placeholder" for="f-name">Builiding Type</label>
+                                                <label className="form-control-placeholder" for="f-name">Building Type</label>
                                                 <span className="material-icons">keyboard_arrow_down </span>
                                                 <datalist id="buildig">
                                                     <option value="builiding" />
@@ -112,7 +112,7 @@ class index extends Component {
                                         <div className="itm-cnt">
                                             <div className="form-group">
                                                 <input type="text" id="text" className="form-control" placeholder=" " />
-                                                <label className="form-control-placeholder" for="f-name">Descrtiption</label>
+                                                <label className="form-control-placeholder" for="f-name">Description</label>
                                             </div>
                                         </div>
                                     </div>
@@ -123,7 +123,7 @@ class index extends Component {
                                         <div className="itm-cnt">
                                             <div className="form-group">
                                                 <input type="text" id="text" className="form-control" placeholder=" " list="buildigNumber" name="buildigNumber" />
-                                                <label className="form-control-placeholder" for="f-name">Buildig Number</label>
+                                                <label className="form-control-placeholder" for="f-name">Building Number</label>
                                                 <span className="material-icons">keyboard_arrow_down </span>
                                                 <datalist id="buildigNumber">
                                                     <option value="Buildig Number" />
@@ -153,7 +153,7 @@ class index extends Component {
                                         <div className="itm-cnt">
                                             <div className="form-group">
                                                 <input type="text" id="text" className="form-control" placeholder=" " list="cosultancy" name="cosultancy" />
-                                                <label className="form-control-placeholder" for="f-name">Cosultancy Users</label>
+                                                <label className="form-control-placeholder" for="f-name">Consultancy Users</label>
                                                 <span className="material-icons">keyboard_arrow_down </span>
                                                 <datalist id="cosultancy">
                                                     <option value="Buildig Number" />
@@ -191,7 +191,7 @@ class index extends Component {
                                         <div className="itm-cnt">
                                             <div className="form-group">
                                                 <input type="text" id="text" className="form-control" placeholder=" " />
-                                                <label className="form-control-placeholder" for="f-name">Arrea (Sq)</label>
+                                                <label className="form-control-placeholder" for="f-name">Area (Sq)</label>
                                             </div>
                                         </div>
                                     </div>

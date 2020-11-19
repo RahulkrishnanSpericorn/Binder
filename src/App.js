@@ -8,9 +8,9 @@ import PublicRoute from "./components/common/components/publicRoute";
 import LoginForm from "./components/login/index"
 import Dashboard from "./components/dashboard/index"
 import Consultancy from "./components/settings/consultancy/index"
-import addBuilding from "./components/addBuilding/index"
+import addBuilding from "./components/settings/building/addBuilding"
 import Clients from "./components/settings/clients/index"
-import AddConsultancy from "./components/settings/consultancy/addConsultancy"
+import AddConsultancy from "./components/settings/consultancy/addConsultancy" 
 
 
 

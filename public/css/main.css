@@ -1241,4 +1241,58 @@ input[list]::-webkit-calendar-picker-indicator {
   font-family: "Inter", sans-serif;
 }
 
+.tab-sec {
+  padding: 10px 40px;
+}
+.tab-sec ul.nav.nav-tabs {
+  border-bottom: 0px;
+}
+.tab-sec ul.nav.nav-tabs li {
+  margin-right: 10px;
+  padding: 10px 15px;
+  border-radius: 15px;
+}
+.tab-sec ul.nav.nav-tabs li:last-child {
+  margin-right: 0px;
+}
+.tab-sec ul.nav.nav-tabs li a {
+  text-transform: uppercase;
+  text-decoration: none;
+  font-size: 14px;
+  color: #103BB5;
+  font-family: "Inter", sans-serif;
+  font-weight: 500;
+}
+.tab-sec ul.nav.nav-tabs li.active {
+  background-color: #E6EAF2;
+}
+
+.nav-ara {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-right: 15px;
+}
+.nav-ara .pagenation ul {
+  list-style: none;
+  display: flex;
+}
+.nav-ara .pagenation ul li {
+  margin-right: 15px;
+}
+.nav-ara .pagenation ul li:last-child {
+  margin-right: 0px;
+}
+.nav-ara .pagenation ul li a {
+  text-transform: capitalize;
+  text-decoration: none;
+  font-size: 13px;
+  color: #203161;
+  font-family: "Inter", sans-serif;
+  font-weight: 500;
+}
+.nav-ara .pagenation ul li.active a {
+  color: #103BB5;
+}
+
 /*# sourceMappingURL=main.css.map */
