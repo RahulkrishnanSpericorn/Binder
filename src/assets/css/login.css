@@ -75,9 +75,7 @@
 body {
   margin: 0px;
   padding: 0px;
-  background-image: url(../images/LoginV4.png);
-  background-size: 100%;
-  background-repeat: round;
+  
 }
 body::before {
   display: none !important;
@@ -92,6 +90,9 @@ body .login main {
   align-items: center;
   justify-content: center;
   flex-direction: column;
+  background-image: url(../images/LoginV4.png) !important;
+  background-size: 100%;
+  background-repeat: round;
 }
 body .login main .log-sec {
   background: #FFFFFF 0% 0% no-repeat padding-box;

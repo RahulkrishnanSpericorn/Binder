@@ -7,7 +7,7 @@ const getConsultancies = params => {
         try {
             dispatch({ type: actionTypes.GETCONSULTANCIESREQUEST })
             const res = await Service.getConsultancies(params)
-            console.log('res', res)
+            console.log('resgetcon', res)
             if (res && res.status === 200) {
                 const getConsultancyData = res.data;
                 if (getConsultancyData) {
