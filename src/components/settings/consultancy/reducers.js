@@ -16,9 +16,11 @@ export default (state = initialState, action) => {
                 ...state
             }
         case actionTypes.GETCONSULTANCIESSUCCESS:
+            let tempArray =
+                action.response.consultancies && action.response.consultancies.length ? action.response.consultancies.map(temp => { return JSON.parse(temp) }) : []
             return {
                 ...state,
-                consultanciesData: { success: true, ...action.response }
+                consultanciesData: { success: true, consultancies: tempArray, count: action.response.count }
             }
         case actionTypes.GETCONSULTANCIESFAILURE:
             return {
@@ -46,9 +48,9 @@ export default (state = initialState, action) => {
                 ...state
             }
         case actionTypes.GETCONSULTANCIESBYIDSUCCESS:
-           
+
             return {
-                
+
                 ...state,
                 getConsulatancyById: { success: true, ...action.response }
             }

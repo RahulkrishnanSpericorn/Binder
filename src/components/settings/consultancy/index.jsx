@@ -101,13 +101,14 @@ class index extends Component {
                                     </thead>
                                     
                                     <tbody>
+                                    {console.log("response--->:con", this.state.consultancyList)}
+
                                     { this.state.consultancyList.map((item,index) =>{
-                                        let i = JSON.parse(item) 
                                         return(
                                             <tr> 
-                                               <td>{i.code}</td>
-                                               <td>{i.name}</td>
-                                               <td>{i.comments}</td> 
+                                               <td>{item.code}</td>
+                                               <td>{item.name}</td>
+                                               <td>{item.comments}</td> 
                                            </tr>
                                         )
                                           
