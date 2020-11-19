@@ -405,7 +405,7 @@ input,
 select,
 textarea,
 button {
-  font: 16px/1.4 "Inter", sans-serif;
+  font: 13px/1.4 "Inter", sans-serif;
 }
 input:hover, input:focus, input:active,
 select:hover,
@@ -421,8 +421,8 @@ button:active {
 }
 
 body {
-  font: 16px/1.4 "Inter", sans-serif;
-  color: #E6EAF2;
+  font: 13px/1.4 "Inter", sans-serif;
+  color: #697489;
   background-color: #fff;
 }
 
@@ -1296,6 +1296,214 @@ input[list]::-webkit-calendar-picker-indicator {
   color: #103BB5;
 }
 
+/*Table Top Filter Arar*/
+.table-ara {
+  background-color: #fff;
+  border-radius: 20px;
+  height: calc(100vh - 190px);
+}
+
+.top-fil-ara {
+  display: flex;
+  align-items: center;
+}
+.top-fil-ara .cap {
+  padding: 0px 10px 0px 20px;
+  border-right: 1px solid #E6EAF2;
+  min-height: 50px;
+  display: flex;
+  align-items: center;
+  width: 200px;
+}
+.top-fil-ara .cap h4 {
+  font-size: 15px;
+  color: #103BB5;
+  font-family: "Inter", sans-serif;
+  font-weight: 700;
+  margin-bottom: 0px;
+}
+.top-fil-ara .btn-ara {
+  padding: 5px 10px;
+  border-right: 1px solid #E6EAF2;
+  min-height: 50px;
+  width: calc(100% - 610px);
+  display: flex;
+  justify-content: space-evenly;
+}
+.top-fil-ara .btn-ara .btn-top {
+  padding: 7px 7px;
+  border: 1px solid #E6EAF2;
+  font-size: 12px;
+  font-family: "Inter", sans-serif;
+  font-weight: 500;
+  color: #103BB5;
+  border-radius: 10px;
+  outline: none;
+  box-shadow: none;
+  min-height: 35px;
+}
+.top-fil-ara .btn-ara .btn-top img {
+  margin-right: 10px;
+  max-width: 20px;
+  max-height: 20px;
+}
+.top-fil-ara .sr-sec {
+  padding: 7px 10px;
+  min-height: 50px;
+  border-right: 1px solid #E6EAF2;
+}
+.top-fil-ara .sr-sec form {
+  position: relative;
+  width: 250px;
+}
+.top-fil-ara .sr-sec form input {
+  background-color: #0000000A;
+  font-size: 12px;
+  border: none;
+  border-radius: 10px;
+  outline: none;
+  box-shadow: none;
+  min-height: 35px;
+}
+.top-fil-ara .sr-sec form .btn-search {
+  position: absolute;
+  top: 0px;
+  right: 10px;
+  padding: 0px;
+  outline: none;
+  box-shadow: none;
+  border: none;
+  min-height: 35px;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+}
+.top-fil-ara .sr-sec form .btn-search img {
+  width: 15px;
+}
+.top-fil-ara .fil-btn {
+  padding: 0px 10px 0px 15px;
+  width: 190px;
+  display: flex;
+  justify-content: flex-end;
+}
+.top-fil-ara .fil-btn .btn-add {
+  font-size: 12px;
+  font-family: "Inter", sans-serif;
+  font-weight: 500;
+  color: #fff;
+  background-color: #103BB5;
+  outline: none;
+  box-shadow: none;
+  border: none;
+  display: flex;
+  align-items: center;
+  padding: 6px 8px;
+  width: 100%;
+  border-radius: 5px;
+}
+.top-fil-ara .fil-btn .btn-add span.icon {
+  background-color: #ffffff26;
+  padding: 3px 6px;
+  margin-right: 5px;
+  border-radius: 1px;
+}
+
+/*Common Table Styles*/
+.list-sec {
+  padding: 0px 10px 10px;
+  overflow: hidden;
+}
+.list-sec .table-section {
+  overflow: auto;
+  height: calc(100vh - 250px);
+}
+.list-sec .table-section .table {
+  min-width: 1200px;
+}
+.list-sec .table-section .table thead tr th {
+  font-size: 13px;
+  color: #103BB5;
+  font-family: "Inter", sans-serif;
+  background-color: #f5f5f5;
+  padding: 15px 10px;
+  position: sticky;
+  top: 0;
+  z-index: 2;
+}
+.list-sec .table-section .table thead tr th.img-sq-box {
+  width: 54px;
+  text-align: center;
+  min-width: 54px !important;
+  max-width: 54px !important;
+}
+.list-sec .table-section .table thead tr th.action {
+  width: 40px;
+  min-width: 40px !important;
+  max-width: 40px !important;
+  text-align: center;
+}
+.list-sec .table-section .table thead tr th span.rop-icon {
+  width: 20px;
+  position: absolute;
+  right: 10px;
+  background: #FFFFFF 0% 0% no-repeat padding-box;
+  box-shadow: 0px 1px 2px #00000017;
+  text-align: center;
+  border-radius: 3px;
+  cursor: pointer;
+}
+.list-sec .table-section .table thead tr th span.rop-icon img {
+  width: 10px;
+}
+.list-sec .table-section .table tbody tr td {
+  font-size: 13px;
+  color: #697489;
+  font-family: "Inter", sans-serif;
+  font-weight: 500;
+  vertical-align: baseline;
+}
+.list-sec .table-section .table tbody tr td.action {
+  width: 40px;
+  min-width: 40px !important;
+  max-width: 40px !important;
+  text-align: center;
+}
+.list-sec .table-section .table tbody tr td.img-sq-box {
+  width: 54px;
+  text-align: center;
+  min-width: 54px !important;
+  max-width: 54px !important;
+}
+.list-sec .table-section .table tbody tr td ul.dropdown-menu {
+  padding: 10px;
+  left: -8px !important;
+  background: #FFFFFF 0% 0% no-repeat padding-box;
+  box-shadow: 0px 0px 6px #00000024;
+  border: none;
+  top: 8px !important;
+}
+.list-sec .table-section .table tbody tr td ul.dropdown-menu li {
+  padding-bottom: 10px;
+  padding-top: 10px;
+  border-bottom: 1px solid #E6EAF2;
+}
+.list-sec .table-section .table tbody tr td ul.dropdown-menu li:last-child {
+  border-bottom: none;
+}
+.list-sec .table-section .table tbody tr td ul.dropdown-menu li a {
+  text-decoration: none;
+  color: #697489;
+  display: flex;
+  align-items: center;
+  padding-left: 20px;
+}
+.list-sec .table-section .table tbody tr td ul.dropdown-menu li a img {
+  margin-right: 10px;
+  width: 15px;
+}
+
+/*Listing page Design*/
 .list-area {
   display: flex;
   flex-direction: column;
@@ -1304,75 +1512,34 @@ input[list]::-webkit-calendar-picker-indicator {
   border-top-left-radius: 35px;
   width: 100%;
 }
-.list-area .fot-nav {
-  border-top-right-radius: 20px;
-  border-top-left-radius: 20px;
-  margin-top: 20px;
-}
 .list-area .lst-bt-nav {
   background-color: #E6EAF2;
   padding: 30px 20px 0px;
   border-top-left-radius: 20px;
   height: 100%;
 }
-.list-area .lst-bt-nav .table-ara {
-  background-color: #fff;
-  padding: 10px;
-  border-radius: 20px;
-  min-height: calc(100vh - 245px);
+.list-area .fot-nav {
+  padding: 15px 15px !important;
+  border-top-right-radius: 20px;
+  border-top-left-radius: 20px;
 }
-.list-area .lst-bt-nav .table-ara .top-fil-ara {
-  padding: 10px;
+.list-area .cus-usr {
+  width: 350px;
+}
+.list-area .usr-vw {
+  padding: 0px 10px;
+  background-color: rgba(16, 59, 181, 0.17);
+  border-radius: 5px;
+  display: flex;
+  align-content: center;
+}
+.list-area .usr-vw .amd {
+  padding: 10px 10px 10px 0px;
+  color: #697489;
+}
+.list-area .usr-vw .usr-sld {
   display: flex;
   align-items: center;
-}
-.list-area .lst-bt-nav .table-ara .top-fil-ara .cap {
-  padding: 0px 10px;
-  width: 20%;
-}
-.list-area .lst-bt-nav .table-ara .top-fil-ara .cap h4 {
-  font-size: 15px;
-  color: #103BB5;
-  font-family: "Inter", sans-serif;
-  font-weight: 500;
-  margin-bottom: 0px;
-}
-.list-area .lst-bt-nav .table-ara .top-fil-ara .btn-sec {
-  padding: 0px 10px;
-}
-.list-area .lst-bt-nav .table-ara .top-fil-ara .btn-sec .btn-top {
-  padding: 7px 6px;
-  border: 1px solid #ccc;
-  font-size: 12px;
-}
-.list-area .lst-bt-nav .table-ara .top-fil-ara .sr-sec {
-  padding: 0px 10px;
-  position: relative;
-}
-.list-area .lst-bt-nav .table-ara .top-fil-ara .sr-sec input {
-  background-color: #0000000A;
-  font-size: 12px;
-  border: none;
-  border-radius: 10px;
-}
-.list-area .lst-bt-nav .table-ara .top-fil-ara .fil-btn {
-  padding: 0px 10px;
-}
-.list-area .lst-bt-nav .table-ara .top-fil-ara .fil-btn .btn-add {
-  font-size: 12px;
-}
-
-/*Common Table Styles*/
-.table-section {
-  overflow: scroll;
-}
-.table-section .table {
-  width: 1200px;
-}
-.table-section .table thead tr th {
-  font-size: 13px;
-  color: #103BB5;
-  font-family: "Inter", sans-serif;
 }
 
 /*# sourceMappingURL=main.css.map */

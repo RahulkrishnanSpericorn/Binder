@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux';
 import history from '../../../config/history';
+import TopSlider from '../../common/components/TopSlider';
 import actions from './actions';
 
 const mapStateToProps = state => {
@@ -55,7 +56,7 @@ const mapStateToProps = state => {
         return (
             <section className="cont-ara">
                 <div className="fst">
-
+            <TopSlider/>
                     <div className="dash-cont">
                         <div className="pub-ara six">
 

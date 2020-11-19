@@ -67,57 +67,74 @@ class index extends Component {
                     <div class="lst-bt-nav">
                         <div class="table table-ara">
                             <div class="top-fil-ara">
+
                                 <div class="cap">
                                     <h4>Consultancy</h4>
                                 </div>
-                                <div class="btn-sec">
-                                    <button class="btn btn-top">Icon & color info</button>
-                                    <button class="btn btn-top">Export EXL</button>
-                                    <button class="btn btn-top">Email</button>
-                                    <button class="btn btn-top">Column Windw</button>
-                                    <button class="btn btn-top">Reset  Columns</button>
+
+                                <div class="btn-ara">
+                                    <button class="btn btn-top"><img src="/images/color-wheel.svg" />Icon & color info</button>
+                                    <button class="btn btn-top"><img src="/images/export.svg" />Export EXL</button>
+                                    <button class="btn btn-top"><img src="/images/mail.svg" />Email</button>
+                                    <button class="btn btn-top"><img src="/images/colmns.svg" />Column Window</button>
+                                    <button class="btn btn-top"><img src="/images/reset-column.svg" />Reset  Columns</button>
                                 </div>
+
                                 <div class="sr-sec">
-                                    <input type="text" class="form-control" placeholder="Search" />
+                                    <form>
+                                        <input type="text" class="form-control" placeholder="Search" />
+                                        <button type="submit" class="btn btn-search"> <img src="/images/serach.svg" /> </button>
+                                    </form>
                                 </div>
                                 <div class="fil-btn">
-                                    <button onClick={()=>{this.props.history.push('/addConsultancy')}} class="btn btn-add"> Add New Consultancy</button>
+                                    <button class="btn btn-add" onClick={() => { this.props.history.push('/addConsultancy') }}> <span class="icon"> <img src="/images/add-new-region.svg" /></span>Add New Consultancy</button>
                                 </div>
                             </div>
-                            <div class="table-section">
-                                <table class="table table-bordered">
-                                    <thead>
-                                        <tr>
-                                            {/* <th class="img-sq-box">
-                                                <i class="fa fa-th-large" aria-hidden="true"></i>
-                                            </th> */}
-                                            <th class="">Consultancy Code</th>
-                                            <th class="">Consultancy Name</th>
-                                            <th class="">Comments</th>
-                                            {/* <th class="">Client</th>
-                                       <th class="">Associated Project</th>
-                                       <th class="">Consultancy User</th> */}
-                                        </tr>
-                                    </thead>
-                                    
-                                    <tbody>
-                                    {console.log("response--->:con", this.state.consultancyList)}
 
-                                    { this.state.consultancyList.map((item,index) =>{
-                                        return(
-                                            <tr> 
-                                               <td>{item.code}</td>
-                                               <td>{item.name}</td>
-                                               <td>{item.comments}</td> 
-                                           </tr>
-                                        )
-                                          
+                            <div class="list-sec">
+                                <div class="table-section">
+                                    <table class="table table-bordered">
+                                        <thead>
+                                            <tr>
+                                                <th class="img-sq-box">
+                                                    <img src="/images/table-blue-dots.svg" />
+                                                </th>
+                                                <th class="">Consultancy Code</th>
+                                                <th class="">Consultancy Name</th>
+                                                <th class="">Comments</th>
+                                                {/* <th class="">Consultancy   <span class="rop-icon"> <img src="/images/down-arrow.svg"/> </span> </th>
+                                       <th class="">Client <span class="rop-icon"> <img src="/images/down-arrow.svg"/> </span></th>
+                                       <th class="">Associated Project <span class="rop-icon"> <img src="/images/down-arrow.svg"/> </span></th>
+                                       <th class="cus-usr">Consultancy User</th> */}
+                                                <th class="action">
+                                                    <img src="/images/three-dots.svg" />
+                                                </th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {this.state.consultancyList.map((item, index) => {
+                                                return (
+                                                    <tr>
+                                                        <td class="img-sq-box">
+                                                            <img src="/images/table-blue-dots.svg" />
+                                                        </td>
+                                                        <td>{item.code}</td>
+                                                        <td>{item.name}</td>
+                                                        <td>{item.comments}</td>
+                                                        <td class="action">
+                                                            <img src="/images/three-dots.svg" data-toggle="dropdown" />
+                                                            <ul class="dropdown-menu" role="menu">
+                                                                <li ><a href="#"><img src="/images/" />Edit</a></li>
+                                                                <li><a href="#"><img src="/images/" />Delete</a></li>
+                                                            </ul>
+                                                        </td>
+                                                    </tr>
+                                                )
+                                            })}
 
-                                            
-                                    })}
-                                    </tbody>
-
-                                </table>
+                                        </tbody>
+                                    </table>
+                                </div>
                             </div>
                         </div>
                         <div class="fot-nav">
