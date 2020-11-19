@@ -10,11 +10,11 @@ const initialState = {
 export default (state = initialState, action) => {
 
     switch (action.type) {
-        case actionTypes.GETCONSULTANCIESREQUEST:
+        case actionTypes.GET_CONSULTANCIES_REQUEST:
             return {
                 ...state
             }
-        case actionTypes.GETCONSULTANCIESSUCCESS:
+        case actionTypes.GET_CONSULTANCIES_SUCCESS:
             // let tempArray =
             //     action.response.consultancies && action.response.consultancies.length ? action.response.consultancies.map(temp => { return JSON.parse(temp) }) : []
             return {
@@ -22,54 +22,54 @@ export default (state = initialState, action) => {
                 // consultanciesData: { success: true, consultancies: tempArray, count: action.response.count }
                 consultanciesData: { success: true, ...action.response }
             }
-        case actionTypes.GETCONSULTANCIESFAILURE:
+        case actionTypes.GET_CONSULTANCIES_FAILURE:
             return {
                 ...state,
                 consultanciesData: { success: false, ...action.error }
             }
 
-        case actionTypes.ADDCONSULTANCIESREQUEST:
+        case actionTypes.ADD_CONSULTANCIES_REQUEST:
             return {
                 ...state
             }
-        case actionTypes.ADDCONSULTANCIESSUCCESS:
+        case actionTypes.ADD_CONSULTANCIES_SUCCESS:
             return {
                 ...state,
                 addConsultanciesData: { success: true, ...action.response }
             }
-        case actionTypes.ADDCONSULTANCIESFAILURE:
+        case actionTypes.ADD_CONSULTANCIES_FAILURE:
             return {
                 ...state,
                 addConsultanciesData: { success: false, ...action.error }
             }
 
-        case actionTypes.GETCONSULTANCIESBYIDREQUEST:
+        case actionTypes.GET_CONSULTANCIES_BYID_REQUEST:
             return {
                 ...state
             }
-        case actionTypes.GETCONSULTANCIESBYIDSUCCESS:
+        case actionTypes.GET_CONSULTANCIES_BYID_SUCCESS:
 
             return {
 
                 ...state,
                 getConsulatancyById: { success: true, ...action.response }
             }
-        case actionTypes.GETCONSULTANCIESBYIDFAILURE:
+        case actionTypes.GET_CONSULTANCIES_BYID_FAILURE:
             return {
                 ...state,
                 getConsulatancyById: { success: false, ...action.error }
             }
 
-        case actionTypes.EDITCONSULTANCIESBYIDREQUEST:
+        case actionTypes.EDIT_CONSULTANCIES_BYID_REQUEST:
             return {
                 ...state
             }
-        case actionTypes.EDITCONSULTANCIESBYIDSUCCESS:
+        case actionTypes.EDIT_CONSULTANCIES_BYID_SUCCESS:
             return {
                 ...state,
                 editConsultancyById: { success: true, ...action.response }
             }
-        case actionTypes.EDITCONSULTANCIESBYIDFAILURE:
+        case actionTypes.EDIT_CONSULTANCIES_BYID_FAILURE:
             return {
                 ...state,
                 editConsultancyById: { success: false, ...action.error }

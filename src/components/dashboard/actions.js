@@ -5,7 +5,7 @@ const getConsultancies = params => {
 
     return async dispatch => {
         try {
-            dispatch({ type: actionTypes.GETCONSULTANCIESREQUEST })
+            dispatch({ type: actionTypes.GET_CONSULTANCIES_REQUEST })
             const res = await Service.getConsultancies(params)
             console.log('res', res)
 

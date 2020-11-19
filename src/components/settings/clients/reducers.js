@@ -7,30 +7,30 @@ const initialState = {
 
 export default (state = initialState, action) => {
     switch (action.type) {
-        case actionTypes.GETCLIENTSREQUEST:
+        case actionTypes.GET_CLIENTS_REQUEST:
             return {
                 ...state
             }
-        case actionTypes.GETCLIENTSSUCCESS:
+        case actionTypes.GET_CLIENTS_SUCCESS:
             return {
                 ...state,
                 clientData: { success: true, ...action.response }
             }
-        case actionTypes.GETCLIENTSFAILURE:
+        case actionTypes.GET_CLIENTS_FAILURE:
             return {
                 ...state,
                 clientData: { success: false, ...action.error }
             }
-        case actionTypes.ADDCLIENTSREQUEST:
+        case actionTypes.ADD_CLIENTS_REQUEST:
             return {
                 ...state
             }
-        case actionTypes.ADDCLIENTSSUCCESS:
+        case actionTypes.ADD_CLIENTS_SUCCESS:
             return {
                 ...state,
                 addClientData: { success: true, ...action.response }
             }
-        case actionTypes.ADDCLIENTSFAILURE:
+        case actionTypes.ADD_CLIENTS_FAILURE:
             return {
                 ...state,
                 addClientData: { success: false, ...action.error }

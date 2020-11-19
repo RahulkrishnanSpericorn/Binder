@@ -7,16 +7,16 @@ const initialState ={
 export default (state = initialState,action)=>{
 
     switch(action.type){
-        case actionTypes.GETCONSULTANCIESREQUEST :
+        case actionTypes.GET_CONSULTANCIES_REQUEST :
         return {
             ...state
         }
-        case actionTypes.GETCONSULTANCIESSUCCESS :
+        case actionTypes.GET_CONSULTANCIES_SUCCESS :
             return {
                 ...state, 
                 ConsultanciesData : {success:true, ...action.response }
             }
-            case actionTypes.GETCONSULTANCIESFAILURE :
+            case actionTypes.GET_CONSULTANCIES_FAILURE :
                 return {
                     ...state,
                     ConsultanciesData :{success: false, ...action.error}
