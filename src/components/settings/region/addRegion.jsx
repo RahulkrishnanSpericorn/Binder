@@ -46,7 +46,7 @@ const mapStateToProps = state =>{
                 comments:''
             })
             if(this.props.regionReducer.addRegionData.message ===  "Region created successfully"){
-                history.push('/consultancy')
+                history.push('/regions')
             }
            
         }
