@@ -28,11 +28,13 @@ const mapStateToProps = state => {
             this.setState({
                 nameErrorMsg: true
             })
-        } if(this.state.comments === ''){
-            this.setState({
-                commentsErrorMsg: true
-            })
-        }if(this.state.name != '' && this.state.comments != ''){
+        } 
+        // if(this.state.comments === ''){
+        //     this.setState({
+        //         commentsErrorMsg: true
+        //     })
+        // }
+        if(this.state.name != ''  ){
             let params = {
                 name: this.state.name,
                 comments: this.state.comments,
@@ -90,7 +92,7 @@ const mapStateToProps = state => {
                                         <div className="itm-cnt">
                                             <div className="form-group">
                                                 <input type="text-area" id="text" onChange={(e)=>{this.setState({comments:e.target.value,commentsErrorMsg:false})}} className="form-control" placeholder=" " />
-                                                <label className="form-control-placeholder" style={{color:this.state.commentsErrorMsg && 'red'}} for="f-name">Comments *</label>
+                                                <label className="form-control-placeholder" for="f-name">Comments</label>
                                             </div>
                                         </div>
                                     </div>

@@ -1,15 +1,8 @@
 import React, { Component } from 'react'
-import { connect } from 'react-redux';
-import history from '../../../config/history';
-import TopSlider from '../../common/components/TopSlider';
-import actions from './actions';
+import TopSlider from '../../common/components/TopSlider'
 
-const mapStateToProps = state => {
-    console.log('state', state)
-    const { clientReducer } = state;
-    return { clientReducer };
-}
- class addClients extends Component {
+export default class addRegion extends Component {
+
     constructor(props) {
         super(props);
         this.state={
@@ -20,36 +13,32 @@ const mapStateToProps = state => {
         }
     }
 
-    addClients = async () => {
+    addRegion = async () => {
         if(this.state.name === ''){
             this.setState({
                 nameErrorMsg: true
             })
-        } 
-        // if(this.state.comments === ''){
+        }
+        //  if(this.state.comments === ''){
         //     this.setState({
         //         commentsErrorMsg: true
         //     })
         // }
-        if(this.state.name != '' ){
-            let rec_data = new FormData();
-            rec_data.append("client[name]", this.state.name);
-            rec_data.append("client[comments]", this.state.comments); 
-
-            // let params = {
-            //     'client[name]': this.state.name,
-            //     'client[comments]': this.state.comments,
+        if(this.state.name != ''){
+            let params = {
+                name: this.state.name,
+                comments: this.state.comments,
                 
-            // }
-            await this.props.addClients(rec_data)
-            alert(this.props.clientReducer.addClientData.message)
-            this.setState({
-                name:'',
-                comments:''
-            })
-            if(this.props.clientReducer.addClientData.message ===  "Created successfully"){
-                history.push('/clients')
             }
+            // await this.props.addRegion(params)
+            // alert(this.props.consultancyReducer.addConsultanciesData.message)
+            // this.setState({
+            //     name:'',
+            //     comments:''
+            // })
+            // if(this.props.consultancyReducer.addConsultanciesData.message ===  "Created successfully"){
+            //     history.push('/consultancy')
+            // }
            
         }
     }
@@ -58,13 +47,13 @@ const mapStateToProps = state => {
         return (
             <section className="cont-ara">
             <div className="fst">
-            <TopSlider/>
+        <TopSlider/>
                 <div className="dash-cont">
                     <div className="pub-ara six">
 
                     <div className="frm-ara">
                             <div className="top-ara">
-                                <h4>Add Clients</h4>
+                                <h4>Add Region</h4>
                             </div>
 
                             <div className="head">
@@ -78,7 +67,7 @@ const mapStateToProps = state => {
                                     <div className="itm-cnt">
                                         <div className="form-group">
                                             <input type="text" id="text" onChange={(e)=>{this.setState({name:e.target.value,nameErrorMsg:false})}} className="form-control" placeholder=" " />
-                                            <label className="form-control-placeholder" style={{color:this.state.nameErrorMsg && 'red'}} for="f-name">Client Name *</label>
+                                            <label className="form-control-placeholder" style={{color:this.state.nameErrorMsg && 'red'}} for="f-name">Consultancy Name *</label>
                                         </div>
                                     </div>
                                 </div>
@@ -97,14 +86,12 @@ const mapStateToProps = state => {
                                     </div>
                                 </div>
                                  
-                            </div>
-
+                            </div> 
                             <div className="frm btn-sec">
-                                <button onClick={()=>this.addClients()} className="btn btn-submit"> <i className="material-icons tic"> check</i>Submit</button>
+                                <button onClick={()=>this.addRegion()} className="btn btn-submit"> <i className="material-icons tic"> check</i>Submit</button>
                             </div>
                         </div>
-
-
+ 
                     </div>
 
                 </div>
@@ -113,5 +100,3 @@ const mapStateToProps = state => {
         )
     }
 }
-
-export default connect(mapStateToProps, {...actions})(addClients)

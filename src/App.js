@@ -16,6 +16,7 @@ import Regions from "./components/settings/region/index"
 import Sites from "./components/settings/sites/index" 
 import Users from "./components/settings/users/index" 
 import UserPermission from "./components/settings/userPermission/index" 
+import addRegion from "./components/settings/region/addRegion" 
 
 
 
@@ -36,6 +37,7 @@ function App() {
         <PrivateRoute exact path="/sites" component={Sites} />
         <PrivateRoute exact path="/users" component={Users} />
         <PrivateRoute exact path="/userPermission" component={UserPermission} />
+        <PrivateRoute exact path="/addRegion" component={addRegion} />
         
       </Switch>
     </Router>
