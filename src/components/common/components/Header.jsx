@@ -1,9 +1,11 @@
 import React, { Component } from 'react'
+import { ToastContainer } from 'react-toastify'
 
 export default class Header extends Component {
     render() {
         return (
             <header>
+                <ToastContainer/>
                 <nav className="navbar">
                     <div className="mnu-ico">
                         <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="true" aria-label="Toggle navigation">

@@ -1,8 +1,11 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux';
+import { ToastContainer } from 'react-toastify';
 import history from '../../../config/history';
 import TopSlider from '../../common/components/TopSlider';
 import actions from './actions';
+import ToastMsg from '../../common/ToastMessage'
+
 
 const mapStateToProps = state => {
     console.log('state', state)
@@ -41,7 +44,7 @@ const mapStateToProps = state => {
                 
             }
             await this.props.addConsultancies(params)
-            alert(this.props.consultancyReducer.addConsultanciesData.message)
+            ToastMsg(this.props.consultancyReducer.addConsultanciesData.message,'info')
             this.setState({
                 name:'',
                 comments:''
@@ -58,6 +61,7 @@ const mapStateToProps = state => {
         return (
             <section className="cont-ara">
                 <div className="fst">
+                    <ToastContainer/>
             <TopSlider/>
                     <div className="dash-cont">
                         <div className="pub-ara six">

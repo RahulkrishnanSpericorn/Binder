@@ -3,6 +3,8 @@ import { connect } from 'react-redux';
 import history from '../../../config/history';
 import TopSlider from '../../common/components/TopSlider'
 import actions from './actions';
+import { ToastContainer } from 'react-toastify';
+import ToastMsg from '../../common/ToastMessage'
 
 const mapStateToProps = state =>{
     console.log('state', state)
@@ -20,7 +22,7 @@ const mapStateToProps = state =>{
             nameErrorMsg:false,
             commentsErrorMsg:false
         }
-    }
+    } 
 
     addRegion = async () => {
         if(this.state.name === ''){
@@ -40,7 +42,7 @@ const mapStateToProps = state =>{
                 
             }
             await this.props.addRegion(params)
-            alert(this.props.regionReducer.addRegionData.message)
+            ToastMsg(this.props.regionReducer.addRegionData.message,'info')
             this.setState({
                 name:'',
                 comments:''
@@ -56,6 +58,7 @@ const mapStateToProps = state =>{
         return (
             <section className="cont-ara">
             <div className="fst">
+                 <ToastContainer />
         <TopSlider/>
                 <div className="dash-cont">
                     <div className="pub-ara six">
