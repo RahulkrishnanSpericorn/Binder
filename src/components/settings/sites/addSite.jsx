@@ -1,18 +1,17 @@
 import React, { Component } from 'react'
-import { connect } from 'react-redux';
-import history from '../../../config/history';
+import { connect } from 'react-redux'
+import { ToastContainer } from 'react-toastify'
 import TopSlider from '../../common/components/TopSlider'
-import actions from './actions';
-import { ToastContainer } from 'react-toastify';
+import actions from './actions'
 import ToastMsg from '../../common/ToastMessage'
+import history from '../../../config/history'
 
 const mapStateToProps = state =>{
     console.log('state', state)
-    const {regionReducer} = state
-    return {regionReducer}
+    const {siteReducer} = state
+    return {siteReducer}
 }
-
- class addRegion extends Component {
+ class addSite extends Component {
 
     constructor(props) {
         super(props);
@@ -22,9 +21,10 @@ const mapStateToProps = state =>{
             nameErrorMsg:false,
             commentsErrorMsg:false
         }
-    } 
+    }
+    
 
-    addRegion = async () => {
+    addSite = async () => {
         if(this.state.name === ''){
             this.setState({
                 nameErrorMsg: true
@@ -37,18 +37,19 @@ const mapStateToProps = state =>{
         // }
         if(this.state.name != ''){
             let params = {
+                consultancy_id:'c0b7f070-df5d-4e9f-9012-bd6dedaf881a',
                 name: this.state.name,
                 comments: this.state.comments,
                 
             }
-            await this.props.addRegion(params)
-            ToastMsg(this.props.regionReducer.addRegionData.message,'info')
+            await this.props.addSite(params)
+            ToastMsg(this.props.siteReducer.addSiteData.message,'info')
             this.setState({
                 name:'',
                 comments:''
             })
-            if(this.props.regionReducer.addRegionData.message ===  "Region created successfully"){
-                history.push('/regions')
+            if(this.props.siteReducer.addSiteData.message ===  "Site created successfully"){
+                history.push('/sites')
             }
            
         }
@@ -65,7 +66,7 @@ const mapStateToProps = state =>{
 
                     <div className="frm-ara">
                             <div className="top-ara">
-                                <h4>Add Region</h4>
+                                <h4>Add Site</h4>
                             </div>
 
                             <div className="head">
@@ -79,7 +80,7 @@ const mapStateToProps = state =>{
                                     <div className="itm-cnt">
                                         <div className="form-group">
                                             <input type="text" id="text" onChange={(e)=>{this.setState({name:e.target.value,nameErrorMsg:false})}} className="form-control" placeholder=" " />
-                                            <label className="form-control-placeholder" style={{color:this.state.nameErrorMsg && 'red'}} for="f-name">Region Name *</label>
+                                            <label className="form-control-placeholder" style={{color:this.state.nameErrorMsg && 'red'}} for="f-name">Site Name *</label>
                                         </div>
                                     </div>
                                 </div>
@@ -100,7 +101,7 @@ const mapStateToProps = state =>{
                                  
                             </div> 
                             <div className="frm btn-sec">
-                                <button onClick={()=>this.addRegion()} className="btn btn-submit"> <i className="material-icons tic"> check</i>Submit</button>
+                                <button onClick={()=>this.addSite()} className="btn btn-submit"> <i className="material-icons tic"> check</i>Submit</button>
                             </div>
                         </div>
  
@@ -112,5 +113,4 @@ const mapStateToProps = state =>{
         )
     }
 }
-
-export default connect(mapStateToProps,{...actions})(addRegion)
+export default connect(mapStateToProps, {...actions})(addSite)

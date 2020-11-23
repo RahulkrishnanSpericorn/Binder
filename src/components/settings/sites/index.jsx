@@ -1,7 +1,47 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
 import TopSlider from '../../common/components/TopSlider'
+import actions from './actions'
 
-export default class index extends Component {
+const mapStateToProps = state =>{
+    console.log('state', state)
+    const {siteReducer} = state
+    return {siteReducer}
+}
+
+ class index extends Component {
+
+    constructor(props) {
+        super(props);
+        this.state={
+            siteDataList:[]
+        }
+    }
+    
+
+    async componentDidMount() {
+        await this.getSites()
+        // await this.addClients()
+    }
+
+    getSites = async () => {
+        let params = {
+            limit: 10,
+            offset: 0
+        }
+        await this.props.getSites(params)
+
+
+        if (this.props.siteReducer.siteData.success) {
+            this.setState({
+                siteDataList: this.props.siteReducer.siteData.sites
+            })
+        }
+
+        console.log('this.state.siteDataList', this.state.siteDataList)
+    }
+
+
     render() {
         return (
             <section className="cont-ara">
@@ -31,7 +71,7 @@ export default class index extends Component {
                                 </form>
                             </div>
                             <div class="fil-btn">
-                                <button class="btn btn-add" onClick={() => { this.props.history.push('/addRegion') }}> <span class="icon"> <img src="/images/add-new-region.svg" /></span>Add New Region</button>
+                                <button class="btn btn-add" onClick={() => { this.props.history.push('/addSite') }}> <span class="icon"> <img src="/images/add-new-region.svg" /></span>Add New Site</button>
                             </div>
                         </div>
 
@@ -56,15 +96,15 @@ export default class index extends Component {
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        {/* {this.state.consultancyList.map((item, index) => {
-                                            return ( */}
+                                        {this.state.siteDataList.map((item, index) => {
+                                            return (
                                                 <tr>
                                                     <td class="img-sq-box">
                                                         <img src="/images/table-blue-dots.svg" />
                                                     </td>
-                                                    <td>12345</td>
-                                                    <td>abcd</td>
-                                                    <td>xyzzz</td>
+                                                    <td>{item.code}</td>
+                                                    <td>{item.name}</td>
+                                                    <td>{item.comments}</td>
                                                     {/* <td>
                                         <div class="usr-vw">
                                             <div class="amd"> 150 User</div>
@@ -117,8 +157,8 @@ export default class index extends Component {
                                                         </ul>
                                                     </td>
                                                 </tr>
-                                            {/* )
-                                        })} */}
+                                            )
+                                        })}
 
                                     </tbody>
                                 </table>
@@ -152,3 +192,5 @@ export default class index extends Component {
         )
     }
 }
+
+export default connect(mapStateToProps, {...actions})(index)

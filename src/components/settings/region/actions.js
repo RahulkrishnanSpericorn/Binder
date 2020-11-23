@@ -1,5 +1,5 @@
 import * as actionTypes from './constants'
-import * as Service from './sevices'
+import * as Service from './services'
 
 const getRegion = params => {
     return async dispatch => {

@@ -4,6 +4,7 @@ import dashboardReducer from "../components/dashboard/reducers";
 import consultancyReducer from "../components/settings/consultancy/reducers";
 import clientReducer from "../components/settings/clients/reducers";
 import regionReducer from "../components/settings/region/reducers";
+import siteReducer from "../components/settings/sites/reducers";
 
 
 const rootReducer = combineReducers({
@@ -11,7 +12,8 @@ const rootReducer = combineReducers({
     dashboardReducer,
     consultancyReducer,
     clientReducer,
-    regionReducer
+    regionReducer,
+    siteReducer
 });
 
 export default rootReducer;
