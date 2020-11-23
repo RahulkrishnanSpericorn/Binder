@@ -38,13 +38,13 @@ class index extends Component {
             console.log('this.state.consultancyList', this.state.consultancyList)
         }
     }
-    addConsultancies = async () => {
-        let params = {
-            name: 'test',
-            comments: 'testing'
-        }
-        await this.props.addConsultancies(params)
-    }
+    // addConsultancies = async () => {
+    //     let params = {
+    //         name: 'test',
+    //         comments: 'testing'
+    //     }
+    //     await this.props.addConsultancies(params)
+    // }
     getConsultanciesById = async () => {
         let id = 'c0b7f070-df5d-4e9f-9012-bd6dedaf881a'
         await this.props.getConsultanciesById(id)

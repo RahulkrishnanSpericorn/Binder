@@ -1,7 +1,46 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
 import TopSlider from '../../common/components/TopSlider'
+import actions from './actions'
 
-export default class index extends Component {
+const mapStateToProps = state =>{
+    console.log('state', state)
+    const {regionReducer} = state
+    return {regionReducer}
+}
+
+ class index extends Component {
+
+    constructor(props) {
+        super(props);
+        this.state={
+            regionDataList:[] 
+        }
+    }
+    
+
+    async componentDidMount() {
+        await this.getRegion()
+        // await this.addClients()
+    }
+
+    getRegion = async () => {
+        let params = {
+            limit: 10,
+            offset: 0
+        }
+        await this.props.getRegion(params)
+
+
+        if (this.props.regionReducer.regionData.success) {
+            this.setState({
+                regionDataList: this.props.regionReducer.regionData.regions
+            })
+        }
+
+
+    }
+
     render() {
         return (
             <section className="cont-ara">
@@ -56,15 +95,15 @@ export default class index extends Component {
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        {/* {this.state.consultancyList.map((item, index) => {
-                                            return ( */}
+                                        {this.state.regionDataList.map((item, index) => {
+                                            return (
                                                 <tr>
                                                     <td class="img-sq-box">
                                                         <img src="/images/table-blue-dots.svg" />
                                                     </td>
-                                                    <td>12345</td>
-                                                    <td>abcd</td>
-                                                    <td>xyzzz</td>
+                                                    <td>{item.code}</td>
+                                                    <td>{item.name}</td>
+                                                    <td>{item.comments}</td>
                                                     {/* <td>
                                         <div class="usr-vw">
                                             <div class="amd"> 150 User</div>
@@ -117,8 +156,8 @@ export default class index extends Component {
                                                         </ul>
                                                     </td>
                                                 </tr>
-                                            {/* )
-                                        })} */}
+                                            )
+                                        })}
 
                                     </tbody>
                                 </table>
@@ -152,3 +191,5 @@ export default class index extends Component {
         )
     }
 }
+
+export default connect(mapStateToProps, {...actions})(index)

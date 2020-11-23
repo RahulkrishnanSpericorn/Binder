@@ -1,7 +1,16 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux';
+import history from '../../../config/history';
 import TopSlider from '../../common/components/TopSlider'
+import actions from './actions';
 
-export default class addRegion extends Component {
+const mapStateToProps = state =>{
+    console.log('state', state)
+    const {regionReducer} = state
+    return {regionReducer}
+}
+
+ class addRegion extends Component {
 
     constructor(props) {
         super(props);
@@ -30,15 +39,15 @@ export default class addRegion extends Component {
                 comments: this.state.comments,
                 
             }
-            // await this.props.addRegion(params)
-            // alert(this.props.consultancyReducer.addConsultanciesData.message)
-            // this.setState({
-            //     name:'',
-            //     comments:''
-            // })
-            // if(this.props.consultancyReducer.addConsultanciesData.message ===  "Created successfully"){
-            //     history.push('/consultancy')
-            // }
+            await this.props.addRegion(params)
+            alert(this.props.regionReducer.addRegionData.message)
+            this.setState({
+                name:'',
+                comments:''
+            })
+            if(this.props.regionReducer.addRegionData.message ===  "Region created successfully"){
+                history.push('/consultancy')
+            }
            
         }
     }
@@ -100,3 +109,5 @@ export default class addRegion extends Component {
         )
     }
 }
+
+export default connect(mapStateToProps,{...actions})(addRegion)
