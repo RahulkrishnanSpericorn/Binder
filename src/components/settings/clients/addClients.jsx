@@ -35,7 +35,7 @@ class addClients extends Component {
             image_description: '',
             image: {},
             consultancy_id: '',
-            consultancyIdList:[],
+            consultancyIdList: [],
 
 
 
@@ -43,12 +43,12 @@ class addClients extends Component {
     }
 
     async componentDidMount() {
-    
+
         await this.props.getConsultancyDropdown()
 
         console.log('consultancyDropdownData', this.props.settingsCommonReducer.consultancyDropdownData)
-       await this.setState({
-            consultancyIdList : this.props.settingsCommonReducer.consultancyDropdownData.data
+        await this.setState({
+            consultancyIdList: this.props.settingsCommonReducer.consultancyDropdownData.data
         })
 
     }
@@ -99,38 +99,38 @@ class addClients extends Component {
     }
     async radioChanged(e) {
         console.log('e.target.name', e.target.name)
-        if(e.target.name === "modify_next_due_date"){
+        if (e.target.name === "modify_next_due_date") {
             if (e.target.value === "true") {
                 await this.setState({ modify_next_due_date: true })
             } else {
                 await this.setState({ modify_next_due_date: false })
             }
-        }else if(e.target.name === "display_blinking_red_plus"){
+        } else if (e.target.name === "display_blinking_red_plus") {
             if (e.target.value === "true") {
                 await this.setState({ display_blinking_red_plus: true })
             } else {
                 await this.setState({ display_blinking_red_plus: false })
             }
-        }else if(e.target.name === "lock_total_devices"){
+        } else if (e.target.name === "lock_total_devices") {
             if (e.target.value === "true") {
                 await this.setState({ lock_total_devices: true })
             } else {
                 await this.setState({ lock_total_devices: false })
             }
-        }else if(e.target.name === "use_threshold_for_quarterly"){
+        } else if (e.target.name === "use_threshold_for_quarterly") {
             if (e.target.value === "true") {
                 await this.setState({ use_threshold_for_quarterly: true })
             } else {
                 await this.setState({ use_threshold_for_quarterly: false })
             }
-        }else if(e.target.name === "request_email_recipt"){
+        } else if (e.target.name === "request_email_recipt") {
             if (e.target.value === "true") {
                 await this.setState({ request_email_recipt: true })
             } else {
                 await this.setState({ request_email_recipt: false })
             }
         }
-   
+
     }
 
     render() {
@@ -157,8 +157,8 @@ class addClients extends Component {
                                         </div>
                                         <div className="itm-cnt">
                                             <div className="form-group">
-                                                <input type="text" id="text" onChange={(e) => { this.setState({ name: e.target.value, nameErrorMsg: false }) }} className="form-control" placeholder=" " />
                                                 <label className="form-control-placeholder" style={{ color: this.state.nameErrorMsg && 'red' }} for="f-name">Client Name *</label>
+                                                <input type="text" id="text" onChange={(e) => { this.setState({ name: e.target.value, nameErrorMsg: false }) }} className="form-control" placeholder="Enter Client Name " />
                                             </div>
                                         </div>
                                     </div>
@@ -171,28 +171,19 @@ class addClients extends Component {
                                         </div>
                                         <div className="itm-cnt">
                                             <div className="form-group select-group">
-                                            <select className="form-control select" value={this.state.consultancy_id} onChange={(e) => { this.setState({ consultancy_id: e.target.value, consultancyIdErrorMsg: false }) }}>
+                                                <label className="form-control-placeholder" style={{ color: this.state.consultancyIdErrorMsg && 'red' }} for="f-name">Consultancy *</label>
+                                                <select className="form-control select" value={this.state.consultancy_id} onChange={(e) => { this.setState({ consultancy_id: e.target.value, consultancyIdErrorMsg: false }) }}>
                                                     <option value="">Select</option>
                                                     {
-                                                        this.state.consultancyIdList.length && this.state.consultancyIdList.map((item,idex)=>{
-                                                            return( 
-                                                                <option value={item.id}> {item.name} </option> 
+                                                        this.state.consultancyIdList.length && this.state.consultancyIdList.map((item, idex) => {
+                                                            return (
+                                                                <option value={item.id}> {item.name} </option>
                                                             )
                                                         })
                                                     }
-                                                   
+
                                                 </select>
 
-
-                                                {/* <select className="form-control select" value={this.state.consultancy_id} onChange={(e) => { this.setState({ consultancy_id: e.target.value, consultancyIdErrorMsg: false }) }}>
-                                                    <option value="">Select</option>
-                                                    <option value="a5532b87-16af-41e9-b4e8-b6c8822d9e8b">Consultancy 1</option>
-                                                    <option value="a5532b87-16af-41e9-b4e8-b6c8822d9e8b">Consultancy 2</option>
-                                                    <option selected value="a5532b87-16af-41e9-b4e8-b6c8822d9e8b">Consultancy 3</option>
-                                                    <option value="maa5532b87-16af-41e9-b4e8-b6c8822d9e8bngo">Consultancy 4</option>
-                                                </select> */}
-                                                {/* <input type="text-area" id="text"  className="form-control" placeholder=" " /> */}
-                                                <label className="form-control-placeholder" style={{ color: this.state.consultancyIdErrorMsg && 'red' }} for="f-name">Consultancy</label>
                                             </div>
                                         </div>
                                     </div>
@@ -203,8 +194,8 @@ class addClients extends Component {
                                         </div>
                                         <div className="itm-cnt">
                                             <div className="form-group">
-                                                <input type="text-area" id="text" onChange={(e) => { this.setState({ cmms_url: e.target.value }) }} className="form-control" placeholder=" " />
                                                 <label className="form-control-placeholder" for="f-name">CMMS Url</label>
+                                                <input type="text-area" id="text" onChange={(e) => { this.setState({ cmms_url: e.target.value }) }} className="form-control" placeholder="Enter CMMS Url" />
                                             </div>
                                         </div>
                                     </div>
@@ -217,12 +208,12 @@ class addClients extends Component {
                                         <div className="itm-cnt">
                                             <div className="form-group radio-group">
 
+                                                <label className="form-control-placeholder" for="f-name">Trailing View Current Month</label>
                                                 <select className="form-control select" onChange={(e) => { this.setState({ trailing_view_current_month: e.target.value }) }}>
                                                     <option value="current year">Current year</option>
                                                     <option value="previous year">Previous year</option>
                                                 </select>
                                                 {/* <input type="text-area" id="text"  className="form-control" placeholder=" " /> */}
-                                                <label className="form-control-placeholder" for="f-name">Trailing View Current Month</label>
                                             </div>
                                         </div>
                                     </div>
@@ -234,13 +225,13 @@ class addClients extends Component {
                                         <div className="itm-cnt">
                                             <div className="form-group radio-group">
 
+                                                <label className="form-control-placeholder" for="f-name">Modify Next Due Date</label>
                                                 <div className="form-control radio" onChange={(e) => this.radioChanged(e)}>
                                                     <input type="radio" value={true} name="modify_next_due_date" defaultChecked={true} /> Yes
                                                     <input type="radio" value={false} name="modify_next_due_date" /> No
                                                 </div>
- 
+
                                                 {/* <input type="text-area" id="text"  className="form-control" placeholder=" " /> */}
-                                                <label className="form-control-placeholder" for="f-name">Modify Next Due Date</label>
                                             </div>
                                         </div>
                                     </div>
@@ -250,11 +241,11 @@ class addClients extends Component {
                                         </div>
                                         <div className="itm-cnt">
                                             <div className="form-group radio-group">
+                                                <label className="form-control-placeholder" for="f-name">Schedule Threshold</label>
                                                 <select className="form-control select" onChange={(e) => { this.setState({ schedule_threshold: e.target.value }) }}>
                                                     <option value="days">Days</option>
                                                     <option value="month">Month</option>
                                                 </select>
-                                                <label className="form-control-placeholder" for="f-name">Schedule Threshold</label>
 
                                             </div>
                                         </div>
@@ -266,11 +257,11 @@ class addClients extends Component {
                                         </div>
                                         <div className="itm-cnt">
                                             <div className="form-group radio-group">
-                                            <div className="form-control radio" onChange={(e) => this.radioChanged(e)}>
+                                                <label className="form-control-placeholder" for="f-name">Display Blinking Red Plus?</label>
+                                                <div className="form-control radio" onChange={(e) => this.radioChanged(e)}>
                                                     <input type="radio" value={true} name="display_blinking_red_plus" defaultChecked={true} /> Yes
                                                     <input type="radio" value={false} name="display_blinking_red_plus" /> No
                                                 </div>
-                                                <label className="form-control-placeholder" for="f-name">Display Blinking Red Plus?</label>
                                             </div>
                                         </div>
                                     </div>
@@ -281,11 +272,11 @@ class addClients extends Component {
                                         </div>
                                         <div className="itm-cnt">
                                             <div className="form-group radio-group">
-                                            <div className="form-control radio" onChange={(e) => this.radioChanged(e)}>
+                                                <label className="form-control-placeholder" for="f-name"> Lock Total Devices</label>
+                                                <div className="form-control radio" onChange={(e) => this.radioChanged(e)}>
                                                     <input type="radio" value={true} name="lock_total_devices" defaultChecked={true} /> Yes
                                                     <input type="radio" value={false} name="lock_total_devices" /> No
                                                 </div>
-                                                <label className="form-control-placeholder" for="f-name"> Lock Total Devices</label>
                                             </div>
                                         </div>
                                     </div>
@@ -296,8 +287,8 @@ class addClients extends Component {
                                         </div>
                                         <div className="itm-cnt">
                                             <div className="form-group">
-                                                <input type="text-area" id="text" onChange={(e) => { this.setState({ ep_name: e.target.value}) }} className="form-control" placeholder=" " />
                                                 <label className="form-control-placeholder" for="f-name">Ep Name</label>
+                                                <input type="text-area" id="text" onChange={(e) => { this.setState({ ep_name: e.target.value }) }} className="form-control" placeholder="Enter Ep Name " />
                                             </div>
                                         </div>
                                     </div>
@@ -308,11 +299,11 @@ class addClients extends Component {
                                         </div>
                                         <div className="itm-cnt">
                                             <div className="form-group radio-group">
-                                            <div className="form-control radio" onChange={(e) => this.radioChanged(e)}>
+                                                <label className="form-control-placeholder" for="f-name">Use Threshold For Quarterly</label>
+                                                <div className="form-control radio" onChange={(e) => this.radioChanged(e)}>
                                                     <input type="radio" value={true} name="use_threshold_for_quarterly" defaultChecked={true} /> Yes
                                                     <input type="radio" value={false} name="use_threshold_for_quarterly" /> No
                                                 </div>
-                                                <label className="form-control-placeholder" for="f-name">Use Threshold For Quarterly</label>
                                             </div>
                                         </div>
                                     </div>
@@ -323,11 +314,11 @@ class addClients extends Component {
                                         </div>
                                         <div className="itm-cnt">
                                             <div className="form-group radio-group">
-                                            <div className="form-control radio" onChange={(e) => this.radioChanged(e)}>
+                                                <label className="form-control-placeholder" for="f-name"> Request Email Recipt</label>
+                                                <div className="form-control radio" onChange={(e) => this.radioChanged(e)}>
                                                     <input type="radio" value={true} name="request_email_recipt" defaultChecked={true} /> Yes
                                                     <input type="radio" value={false} name="request_email_recipt" /> No
                                                 </div>
-                                                <label className="form-control-placeholder" for="f-name"> Request Email Recipt</label>
                                             </div>
                                         </div>
                                     </div>
@@ -338,8 +329,8 @@ class addClients extends Component {
                                         </div>
                                         <div className="itm-cnt">
                                             <div className="form-group">
-                                                <input type="text-area" id="text" onChange={(e) => { this.setState({ comments: e.target.value, commentsErrorMsg: false }) }} className="form-control" placeholder=" " />
                                                 <label className="form-control-placeholder" for="f-name">Comments</label>
+                                                <input type="text-area" id="text" onChange={(e) => { this.setState({ comments: e.target.value, commentsErrorMsg: false }) }} className="form-control" placeholder=" Enter Comments" />
                                             </div>
                                         </div>
                                     </div>
