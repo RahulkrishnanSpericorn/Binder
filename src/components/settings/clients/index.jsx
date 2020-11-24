@@ -115,14 +115,14 @@ class index extends Component {
                                                         <td>{item.code}</td>
                                                         <td>{item.name}</td>
                                                         <td>{item.comments}</td>
-                                                        <td>{item.display_blinking_red_plus === true? "true":item.display_blinking_red_plus === false?"false":null}</td>
+                                                        <td>{item.display_blinking_red_plus}</td>
                                                         <td>{item.ep_name}</td>
-                                                        <td>{item.lock_total_devices === true? "true":item.lock_total_devices === false?"false":null}</td>
-                                                        <td>{item.modify_next_due_date === true? "true":item.modify_next_due_date === false?"false":null}</td>
-                                                        <td>{item.request_email_recipt === true? "true":item.request_email_recipt === false?"false":null}</td>
+                                                        <td>{item.lock_total_devices}</td>
+                                                        <td>{item.modify_next_due_date}</td>
+                                                        <td>{item.request_email_recipt}</td>
                                                         <td>{item.schedule_threshold}</td>
                                                         <td>{item.trailing_view_current_month}</td>
-                                                        <td>{item.use_threshold_for_quarterly === true? "true":item.use_threshold_for_quarterly === false?"false":null}</td>
+                                                        <td>{item.use_threshold_for_quarterly}</td>
                                                         <td>{item.cmms_url}</td>
 
                                                         <td class="action">
