@@ -65,7 +65,7 @@ class addClients extends Component {
                 consultancyIdErrorMsg: true
             })
         }
-        if (this.state.name != '') {
+        if (this.state.name != '' && this.state.consultancy_id != '') {
             let rec_data = new FormData();
             rec_data.append("client[name]", this.state.name);
             rec_data.append("client[consultancy_id]", "a5532b87-16af-41e9-b4e8-b6c8822d9e8b");

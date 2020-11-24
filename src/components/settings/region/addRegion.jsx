@@ -135,24 +135,11 @@ class addRegion extends Component {
                                             </div>
                                         </div>
                                     </div>
-
-
+  
 
                                     <div className="itm">
                                         <div className="cunt">
                                             <div className="numb">03</div>
-                                        </div>
-                                        <div className="itm-cnt">
-                                            <div className="form-group">
-                                                <label className="form-control-placeholder" for="f-name">Comments</label>
-                                                <input type="text-area" id="text" onChange={(e) => { this.setState({ comments: e.target.value, commentsErrorMsg: false }) }} className="form-control" placeholder="Enter Comments" />
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div className="itm">
-                                        <div className="cunt">
-                                            <div className="numb">04</div>
                                         </div>
                                         <div className="itm-cnt">
                                             <div className="form-group select-group">
@@ -177,7 +164,7 @@ class addRegion extends Component {
 
                                     <div className="itm">
                                         <div className="cunt">
-                                            <div className="numb">03</div>
+                                            <div className="numb">04</div>
                                         </div>
                                         <div className="itm-cnt">
                                             <div className="form-group select-group">
@@ -199,6 +186,79 @@ class addRegion extends Component {
                                         </div>
 
                                     </div>
+
+                                    <div className="itm">
+                                        <div className="cunt">
+                                            <div className="numb">05</div>
+                                        </div>
+                                        <div className="itm-cnt">
+                                            <div className="form-group select-group">
+
+                                                <label className="form-control-placeholder"  for="f-name">Client User</label>
+                                                <select className="form-control select" >
+                                                    <option value="">Select</option>
+                                                    <option value="">Select</option>
+                                                    <option value="">Select</option>
+                                                    <option value="">Select</option>
+                                                    <option value="">Select</option>
+                                                    <option value="">Select</option>
+                                                    <option value="">Select</option>
+                                                    {/* {
+                                                        this.state.clientIdList.length && this.state.clientIdList.map((item, idex) => {
+                                                            return (
+                                                                <option value={item.id}> {item.name} </option>
+                                                            )
+                                                        })
+                                                    } */}
+
+                                                </select>
+                                                {/* <input type="text-area" id="text"  className="form-control" placeholder=" " /> */}
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+
+                                    <div className="itm">
+                                        <div className="cunt">
+                                            <div className="numb">06</div>
+                                        </div>
+                                        <div className="itm-cnt">
+                                            <div className="form-group select-group">
+
+                                                <label className="form-control-placeholder"   for="f-name">Consultancy User</label>
+                                                <select className="form-control select"   >
+                                                    <option value="">Select</option>
+                                                    <option value="">Select</option>
+                                                    <option value="">Select</option>
+                                                    <option value="">Select</option>
+                                                    {/* {
+                                                        this.state.clientIdList.length && this.state.clientIdList.map((item, idex) => {
+                                                            return (
+                                                                <option value={item.id}> {item.name} </option>
+                                                            )
+                                                        })
+                                                    } */}
+
+                                                </select>
+                                                {/* <input type="text-area" id="text"  className="form-control" placeholder=" " /> */}
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div className="itm">
+                                        <div className="cunt">
+                                            <div className="numb">07</div>
+                                        </div>
+                                        <div className="itm-cnt">
+                                            <div className="form-group">
+                                                <label className="form-control-placeholder" for="f-name">Comments</label>
+                                                <input type="text-area" id="text" onChange={(e) => { this.setState({ comments: e.target.value, commentsErrorMsg: false }) }} className="form-control" placeholder="Enter Comments" />
+                                            </div>
+                                        </div>
+                                    </div>
+
+
 
                                 </div>
 
