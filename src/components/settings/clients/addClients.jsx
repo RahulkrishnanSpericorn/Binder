@@ -5,12 +5,13 @@ import history from '../../../config/history';
 import TopSlider from '../../common/components/TopSlider';
 import actions from './actions';
 import ToastMsg from '../../common/ToastMessage'
+import commonActions from '../actions';
 
 
 const mapStateToProps = state => {
     console.log('state', state)
-    const { clientReducer } = state;
-    return { clientReducer };
+    const { clientReducer, settingsCommonReducer } = state;
+    return { clientReducer, settingsCommonReducer };
 }
 class addClients extends Component {
     constructor(props) {
@@ -33,11 +34,23 @@ class addClients extends Component {
             request_email_recipt: true,
             image_description: '',
             image: {},
-            consultancy_id: ''
+            consultancy_id: '',
+            consultancyIdList:[],
 
 
 
         }
+    }
+
+    async componentDidMount() {
+    
+        await this.props.getConsultancyDropdown()
+
+        console.log('consultancyDropdownData', this.props.settingsCommonReducer.consultancyDropdownData)
+       await this.setState({
+            consultancyIdList : this.props.settingsCommonReducer.consultancyDropdownData.data
+        })
+
     }
 
     addClients = async () => {
@@ -157,15 +170,27 @@ class addClients extends Component {
                                             <div className="numb">02</div>
                                         </div>
                                         <div className="itm-cnt">
-                                            <div className="form-group radio-group">
+                                            <div className="form-group select-group">
+                                            <select className="form-control select" value={this.state.consultancy_id} onChange={(e) => { this.setState({ consultancy_id: e.target.value, consultancyIdErrorMsg: false }) }}>
+                                                    <option value="">Select</option>
+                                                    {
+                                                        this.state.consultancyIdList.length && this.state.consultancyIdList.map((item,idex)=>{
+                                                            return( 
+                                                                <option value={item.id}> {item.name} </option> 
+                                                            )
+                                                        })
+                                                    }
+                                                   
+                                                </select>
 
-                                                <select className="form-control select" value={this.state.consultancy_id} onChange={(e) => { this.setState({ consultancy_id: e.target.value, consultancyIdErrorMsg: false }) }}>
+
+                                                {/* <select className="form-control select" value={this.state.consultancy_id} onChange={(e) => { this.setState({ consultancy_id: e.target.value, consultancyIdErrorMsg: false }) }}>
                                                     <option value="">Select</option>
                                                     <option value="a5532b87-16af-41e9-b4e8-b6c8822d9e8b">Consultancy 1</option>
                                                     <option value="a5532b87-16af-41e9-b4e8-b6c8822d9e8b">Consultancy 2</option>
                                                     <option selected value="a5532b87-16af-41e9-b4e8-b6c8822d9e8b">Consultancy 3</option>
                                                     <option value="maa5532b87-16af-41e9-b4e8-b6c8822d9e8bngo">Consultancy 4</option>
-                                                </select>
+                                                </select> */}
                                                 {/* <input type="text-area" id="text"  className="form-control" placeholder=" " /> */}
                                                 <label className="form-control-placeholder" style={{ color: this.state.consultancyIdErrorMsg && 'red' }} for="f-name">Consultancy</label>
                                             </div>
@@ -337,4 +362,4 @@ class addClients extends Component {
     }
 }
 
-export default connect(mapStateToProps, { ...actions })(addClients)
+export default connect(mapStateToProps, { ...actions, ...commonActions })(addClients)
