@@ -4,6 +4,67 @@
 /* 01--- Font Seting ------------*/
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;600;700;800;900&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Poppins:wght@200;300;400;600;700;800;900&display=swap");
+.btn-create {
+  color: #fff;
+  font-family: "Inter", sans-serif;
+  background: #103BB5;
+  text-transform: uppercase;
+  opacity: 1;
+  font-size: 13px;
+  padding: 10px 25px 10px 15px;
+  transition: 0.3s;
+  outline: none;
+  border: none;
+  box-shadow: none;
+}
+.btn-create:hover {
+  color: #fff;
+  opacity: 0.8;
+}
+.btn-create .tic {
+  color: #fff;
+  font-size: 12px;
+  background: #2FC8D9;
+  border-radius: 100%;
+  margin-right: 10px;
+  padding: 3px;
+  opacity: 0.7;
+}
+
+.btn-cancel {
+  color: #697489;
+  font-family: "Inter", sans-serif;
+  background: #fff;
+  text-transform: uppercase;
+  opacity: 1;
+  font-size: 13px;
+  padding: 10px 25px 10px 25px;
+  transition: 0.3s;
+  outline: none !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+.btn-cancel:hover {
+  color: #6c6c6c;
+  opacity: 0.8;
+}
+
+.btn-upload {
+  position: absolute;
+  right: 30px;
+  bottom: 20px;
+  border: none;
+  background: transparent;
+  transition: 0.3s;
+}
+
+@media (max-width: 1559px) {
+  .dash .dash-cont .pub-ara.six .items .itm-btm .head h2 {
+    font-size: 18px;
+    line-height: 22px;
+    height: 45px;
+  }
+}
 /* The container */
 .container-check {
   display: block;
@@ -75,7 +136,6 @@
 body {
   margin: 0px;
   padding: 0px;
-  
 }
 body::before {
   display: none !important;
@@ -90,7 +150,7 @@ body .login main {
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  background-image: url(../images/LoginV4.png);
+  background-image: url(../images/LoginV4.png) !important;
   background-size: 100%;
   background-repeat: round;
 }
@@ -119,13 +179,15 @@ body .login main .log-sec .hed small {
   text-transform: capitalize;
   opacity: 0.8;
 }
+body .login main .log-sec .form-group {
+  margin-bottom: 17px !important;
+}
 body .login main .log-sec .form-group .form-control {
   background: #F7F7F9 0% 0% no-repeat padding-box;
   border: none;
   border-radius: 3px;
-  padding: 20px;
+  padding: 20px !important;
   height: auto;
-  margin-bottom: 17px;
   text-align: left;
   color: #103BB5;
   font-weight: 500;

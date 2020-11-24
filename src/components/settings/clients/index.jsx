@@ -83,9 +83,19 @@ class index extends Component {
                                                 <th class="img-sq-box">
                                                     <img src="/images/table-blue-dots.svg" />
                                                 </th>
-                                                <th class="">Consultancy Code</th>
-                                                <th class="">Consultancy Name</th>
+                                                <th class="">Client Code</th>
+                                                <th class="">Client Name</th>
                                                 <th class="">Comments</th>
+                                                <th class="">Display Blinking Red Plus</th>
+                                                <th class="">Ep Name</th>
+                                                <th class="">Lock Total Devices</th>
+                                                <th class="">Modify Next Due Date</th>
+                                                <th class="">Request Email Recipt</th>
+                                                <th class="">Schedule Threshold</th>
+                                                <th class="">Trailing View Current Month</th>
+                                                <th class="">Use Threshold For Quarterly</th>
+                                                <th class="">Cmms Url</th>
+                                                
                                                 {/* <th class="">Consultancy   <span class="rop-icon"> <img src="/images/down-arrow.svg"/> </span> </th>
                                        <th class="">Client <span class="rop-icon"> <img src="/images/down-arrow.svg"/> </span></th>
                                        <th class="">Associated Project <span class="rop-icon"> <img src="/images/down-arrow.svg"/> </span></th>
@@ -96,7 +106,7 @@ class index extends Component {
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            {this.state.clientDataList.map((item, index) => {
+                                            {this.state.clientDataList.map((item, index) => { 
                                                 return (
                                                     <tr>
                                                         <td class="img-sq-box">
@@ -105,11 +115,21 @@ class index extends Component {
                                                         <td>{item.code}</td>
                                                         <td>{item.name}</td>
                                                         <td>{item.comments}</td>
+                                                        <td>{item.display_blinking_red_plus === true? "true":item.display_blinking_red_plus === false?"false":null}</td>
+                                                        <td>{item.ep_name}</td>
+                                                        <td>{item.lock_total_devices === true? "true":item.lock_total_devices === false?"false":null}</td>
+                                                        <td>{item.modify_next_due_date === true? "true":item.modify_next_due_date === false?"false":null}</td>
+                                                        <td>{item.request_email_recipt === true? "true":item.request_email_recipt === false?"false":null}</td>
+                                                        <td>{item.schedule_threshold}</td>
+                                                        <td>{item.trailing_view_current_month}</td>
+                                                        <td>{item.use_threshold_for_quarterly === true? "true":item.use_threshold_for_quarterly === false?"false":null}</td>
+                                                        <td>{item.cmms_url}</td>
+
                                                         <td class="action">
                                                             <img src="/images/three-dots.svg" data-toggle="dropdown" />
                                                             <ul class="dropdown-menu" role="menu">
-                                                                <li ><a href="#"><img src="/images/" />Edit</a></li>
-                                                                <li><a href="#"><img src="/images/" />Delete</a></li>
+                                                                <li ><a href="#"><img src="/images/edit.svg" />Edit</a></li>
+                                                                <li><a href="#"><img src="/images/delete.svg" />Delete</a></li>
                                                             </ul>
                                                         </td>
                                                     </tr>

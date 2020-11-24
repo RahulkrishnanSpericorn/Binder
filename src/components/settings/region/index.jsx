@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import TopSlider from '../../common/components/TopSlider'
 import actions from './actions'
+import '../../../assets/css/list.css'
 
 const mapStateToProps = state =>{
     console.log('state', state)
