@@ -587,33 +587,40 @@ pre {
   font: 12px "Inter", sans-serif;
 }
 
+/*
 .form-group {
-  position: relative;
+    position: relative;
+    margin-bottom: 0px;
+}
+input:placeholder-shown + .form-control-placeholder{
+    margin-top: -36px;
+    font-family: $body-font;
+    font-size: 14px;
+    color:#676A74;
+    margin-left: 10px;
+}  
+input + .form-control-placeholder ,
+.form-control:focus + .form-control-placeholder{
+    position: absolute;
+    transition: all 200ms;
+    margin-left: 0px;
+    margin-top: -45px;
+    font-size: 70%;
+    font-family: $body-font;
+    color:#676A74; 
+    margin-left: 10px;
+}*/
+.form-group {
   margin-bottom: 0px;
 }
-
-input:placeholder-shown + .form-control-placeholder {
-  margin-top: -36px;
+.form-group label {
+  margin-top: 0px;
+  color: #6c6c6c;
   font-family: "Inter", sans-serif;
-  font-size: 14px;
-  color: #676A74;
-  margin-left: 10px;
+  font-weight: 500;
 }
-
-input + .form-control-placeholder,
-.form-control:focus + .form-control-placeholder {
-  position: absolute;
-  transition: all 200ms;
-  margin-left: 0px;
-  margin-top: -45px;
-  font-size: 70%;
-  font-family: "Inter", sans-serif;
-  color: #676A74;
-  margin-left: 10px;
-}
-
-.form-control {
-  padding: 20px 10px 0px !important;
+.form-group .form-control {
+  padding: 10px !important;
   border-radius: 0px;
   height: 50px;
   background-color: #F7F7F9;
@@ -624,6 +631,45 @@ input + .form-control-placeholder,
   outline: none !important;
   border: none !important;
   box-shadow: none !important;
+  margin-bottom: 0px;
+}
+
+.custom-selecbox {
+  position: relative;
+}
+.custom-selecbox::after {
+  content: "keyboard_arrow_down ";
+  position: absolute;
+  z-index: 1;
+  pointer-events: none;
+  right: 15px;
+  top: 15px;
+  font-family: "Material Icons";
+  font-weight: normal;
+  font-style: normal;
+  background-color: #fff;
+  box-shadow: 0px 1px 2px #00000017;
+  border-radius: 6px;
+  color: #103BB5;
+  font-size: 16px;
+  padding: 3px;
+  width: 20px;
+  height: 20px;
+  line-height: 13px;
+}
+.custom-selecbox select {
+  height: 42px;
+  width: 100%;
+  background-color: #edf2f6;
+  padding: 5px 15px;
+  padding-right: 30px;
+  border-radius: 5px;
+  border: none;
+  font: 400 15px/24px "Poppins", sans-serif;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  text-indent: 1px;
+  text-overflow: "";
 }
 
 textarea.form-control {
@@ -663,6 +709,155 @@ textarea.form-control::placeholder {
   background-color: #E6EAF2;
 }
 
+.chek {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.chek label {
+  margin-bottom: 0px;
+}
+.chek .chekbox-sec {
+  background-color: #E6EAF2;
+  padding: 15px;
+  width: 50%;
+  font-family: "Inter", sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  display: flex;
+}
+.chek .chekbox-sec label {
+  font-family: "Inter", sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+}
+.chek .chekbox-sec label.radio-inline {
+  padding: 10px;
+}
+.chek .chekbox-sec label.radio-inline span {
+  margin-left: 10px;
+  font-family: "Inter", sans-serif;
+  font-size: 13x;
+  font-weight: 500;
+}
+
+/* The container */
+.container {
+  display: block;
+  position: relative;
+  padding-left: 25px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  font-size: 15px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* Hide the browser's default radio button */
+.container input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+
+/* Create a custom radio button */
+.checkmark {
+  position: absolute;
+  top: 3px;
+  left: 0;
+  height: 15px;
+  width: 15px;
+  background-color: #fff;
+  border-radius: 50%;
+}
+
+/* On mouse-over, add a grey background color */
+.container:hover input ~ .checkmark {
+  background-color: #103BB5;
+}
+
+/* When the radio button is checked, add a blue background */
+.container input:checked ~ .checkmark {
+  background-color: #fff;
+}
+
+/* Create the indicator (the dot/circle - hidden when not checked) */
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+/* Show the indicator (dot/circle) when checked */
+.container input:checked ~ .checkmark:after {
+  display: block;
+}
+
+/* Style the indicator (dot/circle) */
+.container .checkmark:after {
+  top: 2px;
+  left: 2px;
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  background: #103BB5;
+}
+
+input[type=radio] {
+  display: none;
+}
+
+.yes-no-toggle {
+  margin: 10px;
+  display: flex;
+}
+
+.yes-no-toggle label {
+  float: left;
+  width: auto;
+  min-width: 75px;
+  margin: 0px;
+  background-color: #103BB5;
+  overflow: auto;
+  border-radius: 4px;
+  color: #fff;
+}
+
+.yes-no-toggle label span {
+  text-align: center;
+  font-size: 13px;
+  display: block;
+  padding: 10px 10px 10px 10px;
+}
+
+.yes-no-toggle label input {
+  position: absolute;
+  top: -20px;
+}
+
+.yes-no-toggle input:checked + span {
+  background-color: #efefef;
+  color: #6c6c6c;
+}
+
+.noselect {
+  -webkit-touch-callout: none;
+  /* iOS Safari */
+  -webkit-user-select: none;
+  /* Safari */
+  -khtml-user-select: none;
+  /* Konqueror HTML */
+  -moz-user-select: none;
+  /* Firefox */
+  -ms-user-select: none;
+  /* Internet Explorer/Edge */
+  user-select: none;
+  /* Non-prefixed version, currently
+     supported by Chrome and Opera */
+}
+
 .btn-create {
   color: #fff;
   font-family: "Inter", sans-serif;
@@ -699,12 +894,13 @@ textarea.form-control::placeholder {
   font-size: 13px;
   padding: 10px 25px 10px 25px;
   transition: 0.3s;
-  outline: none;
-  border: none;
-  box-shadow: none;
+  outline: none !important;
+  border: none !important;
+  box-shadow: none !important;
 }
 .btn-cancel:hover {
   color: #6c6c6c;
+  opacity: 0.8;
 }
 
 .btn-upload {
@@ -713,6 +909,7 @@ textarea.form-control::placeholder {
   bottom: 20px;
   border: none;
   background: transparent;
+  transition: 0.3s;
 }
 
 /*Binder Style Main*/
@@ -1271,7 +1468,7 @@ body::before {
   width: 100%;
 }
 .frm .itm .itm-cnt .form-control {
-  padding: 20px 10px 0px !important;
+  padding: 10px !important;
   border-radius: 0px;
   outline: none;
   box-shadow: none;
@@ -1498,7 +1695,7 @@ input[list]::-webkit-calendar-picker-indicator {
 }
 .top-fil-ara .fil-btn {
   padding: 0px 10px 0px 15px;
-  width: 190px;
+  width: 220px;
   display: flex;
   justify-content: flex-end;
 }
@@ -1654,6 +1851,18 @@ input[list]::-webkit-calendar-picker-indicator {
 .list-sec .table-section .table tbody tr td ul.dropdown-menu li a img {
   margin-right: 10px;
   width: 15px;
+}
+
+.client .table {
+  width: 2500px;
+}
+
+@media (max-width: 1559px) {
+  .dash .dash-cont .pub-ara.six .items .itm-btm .head h2 {
+    font-size: 18px;
+    line-height: 22px;
+    height: 45px;
+  }
 }
 
 /*# sourceMappingURL=main.css.map */

@@ -74,4 +74,9 @@
   justify-content: flex-end;
 }
 
+.frm-ara.three-col {
+  width: 100% !important;
+  max-width: 100% !important;
+}
+
 /*# sourceMappingURL=create.css.map */

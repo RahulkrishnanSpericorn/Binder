@@ -142,7 +142,7 @@ class addClients extends Component {
                     <div className="dash-cont">
                         <div className="pub-ara six">
 
-                            <div className="frm-ara">
+                            <div className="frm-ara three-col">
                                 <div className="top-ara">
                                     <h4>Add Clients</h4>
                                 </div>
@@ -206,7 +206,7 @@ class addClients extends Component {
                                             <div className="numb">04</div>
                                         </div>
                                         <div className="itm-cnt">
-                                            <div className="form-group radio-group">
+                                            <div className="form-group ">
 
                                                 <label className="form-control-placeholder" for="f-name">Trailing View Current Month</label>
                                                 <select className="form-control select" onChange={(e) => { this.setState({ trailing_view_current_month: e.target.value }) }}>
@@ -223,12 +223,18 @@ class addClients extends Component {
                                             <div className="numb">05</div>
                                         </div>
                                         <div className="itm-cnt">
-                                            <div className="form-group radio-group">
+                                            <div className="chek">
 
-                                                <label className="form-control-placeholder" for="f-name">Modify Next Due Date</label>
-                                                <div className="form-control radio" onChange={(e) => this.radioChanged(e)}>
-                                                    <input type="radio" value={true} name="modify_next_due_date" defaultChecked={true} /> Yes
-                                                    <input type="radio" value={false} name="modify_next_due_date" /> No
+                                                <label >Modify Next Due Date</label>
+                                                <div className="chekbox-sec" onChange={(e) => this.radioChanged(e)}>
+                                                    <label class="container">Yes
+                                                    <input type="radio" value={true} name="modify_next_due_date" defaultChecked={true} />
+                                                        <span class="checkmark"></span>
+                                                    </label>
+                                                    <label class="container">No
+                                                    <input type="radio" value={false} name="modify_next_due_date" />
+                                                        <span class="checkmark"></span>
+                                                    </label>
                                                 </div>
 
                                                 {/* <input type="text-area" id="text"  className="form-control" placeholder=" " /> */}
@@ -240,7 +246,7 @@ class addClients extends Component {
                                             <div className="numb">06</div>
                                         </div>
                                         <div className="itm-cnt">
-                                            <div className="form-group radio-group">
+                                            <div className="form-group ">
                                                 <label className="form-control-placeholder" for="f-name">Schedule Threshold</label>
                                                 <select className="form-control select" onChange={(e) => { this.setState({ schedule_threshold: e.target.value }) }}>
                                                     <option value="days">Days</option>
@@ -256,11 +262,17 @@ class addClients extends Component {
                                             <div className="numb">07</div>
                                         </div>
                                         <div className="itm-cnt">
-                                            <div className="form-group radio-group">
-                                                <label className="form-control-placeholder" for="f-name">Display Blinking Red Plus?</label>
-                                                <div className="form-control radio" onChange={(e) => this.radioChanged(e)}>
-                                                    <input type="radio" value={true} name="display_blinking_red_plus" defaultChecked={true} /> Yes
-                                                    <input type="radio" value={false} name="display_blinking_red_plus" /> No
+                                            <div className="chek">
+                                                <label >Display Blinking Red Plus?</label>
+                                                <div className="chekbox-sec" onChange={(e) => this.radioChanged(e)}>
+                                                <label class="container">Yes
+                                                    <input type="radio" value={true} name="display_blinking_red_plus" defaultChecked={true} />
+                                                    <span class="checkmark"></span>
+                                                    </label>
+                                                    <label class="container">No
+                                                    <input type="radio" value={false} name="display_blinking_red_plus" />
+                                                    <span class="checkmark"></span>
+                                                    </label>
                                                 </div>
                                             </div>
                                         </div>
@@ -271,11 +283,17 @@ class addClients extends Component {
                                             <div className="numb">08</div>
                                         </div>
                                         <div className="itm-cnt">
-                                            <div className="form-group radio-group">
-                                                <label className="form-control-placeholder" for="f-name"> Lock Total Devices</label>
-                                                <div className="form-control radio" onChange={(e) => this.radioChanged(e)}>
-                                                    <input type="radio" value={true} name="lock_total_devices" defaultChecked={true} /> Yes
-                                                    <input type="radio" value={false} name="lock_total_devices" /> No
+                                            <div className="chek">
+                                                <label> Lock Total Devices</label>
+                                                <div className="chekbox-sec" onChange={(e) => this.radioChanged(e)}>
+                                                <label class="container">Yes
+                                                    <input type="radio" value={true} name="lock_total_devices" defaultChecked={true} />
+                                                    <span class="checkmark"></span>
+                                                    </label>   
+                                                    <label class="container">No
+                                                    <input type="radio" value={false} name="lock_total_devices" /> 
+                                                    <span class="checkmark"></span>
+                                                    </label>
                                                 </div>
                                             </div>
                                         </div>
@@ -298,11 +316,17 @@ class addClients extends Component {
                                             <div className="numb">10</div>
                                         </div>
                                         <div className="itm-cnt">
-                                            <div className="form-group radio-group">
-                                                <label className="form-control-placeholder" for="f-name">Use Threshold For Quarterly</label>
-                                                <div className="form-control radio" onChange={(e) => this.radioChanged(e)}>
-                                                    <input type="radio" value={true} name="use_threshold_for_quarterly" defaultChecked={true} /> Yes
-                                                    <input type="radio" value={false} name="use_threshold_for_quarterly" /> No
+                                            <div className="chek">
+                                                <label >Use Threshold For Quarterly</label>
+                                                <div className="chekbox-sec" onChange={(e) => this.radioChanged(e)}>
+                                                <label class="container">Yes
+                                                    <input type="radio" value={true} name="use_threshold_for_quarterly" defaultChecked={true} /> 
+                                                    <span class="checkmark"></span>
+                                                    </label>   
+                                                    <label class="container">No
+                                                    <input type="radio" value={false} name="use_threshold_for_quarterly" /> 
+                                                    <span class="checkmark"></span>
+                                                    </label>
                                                 </div>
                                             </div>
                                         </div>
@@ -313,11 +337,17 @@ class addClients extends Component {
                                             <div className="numb">11</div>
                                         </div>
                                         <div className="itm-cnt">
-                                            <div className="form-group radio-group">
-                                                <label className="form-control-placeholder" for="f-name"> Request Email Recipt</label>
-                                                <div className="form-control radio" onChange={(e) => this.radioChanged(e)}>
-                                                    <input type="radio" value={true} name="request_email_recipt" defaultChecked={true} /> Yes
-                                                    <input type="radio" value={false} name="request_email_recipt" /> No
+                                            <div className="chek">
+                                                <label > Request Email Recipt</label>
+                                                <div className="chekbox-sec" onChange={(e) => this.radioChanged(e)}>
+                                                <label class="container">Yes
+                                                    <input type="radio" value={true} name="request_email_recipt" defaultChecked={true} />
+                                                    <span class="checkmark"></span>
+                                                    </label>   
+                                                    <label class="container">No
+                                                    <input type="radio" value={false} name="request_email_recipt" />
+                                                    <span class="checkmark"></span>
+                                                    </label>
                                                 </div>
                                             </div>
                                         </div>

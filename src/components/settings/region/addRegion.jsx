@@ -103,7 +103,7 @@ class addRegion extends Component {
                     <div className="dash-cont">
                         <div className="pub-ara six">
 
-                            <div className="frm-ara">
+                            <div className="frm-ara three-col">
                                 <div className="top-ara">
                                     <h4>Add Region</h4>
                                 </div>
