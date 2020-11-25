@@ -134,7 +134,7 @@ class addConsultancy extends Component {
                                   
                                     <div className="itm">
                                         <div className="cunt">
-                                            <div className="numb">03</div>
+                                            <div className="numb">02</div>
                                         </div>
                                         <div className="itm-cnt">
                                             <div className="form-group">
@@ -146,7 +146,7 @@ class addConsultancy extends Component {
 
                                     <div className="itm">
                                         <div className="cunt">
-                                            <div className="numb">02</div>
+                                            <div className="numb">03</div>
                                         </div>
                                         <div className="itm-cnt">
                                             <div className="form-group">
