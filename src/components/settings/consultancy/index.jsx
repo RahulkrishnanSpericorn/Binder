@@ -46,7 +46,7 @@ class index extends Component {
     //     await this.props.addConsultancies(params)
     // }
     getConsultanciesById = async () => {
-        let id = 'f061347b-1b1e-4b07-8ac3-fe73b88ba9a0'
+        let id = 'cae67353-4964-4961-93f7-6d0881ed7187'
         await this.props.getConsultanciesById(id)
     }
     editConsultanciesById = async () => {
