@@ -68,7 +68,7 @@ class addClients extends Component {
         if (this.state.name != '' && this.state.consultancy_id != '') {
             let rec_data = new FormData();
             rec_data.append("client[name]", this.state.name);
-            rec_data.append("client[consultancy_id]", "a5532b87-16af-41e9-b4e8-b6c8822d9e8b");
+            rec_data.append("client[consultancy_id]", this.state.consultancy_id);
             rec_data.append("client[cmms_url]", this.state.cmms_url);
             rec_data.append("client[trailing_view_current_month]", this.state.trailing_view_current_month);
             rec_data.append("client[modify_next_due_date]", this.state.modify_next_due_date);
