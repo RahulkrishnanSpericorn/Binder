@@ -253,7 +253,7 @@ class addRegion extends Component {
                                         <div className="itm-cnt">
                                             <div className="form-group">
                                                 <label className="form-control-placeholder" for="f-name">Comments</label>
-                                                <input type="text-area" id="text" onChange={(e) => { this.setState({ comments: e.target.value, commentsErrorMsg: false }) }} className="form-control" placeholder="Enter Comments" />
+                                                <textarea type="text-area" onChange={(e) => { this.setState({ comments: e.target.value, commentsErrorMsg: false }) }} className="form-control" placeholder="Enter Comments" />
                                             </div>
                                         </div>
                                     </div>

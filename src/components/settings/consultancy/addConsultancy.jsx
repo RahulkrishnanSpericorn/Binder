@@ -131,17 +131,7 @@ class addConsultancy extends Component {
                                         </div>
                                     </div>
 
-                                    <div className="itm">
-                                        <div className="cunt">
-                                            <div className="numb">02</div>
-                                        </div>
-                                        <div className="itm-cnt">
-                                            <div className="form-group">
-                                                <label >Comments</label>
-                                                <textarea type="text-area" onChange={(e) => { this.setState({ comments: e.target.value, commentsErrorMsg: false }) }} className="form-control" placeholder="Enter Comments" />
-                                            </div>
-                                        </div>
-                                    </div>
+                                  
                                     <div className="itm">
                                         <div className="cunt">
                                             <div className="numb">03</div>
@@ -150,6 +140,18 @@ class addConsultancy extends Component {
                                             <div className="form-group">
                                                 <label className="form-control-placeholder" for="f-name">Image Description</label>
                                                 <input type="text" id="text" onChange={(e) => { this.setState({ image_description: e.target.value, nameErrorMsg: false }) }} className="form-control" placeholder="Enter Image Description" />
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div className="itm">
+                                        <div className="cunt">
+                                            <div className="numb">02</div>
+                                        </div>
+                                        <div className="itm-cnt">
+                                            <div className="form-group">
+                                                <label >Comments</label>
+                                                <textarea type="text-area" onChange={(e) => { this.setState({ comments: e.target.value, commentsErrorMsg: false }) }} className="form-control" placeholder="Enter Comments" />
                                             </div>
                                         </div>
                                     </div>
