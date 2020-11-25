@@ -87,6 +87,8 @@ const mapStateToProps = state =>{
                                             <th class="">Region Name</th>
                                             <th class="">Display Name</th>
                                             <th class="">Consultancy</th>
+                                            <th class="">Client User</th>
+                                            <th class=""> Consultancy User</th>
                                             <th class="">Comments</th>
                                             {/* <th class="">Consultancy   <span class="rop-icon"> <img src="/images/down-arrow.svg"/> </span> </th>
                                    <th class="">Client <span class="rop-icon"> <img src="/images/down-arrow.svg"/> </span></th>
@@ -108,6 +110,8 @@ const mapStateToProps = state =>{
                                                     <td>{item.name}</td>
                                                     <td>{item.display_name}</td>
                                                     <td>{item.consultancy}</td>
+                                                    <td> </td>
+                                                    <td> </td>
                                                     <td>{item.comments}</td>
                                                     {/* <td>
                                         <div class="usr-vw">
@@ -156,8 +160,8 @@ const mapStateToProps = state =>{
                                                     <td class="action">
                                                         <img src="/images/three-dots.svg" data-toggle="dropdown" />
                                                         <ul class="dropdown-menu" role="menu">
-                                                            <li ><a href="#"><img src="/images/" />Edit</a></li>
-                                                            <li><a href="#"><img src="/images/" />Delete</a></li>
+                                                            <li ><a href="#"><img src="/images/edit.svg" />Edit</a></li>
+                                                            <li><a href="#"><img src="/images/delete.svg" />Delete</a></li>
                                                         </ul>
                                                     </td>
                                                 </tr>

@@ -168,8 +168,8 @@ class index extends Component {
                                                         <td class="action">
                                                             <img src="/images/three-dots.svg" data-toggle="dropdown" />
                                                             <ul class="dropdown-menu" role="menu">
-                                                                <li ><a href="#"><img src="/images/" />Edit</a></li>
-                                                                <li><a href="#"><img src="/images/" />Delete</a></li>
+                                                                <li ><a href="#"><img src="/images/edit.svg" />Edit</a></li>
+                                                                <li><a href="#"><img src="/images/delete.svg" />Delete</a></li>
                                                             </ul>
                                                         </td>
                                                     </tr>
