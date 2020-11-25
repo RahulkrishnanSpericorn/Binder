@@ -84,8 +84,9 @@ class index extends Component {
                                                     <img src="/images/table-blue-dots.svg" />
                                                 </th>
                                                 <th class="">Client Code</th>
-                                                <th class="">Client Name</th>
                                                 <th class="">Comments</th>
+                                                <th class="">Client Name</th>
+                                                <th class="">Consultancy</th>
                                                 <th class="">Display Blinking Red Plus</th>
                                                 <th class="">Ep Name</th>
                                                 <th class="">Lock Total Devices</th>
@@ -95,7 +96,7 @@ class index extends Component {
                                                 <th class="">Trailing View Current Month</th>
                                                 <th class="">Use Threshold For Quarterly</th>
                                                 <th class="">Cmms Url</th>
-                                                
+
                                                 {/* <th class="">Consultancy   <span class="rop-icon"> <img src="/images/down-arrow.svg"/> </span> </th>
                                        <th class="">Client <span class="rop-icon"> <img src="/images/down-arrow.svg"/> </span></th>
                                        <th class="">Associated Project <span class="rop-icon"> <img src="/images/down-arrow.svg"/> </span></th>
@@ -106,7 +107,7 @@ class index extends Component {
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            {this.state.clientDataList.map((item, index) => { 
+                                            {this.state.clientDataList.map((item, index) => {
                                                 return (
                                                     <tr>
                                                         <td class="img-sq-box">
@@ -114,6 +115,7 @@ class index extends Component {
                                                         </td>
                                                         <td>{item.code}</td>
                                                         <td>{item.name}</td>
+                                                        <td>{item.consultancy ? item.consultancy : "-"}</td>
                                                         <td>{item.comments}</td>
                                                         <td>{item.display_blinking_red_plus}</td>
                                                         <td>{item.ep_name}</td>
