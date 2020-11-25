@@ -43,7 +43,32 @@ const getClientDropdown = (params) => {
         }
     }
 }
+
+const getRegionDropdown = (params) => {
+    return async dispatch => {
+        try {
+            dispatch({ type: actionTypes.GET_REGION_DROPDOWN_REQUEST })
+            console.log('params', params)
+            const res = await Service.getRegionDropdown(params)
+            console.log('Regiondropres', res)
+            if (res && res.status === 200) {
+                if (res.data) {
+                    dispatch({ type: actionTypes.GET_REGION_DROPDOWN_SUCCESS, response: res })
+                } else {
+                    dispatch({ type: actionTypes.GET_REGION_DROPDOWN_FAILURE, error: res.data })
+                }
+            } else {
+                dispatch({ type: actionTypes.GET_REGION_DROPDOWN_FAILURE, error: res.response && res.response.data })
+            }
+        } catch (e) {
+            dispatch({ type: actionTypes.GET_REGION_DROPDOWN_FAILURE, error: e.response && e.response.data })
+        }
+    }
+}
+
+
 export default {
     getConsultancyDropdown,
-    getClientDropdown
+    getClientDropdown,
+    getRegionDropdown
 }

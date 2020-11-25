@@ -85,6 +85,9 @@ const mapStateToProps = state =>{
                                             </th>
                                             <th class="">Site Code</th>
                                             <th class="">Site Name</th>
+                                            <th class="">Display Name</th>
+                                            <th class="">Client</th>
+                                            <th class="">Region</th>
                                             <th class="">Comments</th>
                                             {/* <th class="">Consultancy   <span class="rop-icon"> <img src="/images/down-arrow.svg"/> </span> </th>
                                    <th class="">Client <span class="rop-icon"> <img src="/images/down-arrow.svg"/> </span></th>
@@ -104,6 +107,9 @@ const mapStateToProps = state =>{
                                                     </td>
                                                     <td>{item.code}</td>
                                                     <td>{item.name}</td>
+                                                    <td>{item.display_name}</td>
+                                                    <td>{item.client}</td>
+                                                    <td>{item.region}</td>
                                                     <td>{item.comments}</td>
                                                     {/* <td>
                                         <div class="usr-vw">
