@@ -51,6 +51,7 @@
   max-width: 900px;
   margin-left: auto;
   margin-right: auto;
+  padding-right: 40px;
 }
 .create .table-ara .cr-frm input + .form-control-placeholder,
 .create .table-ara .cr-frm .form-control:focus + .form-control-placeholder {
@@ -66,6 +67,7 @@
   align-items: center;
   display: flex;
   justify-content: center;
+  padding: 20px;
 }
 .create .table-ara .btn-sec {
   display: flex;

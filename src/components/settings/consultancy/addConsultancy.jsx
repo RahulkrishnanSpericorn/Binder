@@ -131,7 +131,7 @@ class addConsultancy extends Component {
                                         </div>
                                     </div>
 
-                                  
+
                                     <div className="itm">
                                         <div className="cunt">
                                             <div className="numb">02</div>
@@ -169,16 +169,21 @@ class addConsultancy extends Component {
                                                 </>
                                             ) : (<img src="/images/add-img.svg" />)}
 
-                                            <input
-                                                type="file"
-                                                className="form-control"
-                                                id="attachmentFiles"
-                                                name="profilePic"
-                                                onChange={this.handleAddAttachment}
-                                            />
-                                            <button class="btn-upload">
+                                            <div class="btn-upload">
+                                                <input
+                                                    type="file"
+                                                    // className="form-control"
+                                                    id="attachmentFiles"
+                                                    name="profilePic"
+                                                    onChange={this.handleAddAttachment}
+                                                />
                                                 <img src="/images/add-btn.svg" />
-                                            </button>
+                                            </div>
+
+
+                                            {/* <button class="btn-upload">
+                                                <img src="/images/add-btn.svg" />
+                                            </button> */}
                                         </div>
                                     </div>
 
