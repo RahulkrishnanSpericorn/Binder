@@ -587,29 +587,6 @@ pre {
   font: 12px "Inter", sans-serif;
 }
 
-/*
-.form-group {
-    position: relative;
-    margin-bottom: 0px;
-}
-input:placeholder-shown + .form-control-placeholder{
-    margin-top: -36px;
-    font-family: $body-font;
-    font-size: 14px;
-    color:#676A74;
-    margin-left: 10px;
-}  
-input + .form-control-placeholder ,
-.form-control:focus + .form-control-placeholder{
-    position: absolute;
-    transition: all 200ms;
-    margin-left: 0px;
-    margin-top: -45px;
-    font-size: 70%;
-    font-family: $body-font;
-    color:#676A74; 
-    margin-left: 10px;
-}*/
 .form-group {
   margin-bottom: 0px;
 }
@@ -716,6 +693,10 @@ textarea.form-control::placeholder {
 }
 .chek label {
   margin-bottom: 0px;
+  margin-top: 0px;
+  color: #6c6c6c;
+  font-family: "Inter", sans-serif;
+  font-weight: 500;
 }
 .chek .chekbox-sec {
   background-color: #E6EAF2;
@@ -730,6 +711,7 @@ textarea.form-control::placeholder {
   font-family: "Inter", sans-serif;
   font-size: 13px;
   font-weight: 500;
+  line-height: 20px;
 }
 .chek .chekbox-sec label.radio-inline {
   padding: 10px;
@@ -755,47 +737,40 @@ textarea.form-control::placeholder {
   user-select: none;
 }
 
-/* Hide the browser's default radio button */
 .container input {
   position: absolute;
   opacity: 0;
   cursor: pointer;
 }
 
-/* Create a custom radio button */
 .checkmark {
   position: absolute;
   top: 3px;
   left: 0;
-  height: 15px;
-  width: 15px;
-  background-color: #fff;
+  height: 15px !important;
+  width: 15px !important;
+  background-color: #fff !important;
   border-radius: 50%;
 }
 
-/* On mouse-over, add a grey background color */
 .container:hover input ~ .checkmark {
   background-color: #103BB5;
 }
 
-/* When the radio button is checked, add a blue background */
 .container input:checked ~ .checkmark {
   background-color: #fff;
 }
 
-/* Create the indicator (the dot/circle - hidden when not checked) */
 .checkmark:after {
   content: "";
   position: absolute;
   display: none;
 }
 
-/* Show the indicator (dot/circle) when checked */
 .container input:checked ~ .checkmark:after {
   display: block;
 }
 
-/* Style the indicator (dot/circle) */
 .container .checkmark:after {
   top: 2px;
   left: 2px;
@@ -844,18 +819,11 @@ input[type=radio] {
 
 .noselect {
   -webkit-touch-callout: none;
-  /* iOS Safari */
   -webkit-user-select: none;
-  /* Safari */
   -khtml-user-select: none;
-  /* Konqueror HTML */
   -moz-user-select: none;
-  /* Firefox */
   -ms-user-select: none;
-  /* Internet Explorer/Edge */
   user-select: none;
-  /* Non-prefixed version, currently
-     supported by Chrome and Opera */
 }
 
 .btn-create {
