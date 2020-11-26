@@ -6,6 +6,7 @@ import TopSlider from '../../common/components/TopSlider';
 import actions from './actions';
 import ToastMsg from '../../common/ToastMessage'
 import _ from "lodash";
+import { API_ROUTE, ORIGIN_URL } from "../../../config/contstants";
 
 const mapStateToProps = state => {
     console.log('state', state)
@@ -23,7 +24,8 @@ const mapStateToProps = state => {
             nameErrorMsg: false,
             commentsErrorMsg: false,
             image: null,
-            image_description: ''
+            image_description: '',
+            consultancyId:''
         }
     }
 
@@ -34,15 +36,19 @@ const mapStateToProps = state => {
             name:this.props.location.state.consultancyItem.name,
             comments:this.props.location.state.consultancyItem.comments,
             image:this.props.location.state.consultancyItem.image,
-            image_description:this.props.location.state.consultancyItem.image_description
+            image_description:this.props.location.state.consultancyItem.image.description,
+            consultancyId:this.props.location.state.consultancyItem.id
+          
         })
+
+        console.log('this.state.image', (this.state.image.url=== null))
 
 
     }
     
 
 
-    addConsultancies = async () => {
+    updateConsultancies = async () => {
         if (this.state.name === '') {
             this.setState({
                 nameErrorMsg: true
@@ -59,18 +65,16 @@ const mapStateToProps = state => {
             params.append("consultancy[comments]", this.state.comments);
             params.append("consultancy[image_description]", this.state.image_description);
             params.append("consultancy[image]", this.state.image);
-            // let params = {
-            //     name: this.state.name,
-            //     comments: this.state.comments,
+            
+            let id = this.state.consultancyId
 
-            // }
-            await this.props.addConsultancies(params)
-            ToastMsg(this.props.consultancyReducer.addConsultanciesData.message, 'info')
+            await this.props.editConsultanciesById(params,id)
+            ToastMsg(this.props.consultancyReducer.editConsultancyById.message, 'info')
             this.setState({
                 name: '',
                 comments: ''
             })
-            if (this.props.consultancyReducer.addConsultanciesData.message === "Created successfully") {
+            if (this.props.consultancyReducer.editConsultancyById.message === "Updated successfully") {
                 history.push('/consultancy')
             }
 
@@ -138,7 +142,7 @@ const mapStateToProps = state => {
                                     <div className="itm-cnt">
                                         <div className="form-group">
                                             <label className="form-control-placeholder" style={{ color: this.state.nameErrorMsg && 'red' }} for="f-name">Consultancy Name *</label>
-                                            <input type="text" id="text" onChange={(e) => { this.setState({ name: e.target.value, nameErrorMsg: false }) }} className="form-control" placeholder="Enter Consultancy Name" />
+                                            <input type="text" id="text" value={this.state.name}  onChange={(e) => { this.setState({ name: e.target.value, nameErrorMsg: false }) }} className="form-control" placeholder="Enter Consultancy Name" />
                                         </div>
                                     </div>
                                 </div>
@@ -151,7 +155,7 @@ const mapStateToProps = state => {
                                     <div className="itm-cnt">
                                         <div className="form-group">
                                             <label className="form-control-placeholder" for="f-name">Image Description</label>
-                                            <input type="text" id="text" onChange={(e) => { this.setState({ image_description: e.target.value, nameErrorMsg: false }) }} className="form-control" placeholder="Enter Image Description" />
+                                            <input type="text" id="text" value={this.state.image_description} onChange={(e) => { this.setState({ image_description: e.target.value, nameErrorMsg: false }) }} className="form-control" placeholder="Enter Image Description" />
                                         </div>
                                     </div>
                                 </div>
@@ -163,7 +167,7 @@ const mapStateToProps = state => {
                                     <div className="itm-cnt">
                                         <div className="form-group">
                                             <label >Comments</label>
-                                            <textarea type="text-area" onChange={(e) => { this.setState({ comments: e.target.value, commentsErrorMsg: false }) }} className="form-control" placeholder="Enter Comments" />
+                                            <textarea type="text-area" value={this.state.comments} onChange={(e) => { this.setState({ comments: e.target.value, commentsErrorMsg: false }) }} className="form-control" placeholder="Enter Comments" />
                                         </div>
                                     </div>
                                 </div>
@@ -171,14 +175,19 @@ const mapStateToProps = state => {
                                 <div class="col-md-4 pl-0">
                                     <div class="file-upload">
                                         {/* <img src="/images/add-img.svg"/> */}
-                                        {this.state.image ? (
-                                            <>
+                                        {this.state.image && this.state.image.url=== null?
+                                        <img src="/images/add-img.svg" />
+                                        :
+                                        this.state.image ? (
+                                             <>
+                                             <img src="/images/add-img.svg" />
                                                 <img src={
                                                     this.state.image.url
                                                         ? this.state.image.url
                                                         : URL.createObjectURL(this.state.image)
                                                 } />
-                                            </>
+                                                </>
+                                           
                                         ) : (<img src="/images/add-img.svg" />)}
 
                                         <div class="btn-upload">
@@ -205,7 +214,7 @@ const mapStateToProps = state => {
 
 
                             <div className="frm btn-sec">
-                                <button onClick={() => this.addConsultancies()} className="btn btn-submit"> <i className="material-icons tic"> check</i>Submit</button>
+                                <button onClick={() => this.updateConsultancies()} className="btn btn-submit"> <i className="material-icons tic"> check</i>Update</button>
                             </div>
                         </div>
 
