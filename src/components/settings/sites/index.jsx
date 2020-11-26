@@ -110,8 +110,8 @@ const mapStateToProps = state =>{
                                                     <td>{item.code}</td>
                                                     <td>{item.name}</td>
                                                     <td>{item.display_name}</td>
-                                                    <td>{item.client}</td>
-                                                    <td>{item.region}</td>
+                                                    <td>{item.client.name}</td>
+                                                    <td>{item.region.name}</td>
                                                     <td></td>
                                                     <td></td>
                                                     <td>{item.comments}</td>

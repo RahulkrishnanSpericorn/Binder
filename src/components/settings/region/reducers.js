@@ -12,6 +12,7 @@ export default (state = initialState, action) => {
                 ...state
             }
         case actionTypes.GET_REGION_SUCCESS:
+            console.log("action",typeof(action.response.regions),action.response.regions )
             return {
                 ...state,
                 regionData: { success: true, ...action.response }

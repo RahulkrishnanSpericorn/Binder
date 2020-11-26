@@ -115,7 +115,7 @@ class index extends Component {
                                                         </td>
                                                         <td>{item.code}</td>
                                                         <td>{item.name}</td>
-                                                        <td>{item.consultancy ? item.consultancy : "-"}</td>
+                                                        <td>{item.consultancy.name ? item.consultancy.name : "-"}</td>
                                                         <td>{item.comments}</td>
                                                         <td>{item.display_blinking_red_plus}</td>
                                                         <td>{item.ep_name}</td>

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import actions from '../consultancy/actions';
 import TopSlider from '../../../components/common/components/TopSlider'
+import history from '../../../config/history';
 
 const mapStateToProps = state => {
     console.log('state', state)
@@ -22,8 +23,8 @@ class index extends Component {
     async componentDidMount() {
         await this.getConsultancies()
         // await this.addConsultancies()        //For add consultanices uncomment this line
-        await this.getConsultanciesById()
-        await this.editConsultanciesById()
+        // await this.getConsultanciesById()
+        // await this.editConsultanciesById()
     }
     getConsultancies = async () => {
         let params = {
@@ -168,7 +169,7 @@ class index extends Component {
                                                         <td class="action">
                                                             <img src="/images/three-dots.svg" data-toggle="dropdown" />
                                                             <ul class="dropdown-menu" role="menu">
-                                                                <li ><a href="#"><img src="/images/edit.svg" />Edit</a></li>
+                                                                <li ><a style={{cursor:"pointer"}} onClick={()=>history.push('/editConsultancy',{"consultancyItem":item})}><img src="/images/edit.svg" />Edit</a></li>
                                                                 <li><a href="#"><img src="/images/delete.svg" />Delete</a></li>
                                                             </ul>
                                                         </td>

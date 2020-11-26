@@ -34,6 +34,12 @@ const mapStateToProps = state =>{
 
 
         if (this.props.regionReducer.regionData.success) {
+            console.log('typeof',(this.props.regionReducer.regionData.regions))
+
+            // Object.values(this.props.regionReducer.regionData.regions).map((item)=>{
+            //     console.log('Objectitem', item)
+            // })
+
             this.setState({
                 regionDataList: this.props.regionReducer.regionData.regions
             })
@@ -109,7 +115,7 @@ const mapStateToProps = state =>{
                                                     <td>{item.code}</td>
                                                     <td>{item.name}</td>
                                                     <td>{item.display_name}</td>
-                                                    <td>{item.consultancy}</td>
+                                                    <td>{item.consultancy.name}</td>
                                                     <td> </td>
                                                     <td> </td>
                                                     <td>{item.comments}</td>
