@@ -2,7 +2,8 @@ import * as actionTypes from './constants'
 
 const initialState = {
     siteData: {},
-    addSiteData:{}
+    addSiteData:{},
+    editSiteData:{}
 }
 
 export default (state = initialState, action) => {
@@ -36,6 +37,21 @@ export default (state = initialState, action) => {
                 ...state,
                 addSiteData: { success: false, ...action.error }
             }
+
+            case actionTypes.EDIT_SITES_BYID_REQUEST:
+                return {
+                    ...state
+                }
+            case actionTypes.EDIT_SITES_BYID_SUCCESS:
+                return {
+                    ...state,
+                    editSiteData: { success: true, ...action.response }
+                }
+            case actionTypes.EDIT_SITES_BYID_FAILURE:
+                return {
+                    ...state,
+                    editSiteData: { success: false, ...action.error }
+                }
          
             default :
             return{

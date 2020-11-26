@@ -44,7 +44,31 @@ const addSite = params => {
     }
 }
 
+
+const editSiteById = (params, id) => { 
+    return async dispatch => {
+
+        try {
+            dispatch({ type: actionTypes.EDIT_SITES_BYID_REQUEST })
+            const res = await Service.editSiteById(params, id)
+            console.log('redionUpdate', res)
+            if (res && res.status === 200) {
+                if (res.data) {
+                    dispatch({ type: actionTypes.EDIT_SITES_BYID_SUCCESS, response: res.data })
+                } else {
+                    dispatch({ type: actionTypes.EDIT_SITES_BYID_FAILURE, error: res.data })
+                }
+            } else {
+                dispatch({ type: actionTypes.EDIT_SITES_BYID_FAILURE, error: res.data })
+            }
+        } catch (e) {
+            dispatch({ type: actionTypes.EDIT_SITES_BYID_FAILURE, error: e.response && e.response.data })
+        }
+    }
+}
+
 export default {
     getSites,
-    addSite
+    addSite,
+    editSiteById
 }

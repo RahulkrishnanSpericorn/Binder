@@ -12,7 +12,8 @@ const mapStateToProps = state =>{
     const {siteReducer, settingsCommonReducer} = state
     return {siteReducer, settingsCommonReducer}
 }
- class addSite extends Component {
+
+ class editSite extends Component {
 
     constructor(props) {
         super(props);
@@ -30,7 +31,8 @@ const mapStateToProps = state =>{
             consultancyIdList: [],
             clientIdList: [],
             regionIdList:[],
-            region_id:''
+            region_id:'',
+            site_id:''
         }
     }
 
@@ -39,13 +41,45 @@ const mapStateToProps = state =>{
 
         console.log('consultancyDropdownData', this.props.settingsCommonReducer.consultancyDropdownData)
         await this.setState({
-            consultancyIdList: this.props.settingsCommonReducer.consultancyDropdownData.data
+            consultancyIdList: this.props.settingsCommonReducer.consultancyDropdownData.data,
+
+            name :this.props.history.location.state.siteItem.name,
+            display_name : this.props.history.location.state.siteItem.display_name,
+            region_id : this.props.history.location.state.region_id,
+            consultancy_id : this.props.history.location.state.consultancy_id,
+            client_id : this.props.history.location.state.client_id,
+            comments : this.props.history.location.state.siteItem.comments,
+            site_id:this.props.history.location.state.siteItem.id
+
+        })
+
+        let clientdpdnParam ={
+            consultancy_id: this.state.consultancy_id
+        }
+        let regiondpdnParam={
+            client_id: this.state.client_id
+        }
+        this.getClientDataDropdown(clientdpdnParam)
+        this.getRegionDataDropdown(regiondpdnParam)
+
+    }
+
+    getClientDataDropdown = async(params)=>{
+        await this.props.getClientDropdown(params)
+        await this.setState({
+            clientIdList: this.props.settingsCommonReducer.clientDropdownData.data
+        })
+    }
+    getRegionDataDropdown = async (params)=>{
+        await this.props.getRegionDropdown(params)
+        await this.setState({
+            regionIdList: this.props.settingsCommonReducer.regionDropdownData.data
         })
     }
     
     
 
-    addSite = async () => {
+    editSite = async () => {
         console.log('this.state', this.state)
         if(this.state.name === ''){
             this.setState({
@@ -73,16 +107,16 @@ const mapStateToProps = state =>{
                 comments: this.state.comments,
                 client_id:this.state.client_id,
                 display_name:this.state.display_name,
-                region_id:this.state.region_id
-                
+                region_id:this.state.region_id 
             }
-            await this.props.addSite(params)
-            ToastMsg(this.props.siteReducer.addSiteData.message,'info')
-            this.setState({
-                name:'',
-                comments:''
-            })
-            if(this.props.siteReducer.addSiteData.message ===  "Site created successfully"){
+            let id = this.state.site_id
+            await this.props.editSiteById(params,id)
+            ToastMsg(this.props.siteReducer.editSiteData.message,'info')
+            // this.setState({
+            //     name:'',
+            //     comments:''
+            // })
+            if(this.props.siteReducer.editSiteData.message ===  "Site updated successfully"){
                 history.push('/sites')
             }
            
@@ -95,10 +129,8 @@ const mapStateToProps = state =>{
         let params = {
             consultancy_id: this.state.consultancy_id
         }
-        await this.props.getClientDropdown(params)
-        await this.setState({
-            clientIdList: this.props.settingsCommonReducer.clientDropdownData.data
-        })
+        
+        this.getClientDataDropdown(params)
     }
 
     selectClientId = async (e)=>{
@@ -106,10 +138,7 @@ const mapStateToProps = state =>{
         let params={
             client_id: this.state.client_id
         }
-        await this.props.getRegionDropdown(params)
-        await this.setState({
-            regionIdList: this.props.settingsCommonReducer.regionDropdownData.data
-        })
+      this.getRegionDataDropdown(params)
     }
 
     render() {
@@ -123,7 +152,7 @@ const mapStateToProps = state =>{
 
                     <div className="frm-ara">
                             <div className="top-ara">
-                                <h4>Add Site</h4>
+                                <h4>Edit Site</h4>
                             </div>
 
                             <div className="head">
@@ -139,7 +168,7 @@ const mapStateToProps = state =>{
                                         <div className="itm-cnt">
                                             <div className="form-group">
                                                 <label className="form-control-placeholder" style={{color:this.state.nameErrorMsg && 'red'}}for="f-name">Site Name *</label>
-                                                <input type="text" id="text" onChange={(e)=>{this.setState({name:e.target.value,nameErrorMsg:false})}} className="form-control" placeholder="Enter Site Name" />
+                                                <input type="text" id="text" value={this.state.name} onChange={(e)=>{this.setState({name:e.target.value,nameErrorMsg:false})}} className="form-control" placeholder="Enter Site Name" />
                                             </div>
                                         </div>
                                     </div>
@@ -151,7 +180,7 @@ const mapStateToProps = state =>{
                                         <div className="itm-cnt">
                                             <div className="form-group">
                                                 <label className="form-control-placeholder" for="f-name">Display Name</label>
-                                                <input type="text" id="text" onChange={(e) => { this.setState({ display_name: e.target.value }) }} className="form-control" placeholder="Enter Display Name" />
+                                                <input type="text" id="text" value={this.state.display_name} onChange={(e) => { this.setState({ display_name: e.target.value }) }} className="form-control" placeholder="Enter Display Name" />
                                             </div>
                                         </div>
                                     </div>
@@ -298,7 +327,7 @@ const mapStateToProps = state =>{
                                         <div className="itm-cnt">
                                             <div className="form-group">
                                                 <label className="form-control-placeholder" for="f-name">Comments</label>
-                                                <textarea type="text-area"  onChange={(e)=>{this.setState({comments:e.target.value,commentsErrorMsg:false})}} className="form-control" placeholder="Enter Comments" />
+                                                <textarea type="text-area" value={this.state.comments} onChange={(e)=>{this.setState({comments:e.target.value,commentsErrorMsg:false})}} className="form-control" placeholder="Enter Comments" />
                                             </div>
                                         </div>
                                     </div>
@@ -310,7 +339,7 @@ const mapStateToProps = state =>{
 
  
                             <div className="frm btn-sec">
-                                <button onClick={()=>this.addSite()} className="btn btn-submit"> <i className="material-icons tic"> check</i>Submit</button>
+                                <button onClick={()=>this.editSite()} className="btn btn-submit"> <i className="material-icons tic"> check</i>Update</button>
                             </div>
                         </div>
  
@@ -322,4 +351,5 @@ const mapStateToProps = state =>{
         )
     }
 }
-export default connect(mapStateToProps, {...actions, ...commonActions})(addSite)
+
+export default connect(mapStateToProps, {...actions, ...commonActions})(editSite)

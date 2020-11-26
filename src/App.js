@@ -20,6 +20,7 @@ import addRegion from "./components/settings/region/addRegion"
 import addSite from "./components/settings/sites/addSite" 
 import editConsultancy from "./components/settings/consultancy/editConsultancy" 
 import editRegion from "./components/settings/region/editRegion" 
+import editSite from "./components/settings/sites/editSite" 
 
 
 
@@ -43,6 +44,7 @@ function App() {
         <PrivateRoute exact path="/addSite" component={addSite} />
         <PrivateRoute exact path="/editConsultancy" component={editConsultancy} />
         <PrivateRoute exact path="/editRegion" component={editRegion} />
+        <PrivateRoute exact path="/editSite" component={editSite} />
         
       </Switch>
     </Router>
