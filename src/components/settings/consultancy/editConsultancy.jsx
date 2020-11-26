@@ -179,8 +179,7 @@ const mapStateToProps = state => {
                                         <img src="/images/add-img.svg" />
                                         :
                                         this.state.image ? (
-                                             <>
-                                             <img src="/images/add-img.svg" />
+                                             <> 
                                                 <img src={
                                                     this.state.image.url
                                                         ? this.state.image.url
