@@ -87,8 +87,8 @@ const mapStateToProps = state =>{
                                             <th class="">Site Code</th>
                                             <th class="">Site Name</th>
                                             <th class="">Display Name</th>
-                                            <th class="">Client</th>
                                             <th class="">Consultancy</th>
+                                            <th class="">Client</th>
                                             <th class="">Region</th>
                                             <th class=""> Client User</th>
                                             <th class="">Consultancy User</th> 
@@ -114,8 +114,8 @@ const mapStateToProps = state =>{
                                                     <td>{item.code}</td>
                                                     <td>{item.name}</td>
                                                     <td>{item.display_name ? item.display_name : '-'}</td>
-                                                    <td>{item.client.name}</td>
                                                     <td>{item.consultancy.name}</td>
+                                                    <td>{item.client.name}</td>
                                                     <td>{item.region.name}</td>
                                                     <td> - </td>
                                                     <td> - </td>
