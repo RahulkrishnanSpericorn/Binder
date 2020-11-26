@@ -69,7 +69,7 @@ const mapStateToProps = state => {
             let id = this.state.consultancyId
 
             await this.props.editConsultanciesById(params,id)
-            ToastMsg(this.props.consultancyReducer.editConsultancyById.message, 'info')
+            ToastMsg('Consultancy '+this.props.consultancyReducer.editConsultancyById.message, 'info')
             this.setState({
                 name: '',
                 comments: ''

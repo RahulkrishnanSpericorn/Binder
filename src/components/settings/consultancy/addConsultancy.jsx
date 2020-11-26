@@ -52,7 +52,7 @@ class addConsultancy extends Component {
 
             // }
             await this.props.addConsultancies(params)
-            ToastMsg(this.props.consultancyReducer.addConsultanciesData.message, 'info')
+            ToastMsg('Consultancy '+this.props.consultancyReducer.addConsultanciesData.message, 'info')
             this.setState({
                 name: '',
                 comments: ''
