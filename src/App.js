@@ -19,6 +19,7 @@ import UserPermission from "./components/settings/userPermission/index"
 import addRegion from "./components/settings/region/addRegion" 
 import addSite from "./components/settings/sites/addSite" 
 import editConsultancy from "./components/settings/consultancy/editConsultancy" 
+import editRegion from "./components/settings/region/editRegion" 
 
 
 
@@ -41,6 +42,7 @@ function App() {
         <PrivateRoute exact path="/addRegion" component={addRegion} />
         <PrivateRoute exact path="/addSite" component={addSite} />
         <PrivateRoute exact path="/editConsultancy" component={editConsultancy} />
+        <PrivateRoute exact path="/editRegion" component={editRegion} />
         
       </Switch>
     </Router>

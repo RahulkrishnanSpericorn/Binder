@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import TopSlider from '../../common/components/TopSlider'
 import actions from './actions'
 import '../../../assets/css/list.css'
+import history from '../../../config/history'
 
 const mapStateToProps = state =>{
     console.log('state', state)
@@ -166,8 +167,8 @@ const mapStateToProps = state =>{
                                                     <td class="action">
                                                         <img src="/images/three-dots.svg" data-toggle="dropdown" />
                                                         <ul class="dropdown-menu" role="menu">
-                                                            <li ><a href="#"><img src="/images/edit.svg" />Edit</a></li>
-                                                            <li><a href="#"><img src="/images/delete.svg" />Delete</a></li>
+                                                            <li ><a style={{cursor:"pointer"}} onClick={()=>{history.push('/editRegion',{"regionItem":item, "clientid":item.client.id,"consultancy_id":item.consultancy.id})}}><img src="/images/edit.svg" />Edit</a></li>
+                                                            <li><a style={{cursor:"pointer"}}><img src="/images/delete.svg" />Delete</a></li>
                                                         </ul>
                                                     </td>
                                                 </tr>

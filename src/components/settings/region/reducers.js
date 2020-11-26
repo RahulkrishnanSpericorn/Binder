@@ -2,7 +2,8 @@ import * as actionTypes from './constants'
 
 const initialState = {
     regionData: {},
-    addRegionData:{}
+    addRegionData:{},
+    editRegionData:{}
 }
 
 export default (state = initialState, action) => {
@@ -37,6 +38,21 @@ export default (state = initialState, action) => {
                 ...state,
                 addRegionData: { success: false, ...action.error }
             }
+
+            case actionTypes.EDIT_REGION_BYID_REQUEST:
+                return {
+                    ...state
+                }
+            case actionTypes.EDIT_REGION_BYID_SUCCESS:
+                return {
+                    ...state,
+                    editRegionData: { success: true, ...action.response }
+                }
+            case actionTypes.EDIT_REGION_BYID_FAILURE:
+                return {
+                    ...state,
+                    editRegionData: { success: false, ...action.error }
+                }
          
             default :
             return{
