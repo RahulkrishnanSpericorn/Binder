@@ -103,6 +103,8 @@ class index extends Component {
                                                 <th class="">Consultancy Code</th>
                                                 <th class="">Consultancy Name</th>
                                                 <th class="">Comments</th>
+                                                <th class="">Created At</th>
+                                            <th class="">Updated At</th>
                                                 {/* <th class="">Consultancy   <span class="rop-icon"> <img src="/images/down-arrow.svg"/> </span> </th>
                                        <th class="">Client <span class="rop-icon"> <img src="/images/down-arrow.svg"/> </span></th>
                                        <th class="">Associated Project <span class="rop-icon"> <img src="/images/down-arrow.svg"/> </span></th>
@@ -121,7 +123,9 @@ class index extends Component {
                                                         </td>
                                                         <td>{item.code}</td>
                                                         <td>{item.name}</td>
-                                                        <td>{item.comments}</td>
+                                                        <td>{item.comments? item.comments : '-'}</td>
+                                                        <td>{item.created_at}</td>
+                                                    <td>{item.updated_at}</td>
                                                         {/* <td>
                                             <div class="usr-vw">
                                                 <div class="amd"> 150 User</div>

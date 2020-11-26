@@ -88,10 +88,13 @@ const mapStateToProps = state =>{
                                             <th class="">Site Name</th>
                                             <th class="">Display Name</th>
                                             <th class="">Client</th>
+                                            <th class="">Consultancy</th>
                                             <th class="">Region</th>
                                             <th class=""> Client User</th>
                                             <th class="">Consultancy User</th> 
                                             <th class="">Comments</th>
+                                            <th class="">Created At</th>
+                                            <th class="">Updated At</th>
                                             {/* <th class="">Consultancy   <span class="rop-icon"> <img src="/images/down-arrow.svg"/> </span> </th>
                                    <th class="">Client <span class="rop-icon"> <img src="/images/down-arrow.svg"/> </span></th>
                                    <th class="">Associated Project <span class="rop-icon"> <img src="/images/down-arrow.svg"/> </span></th>
@@ -110,12 +113,15 @@ const mapStateToProps = state =>{
                                                     </td>
                                                     <td>{item.code}</td>
                                                     <td>{item.name}</td>
-                                                    <td>{item.display_name}</td>
+                                                    <td>{item.display_name ? item.display_name : '-'}</td>
                                                     <td>{item.client.name}</td>
+                                                    <td>{item.consultancy.name}</td>
                                                     <td>{item.region.name}</td>
-                                                    <td></td>
-                                                    <td></td>
-                                                    <td>{item.comments}</td>
+                                                    <td> - </td>
+                                                    <td> - </td>
+                                                    <td>{item.comments ? item.comments :'-'}</td>
+                                                    <td>{item.created_at}</td>
+                                                    <td>{item.updated_at}</td>
                                                     {/* <td>
                                         <div class="usr-vw">
                                             <div class="amd"> 150 User</div>

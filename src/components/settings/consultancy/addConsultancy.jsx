@@ -156,8 +156,14 @@ class addConsultancy extends Component {
                                         </div>
                                     </div>
 
-                                    <div class="col-md-4 pl-0">
-                                        <div class="file-upload">
+                                    <div className="itm">
+                                        <div className="cunt">
+                                            <div className="numb">04</div>
+                                        </div>
+                                        <div className="itm-cnt">
+                                            <div className="form-group">
+
+                                            <div class="file-upload">
                                             {/* <img src="/images/add-img.svg"/> */}
                                             {this.state.image ? (
                                                 <>
@@ -185,7 +191,14 @@ class addConsultancy extends Component {
                                                 <img src="/images/add-btn.svg" />
                                             </button> */}
                                         </div>
+
+                                               </div>
+                                        </div>
                                     </div>
+
+                                    {/* <div class="col-md-4 pl-0">
+                                       
+                                    </div> */}
 
 
 

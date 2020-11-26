@@ -1473,6 +1473,18 @@ body::before {
   font-size: 16px;
   padding: 3px;
 }
+.frm .itm .itm-cnt .file-upload {
+  background-color: #efefef;
+  padding: 10px;
+  text-align: center;
+  max-height: 250px;
+  overflow: hidden;
+  min-height: 250px;
+}
+.frm .itm .itm-cnt .file-upload img {
+  margin-left: auto;
+  margin-right: auto;
+}
 
 input[list]::-webkit-calendar-picker-indicator {
   display: none;

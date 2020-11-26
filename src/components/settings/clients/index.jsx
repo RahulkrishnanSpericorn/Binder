@@ -84,7 +84,6 @@ class index extends Component {
                                                     <img src="/images/table-blue-dots.svg" />
                                                 </th>
                                                 <th class="">Client Code</th>
-                                                <th class="">Comments</th>
                                                 <th class="">Client Name</th>
                                                 <th class="">Consultancy</th>
                                                 <th class="">Display Blinking Red Plus</th>
@@ -96,6 +95,9 @@ class index extends Component {
                                                 <th class="">Trailing View Current Month</th>
                                                 <th class="">Use Threshold For Quarterly</th>
                                                 <th class="">Cmms Url</th>
+                                                <th class="">Comments</th>
+                                                <th class="">Created At</th>
+                                            <th class="">Updated At</th>
 
                                                 {/* <th class="">Consultancy   <span class="rop-icon"> <img src="/images/down-arrow.svg"/> </span> </th>
                                        <th class="">Client <span class="rop-icon"> <img src="/images/down-arrow.svg"/> </span></th>
@@ -116,16 +118,18 @@ class index extends Component {
                                                         <td>{item.code}</td>
                                                         <td>{item.name}</td>
                                                         <td>{item.consultancy.name ? item.consultancy.name : "-"}</td>
-                                                        <td>{item.comments}</td>
                                                         <td>{item.display_blinking_red_plus}</td>
-                                                        <td>{item.ep_name}</td>
+                                                        <td>{item.ep_name ? item.ep_name : '-'}</td>
                                                         <td>{item.lock_total_devices}</td>
                                                         <td>{item.modify_next_due_date}</td>
                                                         <td>{item.request_email_recipt}</td>
                                                         <td>{item.schedule_threshold}</td>
                                                         <td>{item.trailing_view_current_month}</td>
                                                         <td>{item.use_threshold_for_quarterly}</td>
-                                                        <td>{item.cmms_url}</td>
+                                                        <td>{item.cmms_url ? item.cmms_url : '-'}</td>
+                                                        <td>{item.comments ? item.comments : '-'}</td>
+                                                        <td>{item.created_at}</td>
+                                                    <td>{item.updated_at}</td>
 
                                                         <td class="action">
                                                             <img src="/images/three-dots.svg" data-toggle="dropdown" />
