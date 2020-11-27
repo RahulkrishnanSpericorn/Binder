@@ -52,25 +52,27 @@ export default class SideNav extends Component {
                         <div className="viw-sub">
                             <div className="collapse" id="setting">
                                 <ul className="view">
-                                <li>
+                                    <li>
+                                        <a onClick={() => { this.pageChange('consultancy') }} className="">Consultancies</a>
+                                    </li>
+                                    <li>
+                                        <a onClick={() => { this.pageChange('clients') }} className="">Clients</a>
+                                    </li>
+                                    <li>
                                         <a onClick={() => { this.pageChange('regions') }} className="">Regions</a>
                                     </li>
                                     <li>
                                         <a onClick={() => { this.pageChange('sites') }} className="">Sites</a>
                                     </li>
-                                    
+
                                     <li>
                                         <a onClick={() => { this.pageChange('building') }} className="">Building</a>
                                     </li>
                                     {/* <li>
                                         <a onClick={() => { this.pageChange('saveBuilding') }} className="">Save Building</a>
                                     </li> */}
-                                    <li>
-                                        <a onClick={() => { this.pageChange('clients') }} className="">Clients</a>
-                                    </li>
-                                    <li>
-                                        <a onClick={() => { this.pageChange('consultancy') }} className="">Consultancies</a>
-                                    </li>
+
+
                                     <li>
                                         <a onClick={() => { this.pageChange('users') }} className="">Users</a>
                                     </li>
