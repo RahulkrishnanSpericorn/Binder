@@ -10,6 +10,7 @@ export default class SideNav extends Component {
         history.push('/login')
 
     }
+    
     pageChange = (pageName) => {
         history.push('/' + pageName)
     }

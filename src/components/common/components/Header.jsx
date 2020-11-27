@@ -14,7 +14,7 @@ export default class Header extends Component {
                         </button>
                     </div>
                     <a className="navbar-brand" href="#">
-                        <img src="/images/binder-logo-white-color.svg" />
+                        <img src="/images/white-logo.svg" />
                     </a>
                     <div className="mnu-info ml-auto">
                         <ul className="prf-lst">
