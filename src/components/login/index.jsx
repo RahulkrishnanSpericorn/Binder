@@ -87,7 +87,7 @@ class Index extends Component {
                 <header>
                     <nav className="navbar fixed-top">
                         <a className="navbar-brand" href="#">
-                            <img src="/images/logo-login.svg" />
+                            <img src="/images/binder-blue-logo.svg" />
                         </a>
                     </nav>
                 </header>
