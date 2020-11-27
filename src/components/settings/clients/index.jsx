@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import history from '../../../config/history';
 import TopSlider from '../../common/components/TopSlider';
 import actions from './actions'
 
@@ -134,8 +135,8 @@ class index extends Component {
                                                         <td class="action">
                                                             <img src="/images/three-dots.svg" data-toggle="dropdown" />
                                                             <ul class="dropdown-menu" role="menu">
-                                                                <li ><a href="#"><img src="/images/edit.svg" />Edit</a></li>
-                                                                <li><a href="#"><img src="/images/delete.svg" />Delete</a></li>
+                                                                <li ><a style={{cursor:"pointer"}}onClick={()=>{history.push('/editCLients',{"clientItem":item,"consultancy_id":item.consultancy.id})}}><img src="/images/edit.svg" />Edit</a></li>
+                                                                <li><a style={{cursor:"pointer"}}><img src="/images/delete.svg" />Delete</a></li>
                                                             </ul>
                                                         </td>
                                                     </tr>

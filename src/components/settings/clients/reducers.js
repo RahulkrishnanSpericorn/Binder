@@ -2,7 +2,8 @@ import * as actionTypes from './constants'
 
 const initialState = {
     clientData: {},
-    addClientData: {}
+    addClientData: {},
+    editClientData: {}
 }
 
 export default (state = initialState, action) => {
@@ -35,6 +36,22 @@ export default (state = initialState, action) => {
                 ...state,
                 addClientData: { success: false, ...action.error }
             }
+
+            case actionTypes.EDIT_CLIENTS_BYID_REQUEST:
+                return {
+                    ...state
+                }
+            case actionTypes.EDIT_CLIENTS_BYID_SUCCESS:
+                return {
+                    ...state,
+                    editClientData: { success: true, ...action.response }
+                }
+            case actionTypes.EDIT_CLIENTS_BYID_FAILURE:
+                return {
+                    ...state,
+                    editClientData: { success: false, ...action.error }
+                }
+
             default :
             return{
                 ...state

@@ -13,7 +13,9 @@ const mapStateToProps = state => {
     const { clientReducer, settingsCommonReducer } = state;
     return { clientReducer, settingsCommonReducer };
 }
-class addClients extends Component {
+
+class editClients extends Component {
+
     constructor(props) {
         super(props);
         this.state = {
@@ -32,12 +34,12 @@ class addClients extends Component {
             ep_name: '',
             use_threshold_for_quarterly: true,
             request_email_recipt: true,
-            image_description: '',
-            image: {},
+            // image_description: '',
+            // image: {},
             consultancy_id: '',
             consultancyIdList: [],
 
-
+            client_id:''
 
         }
     }
@@ -47,13 +49,30 @@ class addClients extends Component {
         await this.props.getConsultancyDropdown()
 
         console.log('consultancyDropdownData', this.props.settingsCommonReducer.consultancyDropdownData)
+        console.log('this.props.history.location.state', this.props.history.location.state)
         await this.setState({
-            consultancyIdList: this.props.settingsCommonReducer.consultancyDropdownData.data
-        })
+            consultancyIdList: this.props.settingsCommonReducer.consultancyDropdownData.data,
+            name: this.props.history.location.state.clientItem.name,
+            consultancy_id: this.props.history.location.state.consultancy_id,
+            comments: this.props.history.location.state.clientItem.comments,
+            cmms_url: this.props.history.location.state.clientItem.cmms_url,
+            trailing_view_current_month: this.props.history.location.state.clientItem.trailing_view_current_month,
+            modify_next_due_date: this.props.history.location.state.clientItem.modify_next_due_date === "Yes" ? true : false,
+            schedule_threshold: this.props.history.location.state.clientItem.schedule_threshold,
+            display_blinking_red_plus: this.props.history.location.state.clientItem.display_blinking_red_plus === "Yes" ? true : false,
+            lock_total_devices: this.props.history.location.state.clientItem.lock_total_devices === "Yes" ? true : false,
+            ep_name: this.props.history.location.state.clientItem.ep_name,
+            use_threshold_for_quarterly: this.props.history.location.state.clientItem.use_threshold_for_quarterly === "Yes" ? true : false,
+            request_email_recipt: this.props.history.location.state.clientItem.request_email_recipt === "Yes" ? true : false,
+            client_id:this.props.history.location.state.clientItem.id
 
+        })
+        
+        console.log('this.state', this.state)
+        console.log('this.state.client_id', (this.state.client_id))
     }
 
-    addClients = async () => {
+    editClients = async () => {
         console.log('this.state', this.state)
         if (this.state.name === '') {
             this.setState({
@@ -80,25 +99,27 @@ class addClients extends Component {
             rec_data.append("client[request_email_recipt]", this.state.request_email_recipt);
             rec_data.append("client[comments]", this.state.comments);
 
+            let id = this.state.client_id
+
             // let params = {
             //     'client[name]': this.state.name,
             //     'client[comments]': this.state.comments,
 
             // }
-            await this.props.addClients(rec_data)
-            ToastMsg('Client '+this.props.clientReducer.addClientData.message, 'info')
-            this.setState({
-                name: '',
-                comments: ''
-            })
-            if (this.props.clientReducer.addClientData.message === "Created successfully") {
+            await this.props.editClientsById(rec_data,id)
+            ToastMsg('Client '+this.props.clientReducer.editClientData.message, 'info')
+            // this.setState({
+            //     name: '',
+            //     comments: ''
+            // })
+            if (this.props.clientReducer.editClientData.message === "Updated successfully") {
                 history.push('/clients')
             }
 
         }
     }
     async radioChanged(e) {
-        console.log('e.target.name', e.target.name)
+        console.log('e.target.name', (e.target.value))
         if (e.target.name === "modify_next_due_date") {
             if (e.target.value === "true") {
                 await this.setState({ modify_next_due_date: true })
@@ -133,6 +154,7 @@ class addClients extends Component {
 
     }
 
+
     render() {
         return (
             <section className="cont-ara">
@@ -144,7 +166,7 @@ class addClients extends Component {
 
                             <div className="frm-ara three-col">
                                 <div className="top-ara">
-                                    <h4>Add Clients</h4>
+                                    <h4>Edit Client</h4>
                                 </div>
 
                                 <div className="head">
@@ -158,7 +180,7 @@ class addClients extends Component {
                                         <div className="itm-cnt">
                                             <div className="form-group">
                                                 <label className="form-control-placeholder" style={{ color: this.state.nameErrorMsg && 'red' }} for="f-name">Client Name *</label>
-                                                <input type="text" id="text" onChange={(e) => { this.setState({ name: e.target.value, nameErrorMsg: false }) }} className="form-control" placeholder="Enter Client Name " />
+                                                <input type="text" id="text" value={this.state.name} onChange={(e) => { this.setState({ name: e.target.value, nameErrorMsg: false }) }} className="form-control" placeholder="Enter Client Name " />
                                             </div>
                                         </div>
                                     </div>
@@ -195,7 +217,7 @@ class addClients extends Component {
                                         <div className="itm-cnt">
                                             <div className="form-group">
                                                 <label className="form-control-placeholder" for="f-name">CMMS Url</label>
-                                                <input type="text-area" id="text" onChange={(e) => { this.setState({ cmms_url: e.target.value }) }} className="form-control" placeholder="Enter CMMS Url" />
+                                                <input type="text-area" id="text" value={this.state.cmms_url} onChange={(e) => { this.setState({ cmms_url: e.target.value }) }} className="form-control" placeholder="Enter CMMS Url" />
                                             </div>
                                         </div>
                                     </div>
@@ -209,7 +231,7 @@ class addClients extends Component {
                                             <div className="form-group ">
 
                                                 <label className="form-control-placeholder" for="f-name">Trailing View Current Month</label>
-                                                <select className="form-control select" onChange={(e) => { this.setState({ trailing_view_current_month: e.target.value }) }}>
+                                                <select className="form-control select" value={this.state.trailing_view_current_month} onChange={(e) => { this.setState({ trailing_view_current_month: e.target.value }) }}>
                                                     <option value="current year">Current year</option>
                                                     <option value="previous year">Previous year</option>
                                                 </select>
@@ -226,13 +248,13 @@ class addClients extends Component {
                                             <div className="chek">
 
                                                 <label >Modify Next Due Date</label>
-                                                <div className="chekbox-sec" onChange={(e) => this.radioChanged(e)}>
+                                                <div className="chekbox-sec" >
                                                     <label class="container">Yes
-                                                    <input type="radio" value={true} name="modify_next_due_date" defaultChecked={true} />
+                                                    <input type="radio" name="modify_next_due_date" value={true} onChange={(e) => this.radioChanged(e)} checked={ this.state.modify_next_due_date} />
                                                         <span class="checkmark"></span>
                                                     </label>
                                                     <label class="container">No
-                                                    <input type="radio" value={false} name="modify_next_due_date" />
+                                                    <input type="radio"  name="modify_next_due_date" value={false} onChange={(e) => this.radioChanged(e)} checked={ !this.state.modify_next_due_date}/>
                                                         <span class="checkmark"></span>
                                                     </label>
                                                 </div>
@@ -248,7 +270,7 @@ class addClients extends Component {
                                         <div className="itm-cnt">
                                             <div className="form-group ">
                                                 <label className="form-control-placeholder" for="f-name">Schedule Threshold</label>
-                                                <select className="form-control select" onChange={(e) => { this.setState({ schedule_threshold: e.target.value }) }}>
+                                                <select className="form-control select" value={this.state.schedule_threshold} onChange={(e) => { this.setState({ schedule_threshold: e.target.value }) }}>
                                                     <option value="days">Days</option>
                                                     <option value="month">Month</option>
                                                 </select>
@@ -264,13 +286,13 @@ class addClients extends Component {
                                         <div className="itm-cnt">
                                             <div className="chek">
                                                 <label >Display Blinking Red Plus?</label>
-                                                <div className="chekbox-sec" onChange={(e) => this.radioChanged(e)}>
+                                                <div className="chekbox-sec" >
                                                 <label class="container">Yes
-                                                    <input type="radio" value={true} name="display_blinking_red_plus" defaultChecked={true} />
+                                                    <input type="radio" value={true} name="display_blinking_red_plus" onChange={(e) => this.radioChanged(e)} checked={ this.state.display_blinking_red_plus} />
                                                     <span class="checkmark"></span>
                                                     </label>
                                                     <label class="container">No
-                                                    <input type="radio" value={false} name="display_blinking_red_plus" />
+                                                    <input type="radio" value={false} name="display_blinking_red_plus" onChange={(e) => this.radioChanged(e)} checked={ !this.state.display_blinking_red_plus} />
                                                     <span class="checkmark"></span>
                                                     </label>
                                                 </div>
@@ -285,13 +307,13 @@ class addClients extends Component {
                                         <div className="itm-cnt">
                                             <div className="chek">
                                                 <label> Lock Total Devices</label>
-                                                <div className="chekbox-sec" onChange={(e) => this.radioChanged(e)}>
+                                                <div className="chekbox-sec">
                                                 <label class="container">Yes
-                                                    <input type="radio" value={true} name="lock_total_devices" defaultChecked={true} />
+                                                    <input type="radio" value={true} name="lock_total_devices"  onChange={(e) => this.radioChanged(e)}  checked={ this.state.lock_total_devices}/>
                                                     <span class="checkmark"></span>
                                                     </label>   
                                                     <label class="container">No
-                                                    <input type="radio" value={false} name="lock_total_devices" /> 
+                                                    <input type="radio" value={false} name="lock_total_devices"  onChange={(e) => this.radioChanged(e)} checked={ !this.state.lock_total_devices}/> 
                                                     <span class="checkmark"></span>
                                                     </label>
                                                 </div>
@@ -306,7 +328,7 @@ class addClients extends Component {
                                         <div className="itm-cnt">
                                             <div className="form-group">
                                                 <label className="form-control-placeholder" for="f-name">Ep Name</label>
-                                                <input type="text-area" id="text" onChange={(e) => { this.setState({ ep_name: e.target.value }) }} className="form-control" placeholder="Enter Ep Name " />
+                                                <input type="text-area" id="text" value={this.state.ep_name} onChange={(e) => { this.setState({ ep_name: e.target.value }) }} className="form-control" placeholder="Enter Ep Name " />
                                             </div>
                                         </div>
                                     </div>
@@ -318,13 +340,13 @@ class addClients extends Component {
                                         <div className="itm-cnt">
                                             <div className="chek">
                                                 <label >Use Threshold For Quarterly</label>
-                                                <div className="chekbox-sec" onChange={(e) => this.radioChanged(e)}>
+                                                <div className="chekbox-sec" >
                                                 <label class="container">Yes
-                                                    <input type="radio" value={true} name="use_threshold_for_quarterly" defaultChecked={true} /> 
+                                                    <input type="radio" value={true} name="use_threshold_for_quarterly" onChange={(e) => this.radioChanged(e)} checked={ this.state.use_threshold_for_quarterly} /> 
                                                     <span class="checkmark"></span>
                                                     </label>   
                                                     <label class="container">No
-                                                    <input type="radio" value={false} name="use_threshold_for_quarterly" /> 
+                                                    <input type="radio" value={false} name="use_threshold_for_quarterly" onChange={(e) => this.radioChanged(e)} checked={ !this.state.use_threshold_for_quarterly} /> 
                                                     <span class="checkmark"></span>
                                                     </label>
                                                 </div>
@@ -339,13 +361,13 @@ class addClients extends Component {
                                         <div className="itm-cnt">
                                             <div className="chek">
                                                 <label > Request Email Recipt</label>
-                                                <div className="chekbox-sec" onChange={(e) => this.radioChanged(e)}>
+                                                <div className="chekbox-sec" >
                                                 <label class="container">Yes
-                                                    <input type="radio" value={true} name="request_email_recipt" defaultChecked={true} />
+                                                    <input type="radio" value={true} name="request_email_recipt" onChange={(e) => this.radioChanged(e)} checked={ this.state.request_email_recipt} />
                                                     <span class="checkmark"></span>
                                                     </label>   
                                                     <label class="container">No
-                                                    <input type="radio" value={false} name="request_email_recipt" />
+                                                    <input type="radio" value={false} name="request_email_recipt" onChange={(e) => this.radioChanged(e)} checked={ !this.state.request_email_recipt} />
                                                     <span class="checkmark"></span>
                                                     </label>
                                                 </div>
@@ -360,7 +382,7 @@ class addClients extends Component {
                                         <div className="itm-cnt">
                                             <div className="form-group">
                                                 <label className="form-control-placeholder" for="f-name">Comments</label>
-                                                <textarea type="text-area" onChange={(e) => { this.setState({ comments: e.target.value, commentsErrorMsg: false }) }} className="form-control" placeholder=" Enter Comments" />
+                                                <textarea type="text-area" value={this.state.comments} onChange={(e) => { this.setState({ comments: e.target.value, commentsErrorMsg: false }) }} className="form-control" placeholder=" Enter Comments" />
                                             </div>
                                         </div>
                                     </div>
@@ -369,7 +391,7 @@ class addClients extends Component {
                                 </div>
 
                                 <div className="frm btn-sec">
-                                    <button onClick={() => this.addClients()} className="btn btn-submit"> <i className="material-icons tic"> check</i>Submit</button>
+                                    <button onClick={() => this.editClients()} className="btn btn-submit"> <i className="material-icons tic"> check</i>Submit</button>
                                 </div>
                             </div>
 
@@ -383,4 +405,4 @@ class addClients extends Component {
     }
 }
 
-export default connect(mapStateToProps, { ...actions, ...commonActions })(addClients)
+export default connect(mapStateToProps, { ...actions, ...commonActions })(editClients)

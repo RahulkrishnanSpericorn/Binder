@@ -44,7 +44,30 @@ const addClients = params => {
     }
 }
 
+const editClientsById = (params,id) => {
+
+    return async dispatch => {
+        try {
+            dispatch({ type: actionTypes.EDIT_CLIENTS_BYID_REQUEST })
+            const res = await Service.editClientsById(params,id)
+            console.log('ClientUpdtres', res)
+            if (res && res.status === 200) {
+                if (res.data) {
+                    dispatch({ type: actionTypes.EDIT_CLIENTS_BYID_SUCCESS, response: res.data })
+                } else {
+                    dispatch({ type: actionTypes.EDIT_CLIENTS_BYID_FAILURE, error: res.data })
+                }
+            } else {
+                dispatch({ type: actionTypes.EDIT_CLIENTS_BYID_FAILURE, error: res.data })
+            }
+        } catch (e) {
+            dispatch({ type: actionTypes.EDIT_CLIENTS_BYID_FAILURE, error: e.response && e.response.data })
+        }
+    }
+}
+
 export default {
     getClients,
-    addClients
+    addClients,
+    editClientsById
 }
