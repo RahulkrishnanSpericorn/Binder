@@ -66,7 +66,7 @@ export default class SideNav extends Component {
                                     </li>
 
                                     <li>
-                                        <a onClick={() => { this.pageChange('building') }} className="">Building</a>
+                                        <a onClick={() => { this.pageChange('building') }} className="">Buildings</a>
                                     </li>
                                     {/* <li>
                                         <a onClick={() => { this.pageChange('saveBuilding') }} className="">Save Building</a>
