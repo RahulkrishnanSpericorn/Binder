@@ -66,9 +66,32 @@ const getRegionDropdown = (params) => {
     }
 }
 
+const getSitesDropdown = (params) => {
+    return async dispatch => {
+        try {
+            dispatch({ type: actionTypes.GET_SITES_DROPDOWN_REQUEST })
+            console.log('params', params)
+            const res = await Service.getSitesDropdown(params)
+            console.log('Sitesdropres', res)
+            if (res && res.status === 200) {
+                if (res.data) {
+                    dispatch({ type: actionTypes.GET_SITES_DROPDOWN_SUCCESS, response: res })
+                } else {
+                    dispatch({ type: actionTypes.GET_SITES_DROPDOWN_FAILURE, error: res.data })
+                }
+            } else {
+                dispatch({ type: actionTypes.GET_SITES_DROPDOWN_FAILURE, error: res.response && res.response.data })
+            }
+        } catch (e) {
+            dispatch({ type: actionTypes.GET_SITES_DROPDOWN_FAILURE, error: e.response && e.response.data })
+        }
+    }
+}
+
 
 export default {
     getConsultancyDropdown,
     getClientDropdown,
-    getRegionDropdown
+    getRegionDropdown,
+    getSitesDropdown
 }

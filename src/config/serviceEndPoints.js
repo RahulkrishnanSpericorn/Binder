@@ -6,7 +6,9 @@ export const userEndPoints = {
     getSites:"/api/v1/sites",
     getConsultancyDropdown:'/api/v1/consultancies/consultancies_dropdown',
     getClientDropdown:"/api/v1/clients/clients_dropdown",
-    getRegionDropdown:"/api/v1/regions/regions_dropdown"
+    getRegionDropdown:"/api/v1/regions/regions_dropdown",
+    getBuildingData:"/api/v1/buildings",
+    getSitesDropdown:'/api/v1/sites/sites_dropdown'
     
 };
 

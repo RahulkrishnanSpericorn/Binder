@@ -4,6 +4,7 @@ const initialState = {
     consultancyDropdownData: {}, 
     clientDropdownData: {}, 
     regionDropdownData: {}, 
+    siteDropdownData:{}
 }
 
 export default (state = initialState, action) => {
@@ -51,6 +52,21 @@ export default (state = initialState, action) => {
                     return {
                         ...state,
                         regionDropdownData: { success: false, ...action.error }
+                    }
+
+                    case actionTypes.GET_SITES_DROPDOWN_REQUEST:
+                    return {
+                        ...state
+                    }
+                case actionTypes.GET_SITES_DROPDOWN_SUCCESS:
+                    return {
+                        ...state,
+                        siteDropdownData: { success: true, ...action.response }
+                    }
+                case actionTypes.GET_SITES_DROPDOWN_FAILURE:
+                    return {
+                        ...state,
+                        siteDropdownData: { success: false, ...action.error }
                     }
 
             
