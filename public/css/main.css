@@ -651,7 +651,7 @@ pre {
 
 textarea.form-control {
   resize: none;
-  height: 200px;
+  height: 150px !important;
 }
 textarea.form-control::placeholder {
   color: #676A74;
