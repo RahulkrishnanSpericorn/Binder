@@ -25,6 +25,7 @@ import editClients from "./components/settings/clients/editClients"
 import building from "./components/settings/building/index" 
 import binder from "./components/settings/binder/index" 
 import addBinder from "./components/settings/binder/addBinder" 
+import editBinder from "./components/settings/binder/editBinder" 
 
 
 
@@ -53,6 +54,7 @@ function App() {
         <PrivateRoute exact path="/building" component={building} />
         <PrivateRoute exact path="/binder" component={binder} />
         <PrivateRoute exact path="/addBinder" component={addBinder} />
+        <PrivateRoute exact path="/editBinder" component={editBinder} />
         
       </Switch>
     </Router>

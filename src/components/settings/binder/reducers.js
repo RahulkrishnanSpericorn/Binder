@@ -3,7 +3,8 @@ import * as actionTypes from './constants'
 const initialState = {
     binderData: {},
     addBinderData: {},
-    deleteBinderData:{}
+    deleteBinderData:{},
+    editBinderData:{}
 }
 
 
@@ -53,6 +54,21 @@ export default (state = initialState, action) => {
                     ...state,
                     deleteBinderData: { success: false, ...action.error }
                 }
+
+                case actionTypes.EDIT_BINDER_REQUEST:
+                    return {
+                        ...state
+                    }
+                case actionTypes.EDIT_BINDER_SUCCESS:
+                    return {
+                        ...state,
+                        editBinderData: { success: true, ...action.response }
+                    }
+                case actionTypes.EDIT_BINDER_FAILURE:
+                    return {
+                        ...state,
+                        editBinderData: { success: false, ...action.error }
+                    }
  
          
             default :
