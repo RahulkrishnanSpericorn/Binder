@@ -53,7 +53,7 @@ const mapStateToProps = state =>{
         await this.props.deleteRegion(id)
         await this.getRegion()
 
-        ToastMsg(this.props.regionReducer.deleteRegionData.message,'error')
+        ToastMsg(this.props.regionReducer.deleteRegionData.message,'info')
 
     }
 

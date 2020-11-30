@@ -51,7 +51,7 @@ class index extends Component {
         await this.props.deleteClient(id)
         await this.getClients()
 
-        ToastMsg(this.props.clientReducer.deleteClientData.message,'error')
+        ToastMsg(this.props.clientReducer.deleteClientData.message,'info')
 
 
     }

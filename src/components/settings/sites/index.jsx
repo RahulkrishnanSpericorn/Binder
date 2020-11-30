@@ -48,7 +48,7 @@ const mapStateToProps = state =>{
         await this.props.deleteSite(id)
         await this.getSites()
 
-        ToastMsg(this.props.siteReducer.deleteSiteData.message,'error')
+        ToastMsg(this.props.siteReducer.deleteSiteData.message,'info')
 
     }
 

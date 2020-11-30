@@ -67,7 +67,7 @@ class index extends Component {
        await this.props.deleteConsultancy(id)
        await this.getConsultancies()
 
-       ToastMsg(this.props.consultancyReducer.deleteConsultancyById.message,'error')
+       ToastMsg('Consultancy '+this.props.consultancyReducer.deleteConsultancyById.message,'info')
         
     }
     

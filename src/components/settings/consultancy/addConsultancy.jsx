@@ -139,7 +139,7 @@ class addConsultancy extends Component {
                                                     </div>
                                                 </div>
 
-                                                <div class="col-md-12 pl-0 mb-3">
+                                                <div class="col-md-12 pl-0">
                                                     <div class="form-group">
                                                         <label >Comments</label>
                                                         <textarea type="text-area" onChange={(e) => { this.setState({ comments: e.target.value, commentsErrorMsg: false }) }} className="form-control" placeholder="Enter Comments" />
