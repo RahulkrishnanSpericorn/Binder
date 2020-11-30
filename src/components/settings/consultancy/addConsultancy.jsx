@@ -52,7 +52,7 @@ class addConsultancy extends Component {
 
             // }
             await this.props.addConsultancies(params)
-            ToastMsg('Consultancy '+this.props.consultancyReducer.addConsultanciesData.message, 'info')
+            ToastMsg('Consultancy ' + this.props.consultancyReducer.addConsultanciesData.message, 'info')
             this.setState({
                 name: '',
                 comments: ''
@@ -103,69 +103,54 @@ class addConsultancy extends Component {
 
     render() {
         return (
-            <section className="cont-ara">
-                <div className="fst">
-                    <ToastContainer />
+
+            <section class="cont-ara">
+                <div class="list-area">
                     <TopSlider />
-                    <div className="dash-cont">
-                        <div className="pub-ara six">
 
-                            <div className="frm-ara">
-                                <div className="top-ara">
-                                    <h4>Add Consultancy</h4>
+                    <div class="lst-bt-nav create">
+                        <div class="table table-ara">
+                        <div class="list-sec">
+                            <div class="nav-ara">
+                                <div class="head">
+                                    <h4>Basic Details</h4>
                                 </div>
-
-                                <div className="head">
-                                    <h3>Basic Info</h3>
                                 </div>
-                                <div className="frm">
-                                    <div className="itm">
-                                        <div className="cunt">
-                                            <div className="numb">01</div>
-                                        </div>
-                                        <div className="itm-cnt">
-                                            <div className="form-group">
-                                                <label className="form-control-placeholder" style={{ color: this.state.nameErrorMsg && 'red' }} for="f-name">Consultancy Name *</label>
-                                                <input type="text" id="text" onChange={(e) => { this.setState({ name: e.target.value, nameErrorMsg: false }) }} className="form-control" placeholder="Enter Consultancy Name" />
-                                            </div>
-                                        </div>
+                            </div> 
+                            <div class="cr-frm">
+                                <div class="frm-ara">
+                                    <div class="head"> 
+                                        <h3>Add Consultancy info</h3>
                                     </div>
+                                    <div class="row">
+                                        <div class="col-md-8 pr-0">
+                                            <div class="row m-0">
+                                                <div class="col-md-6 pl-0 mb-3">
+                                                    <div class="form-group">
+                                                        <label className="form-control-placeholder" style={{ color: this.state.nameErrorMsg && 'red' }} for="f-name">Consultancy Name *</label>
+                                                        <input type="text" id="text" onChange={(e) => { this.setState({ name: e.target.value, nameErrorMsg: false }) }} className="form-control" placeholder="Enter Consultancy Name" />
+                                                    </div>
+                                                </div>
 
+                                                <div class="col-md-6 pl-0 mb-3">
+                                                    <div class="form-group">
+                                                        <label className="form-control-placeholder" for="f-name">Image Description</label>
+                                                        <input type="text" id="text" onChange={(e) => { this.setState({ image_description: e.target.value, nameErrorMsg: false }) }} className="form-control" placeholder="Enter Image Description" />
+                                                    </div>
+                                                </div>
 
-                                    <div className="itm">
-                                        <div className="cunt">
-                                            <div className="numb">02</div>
-                                        </div>
-                                        <div className="itm-cnt">
-                                            <div className="form-group">
-                                                <label className="form-control-placeholder" for="f-name">Image Description</label>
-                                                <input type="text" id="text" onChange={(e) => { this.setState({ image_description: e.target.value, nameErrorMsg: false }) }} className="form-control" placeholder="Enter Image Description" />
+                                                <div class="col-md-12 pl-0 mb-3">
+                                                    <div class="form-group">
+                                                        <label >Comments</label>
+                                                        <textarea type="text-area" onChange={(e) => { this.setState({ comments: e.target.value, commentsErrorMsg: false }) }} className="form-control" placeholder="Enter Comments" />
+                                                    </div>
+                                                </div>
                                             </div>
+                                          
                                         </div>
-                                    </div>
-
-                                    <div className="itm">
-                                        <div className="cunt">
-                                            <div className="numb">03</div>
-                                        </div>
-                                        <div className="itm-cnt">
-                                            <div className="form-group">
-                                                <label >Comments</label>
-                                                <textarea type="text-area" onChange={(e) => { this.setState({ comments: e.target.value, commentsErrorMsg: false }) }} className="form-control" placeholder="Enter Comments" />
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div className="itm">
-                                        <div className="cunt">
-                                            <div className="numb">04</div>
-                                        </div>
-                                        <div className="itm-cnt">
-                                            <div className="form-group">
-
-                                            <div class="file-upload">
-                                            {/* <img src="/images/add-img.svg"/> */}
-                                            {this.state.image ? (
+                                        <div class="col-md-4 pl-0">
+                                        <div class="file-upload"> 
+                                             {this.state.image ? (
                                                 <>
                                                     <img src={
                                                         this.state.image.url
@@ -187,35 +172,19 @@ class addConsultancy extends Component {
                                             </div>
 
 
-                                            {/* <button class="btn-upload">
-                                                <img src="/images/add-btn.svg" />
-                                            </button> */}
                                         </div>
-
-                                               </div>
                                         </div>
                                     </div>
-
-                                    {/* <div class="col-md-4 pl-0">
-                                       
-                                    </div> */}
-
-
-
-                                </div>
-
-
-                                <div className="frm btn-sec">
-                                    <button onClick={() => this.addConsultancies()} className="btn btn-submit"> <i className="material-icons tic"> check</i>Submit</button>
                                 </div>
                             </div>
-
-
+                            <div class="btn-sec">
+                                <button class="btn btn-cancel mr-2">Cancel</button>
+                                <button class="btn btn-create" onClick={() => this.addConsultancies()} ><i class="material-icons tic"> check</i> Save</button>
+                            </div>
                         </div>
-
                     </div>
                 </div>
-            </section>
+            </section> 
         )
     }
 }
