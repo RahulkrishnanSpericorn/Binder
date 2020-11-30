@@ -3,7 +3,8 @@ import * as actionTypes from './constants'
 const initialState = {
     clientData: {},
     addClientData: {},
-    editClientData: {}
+    editClientData: {},
+    deleteClientData:{}
 }
 
 export default (state = initialState, action) => {
@@ -51,6 +52,21 @@ export default (state = initialState, action) => {
                     ...state,
                     editClientData: { success: false, ...action.error }
                 }
+
+                case actionTypes.DELETE_CLIENTS_BYID_REQUEST:
+                    return {
+                        ...state
+                    }
+                case actionTypes.DELETE_CLIENTS_BYID_SUCCESS:
+                    return {
+                        ...state,
+                        deleteClientData: { success: true, ...action.response }
+                    }
+                case actionTypes.DELETE_CLIENTS_BYID_FAILURE:
+                    return {
+                        ...state,
+                        deleteClientData: { success: false, ...action.error }
+                    }
 
             default :
             return{

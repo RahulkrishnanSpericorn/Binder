@@ -70,6 +70,29 @@ const getConsultanciesById = id => {
     }
 }
 
+const deleteConsultancy = (id) => {
+
+    return async dispatch => {
+
+        try {
+            dispatch({ type: actionTypes.DELETE_CONSULTANCIES_BYID_REQUEST })
+            const res = await Service.deleteConsultancy(id)
+            console.log('resUpdate', res)
+            if (res && res.status === 200) {
+                if (res.data) {
+                    dispatch({ type: actionTypes.DELETE_CONSULTANCIES_BYID_SUCCESS, response: res.data })
+                } else {
+                    dispatch({ type: actionTypes.DELETE_CONSULTANCIES_BYID_FAILURE, error: res.data })
+                }
+            } else {
+                dispatch({ type: actionTypes.DELETE_CONSULTANCIES_BYID_FAILURE, error: res.data })
+            }
+        } catch (e) {
+            dispatch({ type: actionTypes.DELETE_CONSULTANCIES_BYID_FAILURE, error: e.response && e.response.data })
+        }
+    }
+}
+
 const editConsultanciesById = (params, id) => {
 
     return async dispatch => {
@@ -95,9 +118,12 @@ const editConsultanciesById = (params, id) => {
 
 
 
+
+
 export default {
     getConsultancies,
     addConsultancies,
     getConsultanciesById,
-    editConsultanciesById
+    editConsultanciesById,
+    deleteConsultancy
 }

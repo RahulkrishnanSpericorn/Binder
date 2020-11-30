@@ -65,8 +65,31 @@ const editRegionById = (params, id) => {
     }
 }
 
+const deleteRegion = (id) => { 
+    return async dispatch => {
+
+        try {
+            dispatch({ type: actionTypes.DELETE_REGION_BYID_REQUEST })
+            const res = await Service.deleteRegion(id)
+            console.log('redionUpdate', res)
+            if (res && res.status === 200) {
+                if (res.data) {
+                    dispatch({ type: actionTypes.DELETE_REGION_BYID_SUCCESS, response: res.data })
+                } else {
+                    dispatch({ type: actionTypes.DELETE_REGION_BYID_FAILURE, error: res.data })
+                }
+            } else {
+                dispatch({ type: actionTypes.DELETE_REGION_BYID_FAILURE, error: res.data })
+            }
+        } catch (e) {
+            dispatch({ type: actionTypes.DELETE_REGION_BYID_FAILURE, error: e.response && e.response.data })
+        }
+    }
+}
+
 export default {
     getRegion,
     addRegion,
-    editRegionById
+    editRegionById,
+    deleteRegion
 }

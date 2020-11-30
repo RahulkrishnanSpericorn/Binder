@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import actions from '../consultancy/actions';
 import TopSlider from '../../../components/common/components/TopSlider'
 import history from '../../../config/history';
+import ToastMsg from '../../common/ToastMessage'
 
 const mapStateToProps = state => {
     console.log('state', state)
@@ -46,18 +47,30 @@ class index extends Component {
     //     }
     //     await this.props.addConsultancies(params)
     // }
-    getConsultanciesById = async () => {
-        let id = 'cae67353-4964-4961-93f7-6d0881ed7187'
-        await this.props.getConsultanciesById(id)
+    // getConsultanciesById = async () => {
+    //     let id = 'cae67353-4964-4961-93f7-6d0881ed7187'
+    //     await this.props.getConsultanciesById(id)
+    // }
+    // editConsultanciesById = async () => {
+    //     let params = {
+    //         'consultancy[name]': 'sgsd',
+    //         'consultancy[comments]': 'commentss'
+    //     }
+    //     let id = 'c0b7f070-df5d-4e9f-9012-bd6dedaf881a'
+    //     await this.props.editConsultanciesById(params, id)
+    // }
+
+    deleteConsultancy = async(item)=>{
+        console.log('item', item)
+        let id = item.id
+
+       await this.props.deleteConsultancy(id)
+       await this.getConsultancies()
+
+       ToastMsg(this.props.consultancyReducer.deleteConsultancyById.message,'error')
+        
     }
-    editConsultanciesById = async () => {
-        let params = {
-            'consultancy[name]': 'sgsd',
-            'consultancy[comments]': 'commentss'
-        }
-        let id = 'c0b7f070-df5d-4e9f-9012-bd6dedaf881a'
-        await this.props.editConsultanciesById(params, id)
-    }
+    
 
     render() {
         return (
@@ -174,7 +187,7 @@ class index extends Component {
                                                             <img src="/images/three-dots.svg" data-toggle="dropdown" />
                                                             <ul class="dropdown-menu" role="menu">
                                                                 <li ><a style={{cursor:"pointer"}} onClick={()=>history.push('/editConsultancy',{"consultancyItem":item})}><img src="/images/edit.svg" />Edit</a></li>
-                                                                <li><a href="#"><img src="/images/delete.svg" />Delete</a></li>
+                                                                <li><a style={{cursor:"pointer"}} onClick={()=>{this.deleteConsultancy(item)}} > <img src="/images/delete.svg" />Delete</a></li>
                                                             </ul>
                                                         </td>
                                                     </tr>

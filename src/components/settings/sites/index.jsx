@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import history from '../../../config/history'
 import TopSlider from '../../common/components/TopSlider'
 import actions from './actions'
+import ToastMsg from '../../common/ToastMessage'
 
 const mapStateToProps = state =>{
     console.log('state', state)
@@ -40,6 +41,15 @@ const mapStateToProps = state =>{
         }
 
         console.log('this.state.siteDataList', this.state.siteDataList)
+    }
+
+    deleteSite = async (item) =>{
+        let id = item.id
+        await this.props.deleteSite(id)
+        await this.getSites()
+
+        ToastMsg(this.props.siteReducer.deleteSiteData.message,'error')
+
     }
 
 
@@ -170,7 +180,7 @@ const mapStateToProps = state =>{
                                                         <img src="/images/three-dots.svg" data-toggle="dropdown" />
                                                         <ul class="dropdown-menu" role="menu">
                                                             <li ><a style={{cursor:"pointer"}} onClick={()=>{history.push('/editSite',{"siteItem":item,"client_id":item.client.id,"consultancy_id":item.consultancy.id,"region_id":item.region.id})}}><img src="/images/edit.svg" />Edit</a></li>
-                                                            <li><a style={{cursor:"pointer"}}><img src="/images/delete.svg" />Delete</a></li>
+                                                            <li><a style={{cursor:"pointer"}} onClick={()=>{this.deleteSite(item)}} ><img src="/images/delete.svg" />Delete</a></li>
                                                         </ul>
                                                     </td>
                                                 </tr>

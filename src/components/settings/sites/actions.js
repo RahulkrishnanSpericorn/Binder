@@ -67,8 +67,31 @@ const editSiteById = (params, id) => {
     }
 }
 
+const deleteSite = (id) => { 
+    return async dispatch => {
+
+        try {
+            dispatch({ type: actionTypes.DELETE_SITES_BYID_REQUEST })
+            const res = await Service.deleteSite(id)
+            console.log('deleteSite', res)
+            if (res && res.status === 200) {
+                if (res.data) {
+                    dispatch({ type: actionTypes.DELETE_SITES_BYID_SUCCESS, response: res.data })
+                } else {
+                    dispatch({ type: actionTypes.DELETE_SITES_BYID_FAILURE, error: res.data })
+                }
+            } else {
+                dispatch({ type: actionTypes.DELETE_SITES_BYID_FAILURE, error: res.data })
+            }
+        } catch (e) {
+            dispatch({ type: actionTypes.DELETE_SITES_BYID_FAILURE, error: e.response && e.response.data })
+        }
+    }
+}
+
 export default {
     getSites,
     addSite,
-    editSiteById
+    editSiteById,
+    deleteSite
 }

@@ -4,7 +4,8 @@ const initialState = {
     consultanciesData: {},
     addConsultanciesData: {},
     getConsulatancyById: {},
-    editConsultancyById: {}
+    editConsultancyById: {},
+    deleteConsultancyById:{}
 }
 
 export default (state = initialState, action) => {
@@ -73,6 +74,21 @@ export default (state = initialState, action) => {
             return {
                 ...state,
                 editConsultancyById: { success: false, ...action.error }
+            }
+
+            case actionTypes.DELETE_CONSULTANCIES_BYID_REQUEST:
+            return {
+                ...state
+            }
+        case actionTypes.DELETE_CONSULTANCIES_BYID_SUCCESS:
+            return {
+                ...state,
+                deleteConsultancyById: { success: true, ...action.response }
+            }
+        case actionTypes.DELETE_CONSULTANCIES_BYID_FAILURE:
+            return {
+                ...state,
+                deleteConsultancyById: { success: false, ...action.error }
             }
 
         default:

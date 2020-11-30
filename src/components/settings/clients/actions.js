@@ -66,8 +66,32 @@ const editClientsById = (params,id) => {
     }
 }
 
+const deleteClient = (id) => {
+
+    return async dispatch => {
+
+        try {
+            dispatch({ type: actionTypes.DELETE_CLIENTS_BYID_REQUEST })
+            const res = await Service.deleteClient(id)
+            console.log('deleteCLient', res)
+            if (res && res.status === 200) {
+                if (res.data) {
+                    dispatch({ type: actionTypes.DELETE_CLIENTS_BYID_SUCCESS, response: res.data })
+                } else {
+                    dispatch({ type: actionTypes.DELETE_CLIENTS_BYID_FAILURE, error: res.data })
+                }
+            } else {
+                dispatch({ type: actionTypes.DELETE_CLIENTS_BYID_FAILURE, error: res.data })
+            }
+        } catch (e) {
+            dispatch({ type: actionTypes.DELETE_CLIENTS_BYID_FAILURE, error: e.response && e.response.data })
+        }
+    }
+}
+
 export default {
     getClients,
     addClients,
-    editClientsById
+    editClientsById,
+    deleteClient
 }

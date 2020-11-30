@@ -5,4 +5,5 @@ export const getConsultancies = params => binderGateWay.get(serviceEndPoints.use
 export const addConsultancies = params => binderGateWay.post(serviceEndPoints.userEndPoints.getConsultancies, params)
 export const getConsultanciesById = id => binderGateWay.get(`${serviceEndPoints.userEndPoints.getConsultancies}/${id}`)
 export const editConsultanciesById = (params, id) => binderGateWay.patch(`${serviceEndPoints.userEndPoints.getConsultancies}/${id}`, params)
+export const deleteConsultancy = id => binderGateWay.delete(`${serviceEndPoints.userEndPoints.getConsultancies}/${id}`)
 

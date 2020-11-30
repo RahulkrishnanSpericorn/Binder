@@ -3,7 +3,8 @@ import * as actionTypes from './constants'
 const initialState = {
     regionData: {},
     addRegionData:{},
-    editRegionData:{}
+    editRegionData:{},
+    deleteRegionData:{}
 }
 
 export default (state = initialState, action) => {
@@ -53,6 +54,22 @@ export default (state = initialState, action) => {
                     ...state,
                     editRegionData: { success: false, ...action.error }
                 }
+
+                case actionTypes.DELETE_REGION_BYID_REQUEST:
+                    return {
+                        ...state
+                    }
+                case actionTypes.DELETE_REGION_BYID_SUCCESS:
+                    return {
+                        ...state,
+                        deleteRegionData: { success: true, ...action.response }
+                    }
+                case actionTypes.DELETE_REGION_BYID_FAILURE:
+                    return {
+                        ...state,
+                        deleteRegionData: { success: false, ...action.error }
+                    }
+
          
             default :
             return{

@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import history from '../../../config/history';
 import TopSlider from '../../common/components/TopSlider';
 import actions from './actions'
+import ToastMsg from '../../common/ToastMessage'
 
 const mapStateToProps = state => {
     console.log('state', state)
@@ -41,6 +42,20 @@ class index extends Component {
 
 
     }
+
+    deleteClient = async (item) => {
+        
+        console.log('item', item)
+        let id = item.id
+
+        await this.props.deleteClient(id)
+        await this.getClients()
+
+        ToastMsg(this.props.clientReducer.deleteClientData.message,'error')
+
+
+    }
+
 
     render() {
         return (
@@ -136,7 +151,7 @@ class index extends Component {
                                                             <img src="/images/three-dots.svg" data-toggle="dropdown" />
                                                             <ul class="dropdown-menu" role="menu">
                                                                 <li ><a style={{cursor:"pointer"}}onClick={()=>{history.push('/editCLients',{"clientItem":item,"consultancy_id":item.consultancy.id})}}><img src="/images/edit.svg" />Edit</a></li>
-                                                                <li><a style={{cursor:"pointer"}}><img src="/images/delete.svg" />Delete</a></li>
+                                                                <li><a style={{cursor:"pointer"}} onClick={()=>{this.deleteClient(item)}} ><img src="/images/delete.svg" />Delete</a></li>
                                                             </ul>
                                                         </td>
                                                     </tr>
