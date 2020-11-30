@@ -1,7 +1,51 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux';
 import TopSlider from '../../common/components/TopSlider'
+import actions from './actions';
 
-export default class index extends Component {
+const mapStateToProps = state => {
+    console.log('state', state)
+    const { binderReducer } = state
+    return { binderReducer }
+}
+
+ class index extends Component {
+
+    constructor(props) {
+        super(props);
+        this.state={
+            binderDataList:[]
+        }
+    }
+
+    async componentDidMount() {
+        await this.getBinderData()
+        
+    }
+    getBinderData = async()=>{
+        let params = {
+            limit: 10,
+            offset: 0
+        }
+
+        await this.props.getBinder(params) 
+
+        if (this.props.binderReducer.binderData.success) {
+            console.log('typeof',(this.props.binderReducer.binderData.binders))
+
+            // Object.values(this.props.binderReducer.binderData.binders).map((item)=>{
+            //     console.log('Objectitem', item)
+            // })
+
+            this.setState({
+                binderDataList: this.props.binderReducer.binderData.binders
+            })
+
+            console.log('this.state', this.state)
+        } 
+    }
+    
+
     render() {
         return (
             <section className="cont-ara">
@@ -63,8 +107,8 @@ export default class index extends Component {
                                             </th>
                                         </tr>
                                     </thead>
-                                    {/* <tbody>
-                                        {this.state.regionDataList.map((item, index) => {
+                                    <tbody>
+                                        {this.state.binderDataList.map((item, index) => {
                                             return (
                                                 <tr>
                                                     <td class="img-sq-box">
@@ -75,9 +119,10 @@ export default class index extends Component {
                                                     <td>{item.display_name ? item.display_name : '-' }</td>
                                                     <td>{item.consultancy.name}</td>
                                                     <td>{item.client.name}</td>
-                                                    <td> - </td>
-                                                    <td> - </td>
-                                                    <td>{item.comments ? item.comments : '-'}</td>
+                                                    <td>{item.color ? item.color : '-'}</td>
+                                                    <td>{item.text_color ? item.text_color : '-'}</td>
+                                                    <td>{item.line ? item.line : '-'}</td>
+                                                    <td>{item.order ? item.order : '-'}</td>
                                                     <td>{item.created_at}</td>
                                                     <td>{item.updated_at}</td>
                                                     
@@ -85,15 +130,15 @@ export default class index extends Component {
                                                     <td class="action">
                                                         <img src="/images/three-dots.svg" data-toggle="dropdown" />
                                                         <ul class="dropdown-menu" role="menu">
-                                                            <li ><a style={{cursor:"pointer"}} onClick={()=>{history.push('/editRegion',{"regionItem":item, "clientid":item.client.id,"consultancy_id":item.consultancy.id})}}><img src="/images/edit.svg" />Edit</a></li>
-                                                            <li><a style={{cursor:"pointer"}} onClick={()=>{this.deleteRegion(item)}} ><img src="/images/delete.svg" />Delete</a></li>
+                                                            <li ><a style={{cursor:"pointer"}} ><img src="/images/edit.svg" />Edit</a></li>
+                                                            <li><a style={{cursor:"pointer"}} ><img src="/images/delete.svg" />Delete</a></li>
                                                         </ul>
                                                     </td>
                                                 </tr>
                                             )
                                         })}
 
-                                    </tbody> */}
+                                    </tbody>
                                 </table>
                             </div>
                         </div>
@@ -125,3 +170,5 @@ export default class index extends Component {
         )
     }
 }
+
+export default connect(mapStateToProps, {...actions})(index)
