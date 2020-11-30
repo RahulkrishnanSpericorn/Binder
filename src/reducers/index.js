@@ -7,6 +7,7 @@ import regionReducer from "../components/settings/region/reducers";
 import siteReducer from "../components/settings/sites/reducers";
 import settingsCommonReducer from "../components/settings/reducers";
 import buildingReducer from "../components/settings/building/reducers";
+import binderReducer from "../components/settings/binder/reducers";
 
 
 const rootReducer = combineReducers({
@@ -17,7 +18,8 @@ const rootReducer = combineReducers({
     regionReducer,
     siteReducer,
     settingsCommonReducer,
-    buildingReducer
+    buildingReducer,
+    binderReducer
 
 });
 

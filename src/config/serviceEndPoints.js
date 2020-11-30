@@ -8,7 +8,8 @@ export const userEndPoints = {
     getClientDropdown:"/api/v1/clients/clients_dropdown",
     getRegionDropdown:"/api/v1/regions/regions_dropdown",
     getBuildingData:"/api/v1/buildings",
-    getSitesDropdown:'/api/v1/sites/sites_dropdown'
+    getSitesDropdown:'/api/v1/sites/sites_dropdown',
+    getBinder:'/api/v1/binders'
     
 };
 
