@@ -73,7 +73,7 @@ const mapStateToProps =(state)=>{
 
                         <div class="list-sec">
                             <div class="table-section">
-                                <table class="table table-bordered">
+                                <table class="table table-bordered scroll-table">
                                     <thead>
                                         <tr>
                                             <th class="img-sq-box">

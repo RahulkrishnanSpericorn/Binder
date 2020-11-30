@@ -1755,6 +1755,10 @@ input[list]::-webkit-calendar-picker-indicator {
   margin-right: 10px;
 }
 
+.scroll-table {
+  min-width: 2500px !important;
+}
+
 .list-sec {
   padding: 0px 10px 10px;
   overflow: hidden;
