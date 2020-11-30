@@ -45,7 +45,30 @@ const addBinder = params => {
     }
 }
 
+const deleteBinder = id => {
+
+    return async dispatch => {
+        try {
+            dispatch({ type: actionTypes.ADD_BINDER_REQUEST })
+            const res = await Service.deleteBinder(id)
+            console.log('deleteBinderres', res)
+            if (res && res.status === 200) {
+                if (res.data) {
+                    dispatch({ type: actionTypes.DELETE_BINDER_SUCCESS, response: res.data })
+                } else {
+                    dispatch({ type: actionTypes.DELETE_BINDER_FAILURE, error: res.data })
+                }
+            } else {
+                dispatch({ type: actionTypes.DELETE_BINDER_FAILURE, error: res.data })
+            }
+        } catch (e) {
+            dispatch({ type: actionTypes.DELETE_BINDER_FAILURE, error: e.response && e.response.data })
+        }
+    }
+}
+
 export default {
     getBinder,
-    addBinder
+    addBinder,
+    deleteBinder
 }
