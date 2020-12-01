@@ -130,7 +130,7 @@ class index extends Component {
                                         <tbody>
                                             {this.state.consultancyList.map((item, index) => {
                                                 return (
-                                                    <tr>
+                                                    <tr onDoubleClick={()=>history.push('/viewConsultancy',{"consultancyItem":item})} style={{cursor:"pointer"}}>
                                                         <td class="img-sq-box">
                                                             <img src="/images/table-blue-dots.svg" />
                                                         </td>
