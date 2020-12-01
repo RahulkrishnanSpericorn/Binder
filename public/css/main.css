@@ -1531,6 +1531,8 @@ input[list]::-webkit-calendar-picker-indicator {
   color: #103BB5;
   font-weight: 600;
   font-family: "Inter", sans-serif;
+  margin-bottom: 10px !important;
+  margin-top: 0px !important;
 }
 
 .tab-sec {

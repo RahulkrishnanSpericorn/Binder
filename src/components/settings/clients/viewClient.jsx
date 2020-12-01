@@ -14,7 +14,7 @@ const mapStateToProps = state => {
     return { clientReducer, settingsCommonReducer };
 }
 
- class viewClient extends Component {
+class viewClient extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -38,14 +38,15 @@ const mapStateToProps = state => {
             consultancy_id: '',
             consultancyIdList: [],
 
-            client_id:''
+            client_id: ''
 
         }
     }
 
     async componentDidMount() {
+        console.log('this.props', this.props)
 
-        await this.props.getConsultancyDropdown() 
+        await this.props.getConsultancyDropdown()
         await this.setState({
             consultancyIdList: this.props.settingsCommonReducer.consultancyDropdownData.data,
             name: this.props.history.location.state.clientItem.name,
@@ -60,16 +61,40 @@ const mapStateToProps = state => {
             ep_name: this.props.history.location.state.clientItem.ep_name,
             use_threshold_for_quarterly: this.props.history.location.state.clientItem.use_threshold_for_quarterly === "Yes" ? true : false,
             request_email_recipt: this.props.history.location.state.clientItem.request_email_recipt === "Yes" ? true : false,
-            client_id:this.props.history.location.state.clientItem.id
+            client_id: this.props.history.location.state.clientItem.id
 
-        }) 
-    } 
+        })
+        console.log('this.state', this.state)
+    }
     render() {
         return (
             <section className="cont-ara">
                 <div className="fst">
                     <ToastContainer />
-                    <TopSlider />
+                    <div class="top-slider nav-ara">
+                        <div class="tab-sec">
+                            <ul class="nav nav-tabs">
+                                <li class="active">
+                                    <a data-toggle="tab" href="#bd">Basic Details</a>
+                                </li>
+                                <li><a data-toggle="tab" href="#fls">Floors</a></li>
+                                <li><a data-toggle="tab" href="#img">Images</a></li>
+                                <li><a data-toggle="tab" href="#map">Map</a></li>
+                            </ul>
+                        </div>
+                        <div class="pagenation">
+                            <ul>
+                                <li>
+                                    <a href="#">Clients </a>
+                                </li>
+                               
+                                <li class="active">
+                                    <a href="#">View Details </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
                     <div className="dash-cont">
                         <div className="pub-ara six">
 
@@ -81,7 +106,7 @@ const mapStateToProps = state => {
                                 <div className="head">
                                     <h3>Basic Info</h3>
                                 </div>
-                                <div className="frm">
+                                <div className="frm sav">
                                     <div className="itm">
                                         <div className="cunt">
                                             <div className="numb">01</div>
@@ -89,7 +114,7 @@ const mapStateToProps = state => {
                                         <div className="itm-cnt">
                                             <div className="form-group">
                                                 <label className="form-control-placeholder" style={{ color: this.state.nameErrorMsg && 'red' }} for="f-name">Client Name *</label>
-                                                <input disabled={true} type="text" id="text" value={this.state.name} onChange={(e) => { this.setState({ name: e.target.value, nameErrorMsg: false }) }} className="form-control" placeholder="Enter Client Name " />
+                                                <h3>{this.state.name}</h3>
                                             </div>
                                         </div>
                                     </div>
@@ -103,17 +128,14 @@ const mapStateToProps = state => {
                                         <div className="itm-cnt">
                                             <div className="form-group select-group">
                                                 <label className="form-control-placeholder" style={{ color: this.state.consultancyIdErrorMsg && 'red' }} for="f-name">Consultancy *</label>
-                                                <select disabled={true} className="form-control select" value={this.state.consultancy_id} onChange={(e) => { this.setState({ consultancy_id: e.target.value, consultancyIdErrorMsg: false }) }}>
-                                                    <option value="">Select</option>
-                                                    {
-                                                        this.state.consultancyIdList.length && this.state.consultancyIdList.map((item, idex) => {
-                                                            return (
-                                                                <option value={item.id}> {item.name} </option>
-                                                            )
-                                                        })
-                                                    }
 
-                                                </select>
+                                                {
+                                                    this.state.consultancyIdList.length && this.state.consultancyIdList.map((item, idex) => {
+                                                        return (
+                                                            <h3 > {item.name} </h3>
+                                                        )
+                                                    })
+                                                }
 
                                             </div>
                                         </div>
@@ -126,7 +148,7 @@ const mapStateToProps = state => {
                                         <div className="itm-cnt">
                                             <div className="form-group">
                                                 <label className="form-control-placeholder" for="f-name">CMMS Url</label>
-                                                <input disabled={true} type="text-area" id="text" value={this.state.cmms_url} onChange={(e) => { this.setState({ cmms_url: e.target.value }) }} className="form-control" placeholder="Enter CMMS Url" />
+                                                <h3>{this.state.cmms_url}</h3>
                                             </div>
                                         </div>
                                     </div>
@@ -140,11 +162,8 @@ const mapStateToProps = state => {
                                             <div className="form-group ">
 
                                                 <label className="form-control-placeholder" for="f-name">Trailing View Current Month</label>
-                                                <select disabled={true} className="form-control select" value={this.state.trailing_view_current_month} onChange={(e) => { this.setState({ trailing_view_current_month: e.target.value }) }}>
-                                                    <option value="current year">Current year</option>
-                                                    <option value="previous year">Previous year</option>
-                                                </select>
-                                                {/* <input type="text-area" id="text"  className="form-control" placeholder=" " /> */}
+
+                                                <h3>{this.state.trailing_view_current_month === true ? 'true' : 'false'}</h3>
                                             </div>
                                         </div>
                                     </div>
@@ -154,21 +173,12 @@ const mapStateToProps = state => {
                                             <div className="numb">05</div>
                                         </div>
                                         <div className="itm-cnt">
-                                            <div className="chek">
+                                            <div className="form-group">
 
                                                 <label >Modify Next Due Date</label>
-                                                <div className="chekbox-sec" >
-                                                    <label class="container">Yes
-                                                    <input disabled={true} type="radio" name="modify_next_due_date" value={true} onChange={(e) => this.radioChanged(e)} checked={ this.state.modify_next_due_date} />
-                                                        <span class="checkmark"></span>
-                                                    </label>
-                                                    <label class="container">No
-                                                    <input disabled={true} type="radio"  name="modify_next_due_date" value={false} onChange={(e) => this.radioChanged(e)} checked={ !this.state.modify_next_due_date}/>
-                                                        <span class="checkmark"></span>
-                                                    </label>
-                                                </div>
+                                                <h3>{this.state.modify_next_due_date === true ? 'true' : 'false'}</h3>
 
-                                                {/* <input type="text-area" id="text"  className="form-control" placeholder=" " /> */}
+                                                {/* <h3 type="text-area" id="text"  className="form-control" placeholder=" " /> */}
                                             </div>
                                         </div>
                                     </div>
@@ -179,11 +189,7 @@ const mapStateToProps = state => {
                                         <div className="itm-cnt">
                                             <div className="form-group ">
                                                 <label className="form-control-placeholder" for="f-name">Schedule Threshold</label>
-                                                <select disabled={true} className="form-control select" value={this.state.schedule_threshold} onChange={(e) => { this.setState({ schedule_threshold: e.target.value }) }}>
-                                                    <option value="days">Days</option>
-                                                    <option value="month">Month</option>
-                                                </select>
-
+                                                <h3>{this.state.schedule_threshold}</h3>
                                             </div>
                                         </div>
                                     </div>
@@ -193,18 +199,9 @@ const mapStateToProps = state => {
                                             <div className="numb">07</div>
                                         </div>
                                         <div className="itm-cnt">
-                                            <div className="chek">
+                                            <div className="form-group">
                                                 <label >Display Blinking Red Plus?</label>
-                                                <div className="chekbox-sec" >
-                                                <label class="container">Yes
-                                                    <input disabled={true} type="radio" value={true} name="display_blinking_red_plus" onChange={(e) => this.radioChanged(e)} checked={ this.state.display_blinking_red_plus} />
-                                                    <span class="checkmark"></span>
-                                                    </label>
-                                                    <label class="container">No
-                                                    <input disabled={true} type="radio" value={false} name="display_blinking_red_plus" onChange={(e) => this.radioChanged(e)} checked={ !this.state.display_blinking_red_plus} />
-                                                    <span class="checkmark"></span>
-                                                    </label>
-                                                </div>
+                                                <h3>{this.state.display_blinking_red_plus === true ? 'true' : 'false'}</h3>
                                             </div>
                                         </div>
                                     </div>
@@ -214,18 +211,9 @@ const mapStateToProps = state => {
                                             <div className="numb">08</div>
                                         </div>
                                         <div className="itm-cnt">
-                                            <div className="chek">
+                                            <div className="form-group">
                                                 <label> Lock Total Devices</label>
-                                                <div className="chekbox-sec">
-                                                <label class="container">Yes
-                                                    <input disabled={true} type="radio" value={true} name="lock_total_devices"  onChange={(e) => this.radioChanged(e)}  checked={ this.state.lock_total_devices}/>
-                                                    <span class="checkmark"></span>
-                                                    </label>   
-                                                    <label class="container">No
-                                                    <input disabled={true} type="radio" value={false} name="lock_total_devices"  onChange={(e) => this.radioChanged(e)} checked={ !this.state.lock_total_devices}/> 
-                                                    <span class="checkmark"></span>
-                                                    </label>
-                                                </div>
+                                                <h3>{this.state.lock_total_devices === true ? 'true' : 'false'}</h3>
                                             </div>
                                         </div>
                                     </div>
@@ -237,7 +225,7 @@ const mapStateToProps = state => {
                                         <div className="itm-cnt">
                                             <div className="form-group">
                                                 <label className="form-control-placeholder" for="f-name">Ep Name</label>
-                                                <input disabled={true} type="text-area" id="text" value={this.state.ep_name} onChange={(e) => { this.setState({ ep_name: e.target.value }) }} className="form-control" placeholder="Enter Ep Name " />
+                                                <h3>{this.state.ep_name}</h3>
                                             </div>
                                         </div>
                                     </div>
@@ -247,18 +235,9 @@ const mapStateToProps = state => {
                                             <div className="numb">10</div>
                                         </div>
                                         <div className="itm-cnt">
-                                            <div className="chek">
+                                            <div className="form-group">
                                                 <label >Use Threshold For Quarterly</label>
-                                                <div className="chekbox-sec" >
-                                                <label class="container">Yes
-                                                    <input disabled={true} type="radio" value={true} name="use_threshold_for_quarterly" onChange={(e) => this.radioChanged(e)} checked={ this.state.use_threshold_for_quarterly} /> 
-                                                    <span class="checkmark"></span>
-                                                    </label>   
-                                                    <label class="container">No
-                                                    <input disabled={true} type="radio" value={false} name="use_threshold_for_quarterly" onChange={(e) => this.radioChanged(e)} checked={ !this.state.use_threshold_for_quarterly} /> 
-                                                    <span class="checkmark"></span>
-                                                    </label>
-                                                </div>
+                                                <h3>{this.state.use_threshold_for_quarterly === true ? 'true' : 'false'}</h3>
                                             </div>
                                         </div>
                                     </div>
@@ -268,18 +247,9 @@ const mapStateToProps = state => {
                                             <div className="numb">11</div>
                                         </div>
                                         <div className="itm-cnt">
-                                            <div className="chek">
+                                            <div className="form-group">
                                                 <label > Request Email Recipt</label>
-                                                <div className="chekbox-sec" >
-                                                <label class="container">Yes
-                                                    <input disabled={true} type="radio" value={true} name="request_email_recipt" onChange={(e) => this.radioChanged(e)} checked={ this.state.request_email_recipt} />
-                                                    <span class="checkmark"></span>
-                                                    </label>   
-                                                    <label class="container">No
-                                                    <input disabled={true} type="radio" value={false} name="request_email_recipt" onChange={(e) => this.radioChanged(e)} checked={ !this.state.request_email_recipt} />
-                                                    <span class="checkmark"></span>
-                                                    </label>
-                                                </div>
+                                                <h3>{this.state.request_email_recipt === true ? 'true' : 'false'}</h3>
                                             </div>
                                         </div>
                                     </div>
@@ -291,7 +261,7 @@ const mapStateToProps = state => {
                                         <div className="itm-cnt">
                                             <div className="form-group">
                                                 <label className="form-control-placeholder" for="f-name">Comments</label>
-                                                <textarea disabled={true} type="text-area" value={this.state.comments} onChange={(e) => { this.setState({ comments: e.target.value, commentsErrorMsg: false }) }} className="form-control" placeholder=" Enter Comments" />
+                                                <h3>{this.state.comments}</h3>
                                             </div>
                                         </div>
                                     </div>

@@ -125,8 +125,31 @@ const mapStateToProps = state => {
         return (
             <section className="cont-ara">
             <div className="fst">
-                <ToastContainer />
-                <TopSlider />
+                <ToastContainer /> 
+
+                <div class="top-slider nav-ara">
+                        <div class="tab-sec">
+                            <ul class="nav nav-tabs">
+                                <li class="active">
+                                    <a data-toggle="tab" href="#bd">Basic Details</a>
+                                </li>
+                                <li><a data-toggle="tab" href="#fls">Floors</a></li>
+                                <li><a data-toggle="tab" href="#img">Images</a></li>
+                                <li><a data-toggle="tab" href="#map">Map</a></li>
+                            </ul>
+                        </div>
+                        <div class="pagenation">
+                            <ul>
+                                <li>
+                                    <a href="#">Region </a>
+                                </li>
+                               
+                                <li class="active">
+                                    <a href="#">View Details </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
                 <div className="dash-cont">
                     <div className="pub-ara six">
 
@@ -138,7 +161,7 @@ const mapStateToProps = state => {
                             <div className="head">
                                 <h3>Basic Info</h3>
                             </div>
-                            <div className="frm">
+                            <div className="frm sav">
                                 <div className="itm">
                                     <div className="cunt">
                                         <div className="numb">01</div>
@@ -146,8 +169,8 @@ const mapStateToProps = state => {
                                     <div className="itm-cnt">
                                         <div className="form-group">
                                             <label className="form-control-placeholder" style={{ color: this.state.nameErrorMsg && 'red' }} for="f-name">Region Name *</label>
-                                            <input disabled={true} type="text" id="text" value={this.state.name} onChange={(e) => { this.setState({ name: e.target.value, nameErrorMsg: false }) }} className="form-control" placeholder="Enter Region Name" />
-                                        </div>
+                                       <h3>{this.state.name}</h3>
+                                         </div>
                                     </div>
                                 </div>
 
@@ -158,8 +181,8 @@ const mapStateToProps = state => {
                                     <div className="itm-cnt">
                                         <div className="form-group">
                                             <label className="form-control-placeholder" for="f-name">Display Name</label>
-                                            <input disabled={true} type="text" id="text" value={this.state.display_name} onChange={(e) => { this.setState({ display_name: e.target.value }) }} className="form-control" placeholder="Enter Display Name" />
-                                        </div>
+                                             <h3>{this.state.display_name}</h3>
+                                              </div>
                                     </div>
                                 </div>
 
@@ -172,18 +195,14 @@ const mapStateToProps = state => {
                                         <div className="form-group select-group">
 
                                             <label className="form-control-placeholder" style={{ color: this.state.consultancyErrorMsg && 'red' }} for="f-name">Consultancy *</label>
-                                            <select disabled={true}  className="form-control select" value={this.state.consultancy_id} onChange={(e) => { this.selectConsultancyId(e) }}>
-                                                <option value="">Select</option>
-                                                {
+                                              {
                                                     this.state.consultancyIdList.length && this.state.consultancyIdList.map((item, idex) => {
                                                         return (
-                                                            <option value={item.id}> {item.name} </option>
+                                                            <h3  > {item.name} </h3>
                                                         )
                                                     })
                                                 }
-
-                                            </select>
-                                            {/* <input type="text-area" id="text"  className="form-control" placeholder=" " /> */}
+  
                                         </div>
                                     </div>
 
@@ -197,18 +216,14 @@ const mapStateToProps = state => {
                                         <div className="form-group select-group">
 
                                             <label className="form-control-placeholder" style={{ color: this.state.clientErrorMsg && 'red' }} for="f-name">Client *</label>
-                                            <select disabled={true} className="form-control select" value={this.state.client_id} onChange={(e) => { this.setState({ client_id: e.target.value, clientErrorMsg: false }) }}>
-                                                <option value="">Select</option>
-                                                {
+                                             {
                                                     this.state.clientIdList.length && this.state.clientIdList.map((item, idex) => {
                                                         return (
-                                                            <option value={item.id}> {item.name} </option>
+                                                            <h3 value={item.id}> {item.name} </h3>
                                                         )
                                                     })
                                                 }
-
-                                            </select>
-                                            {/* <input type="text-area" id="text"  className="form-control" placeholder=" " /> */}
+ 
                                         </div>
                                     </div>
 
@@ -222,24 +237,7 @@ const mapStateToProps = state => {
                                         <div className="form-group select-group">
 
                                             <label className="form-control-placeholder"  for="f-name">Client User</label>
-                                            <select disabled={true} className="form-control select" >
-                                                <option value="">Select</option>
-                                                <option value="">Select</option>
-                                                <option value="">Select</option>
-                                                <option value="">Select</option>
-                                                <option value="">Select</option>
-                                                <option value="">Select</option>
-                                                <option value="">Select</option>
-                                                {/* {
-                                                    this.state.clientIdList.length && this.state.clientIdList.map((item, idex) => {
-                                                        return (
-                                                            <option value={item.id}> {item.name} </option>
-                                                        )
-                                                    })
-                                                } */}
-
-                                            </select>
-                                            {/* <input type="text-area" id="text"  className="form-control" placeholder=" " /> */}
+                                             <h3>-</h3>
                                         </div>
                                     </div>
 
@@ -254,21 +252,7 @@ const mapStateToProps = state => {
                                         <div className="form-group select-group">
 
                                             <label className="form-control-placeholder"   for="f-name">Consultancy User</label>
-                                            <select disabled={true} className="form-control select"   >
-                                                <option value="">Select</option>
-                                                <option value="">Select</option>
-                                                <option value="">Select</option>
-                                                <option value="">Select</option>
-                                                {/* {
-                                                    this.state.clientIdList.length && this.state.clientIdList.map((item, idex) => {
-                                                        return (
-                                                            <option value={item.id}> {item.name} </option>
-                                                        )
-                                                    })
-                                                } */}
-
-                                            </select>
-                                            {/* <input type="text-area" id="text"  className="form-control" placeholder=" " /> */}
+                                             <h3>Consultancy User</h3>
                                         </div>
                                     </div>
                                 </div>
@@ -280,8 +264,8 @@ const mapStateToProps = state => {
                                     <div className="itm-cnt">
                                         <div className="form-group">
                                             <label className="form-control-placeholder" for="f-name">Comments</label>
-                                            <textarea disabled={true} type="text-area" value={this.state.comments} onChange={(e) => { this.setState({ comments: e.target.value, commentsErrorMsg: false }) }} className="form-control" placeholder="Enter Comments" />
-                                        </div>
+                                         <h3>{this.state.comments}</h3>
+                                         </div>
                                     </div>
                                 </div>
 
