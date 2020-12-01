@@ -95,7 +95,7 @@ const mapStateToProps = state => {
                             <div class="table-section">
                                 <table class="table table-bordered">
                                     <thead>
-                                        <tr>
+                                        <tr >
                                             <th class="img-sq-box">
                                                 <img src="/images/table-blue-dots.svg" />
                                             </th>
@@ -122,7 +122,8 @@ const mapStateToProps = state => {
                                     <tbody>
                                         {this.state.binderDataList.map((item, index) => {
                                             return (
-                                                <tr>
+                                                // <tr style={{cursor:"pointer"}} onDoubleClick={()=>history.push('/viewBinder',{"binderItem":item,"consultancy_id":item.consultancy.id,"client_id":item.client.id})}>
+                                                 <tr>
                                                     <td class="img-sq-box">
                                                         <img src="/images/table-blue-dots.svg" />
                                                     </td>
