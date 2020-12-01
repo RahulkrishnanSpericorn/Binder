@@ -117,7 +117,7 @@ const mapStateToProps = state =>{
                                     <tbody>
                                         {this.state.siteDataList.map((item, index) => {
                                             return (
-                                                <tr>
+                                                <tr onDoubleClick={()=>{history.push('/viewSite',{"siteItem":item,"client_id":item.client.id,"consultancy_id":item.consultancy.id,"region_id":item.region.id})}} style={{cursor:"pointer"}}>
                                                     <td class="img-sq-box">
                                                         <img src="/images/table-blue-dots.svg" />
                                                     </td>
