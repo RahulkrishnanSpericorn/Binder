@@ -30,6 +30,7 @@ import editBuilding from "./components/settings/building/editBuilding"
 import viewRegion from "./components/settings/region/viewRegion" 
 import viewSite from "./components/settings/sites/viewSite" 
 import viewConsultancy from "./components/settings/consultancy/viewConsultancy" 
+import viewClient from "./components/settings/clients/viewClient" 
 
 
 
@@ -63,6 +64,7 @@ function App() {
         <PrivateRoute exact path="/viewRegion" component={viewRegion} />
         <PrivateRoute exact path="/viewSite" component={viewSite} />
         <PrivateRoute exact path="/viewConsultancy" component={viewConsultancy} />
+        <PrivateRoute exact path="/viewClient" component={viewClient} />
         
       </Switch>
     </Router>

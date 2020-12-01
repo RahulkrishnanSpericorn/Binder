@@ -127,7 +127,7 @@ class index extends Component {
                                         <tbody>
                                             {this.state.clientDataList.map((item, index) => {
                                                 return (
-                                                    <tr>
+                                                    <tr style={{cursor:"pointer"}} onDoubleClick={()=>{history.push('/viewClient',{"clientItem":item,"consultancy_id":item.consultancy.id})}}>
                                                         <td class="img-sq-box">
                                                             <img src="/images/table-blue-dots.svg" />
                                                         </td>
