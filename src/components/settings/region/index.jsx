@@ -120,7 +120,7 @@ const mapStateToProps = state =>{
                                     <tbody>
                                         {this.state.regionDataList.map((item, index) => {
                                             return (
-                                                <tr>
+                                                <tr onDoubleClick={()=>{history.push('/viewRegion',{"regionItem":item, "clientid":item.client.id,"consultancy_id":item.consultancy.id})}} style={{cursor:"pointer"}}>
                                                     <td class="img-sq-box">
                                                         <img src="/images/table-blue-dots.svg" />
                                                     </td>

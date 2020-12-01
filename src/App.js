@@ -27,6 +27,7 @@ import binder from "./components/settings/binder/index"
 import addBinder from "./components/settings/binder/addBinder" 
 import editBinder from "./components/settings/binder/editBinder" 
 import editBuilding from "./components/settings/building/editBuilding" 
+import viewRegion from "./components/settings/region/viewRegion" 
 
 
 
@@ -57,6 +58,7 @@ function App() {
         <PrivateRoute exact path="/addBinder" component={addBinder} />
         <PrivateRoute exact path="/editBinder" component={editBinder} />
         <PrivateRoute exact path="/editBuilding" component={editBuilding} />
+        <PrivateRoute exact path="/viewRegion" component={viewRegion} />
         
       </Switch>
     </Router>
