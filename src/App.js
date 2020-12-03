@@ -67,7 +67,6 @@ function App() {
         <PrivateRoute exact path="/viewConsultancy" component={viewConsultancy} />
         <PrivateRoute exact path="/viewClient" component={viewClient} />
         <PrivateRoute exact path="/viewBinder" component={viewBinder} />
-        
       </Switch>
     </Router>
   );
