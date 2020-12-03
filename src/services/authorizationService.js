@@ -6,10 +6,7 @@ export const binderGateWay = axios.create({
     baseURL: API_ROUTE,
     timeout: 300000,
     withCredentials: true,
-    headers: {
-        "Access-Control-Allow-Origin": ORIGIN_URL,
-    }
-
+    headers: {}
 });
 
 binderGateWay.interceptors.response.use(
@@ -29,8 +26,8 @@ binderGateWay.interceptors.request.use(function (config) {
     const token = localStorage.getItem("binder-token");
     config.headers = {
         ...config.headers,
-        Authorization: `Bearer ${token}`
-
+        Authorization: `Bearer ${token}`,
+        "Access-Control-Allow-Origin": ORIGIN_URL,
     };
     return config;
 });
