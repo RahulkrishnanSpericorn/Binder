@@ -83,7 +83,7 @@ class viewBinder extends Component {
                                         <div className="itm-cnt">
                                             <div className="form-group">
                                                 <label className="form-control-placeholder" for="f-name">
-                                                    Binder Name *
+                                                    Binder Name
                                                 </label>
                                                 <h3>{binderItem.name || "-"}</h3>
                                             </div>
@@ -109,7 +109,7 @@ class viewBinder extends Component {
                                         <div className="itm-cnt">
                                             <div className="form-group select-group">
                                                 <label className="form-control-placeholder" for="f-name">
-                                                    Consultancy *
+                                                    Consultancy
                                                 </label>
                                                 <h3>{(binderItem.consultancy && binderItem.consultancy.name) || "-"}</h3>
                                             </div>
@@ -123,7 +123,7 @@ class viewBinder extends Component {
                                         <div className="itm-cnt">
                                             <div className="form-group select-group">
                                                 <label className="form-control-placeholder" for="f-name">
-                                                    Client *
+                                                    Client
                                                 </label>
                                                 <h3>{(binderItem.client && binderItem.client.name) || "-"}</h3>
                                             </div>
