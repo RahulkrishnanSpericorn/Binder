@@ -8,7 +8,7 @@ import siteReducer from "../components/settings/sites/reducers";
 import settingsCommonReducer from "../components/settings/reducers";
 import buildingReducer from "../components/settings/building/reducers";
 import binderReducer from "../components/settings/binder/reducers";
-
+import activityReducer from "../components/settings/activity/reducers";
 
 const rootReducer = combineReducers({
     loginReducer,
@@ -19,8 +19,8 @@ const rootReducer = combineReducers({
     siteReducer,
     settingsCommonReducer,
     buildingReducer,
-    binderReducer
-
+    binderReducer,
+    activityReducer
 });
 
 export default rootReducer;

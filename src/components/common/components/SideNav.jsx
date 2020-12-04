@@ -1,26 +1,28 @@
-import React, { Component } from 'react'
-import history from '../../../config/history'
+import React, { Component } from "react";
+import history from "../../../config/history";
 
 export default class SideNav extends Component {
-
-
     logOut = () => {
-        localStorage.clear()
-        console.log("log", history)
-        history.push('/login')
+        localStorage.clear();
+        console.log("log", history);
+        history.push("/login");
+    };
 
-    }
-    
-    pageChange = (pageName) => {
-        history.push('/' + pageName)
-    }
+    pageChange = pageName => {
+        history.push("/" + pageName);
+    };
 
     render() {
         return (
             <aside className="sidenav navbar-collapse collapse show" id="navbarSupportedContent">
                 <ul className="navbar">
                     <li className="nav-item">
-                        <a className="nav-link" onClick={() => { this.pageChange('dashboard') }}>
+                        <a
+                            className="nav-link"
+                            onClick={() => {
+                                this.pageChange("dashboard");
+                            }}
+                        >
                             <div className="icn-sec">
                                 <img src="/images/Dashboard.svg" />
                             </div>
@@ -54,38 +56,107 @@ export default class SideNav extends Component {
                             <div className="collapse" id="setting">
                                 <ul className="view">
                                     <li>
-                                        <a onClick={() => { this.pageChange('consultancy') }} className="">Consultancies</a>
+                                        <a
+                                            onClick={() => {
+                                                this.pageChange("consultancy");
+                                            }}
+                                            className=""
+                                        >
+                                            Consultancies
+                                        </a>
                                     </li>
                                     <li>
-                                        <a onClick={() => { this.pageChange('clients') }} className="">Clients</a>
+                                        <a
+                                            onClick={() => {
+                                                this.pageChange("clients");
+                                            }}
+                                            className=""
+                                        >
+                                            Clients
+                                        </a>
                                     </li>
                                     <li>
-                                        <a onClick={() => { this.pageChange('regions') }} className="">Regions</a>
+                                        <a
+                                            onClick={() => {
+                                                this.pageChange("regions");
+                                            }}
+                                            className=""
+                                        >
+                                            Regions
+                                        </a>
                                     </li>
                                     <li>
-                                        <a onClick={() => { this.pageChange('sites') }} className="">Sites</a>
+                                        <a
+                                            onClick={() => {
+                                                this.pageChange("sites");
+                                            }}
+                                            className=""
+                                        >
+                                            Sites
+                                        </a>
                                     </li>
 
                                     <li>
-                                        <a onClick={() => { this.pageChange('building') }} className="">Buildings</a>
+                                        <a
+                                            onClick={() => {
+                                                this.pageChange("building");
+                                            }}
+                                            className=""
+                                        >
+                                            Buildings
+                                        </a>
                                     </li>
                                     <li>
-                                        <a onClick={() => { this.pageChange('binder') }} className="">Binder</a>
+                                        <a
+                                            onClick={() => {
+                                                this.pageChange("binder");
+                                            }}
+                                            className=""
+                                        >
+                                            Binders
+                                        </a>
                                     </li>
-
-
                                     <li>
-                                        <a onClick={() => { this.pageChange('users') }} className="">Users</a>
+                                        <a
+                                            onClick={() => {
+                                                this.pageChange("activity");
+                                            }}
+                                            className=""
+                                        >
+                                            Activities
+                                        </a>
                                     </li>
                                     <li>
-                                        <a onClick={() => { this.pageChange('userPermission') }} className="">User Permissions</a>
+                                        <a
+                                            onClick={() => {
+                                                this.pageChange("users");
+                                            }}
+                                            className=""
+                                        >
+                                            Users
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a
+                                            onClick={() => {
+                                                this.pageChange("userPermission");
+                                            }}
+                                            className=""
+                                        >
+                                            User Permissions
+                                        </a>
                                     </li>
                                 </ul>
                             </div>
                         </div>
                     </li>
                     <li className="nav-item">
-                        <a className="nav-link" onClick={() => { this.logOut() }}>
+                        <a
+                            className="nav-link"
+                            onClick={() => {
+                                this.logOut();
+                            }}
+                        >
                             <div className="icn-sec">
                                 <img src="/images/logout.svg" />
                             </div>
@@ -94,6 +165,6 @@ export default class SideNav extends Component {
                     </li>
                 </ul>
             </aside>
-        )
+        );
     }
 }

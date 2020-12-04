@@ -39,7 +39,6 @@ class addBinder extends Component {
     async componentDidMount() {
         await this.props.getConsultancyDropdown();
 
-        console.log("consultancyDropdownData", this.props.settingsCommonReducer.consultancyDropdownData);
         await this.setState({
             consultancyIdList: this.props.settingsCommonReducer.consultancyDropdownData.data
         });
