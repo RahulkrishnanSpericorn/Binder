@@ -40,8 +40,8 @@ class viewBinder extends Component {
                 { name: "Quarterly View", key: "quarterly_view" },
                 { name: "Edit form", key: "edit_form" },
                 { name: "Default Total Devices", key: "default_total_devices" },
-                { name: "Start Date", key: "start_date" },
-                { name: "End Date", key: "end_date" },
+                { name: "Valid From", key: "start_date" },
+                { name: "Valid To", key: "end_date" },
                 { name: "Created At", key: "created_at" },
                 { name: "Updated At", key: "updated_at" }
             ]
