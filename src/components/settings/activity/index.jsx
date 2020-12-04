@@ -124,8 +124,8 @@ class index extends Component {
                                                 <th className="">Quarterly View</th>
                                                 <th className="">Edit form</th>
                                                 <th className="">Default Total Devices</th>
-                                                <th className="">Start Date</th>
-                                                <th className="">End Date</th>
+                                                <th className="">Valid From</th>
+                                                <th className="">Valid To</th>
                                                 <th className="">Created At</th>
                                                 <th className="">Updated At</th>
                                                 <th className="action">
@@ -139,7 +139,7 @@ class index extends Component {
                                                     <tr
                                                         onDoubleClick={() => {
                                                             history.push("/viewActivity", {
-                                                                binderItem: item,
+                                                                activityItem: item,
                                                                 clientid: item.client.id,
                                                                 consultancy_id: item.consultancy.id
                                                             });
@@ -176,31 +176,33 @@ class index extends Component {
                                                         <td className="action">
                                                             <img alt="" src="/images/three-dots.svg" data-toggle="dropdown" />
                                                             <ul className="dropdown-menu" role="menu">
-                                                                <li>
-                                                                    <span
-                                                                        style={{ cursor: "pointer" }}
-                                                                        onClick={() =>
-                                                                            history.push("/editActivity", {
-                                                                                binderItem: item,
-                                                                                consultancy_id: item.consultancy.id,
-                                                                                client_id: item.client.id
-                                                                            })
-                                                                        }
-                                                                    >
+                                                                <li
+                                                                    onClick={e => {
+                                                                        e.preventDefault();
+                                                                        e.stopPropagation();
+                                                                        history.push("/editActivity", {
+                                                                            activityItem: item,
+                                                                            consultancy_id: item.consultancy.id,
+                                                                            client_id: item.client.id
+                                                                        });
+                                                                    }}
+                                                                >
+                                                                    <a>
                                                                         <img alt="" src="/images/edit.svg" />
                                                                         Edit
-                                                                    </span>
+                                                                    </a>
                                                                 </li>
-                                                                <li>
-                                                                    <span
-                                                                        style={{ cursor: "pointer" }}
-                                                                        onClick={() => {
-                                                                            this.deleteActivity(item);
-                                                                        }}
-                                                                    >
+                                                                <li
+                                                                    onClick={e => {
+                                                                        e.preventDefault();
+                                                                        e.stopPropagation();
+                                                                        this.deleteActivity(item);
+                                                                    }}
+                                                                >
+                                                                    <a>
                                                                         <img alt="" src="/images/delete.svg" />
                                                                         Delete
-                                                                    </span>
+                                                                    </a>
                                                                 </li>
                                                             </ul>
                                                         </td>

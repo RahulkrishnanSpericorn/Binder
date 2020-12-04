@@ -4,3 +4,7 @@
 .activity-table.scroll-table {
     min-width: 3500px !important;
 }
+.text-red {
+    color: red !important;
+    font-weight: bold;
+}

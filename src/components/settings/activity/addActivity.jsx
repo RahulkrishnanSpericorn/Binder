@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { ToastContainer } from "react-toastify";
 import DatePicker from "react-date-picker";
-import "react-date-picker/dist/DatePicker.css";
 
 import TopSlider from "../../common/components/TopSlider";
 import commonActions from "../actions";
@@ -41,7 +40,14 @@ class addActivity extends Component {
                 binder_id: null,
                 consultancy_id: null,
                 client_id: null
-            }
+            },
+            errorParams: {
+                binder_id: false,
+                consultancy_id: false,
+                client_id: false
+            },
+            isEdit: false,
+            showErrorBorder: false
         };
     }
 
@@ -50,6 +56,18 @@ class addActivity extends Component {
         await this.setState({
             consultancyIdList: this.props.settingsCommonReducer.consultancyDropdownData.data
         });
+        if (this.props.history.location.state && this.props.history.location.state.activityItem) {
+            await this.getClientDropDown(this.props.history.location.state.consultancy_id);
+            await this.getBinderDropDown(this.props.history.location.state.client_id);
+            let tempActivityParam = this.props.history.location.state.activityItem;
+            tempActivityParam.binder_id = tempActivityParam.binder.id;
+            tempActivityParam.client_id = tempActivityParam.client.id;
+            tempActivityParam.consultancy_id = tempActivityParam.consultancy.id;
+            await this.setState({
+                activityParams: tempActivityParam,
+                isEdit: true
+            });
+        }
     }
 
     getBinderDropDown = async client_id => {
@@ -57,6 +75,15 @@ class addActivity extends Component {
         await this.setState({
             binderIdList: this.props.settingsCommonReducer.binderDropdownData.data
         });
+        return true;
+    };
+
+    getClientDropDown = async consultancy_id => {
+        await this.props.getClientDropdown({ consultancy_id });
+        await this.setState({
+            clientIdList: this.props.settingsCommonReducer.clientDropdownData.data
+        });
+        return true;
     };
 
     selectConsultancyId = async consultancy_id => {
@@ -67,24 +94,62 @@ class addActivity extends Component {
                 consultancy_id
             }
         });
-        await this.props.getClientDropdown({ consultancy_id });
-        await this.setState({
-            clientIdList: this.props.settingsCommonReducer.clientDropdownData.data
+        this.getClientDropDown(consultancy_id);
+    };
+
+    validate = () => {
+        const { activityParams } = this.state;
+        let errorParams = {
+            binder_id: false,
+            consultancy_id: false,
+            client_id: false
+        };
+        let showErrorBorder = false;
+        if (!activityParams.binder_id || !activityParams.binder_id.trim().length) {
+            errorParams.binder_id = true;
+            showErrorBorder = true;
+        }
+        if (!activityParams.consultancy_id || !activityParams.consultancy_id.trim().length) {
+            errorParams.consultancy_id = true;
+            showErrorBorder = true;
+        }
+        if (!activityParams.client_id || !activityParams.client_id.trim().length) {
+            errorParams.client_id = true;
+            showErrorBorder = true;
+        }
+        this.setState({
+            showErrorBorder,
+            errorParams
         });
+
+        if (showErrorBorder) return false;
+        return true;
     };
 
     addActivity = async () => {
         const { activityParams } = this.state;
-        await this.props.addActivity(activityParams);
-        console.log("this.props.activityReducer", this.props.activityReducer);
-        ToastMsg(this.props.activityReducer.addActivityData.message, "info");
-        if (this.props.activityReducer.addActivityData.message === "Activity created successfully") {
-            history.push("/activity");
+        if (this.validate()) {
+            await this.props.addActivity(activityParams);
+            ToastMsg(this.props.activityReducer.addActivityData.message, "info");
+            if (this.props.activityReducer.addActivityData.success) {
+                history.push("/activity");
+            }
+        }
+    };
+
+    editActivity = async () => {
+        const { activityParams } = this.state;
+        if (this.validate()) {
+            await this.props.editActivity(activityParams, activityParams.id);
+            ToastMsg(this.props.activityReducer.editActivityData.message, "info");
+            if (this.props.activityReducer.editActivityData.success) {
+                history.push("/activity");
+            }
         }
     };
 
     render() {
-        const { binderIdList, activityParams } = this.state;
+        const { binderIdList, activityParams, isEdit, showErrorBorder, errorParams } = this.state;
         return (
             <>
                 <section class="cont-ara act-main">
@@ -111,9 +176,17 @@ class addActivity extends Component {
                                     </div>
                                 </div>
                                 <div class="activity">
+                                    {isEdit ? (
+                                        <div class="itm">
+                                            <div class="form-group">
+                                                <label>Code</label>
+                                                <input type="text" class="form-control" placeholder="" value={activityParams.code} disabled="true" />
+                                            </div>
+                                        </div>
+                                    ) : null}
                                     <div class="itm">
                                         <div class="form-group">
-                                            <label>Cosultancy</label>
+                                            <label className={showErrorBorder && errorParams.consultancy_id ? "text-red" : ""}>Cosultancy *</label>
                                             <div class="custom-selecbox">
                                                 <select
                                                     className="custom-selecbox form-control"
@@ -137,11 +210,11 @@ class addActivity extends Component {
                                     </div>
                                     <div class="itm">
                                         <div class="form-group">
-                                            <label>Client</label>
+                                            <label className={showErrorBorder && errorParams.client_id ? "text-red" : ""}>Client *</label>
                                             <div class="custom-selecbox">
                                                 <select
                                                     className="custom-selecbox form-control"
-                                                    value={this.state.client_id}
+                                                    value={activityParams.client_id}
                                                     onChange={e => {
                                                         this.setState({
                                                             activityParams: {
@@ -436,7 +509,7 @@ class addActivity extends Component {
                                                         }
                                                     });
                                                 }}
-                                                value={activityParams.start_date}
+                                                value={activityParams.start_date && new Date(activityParams.start_date)}
                                             />
                                         </div>
                                     </div>
@@ -453,17 +526,17 @@ class addActivity extends Component {
                                                         }
                                                     });
                                                 }}
-                                                value={activityParams.end_date}
+                                                value={activityParams.end_date && new Date(activityParams.end_date)}
                                             />
                                         </div>
                                     </div>
                                     <div class="itm">
                                         <div class="form-group calendar">
-                                            <label>Binder</label>
+                                            <label className={showErrorBorder && errorParams.binder_id ? "text-red" : ""}>Binder *</label>
                                             <div class="custom-selecbox">
                                                 <select
                                                     className="custom-selecbox form-control"
-                                                    value={activityParams.binder_id}
+                                                    value={new Date(activityParams.binder_id)}
                                                     onChange={e =>
                                                         this.setState({
                                                             activityParams: {
@@ -486,14 +559,54 @@ class addActivity extends Component {
                                             </div>
                                         </div>
                                     </div>
+                                    {isEdit ? (
+                                        <React.Fragment>
+                                            <div class="itm">
+                                                <div class="form-group calendar">
+                                                    <label>Created At</label>
+                                                    <input
+                                                        type="text"
+                                                        disabled="true"
+                                                        value={activityParams.created_at}
+                                                        class="form-control"
+                                                        placeholder=" "
+                                                    />
+                                                    <div class="icon" data-toggle="modal" data-target="#myModal">
+                                                        <img src="/images/calendar-gray.svg" alt="" />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="itm">
+                                                <div class="form-group calendar">
+                                                    <label>Updated At</label>
+                                                    <input
+                                                        type="text"
+                                                        disabled="true"
+                                                        value={activityParams.updated_at}
+                                                        class="form-control"
+                                                        placeholder=" "
+                                                    />
+                                                    <div class="icon" data-toggle="modal" data-target="#myModal">
+                                                        <img src="/images/calendar-gray.svg" alt="" />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </React.Fragment>
+                                    ) : null}
                                 </div>
                                 <div class="btn-sec">
-                                    <button class="btn btn-cncl-back mr-2">
+                                    <button class="btn btn-cncl-back mr-2" onClick={() => history.push("/activity")}>
                                         <i class="material-icons tic"> close</i>Cancel
                                     </button>
-                                    <button class="btn btn-create" onClick={() => this.addActivity()}>
-                                        <i class="material-icons tic"> check</i> Add Activity
-                                    </button>
+                                    {isEdit ? (
+                                        <button class="btn btn-create" onClick={() => this.editActivity()}>
+                                            <i class="material-icons tic"> check</i> Update Activity
+                                        </button>
+                                    ) : (
+                                        <button class="btn btn-create" onClick={() => this.addActivity()}>
+                                            <i class="material-icons tic"> check</i> Add Activity
+                                        </button>
+                                    )}
                                 </div>
                             </div>
                         </div>
