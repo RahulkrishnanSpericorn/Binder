@@ -440,10 +440,8 @@ class addActivity extends Component {
                                     <div class="itm">
                                         <div class="form-group">
                                             <label>Quarterly View</label>
-                                            <input
-                                                type="text"
-                                                class="form-control"
-                                                placeholder=" "
+                                            <select
+                                                className="custom-selecbox form-control"
                                                 value={activityParams.quarterly_view}
                                                 onChange={e =>
                                                     this.setState({
@@ -453,7 +451,11 @@ class addActivity extends Component {
                                                         }
                                                     })
                                                 }
-                                            />
+                                            >
+                                                <option value="">Select</option>
+                                                <option value="YES">YES</option>
+                                                <option value="NO">NO</option>
+                                            </select>
                                         </div>
                                     </div>
                                     <div class="itm">
@@ -472,6 +474,7 @@ class addActivity extends Component {
                                                 }
                                             >
                                                 <option value="">Select</option>
+                                                <option value="FAST">FAST</option>
                                             </select>
                                         </div>
                                     </div>
@@ -536,7 +539,7 @@ class addActivity extends Component {
                                             <div class="custom-selecbox">
                                                 <select
                                                     className="custom-selecbox form-control"
-                                                    value={new Date(activityParams.binder_id)}
+                                                    value={activityParams.binder_id}
                                                     onChange={e =>
                                                         this.setState({
                                                             activityParams: {
