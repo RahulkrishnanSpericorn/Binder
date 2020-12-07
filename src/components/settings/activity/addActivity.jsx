@@ -74,10 +74,33 @@ class addActivity extends Component {
     }
 
     renderFrequencyModal = () => {
-        const { showFrequencyModal } = this.state;
+        const { showFrequencyModal, activityParams } = this.state;
         if (!showFrequencyModal) return null;
 
-        return <Portal body={<FrequencyModel onCancel={this.toggleShowFrequencyModal} />} onCancel={this.toggleShowFrequencyModal} />;
+        return (
+            <Portal
+                body={
+                    <FrequencyModel
+                        onCancel={this.toggleShowFrequencyModal}
+                        setFrequencyData={this.setFrequencyData}
+                        frequency={activityParams.frequency}
+                        test_frequency={activityParams.test_frequency}
+                    />
+                }
+                onCancel={this.toggleShowFrequencyModal}
+            />
+        );
+    };
+
+    setFrequencyData = (frequency, test_frequency) => {
+        const { activityParams } = this.state;
+        this.setState({
+            activityParams: {
+                ...activityParams,
+                frequency,
+                test_frequency
+            }
+        });
     };
 
     toggleShowFrequencyModal = () => {

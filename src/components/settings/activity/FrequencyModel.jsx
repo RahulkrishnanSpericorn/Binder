@@ -11,7 +11,7 @@ class FrequencyModel extends Component {
                 infinite: false,
                 speed: 500,
                 slidesToShow: 5,
-                slidesToScroll: 1
+                slidesToScroll: 5
             },
             monthList: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
             frequencyList: [
@@ -31,17 +31,40 @@ class FrequencyModel extends Component {
                 { name: "Sun", key: "SU" }
             ],
             rRuleGen: {
-                freq: RRule["MONTHLY"],
+                freq: "",
                 interval: "",
                 wkst: RRule.MO,
-                byweekday: [RRule["MO"], RRule["TU"], RRule["WE"], RRule["TH"]],
+                byweekday: [],
                 bymonth: []
             },
             test_frequency: ""
         };
     }
 
-    componentDidMount = async () => {};
+    componentDidMount = async () => {
+        const { frequency, test_frequency } = this.props;
+        if (frequency) {
+            let rule = RRule.fromString(frequency);
+            await this.setState({
+                rRuleGen: rule.origOptions,
+                test_frequency
+            });
+        }
+    };
+
+    clearFrequency = async () => {
+        const { onCancel } = this.props;
+        await this.setState({
+            rRuleGen: {
+                freq: "",
+                interval: "",
+                wkst: RRule.MO,
+                byweekday: [],
+                bymonth: []
+            }
+        });
+        onCancel();
+    };
 
     setByMonthForRRuleGen = value => {
         const {
@@ -63,16 +86,43 @@ class FrequencyModel extends Component {
     };
 
     generateRRule = () => {
-        const { rRuleGen } = this.state;
+        const { rRuleGen, test_frequency } = this.state;
         const rule = new RRule(rRuleGen);
-        console.log("ruletoString", rule.toString());
-        // let rule2 = RRule.fromString(rule.toString());
-        // console.log("ruletoString 2", rule2.origOptions);
+        let frequency = rule.toString();
+        this.props.setFrequencyData(frequency, test_frequency);
+    };
+
+    checkRRuleHasDay = value => {
+        const {
+            rRuleGen: { byweekday }
+        } = this.state;
+        if (byweekday.find(item => item.weekday === value)) return true;
+        return false;
+    };
+
+    setByDayForRRuleGen = value => {
+        const {
+            rRuleGen,
+            dayList,
+            rRuleGen: { byweekday }
+        } = this.state;
+        let tempByDay = byweekday;
+        if (this.checkRRuleHasDay(value)) {
+            tempByDay = tempByDay.filter(item => item.weekday !== value);
+        } else {
+            tempByDay.push(RRule[dayList[value].key]);
+        }
+        this.setState({
+            rRuleGen: {
+                ...rRuleGen,
+                byweekday: tempByDay
+            }
+        });
     };
 
     render() {
         const { monthList, frequencyList, dayList, test_frequency, rRuleGen } = this.state;
-        console.log("rRuleGen", rRuleGen.byweekday);
+
         return (
             <React.Fragment>
                 <div className="modal" role="dialog" style={{ display: "block" }} id="modalId">
@@ -80,7 +130,7 @@ class FrequencyModel extends Component {
                         <div className="modal-content">
                             <div className="modal-header">
                                 <h4 className="modal-title">Frequency</h4>
-                                <button type="button" className="close" data-dismiss="modal">
+                                <button type="button" className="close" data-dismiss="modal" onClick={() => this.clearFrequency()}>
                                     <i className="material-icons">close </i>
                                 </button>
                             </div>
@@ -145,7 +195,12 @@ class FrequencyModel extends Component {
                                         <label>By Day</label>
                                         <div className="bck-ara day">
                                             {dayList.map((item, i) => (
-                                                <button className="btn btn-frm">{item.name}</button>
+                                                <button
+                                                    className={`btn btn-frm ${this.checkRRuleHasDay(i) ? "active" : ""}`}
+                                                    onClick={() => this.setByDayForRRuleGen(i)}
+                                                >
+                                                    {item.name}
+                                                </button>
                                             ))}
                                         </div>
                                     </div>
@@ -160,7 +215,7 @@ class FrequencyModel extends Component {
                                     </div>
 
                                     <div className="btn-sec">
-                                        <button className="btn btn-cncl-back mr-2">
+                                        <button className="btn btn-cncl-back mr-2" onClick={() => this.clearFrequency()}>
                                             <i className="material-icons tic"> close</i>Cancel
                                         </button>
                                         <button className="btn btn-create" onClick={() => this.generateRRule()}>
