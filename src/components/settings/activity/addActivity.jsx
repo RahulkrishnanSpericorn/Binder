@@ -8,6 +8,8 @@ import commonActions from "../actions";
 import ToastMsg from "../../common/ToastMessage";
 import history from "../../../config/history";
 import actions from "./actions";
+import Portal from "../../common/components/Portal";
+import FrequencyModel from "./FrequencyModel";
 
 class addActivity extends Component {
     constructor(props) {
@@ -47,7 +49,8 @@ class addActivity extends Component {
                 client_id: false
             },
             isEdit: false,
-            showErrorBorder: false
+            showErrorBorder: false,
+            showFrequencyModal: false
         };
     }
 
@@ -69,6 +72,20 @@ class addActivity extends Component {
             });
         }
     }
+
+    renderFrequencyModal = () => {
+        const { showFrequencyModal } = this.state;
+        if (!showFrequencyModal) return null;
+
+        return <Portal body={<FrequencyModel onCancel={this.toggleShowFrequencyModal} />} onCancel={this.toggleShowFrequencyModal} />;
+    };
+
+    toggleShowFrequencyModal = () => {
+        const { showFrequencyModal } = this.state;
+        this.setState({
+            showFrequencyModal: !showFrequencyModal
+        });
+    };
 
     getBinderDropDown = async client_id => {
         await this.props.getBinderDropdown({ client_id });
@@ -356,7 +373,9 @@ class addActivity extends Component {
                                     <div class="itm">
                                         <div class="form-group">
                                             <label>Frequency</label>
-                                            <button class="btn btn-frqy">Set Frequency</button>
+                                            <button class="btn btn-frqy" onClick={() => this.toggleShowFrequencyModal()}>
+                                                Set Frequency
+                                            </button>
                                         </div>
                                     </div>
                                     <div class="itm">
@@ -614,6 +633,7 @@ class addActivity extends Component {
                             </div>
                         </div>
                     </div>
+                    {this.renderFrequencyModal()}
                 </section>
             </>
         );
