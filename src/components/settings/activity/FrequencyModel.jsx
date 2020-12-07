@@ -45,8 +45,15 @@ class FrequencyModel extends Component {
         const { frequency, test_frequency } = this.props;
         if (frequency) {
             let rule = RRule.fromString(frequency);
+            let rRuleGenObj = rule.origOptions;
+            if (!Array.isArray(rRuleGenObj.bymonth)) {
+                rRuleGenObj.bymonth = [rRuleGenObj.bymonth];
+            }
+            if (!Array.isArray(rRuleGenObj.byweekday)) {
+                rRuleGenObj.byweekday = [rRuleGenObj.byweekday];
+            }
             await this.setState({
-                rRuleGen: rule.origOptions,
+                rRuleGen: rRuleGenObj,
                 test_frequency
             });
         }
@@ -87,9 +94,11 @@ class FrequencyModel extends Component {
 
     generateRRule = () => {
         const { rRuleGen, test_frequency } = this.state;
+        const { setFrequencyData, onCancel } = this.props;
         const rule = new RRule(rRuleGen);
         let frequency = rule.toString();
-        this.props.setFrequencyData(frequency, test_frequency);
+        setFrequencyData(frequency, test_frequency);
+        onCancel();
     };
 
     checkRRuleHasDay = value => {
@@ -122,7 +131,7 @@ class FrequencyModel extends Component {
 
     render() {
         const { monthList, frequencyList, dayList, test_frequency, rRuleGen } = this.state;
-
+        console.log("rRuleGen", rRuleGen);
         return (
             <React.Fragment>
                 <div className="modal" role="dialog" style={{ display: "block" }} id="modalId">

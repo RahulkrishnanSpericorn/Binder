@@ -226,7 +226,7 @@ class addActivity extends Component {
                                     ) : null}
                                     <div class="itm">
                                         <div class="form-group">
-                                            <label className={showErrorBorder && errorParams.consultancy_id ? "text-red" : ""}>Cosultancy *</label>
+                                            <label className={showErrorBorder && errorParams.consultancy_id ? "text-red" : ""}>Consultancy *</label>
                                             <div class="custom-selecbox">
                                                 <select
                                                     className="custom-selecbox form-control"
@@ -399,6 +399,18 @@ class addActivity extends Component {
                                             <button class="btn btn-frqy" onClick={() => this.toggleShowFrequencyModal()}>
                                                 Set Frequency
                                             </button>
+                                        </div>
+                                    </div>
+                                    <div class="itm">
+                                        <div class="form-group">
+                                            <label>Test Frequency</label>
+                                            <input
+                                                type="text"
+                                                disabled="true"
+                                                class="form-control cursor-not-allowed"
+                                                placeholder="Test Frequency"
+                                                value={activityParams.test_frequency}
+                                            />
                                         </div>
                                     </div>
                                     <div class="itm">

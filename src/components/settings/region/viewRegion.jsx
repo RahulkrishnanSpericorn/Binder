@@ -194,7 +194,8 @@ class viewRegion extends Component {
                                                 >
                                                     Consultancy *
                                                 </label>
-                                                {this.state.consultancyIdList.length &&
+                                                {this.state.consultancyIdList &&
+                                                    this.state.consultancyIdList.length &&
                                                     this.state.consultancyIdList.map((item, idex) => {
                                                         return <h3> {item.name} </h3>;
                                                     })}

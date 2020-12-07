@@ -1,6 +1,9 @@
 .cursor-pointer {
     cursor: pointer !important;
 }
+.cursor-not-allowed {
+    cursor: not-allowed !important;
+}
 .activity-table.scroll-table {
     min-width: 3500px !important;
 }
