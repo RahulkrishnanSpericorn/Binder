@@ -191,7 +191,7 @@ class addActivity extends Component {
     render() {
         const { binderIdList, activityParams, isEdit, showErrorBorder, errorParams } = this.state;
         return (
-            <>
+            <React.Fragment>
                 <section class="cont-ara act-main">
                     <div class="list-area">
                         <ToastContainer />
@@ -658,7 +658,7 @@ class addActivity extends Component {
                     </div>
                     {this.renderFrequencyModal()}
                 </section>
-            </>
+            </React.Fragment>
         );
     }
 }
