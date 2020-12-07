@@ -22,9 +22,9 @@ class viewBinder extends Component {
             displayData: [
                 { name: "Code", key: "code" },
                 { name: "Activity Type", key: "activity_type" },
-                { name: "Binder", key: "binder.name" },
-                { name: "Client", key: "client.name" },
-                { name: "Consultancy", key: "consultancy.name" },
+                { name: "Binder", key: "binder" },
+                { name: "Client", key: "client" },
+                { name: "Consultancy", key: "consultancy" },
                 { name: "Display Order", key: "display_order" },
                 { name: "Reference", key: "reference" },
                 { name: "Activity Description", key: "activity_description" },
@@ -62,6 +62,7 @@ class viewBinder extends Component {
 
     render() {
         const { activityItem, displayData } = this.state;
+        console.log("activityItem", activityItem);
         return (
             <section className="cont-ara">
                 <div className="fst">
@@ -112,7 +113,11 @@ class viewBinder extends Component {
                                                     <label className="form-control-placeholder" for="f-name">
                                                         {item.name}
                                                     </label>
-                                                    <h3>{activityItem[item.key] || "-"}</h3>
+                                                    {["binder", "client", "consultancy"].includes(item.key) ? (
+                                                        <h3>{activityItem[item.key] ? activityItem[item.key].name : "-"}</h3>
+                                                    ) : (
+                                                        <h3>{activityItem[item.key] || "-"}</h3>
+                                                    )}
                                                 </div>
                                             </div>
                                         </div>
