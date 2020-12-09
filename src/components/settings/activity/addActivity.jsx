@@ -216,466 +216,456 @@ class addActivity extends Component {
                                         </div>
                                     </div>
                                 </div>
-                                <form autoComplete="off">
-                                    <div class="activity">
-                                        {isEdit ? (
+                                <div class="activity">
+                                    {isEdit ? (
+                                        <div class="itm">
+                                            <div class="form-group">
+                                                <label>Code</label>
+                                                <input type="text" class="form-control" placeholder="" value={activityParams.code} disabled="true" />
+                                            </div>
+                                        </div>
+                                    ) : null}
+                                    <div class="itm">
+                                        <div class="form-group">
+                                            <label className={showErrorBorder && errorParams.consultancy_id ? "text-red" : ""}>Consultancy *</label>
+                                            <div class="custom-selecbox">
+                                                <select
+                                                    className="custom-selecbox form-control"
+                                                    value={activityParams.consultancy_id}
+                                                    onChange={e => {
+                                                        this.selectConsultancyId(e.target.value);
+                                                    }}
+                                                >
+                                                    <option value="">Select</option>
+                                                    {this.state.consultancyIdList.length &&
+                                                        this.state.consultancyIdList.map((item, idex) => {
+                                                            return (
+                                                                <option key={idex} value={item.id}>
+                                                                    {item.name}
+                                                                </option>
+                                                            );
+                                                        })}
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="itm">
+                                        <div class="form-group">
+                                            <label className={showErrorBorder && errorParams.client_id ? "text-red" : ""}>Client *</label>
+                                            <div class="custom-selecbox">
+                                                <select
+                                                    className="custom-selecbox form-control"
+                                                    value={activityParams.client_id}
+                                                    onChange={e => {
+                                                        this.setState({
+                                                            activityParams: {
+                                                                ...activityParams,
+                                                                client_id: e.target.value
+                                                            }
+                                                        });
+                                                        this.getBinderDropDown(e.target.value);
+                                                    }}
+                                                >
+                                                    <option value="">Select</option>
+                                                    {this.state.clientIdList.length &&
+                                                        this.state.clientIdList.map((item, idex) => {
+                                                            return (
+                                                                <option key={idex} value={item.id}>
+                                                                    {item.name}
+                                                                </option>
+                                                            );
+                                                        })}
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="itm">
+                                        <div class="form-group">
+                                            <label>Activity Type</label>
+                                            <input
+                                                type="text"
+                                                class="form-control"
+                                                placeholder=" "
+                                                value={activityParams.activity_type}
+                                                onChange={e =>
+                                                    this.setState({
+                                                        activityParams: {
+                                                            ...activityParams,
+                                                            activity_type: e.target.value
+                                                        }
+                                                    })
+                                                }
+                                            />
+                                        </div>
+                                    </div>
+                                    <div class="itm">
+                                        <div class="form-group">
+                                            <label>Display Order</label>
+                                            <input
+                                                type="number"
+                                                min="0"
+                                                class="form-control"
+                                                placeholder=" "
+                                                value={activityParams.display_order}
+                                                onChange={e =>
+                                                    this.setState({
+                                                        activityParams: {
+                                                            ...activityParams,
+                                                            display_order: e.target.value
+                                                        }
+                                                    })
+                                                }
+                                            />
+                                        </div>
+                                    </div>
+                                    <div class="itm">
+                                        <div class="form-group">
+                                            <label>Reference</label>
+                                            <input
+                                                type="text"
+                                                class="form-control"
+                                                placeholder=" "
+                                                value={activityParams.reference}
+                                                onChange={e =>
+                                                    this.setState({
+                                                        activityParams: {
+                                                            ...activityParams,
+                                                            reference: e.target.value
+                                                        }
+                                                    })
+                                                }
+                                            />
+                                        </div>
+                                    </div>
+                                    <div class="itm wid-50">
+                                        <div class="form-group">
+                                            <label>Activity Description</label>
+                                            <input
+                                                type="text"
+                                                class="form-control"
+                                                placeholder=" "
+                                                value={activityParams.activity_description}
+                                                onChange={e =>
+                                                    this.setState({
+                                                        activityParams: {
+                                                            ...activityParams,
+                                                            activity_description: e.target.value
+                                                        }
+                                                    })
+                                                }
+                                            />
+                                        </div>
+                                    </div>
+                                    <div class="itm">
+                                        <div class="form-group">
+                                            <label>Activity text</label>
+                                            <input
+                                                type="text"
+                                                class="form-control"
+                                                placeholder=" "
+                                                value={activityParams.activity_text}
+                                                onChange={e =>
+                                                    this.setState({
+                                                        activityParams: {
+                                                            ...activityParams,
+                                                            activity_text: e.target.value
+                                                        }
+                                                    })
+                                                }
+                                            />
+                                        </div>
+                                    </div>
+                                    <div class="itm">
+                                        <div class="form-group">
+                                            <label>Activity Tooltip</label>
+                                            <input
+                                                type="text"
+                                                class="form-control"
+                                                placeholder=" "
+                                                value={activityParams.activity_tooltip}
+                                                onChange={e =>
+                                                    this.setState({
+                                                        activityParams: {
+                                                            ...activityParams,
+                                                            activity_tooltip: e.target.value
+                                                        }
+                                                    })
+                                                }
+                                            />
+                                        </div>
+                                    </div>
+                                    <div class="itm">
+                                        <div class="form-group">
+                                            <label>Frequency</label>
+                                            <button class="btn btn-frqy" onClick={() => this.toggleShowFrequencyModal()}>
+                                                Set Frequency
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div class="itm">
+                                        <div class="form-group">
+                                            <label>Test Frequency</label>
+                                            <input
+                                                type="text"
+                                                disabled="true"
+                                                class="form-control cursor-not-allowed"
+                                                placeholder="Test Frequency"
+                                                value={activityParams.test_frequency}
+                                            />
+                                        </div>
+                                    </div>
+                                    <div class="itm">
+                                        <div class="form-group">
+                                            <label>Completion Threshold</label>
+                                            <input
+                                                type="number"
+                                                min="0"
+                                                class="form-control"
+                                                placeholder=" "
+                                                value={activityParams.completion_threshold}
+                                                onChange={e =>
+                                                    this.setState({
+                                                        activityParams: {
+                                                            ...activityParams,
+                                                            completion_threshold: e.target.value
+                                                        }
+                                                    })
+                                                }
+                                            />
+                                        </div>
+                                    </div>
+                                    <div class="itm">
+                                        <div class="form-group">
+                                            <label>Email Threshold</label>
+                                            <input
+                                                type="number"
+                                                min="0"
+                                                class="form-control"
+                                                placeholder=" "
+                                                value={activityParams.email_threshold}
+                                                onChange={e =>
+                                                    this.setState({
+                                                        activityParams: {
+                                                            ...activityParams,
+                                                            email_threshold: e.target.value
+                                                        }
+                                                    })
+                                                }
+                                            />
+                                        </div>
+                                    </div>
+                                    <div class="itm">
+                                        <div class="form-group">
+                                            <label>Code Reference</label>
+                                            <input
+                                                type="text"
+                                                class="form-control"
+                                                placeholder=" "
+                                                value={activityParams.code_reference}
+                                                onChange={e =>
+                                                    this.setState({
+                                                        activityParams: {
+                                                            ...activityParams,
+                                                            code_reference: e.target.value
+                                                        }
+                                                    })
+                                                }
+                                            />
+                                        </div>
+                                    </div>
+                                    <div class="itm">
+                                        <div class="form-group">
+                                            <label>Code Reference Tooltip</label>
+                                            <input
+                                                type="text"
+                                                class="form-control"
+                                                placeholder=" "
+                                                value={activityParams.code_reference_tooltip}
+                                                onChange={e =>
+                                                    this.setState({
+                                                        activityParams: {
+                                                            ...activityParams,
+                                                            code_reference_tooltip: e.target.value
+                                                        }
+                                                    })
+                                                }
+                                            />
+                                        </div>
+                                    </div>
+                                    <div class="itm">
+                                        <div class="form-group">
+                                            <label>Quarterly View</label>
+                                            <select
+                                                className="custom-selecbox form-control"
+                                                value={activityParams.quarterly_view}
+                                                onChange={e =>
+                                                    this.setState({
+                                                        activityParams: {
+                                                            ...activityParams,
+                                                            quarterly_view: e.target.value
+                                                        }
+                                                    })
+                                                }
+                                            >
+                                                <option value="">Select</option>
+                                                <option value="YES">YES</option>
+                                                <option value="NO">NO</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="itm">
+                                        <div class="form-group">
+                                            <label>Edit form</label>
+                                            <select
+                                                className="custom-selecbox form-control"
+                                                value={activityParams.edit_form}
+                                                onChange={e =>
+                                                    this.setState({
+                                                        activityParams: {
+                                                            ...activityParams,
+                                                            edit_form: e.target.value
+                                                        }
+                                                    })
+                                                }
+                                            >
+                                                <option value="">Select</option>
+                                                <option value="FAST">FAST</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="itm">
+                                        <div class="form-group">
+                                            <label>Default Total Devices</label>
+                                            <input
+                                                type="number"
+                                                min="0"
+                                                class="form-control"
+                                                placeholder=" "
+                                                value={activityParams.default_total_devices}
+                                                onChange={e =>
+                                                    this.setState({
+                                                        activityParams: {
+                                                            ...activityParams,
+                                                            default_total_devices: e.target.value
+                                                        }
+                                                    })
+                                                }
+                                            />
+                                        </div>
+                                    </div>
+
+                                    <div class="itm">
+                                        <div class="form-group calendar">
+                                            <label>Valid From</label>
+                                            <DatePicker
+                                                className="form-control"
+                                                onChange={value => {
+                                                    this.setState({
+                                                        activityParams: {
+                                                            ...activityParams,
+                                                            start_date: value
+                                                        }
+                                                    });
+                                                }}
+                                                value={activityParams.start_date && new Date(activityParams.start_date)}
+                                            />
+                                        </div>
+                                    </div>
+                                    <div class="itm">
+                                        <div class="form-group calendar">
+                                            <label>Valid To</label>
+                                            <DatePicker
+                                                className="form-control"
+                                                onChange={value => {
+                                                    this.setState({
+                                                        activityParams: {
+                                                            ...activityParams,
+                                                            end_date: value
+                                                        }
+                                                    });
+                                                }}
+                                                value={activityParams.end_date && new Date(activityParams.end_date)}
+                                            />
+                                        </div>
+                                    </div>
+                                    <div class="itm">
+                                        <div class="form-group calendar">
+                                            <label className={showErrorBorder && errorParams.binder_id ? "text-red" : ""}>Binder *</label>
+                                            <div class="custom-selecbox">
+                                                <select
+                                                    className="custom-selecbox form-control"
+                                                    value={activityParams.binder_id}
+                                                    onChange={e =>
+                                                        this.setState({
+                                                            activityParams: {
+                                                                ...activityParams,
+                                                                binder_id: e.target.value
+                                                            }
+                                                        })
+                                                    }
+                                                >
+                                                    <option value="">Select</option>
+                                                    {binderIdList.length &&
+                                                        binderIdList.map((item, idex) => {
+                                                            return (
+                                                                <option key={idex} value={item.id}>
+                                                                    {item.name}
+                                                                </option>
+                                                            );
+                                                        })}
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    {isEdit ? (
+                                        <React.Fragment>
                                             <div class="itm">
-                                                <div class="form-group">
-                                                    <label>Code</label>
+                                                <div class="form-group calendar">
+                                                    <label>Created At</label>
                                                     <input
                                                         type="text"
-                                                        class="form-control"
-                                                        placeholder=""
-                                                        value={activityParams.code}
                                                         disabled="true"
+                                                        value={activityParams.created_at}
+                                                        class="form-control"
+                                                        placeholder=" "
                                                     />
-                                                </div>
-                                            </div>
-                                        ) : null}
-                                        <div class="itm">
-                                            <div class="form-group">
-                                                <label className={showErrorBorder && errorParams.consultancy_id ? "text-red" : ""}>
-                                                    Consultancy *
-                                                </label>
-                                                <div class="custom-selecbox">
-                                                    <select
-                                                        className="custom-selecbox form-control"
-                                                        value={activityParams.consultancy_id}
-                                                        onChange={e => {
-                                                            this.selectConsultancyId(e.target.value);
-                                                        }}
-                                                    >
-                                                        <option value="">Select</option>
-                                                        {this.state.consultancyIdList.length &&
-                                                            this.state.consultancyIdList.map((item, idex) => {
-                                                                return (
-                                                                    <option key={idex} value={item.id}>
-                                                                        {item.name}
-                                                                    </option>
-                                                                );
-                                                            })}
-                                                    </select>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="itm">
-                                            <div class="form-group">
-                                                <label className={showErrorBorder && errorParams.client_id ? "text-red" : ""}>Client *</label>
-                                                <div class="custom-selecbox">
-                                                    <select
-                                                        className="custom-selecbox form-control"
-                                                        value={activityParams.client_id}
-                                                        onChange={e => {
-                                                            this.setState({
-                                                                activityParams: {
-                                                                    ...activityParams,
-                                                                    client_id: e.target.value
-                                                                }
-                                                            });
-                                                            this.getBinderDropDown(e.target.value);
-                                                        }}
-                                                    >
-                                                        <option value="">Select</option>
-                                                        {this.state.clientIdList.length &&
-                                                            this.state.clientIdList.map((item, idex) => {
-                                                                return (
-                                                                    <option key={idex} value={item.id}>
-                                                                        {item.name}
-                                                                    </option>
-                                                                );
-                                                            })}
-                                                    </select>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="itm">
-                                            <div class="form-group">
-                                                <label>Activity Type</label>
-                                                <input
-                                                    type="text"
-                                                    class="form-control"
-                                                    placeholder=" "
-                                                    value={activityParams.activity_type}
-                                                    onChange={e =>
-                                                        this.setState({
-                                                            activityParams: {
-                                                                ...activityParams,
-                                                                activity_type: e.target.value
-                                                            }
-                                                        })
-                                                    }
-                                                />
-                                            </div>
-                                        </div>
-                                        <div class="itm">
-                                            <div class="form-group">
-                                                <label>Display Order</label>
-                                                <input
-                                                    type="number"
-                                                    min="0"
-                                                    class="form-control"
-                                                    placeholder=" "
-                                                    value={activityParams.display_order}
-                                                    onChange={e =>
-                                                        this.setState({
-                                                            activityParams: {
-                                                                ...activityParams,
-                                                                display_order: e.target.value
-                                                            }
-                                                        })
-                                                    }
-                                                />
-                                            </div>
-                                        </div>
-                                        <div class="itm">
-                                            <div class="form-group">
-                                                <label>Reference</label>
-                                                <input
-                                                    type="text"
-                                                    class="form-control"
-                                                    placeholder=" "
-                                                    value={activityParams.reference}
-                                                    onChange={e =>
-                                                        this.setState({
-                                                            activityParams: {
-                                                                ...activityParams,
-                                                                reference: e.target.value
-                                                            }
-                                                        })
-                                                    }
-                                                />
-                                            </div>
-                                        </div>
-                                        <div class="itm wid-50">
-                                            <div class="form-group">
-                                                <label>Activity Description</label>
-                                                <input
-                                                    type="text"
-                                                    class="form-control"
-                                                    placeholder=" "
-                                                    value={activityParams.activity_description}
-                                                    onChange={e =>
-                                                        this.setState({
-                                                            activityParams: {
-                                                                ...activityParams,
-                                                                activity_description: e.target.value
-                                                            }
-                                                        })
-                                                    }
-                                                />
-                                            </div>
-                                        </div>
-                                        <div class="itm">
-                                            <div class="form-group">
-                                                <label>Activity text</label>
-                                                <input
-                                                    type="text"
-                                                    class="form-control"
-                                                    placeholder=" "
-                                                    value={activityParams.activity_text}
-                                                    onChange={e =>
-                                                        this.setState({
-                                                            activityParams: {
-                                                                ...activityParams,
-                                                                activity_text: e.target.value
-                                                            }
-                                                        })
-                                                    }
-                                                />
-                                            </div>
-                                        </div>
-                                        <div class="itm">
-                                            <div class="form-group">
-                                                <label>Activity Tooltip</label>
-                                                <input
-                                                    type="text"
-                                                    class="form-control"
-                                                    placeholder=" "
-                                                    value={activityParams.activity_tooltip}
-                                                    onChange={e =>
-                                                        this.setState({
-                                                            activityParams: {
-                                                                ...activityParams,
-                                                                activity_tooltip: e.target.value
-                                                            }
-                                                        })
-                                                    }
-                                                />
-                                            </div>
-                                        </div>
-                                        <div class="itm">
-                                            <div class="form-group">
-                                                <label>Frequency</label>
-                                                <button class="btn btn-frqy" onClick={() => this.toggleShowFrequencyModal()}>
-                                                    Set Frequency
-                                                </button>
-                                            </div>
-                                        </div>
-                                        <div class="itm">
-                                            <div class="form-group">
-                                                <label>Test Frequency</label>
-                                                <input
-                                                    type="text"
-                                                    disabled="true"
-                                                    class="form-control cursor-not-allowed"
-                                                    placeholder="Test Frequency"
-                                                    value={activityParams.test_frequency}
-                                                />
-                                            </div>
-                                        </div>
-                                        <div class="itm">
-                                            <div class="form-group">
-                                                <label>Completion Threshold</label>
-                                                <input
-                                                    type="number"
-                                                    min="0"
-                                                    class="form-control"
-                                                    placeholder=" "
-                                                    value={activityParams.completion_threshold}
-                                                    onChange={e =>
-                                                        this.setState({
-                                                            activityParams: {
-                                                                ...activityParams,
-                                                                completion_threshold: e.target.value
-                                                            }
-                                                        })
-                                                    }
-                                                />
-                                            </div>
-                                        </div>
-                                        <div class="itm">
-                                            <div class="form-group">
-                                                <label>Email Threshold</label>
-                                                <input
-                                                    type="number"
-                                                    min="0"
-                                                    class="form-control"
-                                                    placeholder=" "
-                                                    value={activityParams.email_threshold}
-                                                    onChange={e =>
-                                                        this.setState({
-                                                            activityParams: {
-                                                                ...activityParams,
-                                                                email_threshold: e.target.value
-                                                            }
-                                                        })
-                                                    }
-                                                />
-                                            </div>
-                                        </div>
-                                        <div class="itm">
-                                            <div class="form-group">
-                                                <label>Code Reference</label>
-                                                <input
-                                                    type="text"
-                                                    class="form-control"
-                                                    placeholder=" "
-                                                    value={activityParams.code_reference}
-                                                    onChange={e =>
-                                                        this.setState({
-                                                            activityParams: {
-                                                                ...activityParams,
-                                                                code_reference: e.target.value
-                                                            }
-                                                        })
-                                                    }
-                                                />
-                                            </div>
-                                        </div>
-                                        <div class="itm">
-                                            <div class="form-group">
-                                                <label>Code Reference Tooltip</label>
-                                                <input
-                                                    type="text"
-                                                    class="form-control"
-                                                    placeholder=" "
-                                                    value={activityParams.code_reference_tooltip}
-                                                    onChange={e =>
-                                                        this.setState({
-                                                            activityParams: {
-                                                                ...activityParams,
-                                                                code_reference_tooltip: e.target.value
-                                                            }
-                                                        })
-                                                    }
-                                                />
-                                            </div>
-                                        </div>
-                                        <div class="itm">
-                                            <div class="form-group">
-                                                <label>Quarterly View</label>
-                                                <select
-                                                    className="custom-selecbox form-control"
-                                                    value={activityParams.quarterly_view}
-                                                    onChange={e =>
-                                                        this.setState({
-                                                            activityParams: {
-                                                                ...activityParams,
-                                                                quarterly_view: e.target.value
-                                                            }
-                                                        })
-                                                    }
-                                                >
-                                                    <option value="">Select</option>
-                                                    <option value="YES">YES</option>
-                                                    <option value="NO">NO</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <div class="itm">
-                                            <div class="form-group">
-                                                <label>Edit form</label>
-                                                <select
-                                                    className="custom-selecbox form-control"
-                                                    value={activityParams.edit_form}
-                                                    onChange={e =>
-                                                        this.setState({
-                                                            activityParams: {
-                                                                ...activityParams,
-                                                                edit_form: e.target.value
-                                                            }
-                                                        })
-                                                    }
-                                                >
-                                                    <option value="">Select</option>
-                                                    <option value="FAST">FAST</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <div class="itm">
-                                            <div class="form-group">
-                                                <label>Default Total Devices</label>
-                                                <input
-                                                    type="number"
-                                                    min="0"
-                                                    class="form-control"
-                                                    placeholder=" "
-                                                    value={activityParams.default_total_devices}
-                                                    onChange={e =>
-                                                        this.setState({
-                                                            activityParams: {
-                                                                ...activityParams,
-                                                                default_total_devices: e.target.value
-                                                            }
-                                                        })
-                                                    }
-                                                />
-                                            </div>
-                                        </div>
-
-                                        <div class="itm">
-                                            <div class="form-group calendar">
-                                                <label>Valid From</label>
-                                                <DatePicker
-                                                    className="form-control"
-                                                    onChange={value => {
-                                                        this.setState({
-                                                            activityParams: {
-                                                                ...activityParams,
-                                                                start_date: value
-                                                            }
-                                                        });
-                                                    }}
-                                                    value={activityParams.start_date && new Date(activityParams.start_date)}
-                                                />
-                                            </div>
-                                        </div>
-                                        <div class="itm">
-                                            <div class="form-group calendar">
-                                                <label>Valid To</label>
-                                                <DatePicker
-                                                    className="form-control"
-                                                    onChange={value => {
-                                                        this.setState({
-                                                            activityParams: {
-                                                                ...activityParams,
-                                                                end_date: value
-                                                            }
-                                                        });
-                                                    }}
-                                                    value={activityParams.end_date && new Date(activityParams.end_date)}
-                                                />
-                                            </div>
-                                        </div>
-                                        <div class="itm">
-                                            <div class="form-group calendar">
-                                                <label className={showErrorBorder && errorParams.binder_id ? "text-red" : ""}>Binder *</label>
-                                                <div class="custom-selecbox">
-                                                    <select
-                                                        className="custom-selecbox form-control"
-                                                        value={activityParams.binder_id}
-                                                        onChange={e =>
-                                                            this.setState({
-                                                                activityParams: {
-                                                                    ...activityParams,
-                                                                    binder_id: e.target.value
-                                                                }
-                                                            })
-                                                        }
-                                                    >
-                                                        <option value="">Select</option>
-                                                        {binderIdList.length &&
-                                                            binderIdList.map((item, idex) => {
-                                                                return (
-                                                                    <option key={idex} value={item.id}>
-                                                                        {item.name}
-                                                                    </option>
-                                                                );
-                                                            })}
-                                                    </select>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        {isEdit ? (
-                                            <React.Fragment>
-                                                <div class="itm">
-                                                    <div class="form-group calendar">
-                                                        <label>Created At</label>
-                                                        <input
-                                                            type="text"
-                                                            disabled="true"
-                                                            value={activityParams.created_at}
-                                                            class="form-control"
-                                                            placeholder=" "
-                                                        />
-                                                        <div class="icon" data-toggle="modal" data-target="#myModal">
-                                                            <img src="/images/calendar-gray.svg" alt="" />
-                                                        </div>
+                                                    <div class="icon" data-toggle="modal" data-target="#myModal">
+                                                        <img src="/images/calendar-gray.svg" alt="" />
                                                     </div>
                                                 </div>
-                                                <div class="itm">
-                                                    <div class="form-group calendar">
-                                                        <label>Updated At</label>
-                                                        <input
-                                                            type="text"
-                                                            disabled="true"
-                                                            value={activityParams.updated_at}
-                                                            class="form-control"
-                                                            placeholder=" "
-                                                        />
-                                                        <div class="icon" data-toggle="modal" data-target="#myModal">
-                                                            <img src="/images/calendar-gray.svg" alt="" />
-                                                        </div>
+                                            </div>
+                                            <div class="itm">
+                                                <div class="form-group calendar">
+                                                    <label>Updated At</label>
+                                                    <input
+                                                        type="text"
+                                                        disabled="true"
+                                                        value={activityParams.updated_at}
+                                                        class="form-control"
+                                                        placeholder=" "
+                                                    />
+                                                    <div class="icon" data-toggle="modal" data-target="#myModal">
+                                                        <img src="/images/calendar-gray.svg" alt="" />
                                                     </div>
                                                 </div>
-                                            </React.Fragment>
-                                        ) : null}
-                                    </div>
-                                    <div class="btn-sec">
-                                        <button class="btn btn-cncl-back mr-2" onClick={() => history.push("/activity")}>
-                                            <i class="material-icons tic"> close</i>Cancel
+                                            </div>
+                                        </React.Fragment>
+                                    ) : null}
+                                </div>
+                                <div class="btn-sec">
+                                    <button class="btn btn-cncl-back mr-2" onClick={() => history.push("/activity")}>
+                                        <i class="material-icons tic"> close</i>Cancel
+                                    </button>
+                                    {isEdit ? (
+                                        <button class="btn btn-create" onClick={() => this.editActivity()}>
+                                            <i class="material-icons tic"> check</i> Update Activity
                                         </button>
-                                        {isEdit ? (
-                                            <button class="btn btn-create" onClick={() => this.editActivity()}>
-                                                <i class="material-icons tic"> check</i> Update Activity
-                                            </button>
-                                        ) : (
-                                            <button class="btn btn-create" onClick={() => this.addActivity()}>
-                                                <i class="material-icons tic"> check</i> Add Activity
-                                            </button>
-                                        )}
-                                    </div>
-                                </form>
+                                    ) : (
+                                        <button class="btn btn-create" onClick={() => this.addActivity()}>
+                                            <i class="material-icons tic"> check</i> Add Activity
+                                        </button>
+                                    )}
+                                </div>
                             </div>
                         </div>
                     </div>

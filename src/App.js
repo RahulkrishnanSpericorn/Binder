@@ -23,6 +23,7 @@ import editSite from "./components/settings/sites/editSite";
 import editClients from "./components/settings/clients/editClients";
 import building from "./components/settings/building/index";
 import editBuilding from "./components/settings/building/editBuilding";
+import viewBuilding from "./components/settings/building/viewBuilding";
 import viewRegion from "./components/settings/region/viewRegion";
 import viewSite from "./components/settings/sites/viewSite";
 import viewConsultancy from "./components/settings/consultancy/viewConsultancy";
@@ -60,6 +61,7 @@ function App() {
                 <PrivateRoute exact path="/editClients" component={editClients} />
                 <PrivateRoute exact path="/building" component={building} />
                 <PrivateRoute exact path="/editBuilding" component={editBuilding} />
+                <PrivateRoute exact path="/viewBuilding" component={viewBuilding} />
                 <PrivateRoute exact path="/viewRegion" component={viewRegion} />
                 <PrivateRoute exact path="/viewSite" component={viewSite} />
                 <PrivateRoute exact path="/viewConsultancy" component={viewConsultancy} />

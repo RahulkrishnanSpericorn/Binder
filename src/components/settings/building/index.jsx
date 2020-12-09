@@ -82,8 +82,7 @@ class index extends Component {
                                     <form>
                                         <input type="text" class="form-control" placeholder="Search" />
                                         <button type="submit" class="btn btn-search">
-                                            {" "}
-                                            <img src="/images/serach.svg" />{" "}
+                                            <img src="/images/serach.svg" />
                                         </button>
                                     </form>
                                 </div>
@@ -94,9 +93,7 @@ class index extends Component {
                                             this.props.history.push("/addBuilding");
                                         }}
                                     >
-                                        {" "}
                                         <span class="icon">
-                                            {" "}
                                             <img src="/images/add-new-region.svg" />
                                         </span>
                                         Add New Building
@@ -137,14 +134,8 @@ class index extends Component {
                                                 <th class="">Country</th>
                                                 <th class="">Zip Code</th>
                                                 <th class="">Comments</th>
-
                                                 <th class="">Created At</th>
                                                 <th class="">Updated At</th>
-
-                                                {/* <th class="">Consultancy   <span class="rop-icon"> <img src="/images/down-arrow.svg"/> </span> </th>
-                                   <th class="">Client <span class="rop-icon"> <img src="/images/down-arrow.svg"/> </span></th>
-                                   <th class="">Associated Project <span class="rop-icon"> <img src="/images/down-arrow.svg"/> </span></th>
-                                   <th class="cus-usr">Consultancy User</th> */}
                                                 <th class="action">
                                                     <img src="/images/three-dots.svg" />
                                                 </th>
@@ -153,8 +144,25 @@ class index extends Component {
                                         <tbody>
                                             {this.state.buildingDataList.map((item, index) => {
                                                 return (
-                                                    <tr>
-                                                        <td class="img-sq-box">
+                                                    <tr
+                                                        onDoubleClick={() => {
+                                                            history.push("/viewBuilding", {
+                                                                buildingItem: item,
+                                                                clientid: item.client.id,
+                                                                consultancy_id: item.consultancy.id
+                                                            });
+                                                        }}
+                                                    >
+                                                        <td
+                                                            class="img-sq-box cursor-pointer"
+                                                            onClick={() => {
+                                                                history.push("/viewBuilding", {
+                                                                    buildingItem: item,
+                                                                    clientid: item.client.id,
+                                                                    consultancy_id: item.consultancy.id
+                                                                });
+                                                            }}
+                                                        >
                                                             <img src="/images/table-blue-dots.svg" />
                                                         </td>
                                                         <td>{item.code}</td>
@@ -240,7 +248,6 @@ class index extends Component {
                             <ul class="pagnation prv-nxt">
                                 <li>
                                     <a href="#" class="prv">
-                                        {" "}
                                         <img src="/images/lft-arrow.svg" /> Prev
                                     </a>
                                 </li>

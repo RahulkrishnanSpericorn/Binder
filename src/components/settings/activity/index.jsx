@@ -181,8 +181,8 @@ class index extends Component {
                                                         <td>{item.end_date || "-"}</td>
                                                         <td>{item.created_at || "-"}</td>
                                                         <td>{item.updated_at || "-"}</td>
-                                                        <td className="action" data-toggle="dropdown">
-                                                            <img alt="" src="/images/three-dots.svg" />
+                                                        <td className="action">
+                                                            <img alt="" src="/images/three-dots.svg" data-toggle="dropdown" />
                                                             <ul className="dropdown-menu" role="menu">
                                                                 <li
                                                                     onClick={e => {
