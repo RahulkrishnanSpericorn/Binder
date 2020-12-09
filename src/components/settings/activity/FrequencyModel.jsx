@@ -131,7 +131,7 @@ class FrequencyModel extends Component {
 
     render() {
         const { monthList, frequencyList, dayList, test_frequency, rRuleGen } = this.state;
-        console.log("rRuleGen", rRuleGen);
+        const { type } = this.props;
         return (
             <React.Fragment>
                 <div className="modal" role="dialog" style={{ display: "block" }} id="modalId">
@@ -143,96 +143,159 @@ class FrequencyModel extends Component {
                                     <i className="material-icons">close </i>
                                 </button>
                             </div>
-                            <div className="modal-body">
-                                <div className="frm-modal">
-                                    <div className="form-group">
-                                        <label>Select Frequency</label>
-                                        <div className="bck-ara">
-                                            {frequencyList.map((item, i) => (
-                                                <button
-                                                    className={`btn btn-frm ${rRuleGen.freq === item.value ? "active" : ""}`}
-                                                    onClick={() => this.setState({ rRuleGen: { ...rRuleGen, freq: RRule[item.key] } })}
-                                                >
-                                                    {item.name}
-                                                </button>
-                                            ))}
-                                        </div>
-                                    </div>
-                                    <div className="item-row">
-                                        <div className="item">
-                                            <div className="form-group">
-                                                <label>Interval</label>
-                                                <input
-                                                    type="number"
-                                                    min="1"
-                                                    className="form-control"
-                                                    value={rRuleGen.interval}
-                                                    onChange={e =>
-                                                        this.setState({
-                                                            rRuleGen: {
-                                                                ...rRuleGen,
-                                                                interval: e.target.value
-                                                            }
-                                                        })
-                                                    }
-                                                />
+                            {type === "form" ? (
+                                <div className="modal-body">
+                                    <div className="frm-modal">
+                                        <div className="form-group">
+                                            <label>Select Frequency</label>
+                                            <div className="bck-ara">
+                                                {frequencyList.map((item, i) => (
+                                                    <button
+                                                        className={`btn btn-frm ${rRuleGen.freq === item.value ? "active" : ""}`}
+                                                        onClick={() => this.setState({ rRuleGen: { ...rRuleGen, freq: RRule[item.key] } })}
+                                                    >
+                                                        {item.name}
+                                                    </button>
+                                                ))}
                                             </div>
                                         </div>
-                                    </div>
-                                    <div className="form-group">
-                                        <label>By Month</label>
-                                        <div className="bck-ara">
-                                            <div className="slider month">
-                                                <Slider {...this.state.sliderSettings}>
-                                                    {monthList.map((item, i) => (
-                                                        <div className="slide" key={i}>
-                                                            <button
-                                                                className={`btn btn-frm ${
-                                                                    rRuleGen && rRuleGen.bymonth.includes(i + 1) ? "active" : ""
-                                                                }`}
-                                                                onClick={() => this.setByMonthForRRuleGen(i + 1)}
-                                                            >
-                                                                {item}
-                                                            </button>
-                                                        </div>
-                                                    ))}
-                                                </Slider>
+                                        <div className="item-row">
+                                            <div className="item">
+                                                <div className="form-group">
+                                                    <label>Interval</label>
+                                                    <input
+                                                        type="number"
+                                                        min="1"
+                                                        className="form-control"
+                                                        value={rRuleGen.interval}
+                                                        onChange={e =>
+                                                            this.setState({
+                                                                rRuleGen: {
+                                                                    ...rRuleGen,
+                                                                    interval: e.target.value
+                                                                }
+                                                            })
+                                                        }
+                                                    />
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div className="form-group">
-                                        <label>By Day</label>
-                                        <div className="bck-ara day">
-                                            {dayList.map((item, i) => (
-                                                <button
-                                                    className={`btn btn-frm ${this.checkRRuleHasDay(i) ? "active" : ""}`}
-                                                    onClick={() => this.setByDayForRRuleGen(i)}
-                                                >
-                                                    {item.name}
-                                                </button>
-                                            ))}
+                                        <div className="form-group">
+                                            <label>By Month</label>
+                                            <div className="bck-ara">
+                                                <div className="slider month">
+                                                    <Slider {...this.state.sliderSettings}>
+                                                        {monthList.map((item, i) => (
+                                                            <div className="slide" key={i}>
+                                                                <button
+                                                                    className={`btn btn-frm ${
+                                                                        rRuleGen && rRuleGen.bymonth.includes(i + 1) ? "active" : ""
+                                                                    }`}
+                                                                    onClick={() => this.setByMonthForRRuleGen(i + 1)}
+                                                                >
+                                                                    {item}
+                                                                </button>
+                                                            </div>
+                                                        ))}
+                                                    </Slider>
+                                                </div>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div className="form-group">
-                                        <label>Test Frequecy</label>
-                                        <input
-                                            type="text"
-                                            value={test_frequency}
-                                            className="form-control"
-                                            onChange={e => this.setState({ test_frequency: e.target.value })}
-                                        />
-                                    </div>
+                                        <div className="form-group">
+                                            <label>By Day</label>
+                                            <div className="bck-ara day">
+                                                {dayList.map((item, i) => (
+                                                    <button
+                                                        className={`btn btn-frm ${this.checkRRuleHasDay(i) ? "active" : ""}`}
+                                                        onClick={() => this.setByDayForRRuleGen(i)}
+                                                    >
+                                                        {item.name}
+                                                    </button>
+                                                ))}
+                                            </div>
+                                        </div>
+                                        <div className="form-group">
+                                            <label>Test Frequecy</label>
+                                            <input
+                                                type="text"
+                                                value={test_frequency}
+                                                className="form-control"
+                                                onChange={e => this.setState({ test_frequency: e.target.value })}
+                                            />
+                                        </div>
 
-                                    <div className="btn-sec">
-                                        <button className="btn btn-cncl-back mr-2" onClick={() => this.clearFrequency()}>
-                                            <i className="material-icons tic"> close</i>Cancel
-                                        </button>
-                                        <button className="btn btn-create" onClick={() => this.generateRRule()}>
-                                            <i className="material-icons tic"> check</i> Apply
-                                        </button>
+                                        <div className="btn-sec">
+                                            <button className="btn btn-cncl-back mr-2" onClick={() => this.clearFrequency()}>
+                                                <i className="material-icons tic"> close</i>Cancel
+                                            </button>
+                                            <button className="btn btn-create" onClick={() => this.generateRRule()}>
+                                                <i className="material-icons tic"> check</i> Apply
+                                            </button>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
+                            ) : (
+                                <div className="modal-body">
+                                    <div className="frm-modal">
+                                        <div className="form-group">
+                                            <label>Frequency</label>
+                                            <div className="bck-ara">
+                                                {frequencyList.map((item, i) => (
+                                                    <button className={`btn btn-frm ${rRuleGen.freq === item.value ? "active" : ""}`}>
+                                                        {item.name}
+                                                    </button>
+                                                ))}
+                                            </div>
+                                        </div>
+                                        <div className="item-row">
+                                            <div className="item">
+                                                <div className="form-group">
+                                                    <label>Interval</label>
+                                                    <input type="number" disabled="true" min="1" className="form-control" value={rRuleGen.interval} />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div className="form-group">
+                                            <label>By Month</label>
+                                            <div className="bck-ara">
+                                                <div className="slider month">
+                                                    <Slider {...this.state.sliderSettings}>
+                                                        {monthList.map((item, i) => (
+                                                            <div className="slide" key={i}>
+                                                                <button
+                                                                    className={`btn btn-frm ${
+                                                                        rRuleGen && rRuleGen.bymonth.includes(i + 1) ? "active" : ""
+                                                                    }`}
+                                                                >
+                                                                    {item}
+                                                                </button>
+                                                            </div>
+                                                        ))}
+                                                    </Slider>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div className="form-group">
+                                            <label>By Day</label>
+                                            <div className="bck-ara day">
+                                                {dayList.map((item, i) => (
+                                                    <button className={`btn btn-frm ${this.checkRRuleHasDay(i) ? "active" : ""}`}>{item.name}</button>
+                                                ))}
+                                            </div>
+                                        </div>
+                                        <div className="form-group">
+                                            <label>Test Frequecy</label>
+                                            <input type="text" disabled="true" value={test_frequency} className="form-control" />
+                                        </div>
+
+                                        <div className="btn-sec">
+                                            <button className="btn btn-cncl-back mr-2" onClick={() => this.clearFrequency()}>
+                                                <i className="material-icons tic"> close</i>Close
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            )}
                         </div>
                     </div>
                 </div>

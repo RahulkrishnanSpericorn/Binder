@@ -1,11 +1,12 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { ToastContainer } from "react-toastify";
-import TopSlider from "../../common/components/TopSlider";
+
 import commonActions from "../actions";
-import ToastMsg from "../../common/ToastMessage";
 import history from "../../../config/history";
 import actions from "./actions";
+import Portal from "../../common/components/Portal";
+import FrequencyModel from "./FrequencyModel";
 
 const mapStateToProps = state => {
     const { binderReducer, settingsCommonReducer } = state;
@@ -44,7 +45,8 @@ class viewBinder extends Component {
                 { name: "Valid To", key: "end_date" },
                 { name: "Created At", key: "created_at" },
                 { name: "Updated At", key: "updated_at" }
-            ]
+            ],
+            showFrequencyModal: false
         };
     }
 
@@ -53,6 +55,33 @@ class viewBinder extends Component {
             activityItem: this.props.history.location.state.activityItem || {},
             consultancy_id: this.props.history.location.state.consultancy_id || null,
             client_id: this.props.history.location.state.client_id || null
+        });
+    };
+
+    renderFrequencyModal = () => {
+        const { showFrequencyModal, activityItem } = this.state;
+        if (!showFrequencyModal) return null;
+
+        return (
+            <Portal
+                body={
+                    <FrequencyModel
+                        onCancel={this.toggleShowFrequencyModal}
+                        setFrequencyData={this.setFrequencyData}
+                        frequency={activityItem.frequency}
+                        test_frequency={activityItem.test_frequency}
+                        type={"view"}
+                    />
+                }
+                onCancel={this.toggleShowFrequencyModal}
+            />
+        );
+    };
+
+    toggleShowFrequencyModal = () => {
+        const { showFrequencyModal } = this.state;
+        this.setState({
+            showFrequencyModal: !showFrequencyModal
         });
     };
 
@@ -113,8 +142,13 @@ class viewBinder extends Component {
                                                     <label className="form-control-placeholder" for="f-name">
                                                         {item.name}
                                                     </label>
+
                                                     {["binder", "client", "consultancy"].includes(item.key) ? (
                                                         <h3>{activityItem[item.key] ? activityItem[item.key].name : "-"}</h3>
+                                                    ) : item.key === "frequency" ? (
+                                                        <button class="btn btn-frqy" onClick={() => this.toggleShowFrequencyModal()}>
+                                                            View Frequency
+                                                        </button>
                                                     ) : (
                                                         <h3>{activityItem[item.key] || "-"}</h3>
                                                     )}
@@ -133,6 +167,7 @@ class viewBinder extends Component {
                         </div>
                     </div>
                 </div>
+                {this.renderFrequencyModal()}
             </section>
         );
     }

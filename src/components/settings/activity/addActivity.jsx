@@ -85,11 +85,19 @@ class addActivity extends Component {
                         setFrequencyData={this.setFrequencyData}
                         frequency={activityParams.frequency}
                         test_frequency={activityParams.test_frequency}
+                        type={"form"}
                     />
                 }
                 onCancel={this.toggleShowFrequencyModal}
             />
         );
+    };
+
+    toggleShowFrequencyModal = () => {
+        const { showFrequencyModal } = this.state;
+        this.setState({
+            showFrequencyModal: !showFrequencyModal
+        });
     };
 
     setFrequencyData = (frequency, test_frequency) => {
@@ -100,13 +108,6 @@ class addActivity extends Component {
                 frequency,
                 test_frequency
             }
-        });
-    };
-
-    toggleShowFrequencyModal = () => {
-        const { showFrequencyModal } = this.state;
-        this.setState({
-            showFrequencyModal: !showFrequencyModal
         });
     };
 
