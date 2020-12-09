@@ -144,9 +144,17 @@ class index extends Component {
                                                                 consultancy_id: item.consultancy.id
                                                             });
                                                         }}
-                                                        className="cursor-pointer"
                                                     >
-                                                        <td className="img-sq-box">
+                                                        <td
+                                                            className="img-sq-box cursor-pointer"
+                                                            onClick={() => {
+                                                                history.push("/viewActivity", {
+                                                                    activityItem: item,
+                                                                    clientid: item.client.id,
+                                                                    consultancy_id: item.consultancy.id
+                                                                });
+                                                            }}
+                                                        >
                                                             <img alt="" src="/images/table-blue-dots.svg" />
                                                         </td>
                                                         <td>{item.code || "-"}</td>
@@ -173,8 +181,8 @@ class index extends Component {
                                                         <td>{item.end_date || "-"}</td>
                                                         <td>{item.created_at || "-"}</td>
                                                         <td>{item.updated_at || "-"}</td>
-                                                        <td className="action">
-                                                            <img alt="" src="/images/three-dots.svg" data-toggle="dropdown" />
+                                                        <td className="action" data-toggle="dropdown">
+                                                            <img alt="" src="/images/three-dots.svg" />
                                                             <ul className="dropdown-menu" role="menu">
                                                                 <li
                                                                     onClick={e => {

@@ -127,10 +127,6 @@ class index extends Component {
                                                 <th className="">Order</th>
                                                 <th className="">Created At</th>
                                                 <th className="">Updated At</th>
-                                                {/* <th className="">Consultancy   <span className="rop-icon"> <img src="/images/down-arrow.svg"/> </span> </th>
-                                   <th className="">Client <span className="rop-icon"> <img src="/images/down-arrow.svg"/> </span></th>
-                                   <th className="">Associated Project <span className="rop-icon"> <img src="/images/down-arrow.svg"/> </span></th>
-                                   <th className="cus-usr">Consultancy User</th> */}
                                                 <th className="action">
                                                     <img src="/images/three-dots.svg" />
                                                 </th>
@@ -139,7 +135,6 @@ class index extends Component {
                                         <tbody>
                                             {this.state.binderDataList.map((item, index) => {
                                                 return (
-                                                    // <tr style={{cursor:"pointer"}} onDoubleClick={()=>history.push('/viewBinder',{"binderItem":item,"consultancy_id":item.consultancy.id,"client_id":item.client.id})}>
                                                     <tr
                                                         onDoubleClick={() => {
                                                             history.push("/viewBinder", {
@@ -148,9 +143,17 @@ class index extends Component {
                                                                 consultancy_id: item.consultancy.id
                                                             });
                                                         }}
-                                                        className="cursor-pointer"
                                                     >
-                                                        <td className="img-sq-box">
+                                                        <td
+                                                            className="img-sq-box cursor-pointer"
+                                                            onClick={() => {
+                                                                history.push("/viewBinder", {
+                                                                    binderItem: item,
+                                                                    clientid: item.client.id,
+                                                                    consultancy_id: item.consultancy.id
+                                                                });
+                                                            }}
+                                                        >
                                                             <img src="/images/table-blue-dots.svg" />
                                                         </td>
                                                         <td>{item.code}</td>
@@ -170,7 +173,6 @@ class index extends Component {
                                                             <ul className="dropdown-menu" role="menu">
                                                                 <li>
                                                                     <a
-                                                                        style={{ cursor: "pointer" }}
                                                                         onClick={() =>
                                                                             history.push("/editBinder", {
                                                                                 binderItem: item,
@@ -185,7 +187,6 @@ class index extends Component {
                                                                 </li>
                                                                 <li>
                                                                     <a
-                                                                        style={{ cursor: "pointer" }}
                                                                         onClick={() => {
                                                                             this.deleteBinder(item);
                                                                         }}

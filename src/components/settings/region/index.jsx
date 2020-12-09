@@ -151,9 +151,17 @@ class index extends Component {
                                                                 consultancy_id: item.consultancy.id
                                                             });
                                                         }}
-                                                        style={{ cursor: "pointer" }}
                                                     >
-                                                        <td class="img-sq-box">
+                                                        <td
+                                                            class="img-sq-box cursor-pointer"
+                                                            onClick={() => {
+                                                                history.push("/viewRegion", {
+                                                                    regionItem: item,
+                                                                    clientid: item.client.id,
+                                                                    consultancy_id: item.consultancy.id
+                                                                });
+                                                            }}
+                                                        >
                                                             <img src="/images/table-blue-dots.svg" />
                                                         </td>
                                                         <td>{item.code}</td>
@@ -171,7 +179,6 @@ class index extends Component {
                                                             <ul class="dropdown-menu" role="menu">
                                                                 <li>
                                                                     <a
-                                                                        style={{ cursor: "pointer" }}
                                                                         onClick={() => {
                                                                             history.push("/editRegion", {
                                                                                 regionItem: item,
@@ -186,7 +193,6 @@ class index extends Component {
                                                                 </li>
                                                                 <li>
                                                                     <a
-                                                                        style={{ cursor: "pointer" }}
                                                                         onClick={() => {
                                                                             this.deleteRegion(item);
                                                                         }}

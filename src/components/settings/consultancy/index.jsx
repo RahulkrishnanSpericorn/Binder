@@ -1,28 +1,26 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import actions from '../consultancy/actions';
-import TopSlider from '../../../components/common/components/TopSlider'
-import history from '../../../config/history';
-import ToastMsg from '../../common/ToastMessage'
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import actions from "../consultancy/actions";
+import TopSlider from "../../../components/common/components/TopSlider";
+import history from "../../../config/history";
+import ToastMsg from "../../common/ToastMessage";
 
 const mapStateToProps = state => {
-    console.log('state', state)
+    console.log("state", state);
     const { consultancyReducer } = state;
     return { consultancyReducer };
-}
+};
 
 class index extends Component {
-
     constructor(props) {
         super(props);
         this.state = {
             consultancyList: []
-        }
+        };
     }
 
-
     async componentDidMount() {
-        await this.getConsultancies()
+        await this.getConsultancies();
         // await this.addConsultancies()        //For add consultanices uncomment this line
         // await this.getConsultanciesById()
         // await this.editConsultanciesById()
@@ -31,15 +29,15 @@ class index extends Component {
         let params = {
             limit: 10,
             offset: 0
-        }
-        await this.props.getConsultancies(params)
+        };
+        await this.props.getConsultancies(params);
         if (this.props.consultancyReducer.consultanciesData.success) {
             this.setState({
-                consultancyList: (this.props.consultancyReducer.consultanciesData.consultancies)
-            })
-            console.log('this.state.consultancyList', this.state.consultancyList)
+                consultancyList: this.props.consultancyReducer.consultanciesData.consultancies
+            });
+            console.log("this.state.consultancyList", this.state.consultancyList);
         }
-    }
+    };
     // addConsultancies = async () => {
     //     let params = {
     //         name: 'test',
@@ -60,17 +58,15 @@ class index extends Component {
     //     await this.props.editConsultanciesById(params, id)
     // }
 
-    deleteConsultancy = async(item)=>{
-        console.log('item', item)
-        let id = item.id
+    deleteConsultancy = async item => {
+        console.log("item", item);
+        let id = item.id;
 
-       await this.props.deleteConsultancy(id)
-       await this.getConsultancies()
+        await this.props.deleteConsultancy(id);
+        await this.getConsultancies();
 
-       ToastMsg('Consultancy '+this.props.consultancyReducer.deleteConsultancyById.message,'info')
-        
-    }
-    
+        ToastMsg("Consultancy " + this.props.consultancyReducer.deleteConsultancyById.message, "info");
+    };
 
     render() {
         return (
@@ -81,27 +77,56 @@ class index extends Component {
                     <div class="lst-bt-nav">
                         <div class="table table-ara">
                             <div class="top-fil-ara">
-
                                 <div class="cap">
                                     <h4>Consultancy</h4>
                                 </div>
 
                                 <div class="btn-ara">
-                                    <button class="btn btn-top"><img src="/images/color-wheel.svg" />Icon & color info</button>
-                                    <button class="btn btn-top"><img src="/images/export.svg" />Export EXL</button>
-                                    <button class="btn btn-top"><img src="/images/mail.svg" />Email</button>
-                                    <button class="btn btn-top"><img src="/images/colmns.svg" />Column Window</button>
-                                    <button class="btn btn-top"><img src="/images/reset-column.svg" />Reset  Columns</button>
+                                    <button class="btn btn-top">
+                                        <img src="/images/color-wheel.svg" />
+                                        Icon & color info
+                                    </button>
+                                    <button class="btn btn-top">
+                                        <img src="/images/export.svg" />
+                                        Export EXL
+                                    </button>
+                                    <button class="btn btn-top">
+                                        <img src="/images/mail.svg" />
+                                        Email
+                                    </button>
+                                    <button class="btn btn-top">
+                                        <img src="/images/colmns.svg" />
+                                        Column Window
+                                    </button>
+                                    <button class="btn btn-top">
+                                        <img src="/images/reset-column.svg" />
+                                        Reset Columns
+                                    </button>
                                 </div>
 
                                 <div class="sr-sec">
                                     <form>
                                         <input type="text" class="form-control" placeholder="Search" />
-                                        <button type="submit" class="btn btn-search"> <img src="/images/serach.svg" /> </button>
+                                        <button type="submit" class="btn btn-search">
+                                            {" "}
+                                            <img src="/images/serach.svg" />{" "}
+                                        </button>
                                     </form>
                                 </div>
                                 <div class="fil-btn">
-                                    <button class="btn btn-add" onClick={() => { this.props.history.push('/addConsultancy') }}> <span class="icon"> <img src="/images/add-new-region.svg" /></span>Add New Consultancy</button>
+                                    <button
+                                        class="btn btn-add"
+                                        onClick={() => {
+                                            this.props.history.push("/addConsultancy");
+                                        }}
+                                    >
+                                        {" "}
+                                        <span class="icon">
+                                            {" "}
+                                            <img src="/images/add-new-region.svg" />
+                                        </span>
+                                        Add New Consultancy
+                                    </button>
                                 </div>
                             </div>
 
@@ -117,7 +142,7 @@ class index extends Component {
                                                 <th class="">Consultancy Name</th>
                                                 <th class="">Comments</th>
                                                 <th class="">Created At</th>
-                                            <th class="">Updated At</th>
+                                                <th class="">Updated At</th>
                                                 {/* <th class="">Consultancy   <span class="rop-icon"> <img src="/images/down-arrow.svg"/> </span> </th>
                                        <th class="">Client <span class="rop-icon"> <img src="/images/down-arrow.svg"/> </span></th>
                                        <th class="">Associated Project <span class="rop-icon"> <img src="/images/down-arrow.svg"/> </span></th>
@@ -130,15 +155,18 @@ class index extends Component {
                                         <tbody>
                                             {this.state.consultancyList.map((item, index) => {
                                                 return (
-                                                    <tr onDoubleClick={()=>history.push('/viewConsultancy',{"consultancyItem":item})} style={{cursor:"pointer"}}>
-                                                        <td class="img-sq-box">
+                                                    <tr onDoubleClick={() => history.push("/viewConsultancy", { consultancyItem: item })}>
+                                                        <td
+                                                            class="img-sq-box cursor-pointer"
+                                                            onClick={() => history.push("/viewConsultancy", { consultancyItem: item })}
+                                                        >
                                                             <img src="/images/table-blue-dots.svg" />
                                                         </td>
                                                         <td>{item.code}</td>
                                                         <td>{item.name}</td>
-                                                        <td>{item.comments? item.comments : '-'}</td>
+                                                        <td>{item.comments ? item.comments : "-"}</td>
                                                         <td>{item.created_at}</td>
-                                                    <td>{item.updated_at}</td>
+                                                        <td>{item.updated_at}</td>
                                                         {/* <td>
                                             <div class="usr-vw">
                                                 <div class="amd"> 150 User</div>
@@ -186,14 +214,28 @@ class index extends Component {
                                                         <td class="action">
                                                             <img src="/images/three-dots.svg" data-toggle="dropdown" />
                                                             <ul class="dropdown-menu" role="menu">
-                                                                <li ><a style={{cursor:"pointer"}} onClick={()=>history.push('/editConsultancy',{"consultancyItem":item})}><img src="/images/edit.svg" />Edit</a></li>
-                                                                <li><a style={{cursor:"pointer"}} onClick={()=>{this.deleteConsultancy(item)}} > <img src="/images/delete.svg" />Delete</a></li>
+                                                                <li>
+                                                                    <a onClick={() => history.push("/editConsultancy", { consultancyItem: item })}>
+                                                                        <img src="/images/edit.svg" />
+                                                                        Edit
+                                                                    </a>
+                                                                </li>
+                                                                <li>
+                                                                    <a
+                                                                        onClick={() => {
+                                                                            this.deleteConsultancy(item);
+                                                                        }}
+                                                                    >
+                                                                        {" "}
+                                                                        <img src="/images/delete.svg" />
+                                                                        Delete
+                                                                    </a>
+                                                                </li>
                                                             </ul>
                                                         </td>
                                                     </tr>
-                                                )
+                                                );
                                             })}
-
                                         </tbody>
                                     </table>
                                 </div>
@@ -213,10 +255,15 @@ class index extends Component {
                             </ul>
                             <ul class="pagnation prv-nxt">
                                 <li>
-                                    <a href="#" class="prv"> <img src="/images/lft-arrow.svg" /> Prev</a>
+                                    <a href="#" class="prv">
+                                        {" "}
+                                        <img src="/images/lft-arrow.svg" /> Prev
+                                    </a>
                                 </li>
                                 <li>
-                                    <a href="#" class="nxt">Next <img src="/images/rgt-arrow.svg" /></a>
+                                    <a href="#" class="nxt">
+                                        Next <img src="/images/rgt-arrow.svg" />
+                                    </a>
                                 </li>
                             </ul>
                         </div>

@@ -1,61 +1,51 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import history from '../../../config/history';
-import TopSlider from '../../common/components/TopSlider';
-import actions from './actions'
-import ToastMsg from '../../common/ToastMessage'
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import history from "../../../config/history";
+import TopSlider from "../../common/components/TopSlider";
+import actions from "./actions";
+import ToastMsg from "../../common/ToastMessage";
 
 const mapStateToProps = state => {
-    console.log('state', state)
-    const { clientReducer } = state
-    return { clientReducer }
-}
+    console.log("state", state);
+    const { clientReducer } = state;
+    return { clientReducer };
+};
 
 class index extends Component {
-
     constructor(props) {
         super(props);
         this.state = {
             clientDataList: []
-        }
+        };
     }
 
-
     async componentDidMount() {
-        await this.getClients()
-        // await this.addClients()
+        await this.getClients();
     }
 
     getClients = async () => {
         let params = {
             limit: 10,
             offset: 0
-        }
-        await this.props.getClients(params)
-
+        };
+        await this.props.getClients(params);
 
         if (this.props.clientReducer.clientData.success) {
             this.setState({
                 clientDataList: this.props.clientReducer.clientData.clients
-            })
+            });
         }
+    };
 
+    deleteClient = async item => {
+        console.log("item", item);
+        let id = item.id;
 
-    }
+        await this.props.deleteClient(id);
+        await this.getClients();
 
-    deleteClient = async (item) => {
-        
-        console.log('item', item)
-        let id = item.id
-
-        await this.props.deleteClient(id)
-        await this.getClients()
-
-        ToastMsg(this.props.clientReducer.deleteClientData.message,'info')
-
-
-    }
-
+        ToastMsg(this.props.clientReducer.deleteClientData.message, "info");
+    };
 
     render() {
         return (
@@ -63,31 +53,59 @@ class index extends Component {
                 <div className="list-area">
                     <TopSlider />
 
-
                     <div class="lst-bt-nav">
                         <div class="table table-ara">
                             <div class="top-fil-ara">
-
                                 <div class="cap">
                                     <h4>Clients</h4>
                                 </div>
 
                                 <div class="btn-ara">
-                                    <button class="btn btn-top"><img src="/images/color-wheel.svg" />Icon & color info</button>
-                                    <button class="btn btn-top"><img src="/images/export.svg" />Export EXL</button>
-                                    <button class="btn btn-top"><img src="/images/mail.svg" />Email</button>
-                                    <button class="btn btn-top"><img src="/images/colmns.svg" />Column Window</button>
-                                    <button class="btn btn-top"><img src="/images/reset-column.svg" />Reset  Columns</button>
+                                    <button class="btn btn-top">
+                                        <img src="/images/color-wheel.svg" />
+                                        Icon & color info
+                                    </button>
+                                    <button class="btn btn-top">
+                                        <img src="/images/export.svg" />
+                                        Export EXL
+                                    </button>
+                                    <button class="btn btn-top">
+                                        <img src="/images/mail.svg" />
+                                        Email
+                                    </button>
+                                    <button class="btn btn-top">
+                                        <img src="/images/colmns.svg" />
+                                        Column Window
+                                    </button>
+                                    <button class="btn btn-top">
+                                        <img src="/images/reset-column.svg" />
+                                        Reset Columns
+                                    </button>
                                 </div>
 
                                 <div class="sr-sec">
                                     <form>
                                         <input type="text" class="form-control" placeholder="Search" />
-                                        <button type="submit" class="btn btn-search"> <img src="/images/serach.svg" /> </button>
+                                        <button type="submit" class="btn btn-search">
+                                            {" "}
+                                            <img src="/images/serach.svg" />{" "}
+                                        </button>
                                     </form>
                                 </div>
                                 <div class="fil-btn">
-                                    <button class="btn btn-add" onClick={() => { this.props.history.push('/addClients') }} > <span class="icon"> <img src="/images/add-new-region.svg" /></span>Add New Client</button>
+                                    <button
+                                        class="btn btn-add"
+                                        onClick={() => {
+                                            this.props.history.push("/addClients");
+                                        }}
+                                    >
+                                        {" "}
+                                        <span class="icon">
+                                            {" "}
+                                            <img src="/images/add-new-region.svg" />
+                                        </span>
+                                        Add New Client
+                                    </button>
                                 </div>
                             </div>
 
@@ -113,12 +131,7 @@ class index extends Component {
                                                 <th class="">Cmms Url</th>
                                                 <th class="">Comments</th>
                                                 <th class="">Created At</th>
-                                            <th class="">Updated At</th>
-
-                                                {/* <th class="">Consultancy   <span class="rop-icon"> <img src="/images/down-arrow.svg"/> </span> </th>
-                                       <th class="">Client <span class="rop-icon"> <img src="/images/down-arrow.svg"/> </span></th>
-                                       <th class="">Associated Project <span class="rop-icon"> <img src="/images/down-arrow.svg"/> </span></th>
-                                       <th class="cus-usr">Consultancy User</th> */}
+                                                <th class="">Updated At</th>
                                                 <th class="action">
                                                     <img src="/images/three-dots.svg" />
                                                 </th>
@@ -127,37 +140,69 @@ class index extends Component {
                                         <tbody>
                                             {this.state.clientDataList.map((item, index) => {
                                                 return (
-                                                    <tr style={{cursor:"pointer"}} onDoubleClick={()=>{history.push('/viewClient',{"clientItem":item,"consultancy_id":item.consultancy.id})}}>
-                                                        <td class="img-sq-box">
+                                                    <tr
+                                                        onDoubleClick={() => {
+                                                            history.push("/viewClient", { clientItem: item, consultancy_id: item.consultancy.id });
+                                                        }}
+                                                    >
+                                                        <td
+                                                            class="img-sq-box cursor-pointer"
+                                                            onClick={() => {
+                                                                history.push("/viewClient", {
+                                                                    clientItem: item,
+                                                                    consultancy_id: item.consultancy.id
+                                                                });
+                                                            }}
+                                                        >
                                                             <img src="/images/table-blue-dots.svg" />
                                                         </td>
                                                         <td>{item.code}</td>
                                                         <td>{item.name}</td>
                                                         <td>{item.consultancy.name ? item.consultancy.name : "-"}</td>
                                                         <td>{item.display_blinking_red_plus}</td>
-                                                        <td>{item.ep_name ? item.ep_name : '-'}</td>
+                                                        <td>{item.ep_name ? item.ep_name : "-"}</td>
                                                         <td>{item.lock_total_devices}</td>
                                                         <td>{item.modify_next_due_date}</td>
                                                         <td>{item.request_email_recipt}</td>
                                                         <td>{item.schedule_threshold}</td>
                                                         <td>{item.trailing_view_current_month}</td>
                                                         <td>{item.use_threshold_for_quarterly}</td>
-                                                        <td>{item.cmms_url ? item.cmms_url : '-'}</td>
-                                                        <td>{item.comments ? item.comments : '-'}</td>
+                                                        <td>{item.cmms_url ? item.cmms_url : "-"}</td>
+                                                        <td>{item.comments ? item.comments : "-"}</td>
                                                         <td>{item.created_at}</td>
-                                                    <td>{item.updated_at}</td>
+                                                        <td>{item.updated_at}</td>
 
                                                         <td class="action">
                                                             <img src="/images/three-dots.svg" data-toggle="dropdown" />
                                                             <ul class="dropdown-menu" role="menu">
-                                                                <li ><a style={{cursor:"pointer"}}onClick={()=>{history.push('/editCLients',{"clientItem":item,"consultancy_id":item.consultancy.id})}}><img src="/images/edit.svg" />Edit</a></li>
-                                                                <li><a style={{cursor:"pointer"}} onClick={()=>{this.deleteClient(item)}} ><img src="/images/delete.svg" />Delete</a></li>
+                                                                <li>
+                                                                    <a
+                                                                        onClick={() => {
+                                                                            history.push("/editCLients", {
+                                                                                clientItem: item,
+                                                                                consultancy_id: item.consultancy.id
+                                                                            });
+                                                                        }}
+                                                                    >
+                                                                        <img src="/images/edit.svg" />
+                                                                        Edit
+                                                                    </a>
+                                                                </li>
+                                                                <li>
+                                                                    <a
+                                                                        onClick={() => {
+                                                                            this.deleteClient(item);
+                                                                        }}
+                                                                    >
+                                                                        <img src="/images/delete.svg" />
+                                                                        Delete
+                                                                    </a>
+                                                                </li>
                                                             </ul>
                                                         </td>
                                                     </tr>
-                                                )
+                                                );
                                             })}
-
                                         </tbody>
                                     </table>
                                 </div>
@@ -177,10 +222,15 @@ class index extends Component {
                             </ul>
                             <ul class="pagnation prv-nxt">
                                 <li>
-                                    <a href="#" class="prv"> <img src="/images/lft-arrow.svg" /> Prev</a>
+                                    <a href="#" class="prv">
+                                        {" "}
+                                        <img src="/images/lft-arrow.svg" /> Prev
+                                    </a>
                                 </li>
                                 <li>
-                                    <a href="#" class="nxt">Next <img src="/images/rgt-arrow.svg" /></a>
+                                    <a href="#" class="nxt">
+                                        Next <img src="/images/rgt-arrow.svg" />
+                                    </a>
                                 </li>
                             </ul>
                         </div>
