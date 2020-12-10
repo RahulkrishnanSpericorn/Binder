@@ -1,9 +1,12 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+
 import actions from "../consultancy/actions";
 import TopSlider from "../../../components/common/components/TopSlider";
 import history from "../../../config/history";
 import ToastMsg from "../../common/ToastMessage";
+import CommonTable from "../../../components/common/components/CommonTable";
+import { consultancyTableData } from "../../../config/tableConfig";
 
 const mapStateToProps = state => {
     console.log("state", state);
@@ -15,65 +18,56 @@ class index extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            consultancyList: []
+            consultancyList: [],
+            tableData: consultancyTableData
         };
     }
 
-    async componentDidMount() {
+    componentDidMount = async () => {
+        await this.setState({
+            tableData: consultancyTableData
+        });
         await this.getConsultancies();
-        // await this.addConsultancies()        //For add consultanices uncomment this line
-        // await this.getConsultanciesById()
-        // await this.editConsultanciesById()
-    }
+    };
+
     getConsultancies = async () => {
         let params = {
             limit: 10,
             offset: 0
         };
+        const { tableData } = this.state;
         await this.props.getConsultancies(params);
         if (this.props.consultancyReducer.consultanciesData.success) {
             this.setState({
-                consultancyList: this.props.consultancyReducer.consultanciesData.consultancies
+                tableData: {
+                    ...tableData,
+                    data: this.props.consultancyReducer.consultanciesData.consultancies
+                }
             });
-            console.log("this.state.consultancyList", this.state.consultancyList);
         }
     };
-    // addConsultancies = async () => {
-    //     let params = {
-    //         name: 'test',
-    //         comments: 'testing'
-    //     }
-    //     await this.props.addConsultancies(params)
-    // }
-    // getConsultanciesById = async () => {
-    //     let id = 'cae67353-4964-4961-93f7-6d0881ed7187'
-    //     await this.props.getConsultanciesById(id)
-    // }
-    // editConsultanciesById = async () => {
-    //     let params = {
-    //         'consultancy[name]': 'sgsd',
-    //         'consultancy[comments]': 'commentss'
-    //     }
-    //     let id = 'c0b7f070-df5d-4e9f-9012-bd6dedaf881a'
-    //     await this.props.editConsultanciesById(params, id)
-    // }
 
-    deleteConsultancy = async item => {
-        console.log("item", item);
+    deleteItem = async item => {
         let id = item.id;
-
         await this.props.deleteConsultancy(id);
         await this.getConsultancies();
-
         ToastMsg("Consultancy " + this.props.consultancyReducer.deleteConsultancyById.message, "info");
     };
 
+    viewItem = async item => {
+        history.push("/viewConsultancy", { consultancyItem: item });
+    };
+
+    editItem = async item => {
+        history.push("/editConsultancy", { consultancyItem: item });
+    };
+
     render() {
+        const { tableData } = this.state;
         return (
             <section className="cont-ara">
                 <div class="list-area">
                     <TopSlider />
-
                     <div class="lst-bt-nav">
                         <div class="table table-ara">
                             <div class="top-fil-ara">
@@ -83,23 +77,23 @@ class index extends Component {
 
                                 <div class="btn-ara">
                                     <button class="btn btn-top">
-                                        <img src="/images/color-wheel.svg" />
+                                        <img src="/images/color-wheel.svg" alt="" />
                                         Icon & color info
                                     </button>
                                     <button class="btn btn-top">
-                                        <img src="/images/export.svg" />
+                                        <img src="/images/export.svg" alt="" />
                                         Export EXL
                                     </button>
                                     <button class="btn btn-top">
-                                        <img src="/images/mail.svg" />
+                                        <img src="/images/mail.svg" alt="" />
                                         Email
                                     </button>
                                     <button class="btn btn-top">
-                                        <img src="/images/colmns.svg" />
+                                        <img src="/images/colmns.svg" alt="" />
                                         Column Window
                                     </button>
                                     <button class="btn btn-top">
-                                        <img src="/images/reset-column.svg" />
+                                        <img src="/images/reset-column.svg" alt="" />
                                         Reset Columns
                                     </button>
                                 </div>
@@ -108,8 +102,7 @@ class index extends Component {
                                     <form>
                                         <input type="text" class="form-control" placeholder="Search" />
                                         <button type="submit" class="btn btn-search">
-                                            {" "}
-                                            <img src="/images/serach.svg" />{" "}
+                                            <img src="/images/serach.svg" alt="" />
                                         </button>
                                     </form>
                                 </div>
@@ -120,10 +113,8 @@ class index extends Component {
                                             this.props.history.push("/addConsultancy");
                                         }}
                                     >
-                                        {" "}
                                         <span class="icon">
-                                            {" "}
-                                            <img src="/images/add-new-region.svg" />
+                                            <img src="/images/add-new-region.svg" alt="" />
                                         </span>
                                         Add New Consultancy
                                     </button>
@@ -132,112 +123,12 @@ class index extends Component {
 
                             <div class="list-sec">
                                 <div class="table-section">
-                                    <table class="table table-bordered">
-                                        <thead>
-                                            <tr>
-                                                <th class="img-sq-box">
-                                                    <img src="/images/table-blue-dots.svg" />
-                                                </th>
-                                                <th class="">Consultancy Code</th>
-                                                <th class="">Consultancy Name</th>
-                                                <th class="">Comments</th>
-                                                <th class="">Created At</th>
-                                                <th class="">Updated At</th>
-                                                {/* <th class="">Consultancy   <span class="rop-icon"> <img src="/images/down-arrow.svg"/> </span> </th>
-                                       <th class="">Client <span class="rop-icon"> <img src="/images/down-arrow.svg"/> </span></th>
-                                       <th class="">Associated Project <span class="rop-icon"> <img src="/images/down-arrow.svg"/> </span></th>
-                                       <th class="cus-usr">Consultancy User</th> */}
-                                                <th class="action">
-                                                    <img src="/images/three-dots.svg" />
-                                                </th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            {this.state.consultancyList.map((item, index) => {
-                                                return (
-                                                    <tr onDoubleClick={() => history.push("/viewConsultancy", { consultancyItem: item })}>
-                                                        <td
-                                                            class="img-sq-box cursor-pointer"
-                                                            onClick={() => history.push("/viewConsultancy", { consultancyItem: item })}
-                                                        >
-                                                            <img src="/images/table-blue-dots.svg" />
-                                                        </td>
-                                                        <td>{item.code}</td>
-                                                        <td>{item.name}</td>
-                                                        <td>{item.comments ? item.comments : "-"}</td>
-                                                        <td>{item.created_at}</td>
-                                                        <td>{item.updated_at}</td>
-                                                        {/* <td>
-                                            <div class="usr-vw">
-                                                <div class="amd"> 150 User</div>
-                                                <div class="usr-sld">
-                                                    <div class="slider usr-sld-slider">
-                                                     
-                                                        <div class="slide">
-                                                            <a href="">
-                                                                <img src="/images/profileimg.jpg"/>
-                                                            </a>
-                                                        </div>
-                                                        <div class="slide">
-                                                            <a href="">
-                                                                <img src="/images/profileimg.jpg"/>
-                                                            </a>
-                                                        </div>
-                                                        <div class="slide">
-                                                            <a href="">
-                                                                <img src="/images/profileimg.jpg"/>
-                                                            </a>
-                                                        </div>
-                                                        <div class="slide">
-                                                            <a href="">
-                                                                <img src="/images/profileimg.jpg"/>
-                                                            </a>
-                                                        </div>
-                                                        <div class="slide">
-                                                            <a href="">
-                                                                <img src="/images/profileimg.jpg"/>
-                                                            </a>
-                                                        </div> <div class="slide">
-                                                            <a href="">
-                                                                <img src="/images/profileimg.jpg"/>
-                                                            </a>
-                                                        </div> <div class="slide">
-                                                            <a href="">
-                                                                <img src="/images/profileimg.jpg"/>
-                                                            </a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </td> */}
-
-                                                        <td class="action">
-                                                            <img src="/images/three-dots.svg" data-toggle="dropdown" />
-                                                            <ul class="dropdown-menu" role="menu">
-                                                                <li>
-                                                                    <a onClick={() => history.push("/editConsultancy", { consultancyItem: item })}>
-                                                                        <img src="/images/edit.svg" />
-                                                                        Edit
-                                                                    </a>
-                                                                </li>
-                                                                <li>
-                                                                    <a
-                                                                        onClick={() => {
-                                                                            this.deleteConsultancy(item);
-                                                                        }}
-                                                                    >
-                                                                        {" "}
-                                                                        <img src="/images/delete.svg" />
-                                                                        Delete
-                                                                    </a>
-                                                                </li>
-                                                            </ul>
-                                                        </td>
-                                                    </tr>
-                                                );
-                                            })}
-                                        </tbody>
-                                    </table>
+                                    <CommonTable
+                                        viewItem={this.viewItem}
+                                        deleteItem={this.deleteItem}
+                                        editItem={this.editItem}
+                                        tableData={tableData}
+                                    />
                                 </div>
                             </div>
                         </div>
@@ -256,7 +147,6 @@ class index extends Component {
                             <ul class="pagnation prv-nxt">
                                 <li>
                                     <a href="#" class="prv">
-                                        {" "}
                                         <img src="/images/lft-arrow.svg" /> Prev
                                     </a>
                                 </li>
