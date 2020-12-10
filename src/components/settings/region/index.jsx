@@ -7,6 +7,10 @@ import actions from "./actions";
 import "../../../assets/css/list.css";
 import history from "../../../config/history";
 import ToastMsg from "../../common/ToastMessage";
+import CommonTable from "../../../components/common/components/CommonTable";
+import TableTopHeader from "../../../components/common/components/TableTopHeader";
+import Pagination from "../../../components/common/components/Pagination";
+import { regionTableData } from "../../../config/tableConfig";
 
 const mapStateToProps = state => {
     console.log("state", state);
@@ -18,13 +22,16 @@ class index extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            regionDataList: []
+            regionDataList: [],
+            tableData: regionTableData
         };
     }
 
     async componentDidMount() {
+        await this.setState({
+            tableData: regionTableData
+        });
         await this.getRegion();
-        // await this.addClients()
     }
 
     getRegion = async () => {
@@ -33,210 +40,65 @@ class index extends Component {
             offset: 0
         };
         await this.props.getRegion(params);
-
+        const { tableData } = this.state;
         if (this.props.regionReducer.regionData.success) {
-            console.log("typeof", this.props.regionReducer.regionData.regions);
-
-            // Object.values(this.props.regionReducer.regionData.regions).map((item)=>{
-            //     console.log('Objectitem', item)
-            // })
-
             this.setState({
-                regionDataList: this.props.regionReducer.regionData.regions
+                tableData: {
+                    ...tableData,
+                    data: this.props.regionReducer.regionData.regions
+                }
             });
         }
     };
 
-    deleteRegion = async item => {
+    deleteItem = async item => {
         let id = item.id;
         await this.props.deleteRegion(id);
         await this.getRegion();
-
         ToastMsg(this.props.regionReducer.deleteRegionData.message, "info");
     };
 
+    viewItem = async item => {
+        history.push("/viewRegion", {
+            regionItem: item,
+            clientid: item.client.id,
+            consultancy_id: item.consultancy.id
+        });
+    };
+
+    editItem = async item => {
+        history.push("/editRegion", {
+            regionItem: item,
+            clientid: item.client.id,
+            consultancy_id: item.consultancy.id
+        });
+    };
+
+    addItem = async item => {
+        this.props.history.push("/addRegion");
+    };
+
     render() {
+        const { tableData } = this.state;
         return (
             <section className="cont-ara">
                 <div class="list-area">
                     <TopSlider />
-
                     <div class="lst-bt-nav">
                         <div class="table table-ara">
-                            <div class="top-fil-ara">
-                                <div class="cap">
-                                    <h4>Regions</h4>
-                                </div>
-
-                                <div class="btn-ara">
-                                    <button class="btn btn-top">
-                                        <img src="/images/color-wheel.svg" />
-                                        Icon & color info
-                                    </button>
-                                    <button class="btn btn-top">
-                                        <img src="/images/export.svg" />
-                                        Export EXL
-                                    </button>
-                                    <button class="btn btn-top">
-                                        <img src="/images/mail.svg" />
-                                        Email
-                                    </button>
-                                    <button class="btn btn-top">
-                                        <img src="/images/colmns.svg" />
-                                        Column Window
-                                    </button>
-                                    <button class="btn btn-top">
-                                        <img src="/images/reset-column.svg" />
-                                        Reset Columns
-                                    </button>
-                                </div>
-
-                                <div class="sr-sec">
-                                    <form>
-                                        <input type="text" class="form-control" placeholder="Search" />
-                                        <button type="submit" class="btn btn-search">
-                                            {" "}
-                                            <img src="/images/serach.svg" />{" "}
-                                        </button>
-                                    </form>
-                                </div>
-                                <div class="fil-btn">
-                                    <button
-                                        class="btn btn-add"
-                                        onClick={() => {
-                                            this.props.history.push("/addRegion");
-                                        }}
-                                    >
-                                        {" "}
-                                        <span class="icon">
-                                            {" "}
-                                            <img src="/images/add-new-region.svg" />
-                                        </span>
-                                        Add New Region
-                                    </button>
-                                </div>
-                            </div>
-
+                            <TableTopHeader entity={"Consultancy"} addItem={this.addItem} />
                             <div class="list-sec">
                                 <div class="table-section">
-                                    <table class="table table-bordered">
-                                        <thead>
-                                            <tr>
-                                                <th class="img-sq-box">
-                                                    <img src="/images/table-blue-dots.svg" />
-                                                </th>
-                                                <th class="">Region Code</th>
-                                                <th class="">Region Name</th>
-                                                <th class="">Display Name</th>
-                                                <th class="">Consultancy</th>
-                                                <th class="">Client</th>
-                                                <th class="">Client User</th>
-                                                <th class=""> Consultancy User</th>
-                                                <th class="">Comments</th>
-                                                <th class="">Created At</th>
-                                                <th class="">Updated At</th>
-                                                <th class="action">
-                                                    <img src="/images/three-dots.svg" />
-                                                </th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            {this.state.regionDataList.map((item, index) => {
-                                                return (
-                                                    <tr
-                                                        onDoubleClick={() => {
-                                                            history.push("/viewRegion", {
-                                                                regionItem: item,
-                                                                clientid: item.client.id,
-                                                                consultancy_id: item.consultancy.id
-                                                            });
-                                                        }}
-                                                    >
-                                                        <td
-                                                            class="img-sq-box cursor-pointer"
-                                                            onClick={() => {
-                                                                history.push("/viewRegion", {
-                                                                    regionItem: item,
-                                                                    clientid: item.client.id,
-                                                                    consultancy_id: item.consultancy.id
-                                                                });
-                                                            }}
-                                                        >
-                                                            <img src="/images/table-blue-dots.svg" />
-                                                        </td>
-                                                        <td>{item.code}</td>
-                                                        <td>{item.name}</td>
-                                                        <td>{item.display_name ? item.display_name : "-"}</td>
-                                                        <td>{item.consultancy.name}</td>
-                                                        <td>{item.client.name}</td>
-                                                        <td> - </td>
-                                                        <td> - </td>
-                                                        <td>{item.comments ? item.comments : "-"}</td>
-                                                        <td>{item.created_at}</td>
-                                                        <td>{item.updated_at}</td>
-                                                        <td class="action">
-                                                            <img src="/images/three-dots.svg" data-toggle="dropdown" />
-                                                            <ul class="dropdown-menu" role="menu">
-                                                                <li>
-                                                                    <a
-                                                                        onClick={() => {
-                                                                            history.push("/editRegion", {
-                                                                                regionItem: item,
-                                                                                clientid: item.client.id,
-                                                                                consultancy_id: item.consultancy.id
-                                                                            });
-                                                                        }}
-                                                                    >
-                                                                        <img src="/images/edit.svg" />
-                                                                        Edit
-                                                                    </a>
-                                                                </li>
-                                                                <li>
-                                                                    <a
-                                                                        onClick={() => {
-                                                                            this.deleteRegion(item);
-                                                                        }}
-                                                                    >
-                                                                        <img src="/images/delete.svg" />
-                                                                        Delete
-                                                                    </a>
-                                                                </li>
-                                                            </ul>
-                                                        </td>
-                                                    </tr>
-                                                );
-                                            })}
-                                        </tbody>
-                                    </table>
+                                    <CommonTable
+                                        viewItem={this.viewItem}
+                                        deleteItem={this.deleteItem}
+                                        editItem={this.editItem}
+                                        tableData={tableData}
+                                    />
                                 </div>
                             </div>
                         </div>
-                        <div class="fot-nav">
-                            <ul class="pagnation">
-                                <li class="active">
-                                    <a href="#">01</a>
-                                </li>
-                                <li>
-                                    <a href="#">02</a>
-                                </li>
-                                <li>
-                                    <a href="#">03</a>
-                                </li>
-                            </ul>
-                            <ul class="pagnation prv-nxt">
-                                <li>
-                                    <a href="#" class="prv">
-                                        {" "}
-                                        <img src="/images/lft-arrow.svg" /> Prev
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#" class="nxt">
-                                        Next <img src="/images/rgt-arrow.svg" />
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
+                        <Pagination />
                     </div>
                 </div>
             </section>

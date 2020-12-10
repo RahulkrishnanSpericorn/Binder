@@ -138,7 +138,7 @@ export const siteTableData = {
 };
 
 export const regionTableData = {
-    keys: ["code", "name", "consultancy", "client", "projects", "users", "client_users", "comments", "created_at", "updated_at"],
+    keys: ["code", "name", "display_name", "consultancy", "client", "consultancy_users", "client_users", "comments", "created_at", "updated_at"],
     config: {
         code: {
             isVisible: true,
@@ -164,12 +164,24 @@ export const regionTableData = {
             commonSearchKey: "regions",
             commonSearchObjectKey: "name"
         },
+        display_name: {
+            isVisible: true,
+            label: "Region Name",
+            class: "reg-name",
+            searchKey: "regions.display_name",
+            type: "string",
+            hasWildCardSearch: true,
+            hasCommonSearch: false,
+            getListTable: "regions",
+            commonSearchKey: "regions",
+            commonSearchObjectKey: "display_name"
+        },
         consultancy: {
             isVisible: true,
             label: "Consultancy",
             class: "",
             searchKey: "consultancies.name",
-            type: "string",
+            type: "object",
             hasWildCardSearch: true,
             hasCommonSearch: true,
             getListTable: "consultancies",
@@ -181,31 +193,19 @@ export const regionTableData = {
             label: "Client",
             class: "client-wid",
             searchKey: "clients.name",
-            type: "string",
+            type: "object",
             hasWildCardSearch: true,
             hasCommonSearch: true,
             getListTable: "client",
             commonSearchKey: "clients",
             commonSearchObjectKey: "name"
         },
-        projects: {
-            isVisible: true,
-            label: "Associated Projects",
-            class: "",
-            searchKey: "projects.name",
-            type: "string",
-            hasWildCardSearch: true,
-            hasCommonSearch: true,
-            getListTable: "projects",
-            commonSearchKey: "projects",
-            commonSearchObjectKey: "name"
-        },
-        users: {
+        consultancy_users: {
             isVisible: true,
             label: "Consultancy Users",
             class: "",
-            searchKey: "users.name",
-            type: "string",
+            searchKey: "consultancy_users.name",
+            type: "array",
             hasWildCardSearch: true,
             hasCommonSearch: true,
             getListTable: "consultancy_users",
@@ -217,7 +217,7 @@ export const regionTableData = {
             label: "Client Users",
             class: "",
             searchKey: "client_users.name",
-            type: "string",
+            type: "array",
             hasWildCardSearch: true,
             hasCommonSearch: true,
             getListTable: "client_users",

@@ -44,12 +44,9 @@ class index extends Component {
     };
 
     deleteItem = async item => {
-        console.log("item", item);
         let id = item.id;
-
         await this.props.deleteClient(id);
         await this.getClients();
-
         ToastMsg(this.props.clientReducer.deleteClientData.message, "info");
     };
 

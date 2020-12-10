@@ -7,13 +7,13 @@ class Pagination extends Component {
         return (
             <div className="fot-nav">
                 <ul className="pagnation">
-                    <li className="active">
+                    <li className="active cursor-pointer">
                         <span>01</span>
                     </li>
-                    <li>
+                    <li className="cursor-pointer">
                         <span>02</span>
                     </li>
-                    <li>
+                    <li className="cursor-pointer">
                         <span>03</span>
                     </li>
                 </ul>
