@@ -33,10 +33,12 @@ class TableTopheader extends Component {
                     </button>
                 </div>
                 <div class="sr-sec">
-                    <input type="text" class="form-control" placeholder="Search" />
-                    <button type="button" class="btn btn-search">
-                        <img src="/images/serach.svg" alt="" />
-                    </button>
+                    <form>
+                        <input type="text" class="form-control" placeholder="Search" />
+                        <button type="button" class="btn btn-search">
+                            <img src="/images/serach.svg" alt="" />
+                        </button>
+                    </form>
                 </div>
                 <div class="fil-btn">
                     <button class="btn btn-add" onClick={() => addItem()}>
