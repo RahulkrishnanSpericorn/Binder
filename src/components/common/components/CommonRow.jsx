@@ -7,13 +7,19 @@ class CommonRow extends Component {
         let returnData = data;
         switch (type) {
             case "string":
-                returnData = data;
+                returnData = data || "-";
                 break;
             case "date":
-                returnData = data;
+                returnData = data || "-";
+                break;
+            case "object":
+                returnData = data.name || "-";
+                break;
+            case "boolean":
+                returnData = data === "true" || data === true ? "Yes" : "No";
                 break;
             default:
-                returnData = data;
+                returnData = data || "-";
                 break;
         }
         return returnData;

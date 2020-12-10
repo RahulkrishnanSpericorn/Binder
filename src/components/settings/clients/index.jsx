@@ -1,25 +1,28 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+
 import history from "../../../config/history";
 import TopSlider from "../../common/components/TopSlider";
 import actions from "./actions";
 import ToastMsg from "../../common/ToastMessage";
-
-const mapStateToProps = state => {
-    console.log("state", state);
-    const { clientReducer } = state;
-    return { clientReducer };
-};
+import { clientTableData } from "../../../config/tableConfig";
+import CommonTable from "../../../components/common/components/CommonTable";
+import TableTopHeader from "../../../components/common/components/TableTopHeader";
+import Pagination from "../../../components/common/components/Pagination";
 
 class index extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            clientDataList: []
+            clientDataList: [],
+            tableData: clientTableData
         };
     }
 
     async componentDidMount() {
+        await this.setState({
+            tableData: clientTableData
+        });
         await this.getClients();
     }
 
@@ -29,15 +32,18 @@ class index extends Component {
             offset: 0
         };
         await this.props.getClients(params);
-
+        const { tableData } = this.state;
         if (this.props.clientReducer.clientData.success) {
             this.setState({
-                clientDataList: this.props.clientReducer.clientData.clients
+                tableData: {
+                    ...tableData,
+                    data: this.props.clientReducer.clientData.clients
+                }
             });
         }
     };
 
-    deleteClient = async item => {
+    deleteItem = async item => {
         console.log("item", item);
         let id = item.id;
 
@@ -47,193 +53,39 @@ class index extends Component {
         ToastMsg(this.props.clientReducer.deleteClientData.message, "info");
     };
 
+    viewItem = async item => {
+        history.push("/viewClient", { clientItem: item, consultancy_id: item.consultancy.id });
+    };
+
+    editItem = async item => {
+        history.push("/editCLients", { clientItem: item, consultancy_id: item.consultancy.id });
+    };
+
+    addItem = async item => {
+        this.props.history.push("/addClients");
+    };
+
     render() {
+        const { tableData } = this.state;
         return (
             <section className="cont-ara">
-                <div className="list-area">
+                <div class="list-area">
                     <TopSlider />
-
                     <div class="lst-bt-nav">
                         <div class="table table-ara">
-                            <div class="top-fil-ara">
-                                <div class="cap">
-                                    <h4>Clients</h4>
-                                </div>
-
-                                <div class="btn-ara">
-                                    <button class="btn btn-top">
-                                        <img src="/images/color-wheel.svg" />
-                                        Icon & color info
-                                    </button>
-                                    <button class="btn btn-top">
-                                        <img src="/images/export.svg" />
-                                        Export EXL
-                                    </button>
-                                    <button class="btn btn-top">
-                                        <img src="/images/mail.svg" />
-                                        Email
-                                    </button>
-                                    <button class="btn btn-top">
-                                        <img src="/images/colmns.svg" />
-                                        Column Window
-                                    </button>
-                                    <button class="btn btn-top">
-                                        <img src="/images/reset-column.svg" />
-                                        Reset Columns
-                                    </button>
-                                </div>
-
-                                <div class="sr-sec">
-                                    <form>
-                                        <input type="text" class="form-control" placeholder="Search" />
-                                        <button type="submit" class="btn btn-search">
-                                            {" "}
-                                            <img src="/images/serach.svg" />{" "}
-                                        </button>
-                                    </form>
-                                </div>
-                                <div class="fil-btn">
-                                    <button
-                                        class="btn btn-add"
-                                        onClick={() => {
-                                            this.props.history.push("/addClients");
-                                        }}
-                                    >
-                                        {" "}
-                                        <span class="icon">
-                                            {" "}
-                                            <img src="/images/add-new-region.svg" />
-                                        </span>
-                                        Add New Client
-                                    </button>
-                                </div>
-                            </div>
-
+                            <TableTopHeader entity={"Client"} addItem={this.addItem} />
                             <div class="list-sec">
                                 <div class="table-section">
-                                    <table class="table table-bordered scroll-table">
-                                        <thead>
-                                            <tr>
-                                                <th class="img-sq-box">
-                                                    <img src="/images/table-blue-dots.svg" />
-                                                </th>
-                                                <th class="">Client Code</th>
-                                                <th class="">Client Name</th>
-                                                <th class="">Consultancy</th>
-                                                <th class="">Display Blinking Red Plus</th>
-                                                <th class="">Ep Name</th>
-                                                <th class="">Lock Total Devices</th>
-                                                <th class="">Modify Next Due Date</th>
-                                                <th class="">Request Email Recipt</th>
-                                                <th class="">Schedule Threshold</th>
-                                                <th class="">Trailing View Current Month</th>
-                                                <th class="">Use Threshold For Quarterly</th>
-                                                <th class="">Cmms Url</th>
-                                                <th class="">Comments</th>
-                                                <th class="">Created At</th>
-                                                <th class="">Updated At</th>
-                                                <th class="action">
-                                                    <img src="/images/three-dots.svg" />
-                                                </th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            {this.state.clientDataList.map((item, index) => {
-                                                return (
-                                                    <tr
-                                                        onDoubleClick={() => {
-                                                            history.push("/viewClient", { clientItem: item, consultancy_id: item.consultancy.id });
-                                                        }}
-                                                    >
-                                                        <td
-                                                            class="img-sq-box cursor-pointer"
-                                                            onClick={() => {
-                                                                history.push("/viewClient", {
-                                                                    clientItem: item,
-                                                                    consultancy_id: item.consultancy.id
-                                                                });
-                                                            }}
-                                                        >
-                                                            <img src="/images/table-blue-dots.svg" />
-                                                        </td>
-                                                        <td>{item.code}</td>
-                                                        <td>{item.name}</td>
-                                                        <td>{item.consultancy.name ? item.consultancy.name : "-"}</td>
-                                                        <td>{item.display_blinking_red_plus}</td>
-                                                        <td>{item.ep_name ? item.ep_name : "-"}</td>
-                                                        <td>{item.lock_total_devices}</td>
-                                                        <td>{item.modify_next_due_date}</td>
-                                                        <td>{item.request_email_recipt}</td>
-                                                        <td>{item.schedule_threshold}</td>
-                                                        <td>{item.trailing_view_current_month}</td>
-                                                        <td>{item.use_threshold_for_quarterly}</td>
-                                                        <td>{item.cmms_url ? item.cmms_url : "-"}</td>
-                                                        <td>{item.comments ? item.comments : "-"}</td>
-                                                        <td>{item.created_at}</td>
-                                                        <td>{item.updated_at}</td>
-
-                                                        <td class="action">
-                                                            <img src="/images/three-dots.svg" data-toggle="dropdown" />
-                                                            <ul class="dropdown-menu" role="menu">
-                                                                <li>
-                                                                    <a
-                                                                        onClick={() => {
-                                                                            history.push("/editCLients", {
-                                                                                clientItem: item,
-                                                                                consultancy_id: item.consultancy.id
-                                                                            });
-                                                                        }}
-                                                                    >
-                                                                        <img src="/images/edit.svg" />
-                                                                        Edit
-                                                                    </a>
-                                                                </li>
-                                                                <li>
-                                                                    <a
-                                                                        onClick={() => {
-                                                                            this.deleteClient(item);
-                                                                        }}
-                                                                    >
-                                                                        <img src="/images/delete.svg" />
-                                                                        Delete
-                                                                    </a>
-                                                                </li>
-                                                            </ul>
-                                                        </td>
-                                                    </tr>
-                                                );
-                                            })}
-                                        </tbody>
-                                    </table>
+                                    <CommonTable
+                                        viewItem={this.viewItem}
+                                        deleteItem={this.deleteItem}
+                                        editItem={this.editItem}
+                                        tableData={tableData}
+                                    />
                                 </div>
                             </div>
                         </div>
-                        <div class="fot-nav">
-                            <ul class="pagnation">
-                                <li class="active">
-                                    <a href="#">01</a>
-                                </li>
-                                <li>
-                                    <a href="#">02</a>
-                                </li>
-                                <li>
-                                    <a href="#">03</a>
-                                </li>
-                            </ul>
-                            <ul class="pagnation prv-nxt">
-                                <li>
-                                    <a href="#" class="prv">
-                                        {" "}
-                                        <img src="/images/lft-arrow.svg" /> Prev
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#" class="nxt">
-                                        Next <img src="/images/rgt-arrow.svg" />
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
+                        <Pagination />
                     </div>
                 </div>
             </section>
@@ -241,4 +93,9 @@ class index extends Component {
     }
 }
 
+const mapStateToProps = state => {
+    console.log("state", state);
+    const { clientReducer } = state;
+    return { clientReducer };
+};
 export default connect(mapStateToProps, { ...actions })(index);

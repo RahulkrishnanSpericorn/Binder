@@ -1782,7 +1782,23 @@ export const prioritysettingsTableData = {
 };
 
 export const clientTableData = {
-    keys: ["code", "name", "consultancy", "comments", "created_at", "updated_at"],
+    keys: [
+        "code",
+        "name",
+        "consultancy",
+        "display_blinking_red_plus",
+        "ep_name",
+        "lock_total_devices",
+        "modify_next_due_date",
+        "request_email_recipt",
+        "schedule_threshold",
+        "trailing_view_current_month",
+        "use_threshold_for_quarterly",
+        "cmms_url",
+        "comments",
+        "created_at",
+        "updated_at"
+    ],
     config: {
         code: {
             isVisible: true,
@@ -1799,26 +1815,134 @@ export const clientTableData = {
         name: {
             isVisible: true,
             label: "Client Name",
-            class: "reg-name",
+            class: "",
             searchKey: "clients.name",
             type: "string",
             hasWildCardSearch: true,
             hasCommonSearch: false,
             getListTable: "clients",
             commonSearchKey: "clients",
-            commonSearchObjectKey: "name"
+            commonSearchObjectKey: "code"
         },
         consultancy: {
             isVisible: true,
             label: "Consultancy",
             class: "",
             searchKey: "consultancies.name",
+            type: "object",
+            hasWildCardSearch: true,
+            hasCommonSearch: false,
+            getListTable: "consultancies",
+            commonSearchKey: "consultancies",
+            commonSearchObjectKey: "name"
+        },
+        display_blinking_red_plus: {
+            isVisible: true,
+            label: "Display Blinking Red Plus",
+            class: "",
+            searchKey: "clients.display_blinking_red_plus",
+            type: "boolean",
+            hasWildCardSearch: true,
+            hasCommonSearch: false,
+            getListTable: "clients",
+            commonSearchKey: "clients",
+            commonSearchObjectKey: "display_blinking_red_plus"
+        },
+        ep_name: {
+            isVisible: true,
+            label: "Ep Name",
+            class: "",
+            searchKey: "clients.ep_name",
             type: "string",
             hasWildCardSearch: true,
             hasCommonSearch: false,
-            getListTable: "consultancy",
-            commonSearchKey: "consultancies",
-            commonSearchObjectKey: "name"
+            getListTable: "clients",
+            commonSearchKey: "clients",
+            commonSearchObjectKey: "ep_name"
+        },
+        lock_total_devices: {
+            isVisible: true,
+            label: "Lock Total Devices",
+            class: "",
+            searchKey: "clients.lock_total_devices",
+            type: "boolean",
+            hasWildCardSearch: true,
+            hasCommonSearch: false,
+            getListTable: "clients",
+            commonSearchKey: "clients",
+            commonSearchObjectKey: "lock_total_devices"
+        },
+        modify_next_due_date: {
+            isVisible: true,
+            label: "Modify Next Due Date",
+            class: "",
+            searchKey: "clients.modify_next_due_date",
+            type: "boolean",
+            hasWildCardSearch: true,
+            hasCommonSearch: false,
+            getListTable: "clients",
+            commonSearchKey: "clients",
+            commonSearchObjectKey: "modify_next_due_date"
+        },
+        request_email_recipt: {
+            isVisible: true,
+            label: "Request Email Recipt",
+            class: "",
+            searchKey: "clients.request_email_recipt",
+            type: "boolean",
+            hasWildCardSearch: true,
+            hasCommonSearch: false,
+            getListTable: "clients",
+            commonSearchKey: "clients",
+            commonSearchObjectKey: "request_email_recipt"
+        },
+        schedule_threshold: {
+            isVisible: true,
+            label: "Schedule Threshold",
+            class: "",
+            searchKey: "clients.schedule_threshold",
+            type: "string",
+            hasWildCardSearch: true,
+            hasCommonSearch: false,
+            getListTable: "clients",
+            commonSearchKey: "clients",
+            commonSearchObjectKey: "schedule_threshold"
+        },
+        trailing_view_current_month: {
+            isVisible: true,
+            label: "Trailing View Current Month",
+            class: "",
+            searchKey: "clients.code",
+            type: "string",
+            hasWildCardSearch: true,
+            hasCommonSearch: false,
+            getListTable: "clients",
+            commonSearchKey: "clients",
+            commonSearchObjectKey: "code"
+        },
+        use_threshold_for_quarterly: {
+            isVisible: true,
+            label: "Use Threshold For Quarterly",
+            class: "",
+            searchKey: "clients.trailing_view_current_month",
+            type: "boolean",
+            hasWildCardSearch: true,
+            hasCommonSearch: false,
+            getListTable: "clients",
+            commonSearchKey: "clients",
+            commonSearchObjectKey: "trailing_view_current_month"
+        },
+        cmms_url: {
+            isVisible: true,
+            label: "Cmms Url",
+            class: "",
+            searchKey: "clients.cmms_url",
+            type: "string",
+            hasWildCardSearch: true,
+            hasCommonSearch: false,
+            getListTable: "clients",
+            commonSearchKey: "clients",
+            commonSearchObjectKey: "cmms_url"
         },
         comments: {
             isVisible: true,
@@ -1837,7 +1961,7 @@ export const clientTableData = {
             label: "Created At",
             class: "",
             searchKey: "clients.created_at",
-            type: "date",
+            type: "string",
             hasWildCardSearch: true,
             hasCommonSearch: false,
             getListTable: "clients",
@@ -1849,7 +1973,7 @@ export const clientTableData = {
             label: "Updated At",
             class: "",
             searchKey: "clients.updated_at",
-            type: "date",
+            type: "string",
             hasWildCardSearch: true,
             hasCommonSearch: false,
             getListTable: "clients",
