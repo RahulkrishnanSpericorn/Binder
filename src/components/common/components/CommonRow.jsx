@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-
+import { formatNumber, formatmoney } from "../../../config/utils";
 class CommonRow extends Component {
     componentDidMount = () => {};
 
@@ -17,6 +17,12 @@ class CommonRow extends Component {
                 break;
             case "boolean":
                 returnData = data === "true" || data === true ? "Yes" : "No";
+                break;
+            case "number":
+                returnData = data ? formatNumber(parseInt(data)) : "-";
+                break;
+            case "money":
+                returnData = data ? formatmoney(parseInt(data)) : "-";
                 break;
             default:
                 returnData = data || "-";
