@@ -1,5 +1,17 @@
 export const siteTableData = {
-    keys: ["code", "name", "region", "consultancy", "client", "projects", "users", "client_users", "comments", "created_at", "updated_at"],
+    keys: [
+        "code",
+        "name",
+        "display_name",
+        "consultancy",
+        "client",
+        "region",
+        "consultancy_users",
+        "client_users",
+        "comments",
+        "created_at",
+        "updated_at"
+    ],
     config: {
         code: {
             isVisible: true,
@@ -25,12 +37,24 @@ export const siteTableData = {
             commonSearchKey: "sites",
             commonSearchObjectKey: "name"
         },
+        display_name: {
+            isVisible: true,
+            label: "Display Name",
+            class: "reg-name",
+            searchKey: "sites.display_name",
+            type: "string",
+            hasWildCardSearch: true,
+            hasCommonSearch: false,
+            getListTable: "sites",
+            commonSearchKey: "sites",
+            commonSearchObjectKey: "name"
+        },
         consultancy: {
             isVisible: true,
             label: "Consultancy",
             class: "",
             searchKey: "consultancies.name",
-            type: "string",
+            type: "object",
             hasWildCardSearch: true,
             hasCommonSearch: true,
             getListTable: "consultancies",
@@ -42,23 +66,11 @@ export const siteTableData = {
             label: "Client",
             class: "client-wid",
             searchKey: "clients.name",
-            type: "string",
+            type: "object",
             hasWildCardSearch: true,
             hasCommonSearch: true,
             getListTable: "client",
             commonSearchKey: "clients",
-            commonSearchObjectKey: "name"
-        },
-        projects: {
-            isVisible: true,
-            label: "Associated Projects",
-            class: "",
-            searchKey: "projects.name",
-            type: "string",
-            hasWildCardSearch: true,
-            hasCommonSearch: true,
-            getListTable: "projects",
-            commonSearchKey: "projects",
             commonSearchObjectKey: "name"
         },
         region: {
@@ -66,19 +78,19 @@ export const siteTableData = {
             label: "Region",
             class: "",
             searchKey: "regions.name",
-            type: "string",
+            type: "object",
             hasWildCardSearch: true,
             hasCommonSearch: true,
             getListTable: "region",
             commonSearchKey: "regions",
             commonSearchObjectKey: "name"
         },
-        users: {
+        consultancy_users: {
             isVisible: true,
             label: "Consultancy Users",
             class: "",
             searchKey: "users.name",
-            type: "string",
+            type: "array",
             hasWildCardSearch: true,
             hasCommonSearch: true,
             getListTable: "assigned_users",
@@ -90,7 +102,7 @@ export const siteTableData = {
             label: "Client Users",
             class: "",
             searchKey: "client_users.name",
-            type: "string",
+            type: "array",
             hasWildCardSearch: true,
             hasCommonSearch: true,
             getListTable: "client_users",
@@ -166,7 +178,7 @@ export const regionTableData = {
         },
         display_name: {
             isVisible: true,
-            label: "Region Name",
+            label: "Display Name",
             class: "reg-name",
             searchKey: "regions.display_name",
             type: "string",
@@ -204,7 +216,7 @@ export const regionTableData = {
             isVisible: true,
             label: "Consultancy Users",
             class: "",
-            searchKey: "consultancy_users.name",
+            searchKey: "users.name",
             type: "array",
             hasWildCardSearch: true,
             hasCommonSearch: true,

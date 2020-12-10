@@ -215,7 +215,7 @@ class FrequencyModel extends Component {
                                             </div>
                                         </div>
                                         <div className="form-group">
-                                            <label>Test Frequecy</label>
+                                            <label>Test Frequency</label>
                                             <input
                                                 type="text"
                                                 value={test_frequency}
@@ -284,7 +284,7 @@ class FrequencyModel extends Component {
                                             </div>
                                         </div>
                                         <div className="form-group">
-                                            <label>Test Frequecy</label>
+                                            <label>Test Frequency</label>
                                             <input type="text" disabled="true" value={test_frequency} className="form-control" />
                                         </div>
 
