@@ -1,17 +1,5 @@
 export const siteTableData = {
-    keys: [
-        "code",
-        "name",
-        "display_name",
-        "consultancy",
-        "client",
-        "region",
-        "consultancy_users",
-        "client_users",
-        "comments",
-        "created_at",
-        "updated_at"
-    ],
+    keys: ["code", "name", "display_name", "consultancy", "client", "region", "users", "client_users", "comments", "created_at", "updated_at"],
     config: {
         code: {
             isVisible: true,
@@ -85,7 +73,7 @@ export const siteTableData = {
             commonSearchKey: "regions",
             commonSearchObjectKey: "name"
         },
-        consultancy_users: {
+        users: {
             isVisible: true,
             label: "Consultancy Users",
             class: "",
@@ -150,7 +138,7 @@ export const siteTableData = {
 };
 
 export const regionTableData = {
-    keys: ["code", "name", "display_name", "consultancy", "client", "consultancy_users", "client_users", "comments", "created_at", "updated_at"],
+    keys: ["code", "name", "display_name", "consultancy", "client", "users", "client_users", "comments", "created_at", "updated_at"],
     config: {
         code: {
             isVisible: true,
@@ -212,7 +200,7 @@ export const regionTableData = {
             commonSearchKey: "clients",
             commonSearchObjectKey: "name"
         },
-        consultancy_users: {
+        users: {
             isVisible: true,
             label: "Consultancy Users",
             class: "",
@@ -538,14 +526,12 @@ export const buildingTableData = {
     keys: [
         "code",
         "name",
-        "building_type",
         "consultancy",
         "client",
         "region",
         "site",
+        "display_name",
         "description",
-        "number",
-        "projects",
         "users",
         "client_users",
         "area",
@@ -591,6 +577,18 @@ export const buildingTableData = {
             commonSearchKey: "buildings",
             commonSearchObjectKey: "name"
         },
+        display_name: {
+            isVisible: true,
+            label: "Display Name",
+            class: "",
+            searchKey: "buildings.display_name",
+            type: "string",
+            hasWildCardSearch: true,
+            hasCommonSearch: false,
+            getListTable: "buildings",
+            commonSearchKey: "buildings",
+            commonSearchObjectKey: "name"
+        },
         building_type: {
             isVisible: true,
             label: "Type",
@@ -608,7 +606,7 @@ export const buildingTableData = {
             label: "Consultancy",
             class: "",
             searchKey: "consultancies.name",
-            type: "string",
+            type: "object",
             hasWildCardSearch: true,
             hasCommonSearch: true,
             getListTable: "consultancies",
@@ -620,7 +618,7 @@ export const buildingTableData = {
             label: "Client",
             class: "client-wid",
             searchKey: "clients.name",
-            type: "string",
+            type: "object",
             hasWildCardSearch: true,
             hasCommonSearch: true,
             getListTable: "client",
@@ -632,7 +630,7 @@ export const buildingTableData = {
             label: "Region",
             class: "",
             searchKey: "regions.name",
-            type: "string",
+            type: "object",
             hasWildCardSearch: true,
             hasCommonSearch: true,
             getListTable: "region",
@@ -644,7 +642,7 @@ export const buildingTableData = {
             label: "Site",
             class: "",
             searchKey: "sites.name",
-            type: "string",
+            type: "object",
             hasWildCardSearch: true,
             hasCommonSearch: true,
             getListTable: "site",
@@ -692,7 +690,7 @@ export const buildingTableData = {
             label: "Consultancy Users",
             class: "cons-user",
             searchKey: "users.name",
-            type: "string",
+            type: "array",
             hasWildCardSearch: true,
             hasCommonSearch: true,
             getListTable: "assigned_users",
@@ -704,7 +702,7 @@ export const buildingTableData = {
             label: "Client Users",
             class: "",
             searchKey: "client_users.name",
-            type: "string",
+            type: "array",
             hasWildCardSearch: true,
             hasCommonSearch: true,
             getListTable: "client_users",

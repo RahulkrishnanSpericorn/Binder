@@ -57,7 +57,7 @@ class index extends Component {
         history.push("/editConsultancy", { consultancyItem: item });
     };
 
-    addItem = async item => {
+    addItem = async () => {
         this.props.history.push("/addConsultancy");
     };
 

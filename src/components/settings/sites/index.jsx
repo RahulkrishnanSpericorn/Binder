@@ -48,7 +48,7 @@ class index extends Component {
         }
     };
 
-    deleteSite = async item => {
+    deleteItem = async item => {
         let id = item.id;
         await this.props.deleteSite(id);
         await this.getSites();
@@ -85,7 +85,7 @@ class index extends Component {
                     <TopSlider />
                     <div class="lst-bt-nav">
                         <div class="table table-ara">
-                            <TableTopHeader entity={"Consultancy"} addItem={this.addItem} />
+                            <TableTopHeader entity={"Site"} addItem={this.addItem} />
                             <div class="list-sec">
                                 <div class="table-section">
                                     <CommonTable

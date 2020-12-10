@@ -11,3 +11,9 @@
     color: red !important;
     font-weight: bold;
 }
+.list-sec .table-section .table tbody tr td {
+    min-width: 205px;
+}
+.list-sec .table-section .table thead tr th {
+    min-width: 205px;
+}
