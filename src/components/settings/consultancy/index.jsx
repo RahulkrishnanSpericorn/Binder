@@ -6,14 +6,9 @@ import TopSlider from "../../../components/common/components/TopSlider";
 import history from "../../../config/history";
 import ToastMsg from "../../common/ToastMessage";
 import CommonTable from "../../../components/common/components/CommonTable";
+import TableTopHeader from "../../../components/common/components/TableTopHeader";
+import Pagination from "../../../components/common/components/Pagination";
 import { consultancyTableData } from "../../../config/tableConfig";
-
-const mapStateToProps = state => {
-    console.log("state", state);
-    const { consultancyReducer } = state;
-    return { consultancyReducer };
-};
-
 class index extends Component {
     constructor(props) {
         super(props);
@@ -62,6 +57,10 @@ class index extends Component {
         history.push("/editConsultancy", { consultancyItem: item });
     };
 
+    addItem = async item => {
+        this.props.history.push("/addConsultancy");
+    };
+
     render() {
         const { tableData } = this.state;
         return (
@@ -70,57 +69,7 @@ class index extends Component {
                     <TopSlider />
                     <div class="lst-bt-nav">
                         <div class="table table-ara">
-                            <div class="top-fil-ara">
-                                <div class="cap">
-                                    <h4>Consultancy</h4>
-                                </div>
-
-                                <div class="btn-ara">
-                                    <button class="btn btn-top">
-                                        <img src="/images/color-wheel.svg" alt="" />
-                                        Icon & color info
-                                    </button>
-                                    <button class="btn btn-top">
-                                        <img src="/images/export.svg" alt="" />
-                                        Export EXL
-                                    </button>
-                                    <button class="btn btn-top">
-                                        <img src="/images/mail.svg" alt="" />
-                                        Email
-                                    </button>
-                                    <button class="btn btn-top">
-                                        <img src="/images/colmns.svg" alt="" />
-                                        Column Window
-                                    </button>
-                                    <button class="btn btn-top">
-                                        <img src="/images/reset-column.svg" alt="" />
-                                        Reset Columns
-                                    </button>
-                                </div>
-
-                                <div class="sr-sec">
-                                    <form>
-                                        <input type="text" class="form-control" placeholder="Search" />
-                                        <button type="submit" class="btn btn-search">
-                                            <img src="/images/serach.svg" alt="" />
-                                        </button>
-                                    </form>
-                                </div>
-                                <div class="fil-btn">
-                                    <button
-                                        class="btn btn-add"
-                                        onClick={() => {
-                                            this.props.history.push("/addConsultancy");
-                                        }}
-                                    >
-                                        <span class="icon">
-                                            <img src="/images/add-new-region.svg" alt="" />
-                                        </span>
-                                        Add New Consultancy
-                                    </button>
-                                </div>
-                            </div>
-
+                            <TableTopHeader entity={"Consultancy"} addItem={this.addItem} />
                             <div class="list-sec">
                                 <div class="table-section">
                                     <CommonTable
@@ -132,36 +81,17 @@ class index extends Component {
                                 </div>
                             </div>
                         </div>
-                        <div class="fot-nav">
-                            <ul class="pagnation">
-                                <li class="active">
-                                    <a href="#">01</a>
-                                </li>
-                                <li>
-                                    <a href="#">02</a>
-                                </li>
-                                <li>
-                                    <a href="#">03</a>
-                                </li>
-                            </ul>
-                            <ul class="pagnation prv-nxt">
-                                <li>
-                                    <a href="#" class="prv">
-                                        <img src="/images/lft-arrow.svg" /> Prev
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#" class="nxt">
-                                        Next <img src="/images/rgt-arrow.svg" />
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
+                        <Pagination />
                     </div>
                 </div>
             </section>
         );
     }
 }
+
+const mapStateToProps = state => {
+    const { consultancyReducer } = state;
+    return { consultancyReducer };
+};
 
 export default connect(mapStateToProps, { ...actions })(index);
