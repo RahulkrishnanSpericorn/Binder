@@ -81,7 +81,7 @@ class index extends Component {
                     <TopSlider />
                     <div class="lst-bt-nav">
                         <div class="table table-ara">
-                            <TableTopHeader entity={"Consultancy"} addItem={this.addItem} />
+                            <TableTopHeader entity={"Activity"} addItem={this.addItem} />
                             <div class="list-sec">
                                 <div class="table-section">
                                     <CommonTable

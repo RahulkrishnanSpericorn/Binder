@@ -1,122 +1,126 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import TopSlider from '../../common/components/TopSlider';
-import actions from './actions';
-import commonActions from '../actions';
-import ToastMsg from '../../common/ToastMessage'
-import history from '../../../config/history';
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import TopSlider from "../../common/components/TopSlider";
+import actions from "./actions";
+import commonActions from "../actions";
+import ToastMsg from "../../common/ToastMessage";
+import history from "../../../config/history";
 
+const mapStateToProps = state => {
+    const { buildingReducer, settingsCommonReducer } = state;
 
-const mapStateToProps = (state) => {
+    console.log("state", state);
 
-    const { buildingReducer, settingsCommonReducer } = state
-
-    console.log('state', state)
-
-    return { buildingReducer, settingsCommonReducer }
-
-}
+    return { buildingReducer, settingsCommonReducer };
+};
 
 class index extends Component {
-
     constructor(props) {
         super(props);
         this.state = {
-            consultancy_id: '',
+            consultancy_id: "",
             consultancyIdList: [],
             clientIdList: [],
             regionIdList: [],
-            client_id: '',
-            region_id: '',
+            client_id: "",
+            region_id: "",
             siteIdList: [],
-            site_id: '',
+            site_id: "",
 
             siteErrorMsg: false,
-            consultancyErrorMsg:false,
-            clientErrorMsg:false,
-            regionErrorMsg:false,
-            nameErrorMsg:false,
+            consultancyErrorMsg: false,
+            clientErrorMsg: false,
+            regionErrorMsg: false,
+            nameErrorMsg: false,
 
-            name: '',
-            display_name: '',
-            zip_code: '',
-            city: '',
-            state: '',
-            year: '',
-            country: '',
-            ownership: '',
-            ownership_type: '',
-            use: '',
+            name: "",
+            display_name: "",
+            zip_code: "",
+            city: "",
+            state: "",
+            year: "",
+            country: "",
+            ownership: "",
+            ownership_type: "",
+            use: "",
             area: 0,
-            number: '',
+            number: "",
             cost: 0,
-            enterprise_index: '',
-            manager: '',
-            street: '',
-            ministry: '',
-            description: '',
-            comments:''
-        }
-
+            enterprise_index: "",
+            manager: "",
+            street: "",
+            ministry: "",
+            description: "",
+            comments: ""
+        };
     }
 
     componentDidMount = async () => {
-        await this.props.getConsultancyDropdown()
+        await this.props.getConsultancyDropdown();
         await this.setState({
             consultancyIdList: this.props.settingsCommonReducer.consultancyDropdownData.data
-        })
-    }
-    selectConsultancyId = async (e) => {
-        await this.setState({ consultancy_id: e.target.value, consultancyErrorMsg: false })
+        });
+    };
+    selectConsultancyId = async e => {
+        await this.setState({ consultancy_id: e.target.value, consultancyErrorMsg: false });
 
         let params = {
             consultancy_id: this.state.consultancy_id
-        }
-        await this.props.getClientDropdown(params)
+        };
+        await this.props.getClientDropdown(params);
         await this.setState({
             clientIdList: this.props.settingsCommonReducer.clientDropdownData.data
-        })
-    }
+        });
+    };
 
-    selectClientId = async (e) => {
-        await this.setState({ client_id: e.target.value, clientErrorMsg: false })
+    selectClientId = async e => {
+        await this.setState({ client_id: e.target.value, clientErrorMsg: false });
         let params = {
             client_id: this.state.client_id
-        }
-        await this.props.getRegionDropdown(params)
+        };
+        await this.props.getRegionDropdown(params);
         await this.setState({
             regionIdList: this.props.settingsCommonReducer.regionDropdownData.data
-        })
-    }
+        });
+    };
 
-    selectRegionId = async (e) => {
-        await this.setState({ region_id: e.target.value, regionErrorMsg: false })
+    selectRegionId = async e => {
+        await this.setState({ region_id: e.target.value, regionErrorMsg: false });
         let params = {
             region_id: this.state.region_id
-        }
-        await this.props.getSitesDropdown(params)
+        };
+        await this.props.getSitesDropdown(params);
         await this.setState({
             siteIdList: this.props.settingsCommonReducer.siteDropdownData.data
-        })
-        console.log('this.state.siteIdList', this.state.siteIdList)
-    }
+        });
+        console.log("this.state.siteIdList", this.state.siteIdList);
+    };
 
-    addBuilding = async() => {
-        console.log('this.state', this.state)
+    addBuilding = async () => {
+        console.log("this.state", this.state);
 
-        if(this.state.name === ''){
-            this.setState({nameErrorMsg:true})
-        }if(this.state.consultancy_id === ''){
-            this.setState({ consultancyErrorMsg:true })
-        }if(this.state.client_id === ''){
-            this.setState({ clientErrorMsg:true })
-        }if(this.state.region_id === ''){
-            this.setState({ regionErrorMsg:true })
-        }if(this.state.site_id === ''){
-            this.setState({ siteErrorMsg:true })
+        if (this.state.name === "") {
+            this.setState({ nameErrorMsg: true });
         }
-        if(this.state.name != '' && this.state.consultancy_id != '' && this.state.client_id != '' && this.state.region_id != '' && this.state.site_id != ''){
-
+        if (this.state.consultancy_id === "") {
+            this.setState({ consultancyErrorMsg: true });
+        }
+        if (this.state.client_id === "") {
+            this.setState({ clientErrorMsg: true });
+        }
+        if (this.state.region_id === "") {
+            this.setState({ regionErrorMsg: true });
+        }
+        if (this.state.site_id === "") {
+            this.setState({ siteErrorMsg: true });
+        }
+        if (
+            this.state.name != "" &&
+            this.state.consultancy_id != "" &&
+            this.state.client_id != "" &&
+            this.state.region_id != "" &&
+            this.state.site_id != ""
+        ) {
             let rec_data = new FormData();
             rec_data.append("building[name]", this.state.name);
             rec_data.append("building[region_id]", this.state.region_id);
@@ -142,23 +146,15 @@ class index extends Component {
             rec_data.append("building[ministry]", this.state.ministry);
             rec_data.append("building[description]", this.state.description);
 
-            await this.props.addBuilding(rec_data)
+            await this.props.addBuilding(rec_data);
 
-            ToastMsg(this.props.buildingReducer.addBuildingData.message, 'info')
-          
-            if (this.props.buildingReducer.addBuildingData.message === "Building created successfully") {
-                history.push('/building')
+            ToastMsg(this.props.buildingReducer.addBuildingData.message, "info");
+
+            if (this.props.buildingReducer.addBuildingData.success) {
+                history.push("/buildings");
             }
-
         }
-
-        
-
-    }
-
-
-
-
+    };
 
     render() {
         return (
@@ -183,8 +179,22 @@ class index extends Component {
                                         </div>
                                         <div className="itm-cnt">
                                             <div className="form-group">
-                                                <label className="form-control-placeholder" style={{color:this.state.nameErrorMsg ?"red" :null}} for="f-name">Building Name</label>
-                                                <input type="text" id="text" onChange={(e) => { this.setState({ name: e.target.value,nameErrorMsg:false }) }} className="form-control" placeholder="Enter Building Name " />
+                                                <label
+                                                    className="form-control-placeholder"
+                                                    style={{ color: this.state.nameErrorMsg ? "red" : null }}
+                                                    for="f-name"
+                                                >
+                                                    Building Name
+                                                </label>
+                                                <input
+                                                    type="text"
+                                                    id="text"
+                                                    onChange={e => {
+                                                        this.setState({ name: e.target.value, nameErrorMsg: false });
+                                                    }}
+                                                    className="form-control"
+                                                    placeholder="Enter Building Name "
+                                                />
                                             </div>
                                         </div>
                                     </div>
@@ -194,23 +204,29 @@ class index extends Component {
                                         </div>
                                         <div className="itm-cnt">
                                             <div className="form-group select-group">
-
-                                                <label className="form-control-placeholder" style={{ color: this.state.consultancyErrorMsg && 'red' }} for="f-name">Consultancy *</label>
-                                                <select className="form-control select" value={this.state.consultancy_id} onChange={(e) => { this.selectConsultancyId(e) }}>
+                                                <label
+                                                    className="form-control-placeholder"
+                                                    style={{ color: this.state.consultancyErrorMsg && "red" }}
+                                                    for="f-name"
+                                                >
+                                                    Consultancy *
+                                                </label>
+                                                <select
+                                                    className="form-control select"
+                                                    value={this.state.consultancy_id}
+                                                    onChange={e => {
+                                                        this.selectConsultancyId(e);
+                                                    }}
+                                                >
                                                     <option value="">Select</option>
-                                                    {
-                                                        this.state.consultancyIdList.length && this.state.consultancyIdList.map((item, idex) => {
-                                                            return (
-                                                                <option value={item.id}> {item.name} </option>
-                                                            )
-                                                        })
-                                                    }
-
+                                                    {this.state.consultancyIdList.length &&
+                                                        this.state.consultancyIdList.map((item, idex) => {
+                                                            return <option value={item.id}> {item.name} </option>;
+                                                        })}
                                                 </select>
                                                 {/* <input type="text-area" id="text"  className="form-control" placeholder=" " /> */}
                                             </div>
                                         </div>
-
                                     </div>
                                     <div className="itm">
                                         <div className="cunt">
@@ -218,23 +234,29 @@ class index extends Component {
                                         </div>
                                         <div className="itm-cnt">
                                             <div className="form-group select-group">
-
-                                                <label className="form-control-placeholder" style={{ color: this.state.clientErrorMsg && 'red' }} for="f-name">Client *</label>
-                                                <select className="form-control select" value={this.state.client_id} onChange={(e) => { this.selectClientId(e) }}>
+                                                <label
+                                                    className="form-control-placeholder"
+                                                    style={{ color: this.state.clientErrorMsg && "red" }}
+                                                    for="f-name"
+                                                >
+                                                    Client *
+                                                </label>
+                                                <select
+                                                    className="form-control select"
+                                                    value={this.state.client_id}
+                                                    onChange={e => {
+                                                        this.selectClientId(e);
+                                                    }}
+                                                >
                                                     <option value="">Select</option>
-                                                    {
-                                                        this.state.clientIdList && this.state.clientIdList.map((item, idex) => {
-                                                            return (
-                                                                <option value={item.id}> {item.name} </option>
-                                                            )
-                                                        })
-                                                    }
-
+                                                    {this.state.clientIdList &&
+                                                        this.state.clientIdList.map((item, idex) => {
+                                                            return <option value={item.id}> {item.name} </option>;
+                                                        })}
                                                 </select>
                                                 {/* <input type="text-area" id="text"  className="form-control" placeholder=" " /> */}
                                             </div>
                                         </div>
-
                                     </div>
 
                                     <div className="itm">
@@ -243,23 +265,29 @@ class index extends Component {
                                         </div>
                                         <div className="itm-cnt">
                                             <div className="form-group select-group">
-
-                                                <label className="form-control-placeholder" style={{ color: this.state.regionErrorMsg && 'red' }} for="f-name">Region *</label>
-                                                <select className="form-control select" value={this.state.region_id} onChange={(e) => { this.selectRegionId(e) }}>
+                                                <label
+                                                    className="form-control-placeholder"
+                                                    style={{ color: this.state.regionErrorMsg && "red" }}
+                                                    for="f-name"
+                                                >
+                                                    Region *
+                                                </label>
+                                                <select
+                                                    className="form-control select"
+                                                    value={this.state.region_id}
+                                                    onChange={e => {
+                                                        this.selectRegionId(e);
+                                                    }}
+                                                >
                                                     <option value="">Select</option>
-                                                    {
-                                                        this.state.regionIdList.length && this.state.regionIdList.map((item, idex) => {
-                                                            return (
-                                                                <option value={item.id}> {item.name} </option>
-                                                            )
-                                                        })
-                                                    }
-
+                                                    {this.state.regionIdList.length &&
+                                                        this.state.regionIdList.map((item, idex) => {
+                                                            return <option value={item.id}> {item.name} </option>;
+                                                        })}
                                                 </select>
                                                 {/* <input type="text-area" id="text"  className="form-control" placeholder=" " /> */}
                                             </div>
                                         </div>
-
                                     </div>
 
                                     <div className="itm">
@@ -268,18 +296,25 @@ class index extends Component {
                                         </div>
                                         <div className="itm-cnt">
                                             <div className="form-group select-group">
-
-                                                <label className="form-control-placeholder" style={{ color: this.state.siteErrorMsg && 'red' }} for="f-name">Site *</label>
-                                                <select className="form-control select" value={this.state.site_id} onChange={(e) => { this.setState({ site_id: e.target.value,siteErrorMsg:false }) }}>
+                                                <label
+                                                    className="form-control-placeholder"
+                                                    style={{ color: this.state.siteErrorMsg && "red" }}
+                                                    for="f-name"
+                                                >
+                                                    Site *
+                                                </label>
+                                                <select
+                                                    className="form-control select"
+                                                    value={this.state.site_id}
+                                                    onChange={e => {
+                                                        this.setState({ site_id: e.target.value, siteErrorMsg: false });
+                                                    }}
+                                                >
                                                     <option value="">Select</option>
-                                                    {
-                                                        this.state.siteIdList.length && this.state.siteIdList.map((item, idex) => {
-                                                            return (
-                                                                <option value={item.id}> {item.name} </option>
-                                                            )
-                                                        })
-                                                    }
-
+                                                    {this.state.siteIdList.length &&
+                                                        this.state.siteIdList.map((item, idex) => {
+                                                            return <option value={item.id}> {item.name} </option>;
+                                                        })}
                                                 </select>
                                                 {/* <input type="text-area" id="text"  className="form-control" placeholder=" " /> */}
                                             </div>
@@ -292,14 +327,24 @@ class index extends Component {
                                         </div>
                                         <div className="itm-cnt">
                                             <div className="form-group">
-                                                <label className="form-control-placeholder" for="f-name">Display Name</label>
-                                                <input type="text" id="text" onChange={(e) => { this.setState({ display_name: e.target.value }) }} className="form-control" placeholder="Enter Display Name " list="builiding" name="builiding" />
+                                                <label className="form-control-placeholder" for="f-name">
+                                                    Display Name
+                                                </label>
+                                                <input
+                                                    type="text"
+                                                    id="text"
+                                                    onChange={e => {
+                                                        this.setState({ display_name: e.target.value });
+                                                    }}
+                                                    className="form-control"
+                                                    placeholder="Enter Display Name "
+                                                    list="builiding"
+                                                    name="builiding"
+                                                />
                                                 {/* <span className="material-icons">keyboard_arrow_down </span> */}
-
                                             </div>
                                         </div>
                                     </div>
-
 
                                     <div className="itm">
                                         <div className="cunt">
@@ -307,8 +352,18 @@ class index extends Component {
                                         </div>
                                         <div className="itm-cnt">
                                             <div className="form-group">
-                                                <label className="form-control-placeholder" for="f-name">Description</label>
-                                                <input type="text" id="text" onChange={(e) => { this.setState({ description: e.target.value }) }} className="form-control" placeholder="Enter Description " />
+                                                <label className="form-control-placeholder" for="f-name">
+                                                    Description
+                                                </label>
+                                                <input
+                                                    type="text"
+                                                    id="text"
+                                                    onChange={e => {
+                                                        this.setState({ description: e.target.value });
+                                                    }}
+                                                    className="form-control"
+                                                    placeholder="Enter Description "
+                                                />
                                             </div>
                                         </div>
                                     </div>
@@ -318,8 +373,20 @@ class index extends Component {
                                         </div>
                                         <div className="itm-cnt">
                                             <div className="form-group">
-                                                <label className="form-control-placeholder" for="f-name">Building Number</label>
-                                                <input type="number" id="text" onChange={(e) => { this.setState({ number: e.target.value }) }} className="form-control" placeholder="Enter Building Number" list="buildigNumber" name="buildigNumber" />
+                                                <label className="form-control-placeholder" for="f-name">
+                                                    Building Number
+                                                </label>
+                                                <input
+                                                    type="number"
+                                                    id="text"
+                                                    onChange={e => {
+                                                        this.setState({ number: e.target.value });
+                                                    }}
+                                                    className="form-control"
+                                                    placeholder="Enter Building Number"
+                                                    list="buildigNumber"
+                                                    name="buildigNumber"
+                                                />
                                                 {/* <span className="material-icons">keyboard_arrow_down </span> */}
                                                 <datalist id="buildigNumber">
                                                     <option value="Buildig Number" />
@@ -327,29 +394,23 @@ class index extends Component {
                                             </div>
                                         </div>
                                     </div>
-                                    {/* <div className="itm">
-                                        <div className="cunt">
-                                            <div className="numb">09</div>
-                                        </div>
-                                        <div className="itm-cnt">
-                                            <div className="form-group">
-                                                <label className="form-control-placeholder" for="f-name">Associated Projects</label>
-                                                <input type="text" id="text" className="form-control" placeholder="Enter Associated Project " list="associated" name="associated" />
-                                                <span className="material-icons">keyboard_arrow_down </span>
-                                                <datalist id="associated">
-                                                    <option value="Buildig Number" />
-                                                </datalist>
-                                            </div>
-                                        </div>
-                                    </div> */}
                                     <div className="itm">
                                         <div className="cunt">
                                             <div className="numb">09</div>
                                         </div>
                                         <div className="itm-cnt">
                                             <div className="form-group">
-                                                <label className="form-control-placeholder" for="f-name">Consultancy Users</label>
-                                                <input type="text" id="text" className="form-control" placeholder="Enter Consultancy Users " list="cosultancy" name="cosultancy" />
+                                                <label className="form-control-placeholder" for="f-name">
+                                                    Consultancy Users
+                                                </label>
+                                                <input
+                                                    type="text"
+                                                    id="text"
+                                                    className="form-control"
+                                                    placeholder="Enter Consultancy Users "
+                                                    list="cosultancy"
+                                                    name="cosultancy"
+                                                />
                                                 <span className="material-icons">keyboard_arrow_down </span>
                                                 <datalist id="cosultancy">
                                                     <option value="Buildig Number" />
@@ -363,8 +424,17 @@ class index extends Component {
                                         </div>
                                         <div className="itm-cnt">
                                             <div className="form-group">
-                                                <label className="form-control-placeholder" for="f-name">Client Users</label>
-                                                <input type="text" id="text" className="form-control" placeholder="Enter Client Users " list="client-u" name="client-u" />
+                                                <label className="form-control-placeholder" for="f-name">
+                                                    Client Users
+                                                </label>
+                                                <input
+                                                    type="text"
+                                                    id="text"
+                                                    className="form-control"
+                                                    placeholder="Enter Client Users "
+                                                    list="client-u"
+                                                    name="client-u"
+                                                />
                                                 <span className="material-icons">keyboard_arrow_down </span>
                                                 <datalist id="client-u">
                                                     <option value="Buildig Number" />
@@ -373,8 +443,6 @@ class index extends Component {
                                         </div>
                                     </div>
                                 </div>
-
-
 
                                 <div className="head mt-4">
                                     <h3>More Info</h3>
@@ -386,8 +454,18 @@ class index extends Component {
                                         </div>
                                         <div className="itm-cnt">
                                             <div className="form-group">
-                                                <label className="form-control-placeholder" for="f-name">Area (Sq)</label>
-                                                <input type="number" id="text" onChange={(e) => { this.setState({ area: e.target.value }) }} className="form-control" placeholder="Enter Area (Sq) " />
+                                                <label className="form-control-placeholder" for="f-name">
+                                                    Area (Sq)
+                                                </label>
+                                                <input
+                                                    type="number"
+                                                    id="text"
+                                                    onChange={e => {
+                                                        this.setState({ area: e.target.value });
+                                                    }}
+                                                    className="form-control"
+                                                    placeholder="Enter Area (Sq) "
+                                                />
                                             </div>
                                         </div>
                                     </div>
@@ -397,8 +475,18 @@ class index extends Component {
                                         </div>
                                         <div className="itm-cnt">
                                             <div className="form-group">
-                                                <label className="form-control-placeholder" for="f-name">Cost</label>
-                                                <input type="number" id="text" onChange={(e) => { this.setState({ cost: e.target.value }) }} className="form-control" placeholder="Enter Cost " />
+                                                <label className="form-control-placeholder" for="f-name">
+                                                    Cost
+                                                </label>
+                                                <input
+                                                    type="number"
+                                                    id="text"
+                                                    onChange={e => {
+                                                        this.setState({ cost: e.target.value });
+                                                    }}
+                                                    className="form-control"
+                                                    placeholder="Enter Cost "
+                                                />
                                             </div>
                                         </div>
                                     </div>
@@ -408,8 +496,18 @@ class index extends Component {
                                         </div>
                                         <div className="itm-cnt">
                                             <div className="form-group">
-                                                <label className="form-control-placeholder" for="f-name">Enterprice Index</label>
-                                                <input type="text" id="text" onChange={(e) => { this.setState({ enterprise_index: e.target.value }) }} className="form-control" placeholder="Enter Enterprice Index " />
+                                                <label className="form-control-placeholder" for="f-name">
+                                                    Enterprice Index
+                                                </label>
+                                                <input
+                                                    type="text"
+                                                    id="text"
+                                                    onChange={e => {
+                                                        this.setState({ enterprise_index: e.target.value });
+                                                    }}
+                                                    className="form-control"
+                                                    placeholder="Enter Enterprice Index "
+                                                />
                                             </div>
                                         </div>
                                     </div>
@@ -420,8 +518,18 @@ class index extends Component {
                                         </div>
                                         <div className="itm-cnt">
                                             <div className="form-group">
-                                                <label className="form-control-placeholder" for="f-name">Ownership</label>
-                                                <input type="text" id="text" onChange={(e) => { this.setState({ ownership: e.target.value }) }} className="form-control" placeholder="Enter Ownership " />
+                                                <label className="form-control-placeholder" for="f-name">
+                                                    Ownership
+                                                </label>
+                                                <input
+                                                    type="text"
+                                                    id="text"
+                                                    onChange={e => {
+                                                        this.setState({ ownership: e.target.value });
+                                                    }}
+                                                    className="form-control"
+                                                    placeholder="Enter Ownership "
+                                                />
                                             </div>
                                         </div>
                                     </div>
@@ -432,8 +540,18 @@ class index extends Component {
                                         </div>
                                         <div className="itm-cnt">
                                             <div className="form-group">
-                                                <label className="form-control-placeholder"  for="f-name">Ownership Type</label>
-                                                <input type="text" id="text" onChange={(e) => { this.setState({ ownership_type: e.target.value }) }} className="form-control" placeholder="Enter Ownership Type" />
+                                                <label className="form-control-placeholder" for="f-name">
+                                                    Ownership Type
+                                                </label>
+                                                <input
+                                                    type="text"
+                                                    id="text"
+                                                    onChange={e => {
+                                                        this.setState({ ownership_type: e.target.value });
+                                                    }}
+                                                    className="form-control"
+                                                    placeholder="Enter Ownership Type"
+                                                />
                                             </div>
                                         </div>
                                     </div>
@@ -444,8 +562,18 @@ class index extends Component {
                                         </div>
                                         <div className="itm-cnt">
                                             <div className="form-group">
-                                                <label className="form-control-placeholder" for="f-name">Use</label>
-                                                <input type="text" id="text" onChange={(e) => { this.setState({ use: e.target.value }) }} className="form-control" placeholder="Enter Use " />
+                                                <label className="form-control-placeholder" for="f-name">
+                                                    Use
+                                                </label>
+                                                <input
+                                                    type="text"
+                                                    id="text"
+                                                    onChange={e => {
+                                                        this.setState({ use: e.target.value });
+                                                    }}
+                                                    className="form-control"
+                                                    placeholder="Enter Use "
+                                                />
                                             </div>
                                         </div>
                                     </div>
@@ -455,8 +583,18 @@ class index extends Component {
                                         </div>
                                         <div className="itm-cnt">
                                             <div className="form-group">
-                                                <label className="form-control-placeholder" for="f-name">Manager</label>
-                                                <input type="text" id="text" onChange={(e) => { this.setState({ manager: e.target.value }) }} className="form-control" placeholder="Enter Manager " />
+                                                <label className="form-control-placeholder" for="f-name">
+                                                    Manager
+                                                </label>
+                                                <input
+                                                    type="text"
+                                                    id="text"
+                                                    onChange={e => {
+                                                        this.setState({ manager: e.target.value });
+                                                    }}
+                                                    className="form-control"
+                                                    placeholder="Enter Manager "
+                                                />
                                             </div>
                                         </div>
                                     </div>
@@ -466,8 +604,18 @@ class index extends Component {
                                         </div>
                                         <div className="itm-cnt">
                                             <div className="form-group">
-                                                <label className="form-control-placeholder" for="f-name">Year Built</label>
-                                                <input type="number" id="text" onChange={(e) => { this.setState({ year: e.target.value }) }} className="form-control" placeholder="Enter Year Built " />
+                                                <label className="form-control-placeholder" for="f-name">
+                                                    Year Built
+                                                </label>
+                                                <input
+                                                    type="number"
+                                                    id="text"
+                                                    onChange={e => {
+                                                        this.setState({ year: e.target.value });
+                                                    }}
+                                                    className="form-control"
+                                                    placeholder="Enter Year Built "
+                                                />
                                             </div>
                                         </div>
                                     </div>
@@ -477,8 +625,18 @@ class index extends Component {
                                         </div>
                                         <div className="itm-cnt">
                                             <div className="form-group">
-                                                <label className="form-control-placeholder" for="f-name">Ministry</label>
-                                                <input type="text" id="text" onChange={(e) => { this.setState({ ministry: e.target.value }) }} className="form-control" placeholder="Enter Ministry " />
+                                                <label className="form-control-placeholder" for="f-name">
+                                                    Ministry
+                                                </label>
+                                                <input
+                                                    type="text"
+                                                    id="text"
+                                                    onChange={e => {
+                                                        this.setState({ ministry: e.target.value });
+                                                    }}
+                                                    className="form-control"
+                                                    placeholder="Enter Ministry "
+                                                />
                                             </div>
                                         </div>
                                     </div>
@@ -494,8 +652,18 @@ class index extends Component {
                                         </div>
                                         <div className="itm-cnt">
                                             <div className="form-group">
-                                                <label className="form-control-placeholder" for="f-name">Street</label>
-                                                <input type="text" id="text" onChange={(e) => { this.setState({ street: e.target.value }) }} className="form-control" placeholder="Enter Street " />
+                                                <label className="form-control-placeholder" for="f-name">
+                                                    Street
+                                                </label>
+                                                <input
+                                                    type="text"
+                                                    id="text"
+                                                    onChange={e => {
+                                                        this.setState({ street: e.target.value });
+                                                    }}
+                                                    className="form-control"
+                                                    placeholder="Enter Street "
+                                                />
                                             </div>
                                         </div>
                                     </div>
@@ -505,8 +673,18 @@ class index extends Component {
                                         </div>
                                         <div className="itm-cnt">
                                             <div className="form-group">
-                                                <label className="form-control-placeholder" for="f-name">City</label>
-                                                <input type="text" id="text" onChange={(e) => { this.setState({ city: e.target.value }) }} className="form-control" placeholder="Enter City " />
+                                                <label className="form-control-placeholder" for="f-name">
+                                                    City
+                                                </label>
+                                                <input
+                                                    type="text"
+                                                    id="text"
+                                                    onChange={e => {
+                                                        this.setState({ city: e.target.value });
+                                                    }}
+                                                    className="form-control"
+                                                    placeholder="Enter City "
+                                                />
                                             </div>
                                         </div>
                                     </div>
@@ -516,8 +694,18 @@ class index extends Component {
                                         </div>
                                         <div className="itm-cnt">
                                             <div className="form-group">
-                                                <label className="form-control-placeholder" for="f-name">State</label>
-                                                <input type="text" id="text" onChange={(e) => { this.setState({ state: e.target.value }) }} className="form-control" placeholder="Enter State " />
+                                                <label className="form-control-placeholder" for="f-name">
+                                                    State
+                                                </label>
+                                                <input
+                                                    type="text"
+                                                    id="text"
+                                                    onChange={e => {
+                                                        this.setState({ state: e.target.value });
+                                                    }}
+                                                    className="form-control"
+                                                    placeholder="Enter State "
+                                                />
                                             </div>
                                         </div>
                                     </div>
@@ -528,8 +716,18 @@ class index extends Component {
                                         </div>
                                         <div className="itm-cnt">
                                             <div className="form-group">
-                                                <label className="form-control-placeholder" for="f-name">Country</label>
-                                                <input type="text" id="text" onChange={(e) => { this.setState({ country: e.target.value }) }} className="form-control" placeholder="Enter Country" />
+                                                <label className="form-control-placeholder" for="f-name">
+                                                    Country
+                                                </label>
+                                                <input
+                                                    type="text"
+                                                    id="text"
+                                                    onChange={e => {
+                                                        this.setState({ country: e.target.value });
+                                                    }}
+                                                    className="form-control"
+                                                    placeholder="Enter Country"
+                                                />
                                             </div>
                                         </div>
                                     </div>
@@ -540,8 +738,20 @@ class index extends Component {
                                         </div>
                                         <div className="itm-cnt">
                                             <div className="form-group">
-                                                <label className="form-control-placeholder" for="f-name">Zip Code</label>
-                                                <input type="number" id="text" onChange={(e) => { this.setState({ zip_code: e.target.value }) }} className="form-control" placeholder="Enter Zip Code " list="zip" name="zip" />
+                                                <label className="form-control-placeholder" for="f-name">
+                                                    Zip Code
+                                                </label>
+                                                <input
+                                                    type="number"
+                                                    id="text"
+                                                    onChange={e => {
+                                                        this.setState({ zip_code: e.target.value });
+                                                    }}
+                                                    className="form-control"
+                                                    placeholder="Enter Zip Code "
+                                                    list="zip"
+                                                    name="zip"
+                                                />
                                                 {/* <span className="material-icons">keyboard_arrow_down </span> */}
                                                 <datalist id="zip">
                                                     <option value="686541" />
@@ -556,17 +766,33 @@ class index extends Component {
                                         </div>
                                         <div className="itm-cnt">
                                             <div className="form-group">
-                                                <label className="form-control-placeholder" for="f-name">Comments</label>
-                                                <input type="text" id="text" onChange={(e) => { this.setState({ comments: e.target.value }) }} className="form-control" placeholder="Enter Comments " />
+                                                <label className="form-control-placeholder" for="f-name">
+                                                    Comments
+                                                </label>
+                                                <input
+                                                    type="text"
+                                                    id="text"
+                                                    onChange={e => {
+                                                        this.setState({ comments: e.target.value });
+                                                    }}
+                                                    className="form-control"
+                                                    placeholder="Enter Comments "
+                                                />
                                             </div>
                                         </div>
                                     </div>
-
-
                                 </div>
 
                                 <div className="frm btn-sec">
-                                    <button className="btn btn-submit" onClick={() => { this.addBuilding() }}> <i className="material-icons tic"> check</i>Submit</button>
+                                    <button
+                                        className="btn btn-submit"
+                                        onClick={() => {
+                                            this.addBuilding();
+                                        }}
+                                    >
+                                        {" "}
+                                        <i className="material-icons tic"> check</i>Submit
+                                    </button>
                                 </div>
                             </div>
                         </div>

@@ -173,7 +173,7 @@ class addActivity extends Component {
             await this.props.addActivity(activityParams);
             ToastMsg(this.props.activityReducer.addActivityData.message, "info");
             if (this.props.activityReducer.addActivityData.success) {
-                history.push("/activity");
+                history.push("/activities");
             }
         }
     };
@@ -184,7 +184,7 @@ class addActivity extends Component {
             await this.props.editActivity(activityParams, activityParams.id);
             ToastMsg(this.props.activityReducer.editActivityData.message, "info");
             if (this.props.activityReducer.editActivityData.success) {
-                history.push("/activity");
+                history.push("/activities");
             }
         }
     };

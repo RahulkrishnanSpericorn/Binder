@@ -59,7 +59,7 @@ function App() {
                 <PrivateRoute exact path="/editRegion" component={editRegion} />
                 <PrivateRoute exact path="/editSite" component={editSite} />
                 <PrivateRoute exact path="/editClients" component={editClients} />
-                <PrivateRoute exact path="/building" component={building} />
+                <PrivateRoute exact path="/buildings" component={building} />
                 <PrivateRoute exact path="/editBuilding" component={editBuilding} />
                 <PrivateRoute exact path="/binders" component={binder} />
                 <PrivateRoute exact path="/addBinder" component={addBinder} />

@@ -8,7 +8,6 @@ import ToastMsg from "../../common/ToastMessage";
 import commonActions from "../actions";
 
 const mapStateToProps = state => {
-    console.log("state", state);
     const { clientReducer, settingsCommonReducer } = state;
     return { clientReducer, settingsCommonReducer };
 };
@@ -85,7 +84,7 @@ class editClients extends Component {
             let id = this.state.client_id;
             await this.props.editClientsById(rec_data, id);
             ToastMsg("Client " + this.props.clientReducer.editClientData.message, "info");
-            if (this.props.clientReducer.editClientData.message === "Updated successfully") {
+            if (this.props.clientReducer.editClientData.success) {
                 history.push("/clients");
             }
         }

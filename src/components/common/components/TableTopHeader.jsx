@@ -3,12 +3,22 @@ import React, { Component } from "react";
 class TableTopheader extends Component {
     componentDidMount = () => {};
 
+    renderTitle = entity => {
+        let retVal = entity;
+        if (entity[entity.length - 1] === "y") {
+            retVal = entity.slice(0, -1) + "ies";
+        } else {
+            retVal = entity + "s";
+        }
+        return retVal;
+    };
+
     render() {
         const { entity, addItem } = this.props;
         return (
             <div class="top-fil-ara">
                 <div class="cap">
-                    <h4>{entity}</h4>
+                    <h4>{this.renderTitle(entity)}</h4>
                 </div>
                 <div class="btn-ara">
                     <button class="btn btn-top">

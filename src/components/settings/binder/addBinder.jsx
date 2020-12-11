@@ -87,8 +87,8 @@ class addBinder extends Component {
             };
             await this.props.addBinder(params);
             ToastMsg(this.props.binderReducer.addBinderData.message, "info");
-            if (this.props.binderReducer.addBinderData.message === "Binder created successfully") {
-                history.push("/binder");
+            if (this.props.binderReducer.addBinderData.success) {
+                history.push("/binders");
             }
         }
     };
