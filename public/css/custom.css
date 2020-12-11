@@ -17,3 +17,23 @@
 .list-sec .table-section .table thead tr th {
     min-width: 205px;
 }
+.view-image-container {
+    display: inline-block;
+    margin-left: 15px;
+}
+.view-image-container img {
+    height: 59px;
+}
+.viem-image-modal .modal-header {
+    padding: 25px !important;
+}
+.viem-image-modal .modal-body {
+    padding: 10px !important;
+}
+.img-modal-desc {
+    padding: 10px 0 !important;
+    margin-top: 0 !important;
+    color: #103bb5;
+    font-weight: 600;
+    font-family: "Inter", sans-serif;
+}

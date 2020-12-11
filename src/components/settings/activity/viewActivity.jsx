@@ -6,14 +6,14 @@ import commonActions from "../actions";
 import history from "../../../config/history";
 import actions from "./actions";
 import Portal from "../../common/components/Portal";
-import FrequencyModel from "./FrequencyModel";
+import FrequencyModel from "../../common/components/FrequencyModel";
 
 const mapStateToProps = state => {
     const { binderReducer, settingsCommonReducer } = state;
     return { binderReducer, settingsCommonReducer };
 };
 
-class viewBinder extends Component {
+class viewActivity extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -173,4 +173,4 @@ class viewBinder extends Component {
     }
 }
 
-export default connect(mapStateToProps, { ...actions, ...commonActions })(viewBinder);
+export default connect(mapStateToProps, { ...actions, ...commonActions })(viewActivity);

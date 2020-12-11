@@ -46,11 +46,12 @@ class index extends Component {
         let id = item.id;
         await this.props.deleteConsultancy(id);
         await this.getConsultancies();
-        ToastMsg("Consultancy " + this.props.consultancyReducer.deleteConsultancyById.message, "info");
+        ToastMsg(this.props.consultancyReducer.deleteConsultancyById.message, "info");
     };
 
     viewItem = async item => {
-        history.push("/viewConsultancy", { consultancyItem: item });
+        const { tableData } = this.state;
+        history.push("/viewConsultancy", { item: item, keys: tableData.keys, config: tableData.config });
     };
 
     editItem = async item => {

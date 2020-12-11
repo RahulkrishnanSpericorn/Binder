@@ -302,7 +302,7 @@ export const activityTableData = {
             label: "Frequency",
             class: "",
             searchKey: "activities.frequency",
-            type: "string",
+            type: "rrule",
             hasWildCardSearch: true,
             hasCommonSearch: false,
             getListTable: "regions",
@@ -3091,7 +3091,7 @@ export const userPermssionTableData = {
 };
 
 export const consultancyTableData = {
-    keys: ["code", "name", "comments", "created_at", "updated_at"],
+    keys: ["code", "name", "comments", "created_at", "updated_at", "image"],
     config: {
         code: {
             isVisible: true,
@@ -3128,6 +3128,18 @@ export const consultancyTableData = {
             getListTable: "consultancy",
             commonSearchKey: "consultancies",
             commonSearchObjectKey: "comments"
+        },
+        image: {
+            isVisible: false,
+            label: "Image",
+            class: "",
+            searchKey: "consultancies.image",
+            type: "image",
+            hasWildCardSearch: false,
+            hasCommonSearch: false,
+            getListTable: "consultancy",
+            commonSearchKey: "consultancies",
+            commonSearchObjectKey: "image"
         },
         created_at: {
             isVisible: true,

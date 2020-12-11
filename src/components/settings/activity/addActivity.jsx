@@ -9,7 +9,7 @@ import ToastMsg from "../../common/ToastMessage";
 import history from "../../../config/history";
 import actions from "./actions";
 import Portal from "../../common/components/Portal";
-import FrequencyModel from "./FrequencyModel";
+import FrequencyModel from "../../common/components/FrequencyModel";
 
 class addActivity extends Component {
     constructor(props) {
