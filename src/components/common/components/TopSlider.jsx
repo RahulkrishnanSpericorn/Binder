@@ -2,11 +2,10 @@ import React, { Component } from "react";
 import Slider from "react-slick";
 
 const settings = {
-    infinite: true,
-    speed: 1000,
-    slidesToShow: 4,
-    slidesToScroll: 4,
-    arrows: false
+    infinite: false,
+    speed: 500,
+    slidesToShow: 7,
+    slidesToScroll: 1
 };
 class TopSlider extends Component {
     render() {
@@ -41,9 +40,6 @@ class TopSlider extends Component {
                             </div>
                             <div className="slide">
                                 <span>Employee Training</span>
-                            </div>
-                            <div className="slide">
-                                <span>Fire Drills</span>
                             </div>
                         </Slider>
                     </div>
