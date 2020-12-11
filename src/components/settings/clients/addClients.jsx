@@ -71,7 +71,7 @@ class addClients extends Component {
             rec_data.append("client[request_email_recipt]", this.state.request_email_recipt);
             rec_data.append("client[comments]", this.state.comments);
             await this.props.addClients(rec_data);
-            ToastMsg("Client " + this.props.clientReducer.addClientData.message, "info");
+            ToastMsg(this.props.clientReducer.addClientData.message, "info");
             this.setState({
                 name: "",
                 comments: ""

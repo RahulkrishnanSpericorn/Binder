@@ -83,7 +83,7 @@ class editClients extends Component {
             rec_data.append("client[comments]", this.state.comments);
             let id = this.state.client_id;
             await this.props.editClientsById(rec_data, id);
-            ToastMsg("Client " + this.props.clientReducer.editClientData.message, "info");
+            ToastMsg(this.props.clientReducer.editClientData.message, "info");
             if (this.props.clientReducer.editClientData.success) {
                 history.push("/clients");
             }

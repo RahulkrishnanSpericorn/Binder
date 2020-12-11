@@ -39,7 +39,7 @@ class addConsultancy extends Component {
             params.append("consultancy[image_description]", this.state.image_description);
             params.append("consultancy[image]", this.state.image);
             await this.props.addConsultancies(params);
-            ToastMsg("Consultancy " + this.props.consultancyReducer.addConsultanciesData.message, "info");
+            ToastMsg(this.props.consultancyReducer.addConsultanciesData.message, "info");
             this.setState({
                 name: "",
                 comments: ""
