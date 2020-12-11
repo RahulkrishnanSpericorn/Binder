@@ -64,3 +64,9 @@
     position: absolute;
     right: 12px;
 }
+.month {
+    height: 75px !important;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    padding: 0 !important;
+}

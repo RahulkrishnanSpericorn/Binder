@@ -184,20 +184,20 @@ class FrequencyModel extends Component {
                                             <label>By Month</label>
                                             <div className="bck-ara">
                                                 <div className="slider month">
-                                                    <Slider {...this.state.sliderSettings}>
-                                                        {monthList.map((item, i) => (
-                                                            <div className="slide" key={i}>
-                                                                <button
-                                                                    className={`btn btn-frm ${
-                                                                        rRuleGen && rRuleGen.bymonth.includes(i + 1) ? "active" : ""
-                                                                    }`}
-                                                                    onClick={() => this.setByMonthForRRuleGen(i + 1)}
-                                                                >
-                                                                    {item}
-                                                                </button>
-                                                            </div>
-                                                        ))}
-                                                    </Slider>
+                                                    {/* <Slider {...this.state.sliderSettings}> */}
+                                                    {monthList.map((item, i) => (
+                                                        <div className="slide" key={i}>
+                                                            <button
+                                                                className={`btn btn-frm ${
+                                                                    rRuleGen && rRuleGen.bymonth.includes(i + 1) ? "active" : ""
+                                                                }`}
+                                                                onClick={() => this.setByMonthForRRuleGen(i + 1)}
+                                                            >
+                                                                {item}
+                                                            </button>
+                                                        </div>
+                                                    ))}
+                                                    {/* </Slider> */}
                                                 </div>
                                             </div>
                                         </div>
@@ -259,19 +259,19 @@ class FrequencyModel extends Component {
                                             <label>By Month</label>
                                             <div className="bck-ara">
                                                 <div className="slider month">
-                                                    <Slider {...this.state.sliderSettings}>
-                                                        {monthList.map((item, i) => (
-                                                            <div className="slide" key={i}>
-                                                                <button
-                                                                    className={`btn btn-frm ${
-                                                                        rRuleGen && rRuleGen.bymonth.includes(i + 1) ? "active" : ""
-                                                                    }`}
-                                                                >
-                                                                    {item}
-                                                                </button>
-                                                            </div>
-                                                        ))}
-                                                    </Slider>
+                                                    {/* <Slider {...this.state.sliderSettings}> */}
+                                                    {monthList.map((item, i) => (
+                                                        <div className="slide" key={i}>
+                                                            <button
+                                                                className={`btn btn-frm ${
+                                                                    rRuleGen && rRuleGen.bymonth.includes(i + 1) ? "active" : ""
+                                                                }`}
+                                                            >
+                                                                {item}
+                                                            </button>
+                                                        </div>
+                                                    ))}
+                                                    {/* </Slider> */}
                                                 </div>
                                             </div>
                                         </div>
