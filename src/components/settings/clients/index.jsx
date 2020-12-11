@@ -51,7 +51,8 @@ class index extends Component {
     };
 
     viewItem = async item => {
-        history.push("/viewClient", { clientItem: item, consultancy_id: item.consultancy.id });
+        const { tableData } = this.state;
+        history.push("/client/basicdetails", { item: item, consultancy_id: item.consultancy.id, keys: tableData.keys, config: tableData.config });
     };
 
     editItem = async item => {

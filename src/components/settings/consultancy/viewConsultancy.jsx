@@ -6,13 +6,13 @@ class viewConsultancy extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            tabData: [{ label: "Basic Details", path: "/viewConsultancy" }]
+            tabData: []
         };
     }
 
     componentDidMount = async () => {
         this.setState({
-            tabData: [{ label: "Basic Details", path: "/viewConsultancy" }]
+            tabData: [{ label: "Basic Details", path: "/consultancy/basicdetails", key: "basicdetails" }]
         });
     };
 
@@ -26,6 +26,7 @@ class viewConsultancy extends Component {
                 state: { item, keys, config }
             }
         } = this.props;
+
         const { tabData } = this.state;
         return <CommonView item={item} keys={keys} config={config} goBack={this.goBack} tabData={tabData} />;
     }

@@ -19,7 +19,7 @@ class CommonView extends Component {
 
     renderFrequencyModal = () => {
         const { showFrequencyModal } = this.state;
-        const { displayData } = this.props;
+        const { item } = this.props;
         if (!showFrequencyModal) return null;
 
         return (
@@ -28,8 +28,8 @@ class CommonView extends Component {
                     <FrequencyModel
                         onCancel={this.toggleShowFrequencyModal}
                         setFrequencyData={this.setFrequencyData}
-                        frequency={displayData.frequency}
-                        test_frequency={displayData.test_frequency}
+                        frequency={item.frequency}
+                        test_frequency={item.test_frequency}
                         type={"view"}
                     />
                 }
@@ -89,14 +89,15 @@ class CommonView extends Component {
                 );
                 break;
             case "image":
-                returnData = data ? (
-                    <div className="view-image-container">
-                        <img className="cursor-pointer" src={data.url} alt="" onClick={() => this.toggleShowImageModal()} />
-                        {this.renderImageModall(data)}
-                    </div>
-                ) : (
-                    "-"
-                );
+                returnData =
+                    data && data.url ? (
+                        <h3 className="cursor-pointer" onClick={() => this.toggleShowImageModal()}>
+                            {data.description || data.name}
+                            {this.renderImageModall(data)}
+                        </h3>
+                    ) : (
+                        <h3>-</h3>
+                    );
                 break;
             default:
                 returnData = <h3>{data || "-"}</h3>;
@@ -107,11 +108,10 @@ class CommonView extends Component {
 
     render() {
         const { goBack, item, keys, config, tabData } = this.props;
-
         return (
             <section className="cont-ara">
                 <div className="fst">
-                    <CommonViewTabs tabData={tabData} />
+                    <CommonViewTabs tabData={tabData} goBack={goBack} item={item} keys={keys} config={config} />
                     <div className="dash-cont">
                         <div className="pub-ara six">
                             <div className="frm-ara three-col">

@@ -56,11 +56,14 @@ class index extends Component {
     };
 
     viewItem = async item => {
-        history.push("/viewSite", {
-            siteItem: item,
+        const { tableData } = this.state;
+        history.push("/site/basicdetails", {
             client_id: item.client.id,
             consultancy_id: item.consultancy.id,
-            region_id: item.region.id
+            region_id: item.region.id,
+            item: item,
+            keys: tableData.keys,
+            config: tableData.config
         });
     };
 

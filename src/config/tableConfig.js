@@ -249,17 +249,17 @@ export const activityTableData = {
             commonSearchKey: "regions",
             commonSearchObjectKey: "reference"
         },
-        activity_descript: {
+        activity_description: {
             isVisible: true,
             label: "Activity Description",
             class: "",
-            searchKey: "activities.activity_descript",
+            searchKey: "activities.activity_description",
             type: "string",
             hasWildCardSearch: true,
             hasCommonSearch: false,
             getListTable: "regions",
             commonSearchKey: "regions",
-            commonSearchObjectKey: "activity_descript"
+            commonSearchObjectKey: "activity_description"
         },
         activity_text: {
             isVisible: true,
@@ -321,17 +321,17 @@ export const activityTableData = {
             commonSearchKey: "regions",
             commonSearchObjectKey: "test_frequency"
         },
-        completion_thresh: {
+        completion_threshold: {
             isVisible: true,
             label: "Completion Threshold",
             class: "",
-            searchKey: "activities.completion_thresh",
+            searchKey: "activities.completion_threshold",
             type: "number",
             hasWildCardSearch: true,
             hasCommonSearch: false,
             getListTable: "regions",
             commonSearchKey: "regions",
-            commonSearchObjectKey: "completion_thresh"
+            commonSearchObjectKey: "completion_threshold"
         },
         email_threshold: {
             isVisible: true,
@@ -357,17 +357,17 @@ export const activityTableData = {
             commonSearchKey: "regions",
             commonSearchObjectKey: "code_reference"
         },
-        code_reference_to: {
+        code_reference_tooltip: {
             isVisible: true,
             label: "Code Reference Tooltip",
             class: "",
-            searchKey: "activities.code_reference_to",
+            searchKey: "activities.code_reference_tooltip",
             type: "string",
             hasWildCardSearch: true,
             hasCommonSearch: false,
             getListTable: "regions",
             commonSearchKey: "regions",
-            commonSearchObjectKey: "code_reference_to"
+            commonSearchObjectKey: "code_reference_tooltip"
         },
         quarterly_view: {
             isVisible: true,
@@ -393,17 +393,17 @@ export const activityTableData = {
             commonSearchKey: "regions",
             commonSearchObjectKey: "edit_form"
         },
-        default_total_dev: {
+        default_total_devices: {
             isVisible: true,
             label: "Default Total Devices",
             class: "",
-            searchKey: "activities.default_total_dev",
+            searchKey: "activities.default_total_devices",
             type: "number",
             hasWildCardSearch: true,
             hasCommonSearch: false,
             getListTable: "regions",
             commonSearchKey: "regions",
-            commonSearchObjectKey: "default_total_dev"
+            commonSearchObjectKey: "default_total_devices"
         },
         start_date: {
             isVisible: true,
@@ -3091,7 +3091,7 @@ export const userPermssionTableData = {
 };
 
 export const consultancyTableData = {
-    keys: ["code", "name", "comments", "created_at", "updated_at", "image"],
+    keys: ["code", "name", "comments", "image", "created_at", "updated_at"],
     config: {
         code: {
             isVisible: true,

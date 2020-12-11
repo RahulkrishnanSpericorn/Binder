@@ -61,19 +61,19 @@ function App() {
                 <PrivateRoute exact path="/editClients" component={editClients} />
                 <PrivateRoute exact path="/building" component={building} />
                 <PrivateRoute exact path="/editBuilding" component={editBuilding} />
-                <PrivateRoute exact path="/viewBuilding" component={viewBuilding} />
-                <PrivateRoute exact path="/viewRegion" component={viewRegion} />
-                <PrivateRoute exact path="/viewSite" component={viewSite} />
-                <PrivateRoute exact path="/viewConsultancy" component={viewConsultancy} />
-                <PrivateRoute exact path="/viewClient" component={viewClient} />
-                <PrivateRoute exact path="/binder" component={binder} />
+                <PrivateRoute exact path="/binders" component={binder} />
                 <PrivateRoute exact path="/addBinder" component={addBinder} />
                 <PrivateRoute exact path="/editBinder" component={editBinder} />
-                <PrivateRoute exact path="/viewBinder" component={viewBinder} />
-                <PrivateRoute exact path="/activity" component={activity} />
+                <PrivateRoute exact path="/activities" component={activity} />
                 <PrivateRoute exact path="/addActivity" component={addActivity} />
                 <PrivateRoute exact path="/editActivity" component={editActivity} />
-                <PrivateRoute exact path="/viewActivity" component={viewActivity} />
+                <PrivateRoute exact path="/site/:section" component={viewSite} />
+                <PrivateRoute exact path="/client/:section" component={viewClient} />
+                <PrivateRoute exact path="/consultancy/:section" component={viewConsultancy} />
+                <PrivateRoute exact path="/region/:section" component={viewRegion} />
+                <PrivateRoute exact path="/binder/:section" component={viewBinder} />
+                <PrivateRoute exact path="/building/:section" component={viewBuilding} />
+                <PrivateRoute exact path="/activity/:section" component={viewActivity} />
             </Switch>
         </Router>
     );

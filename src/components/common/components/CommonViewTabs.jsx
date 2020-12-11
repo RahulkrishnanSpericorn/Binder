@@ -1,22 +1,27 @@
 import React, { Component } from "react";
 
 import Breadcrumb from "./Breadcrumb";
+import history from "../../../config/history";
 
 class CommonViewTabs extends Component {
     render() {
-        const { tabData = [] } = this.props;
+        const { item, keys, config, tabData = [] } = this.props;
         return (
-            <div class="top-slider nav-ara">
-                <div class="tab-sec">
-                    <ul class="nav nav-tabs">
+            <div className="top-slider nav-ara">
+                <div className="tab-sec">
+                    <ul className="nav nav-tabs">
                         {tabData.map((tabItem, index) => (
-                            <li key={index} class="active">
+                            <li
+                                key={index}
+                                className="cursor-pointer active"
+                                onClick={() => history.push(tabItem.path, { item: item, keys: keys, config: config })}
+                            >
                                 <span>{tabItem.label}</span>
                             </li>
                         ))}
                     </ul>
                 </div>
-                <Breadcrumb />
+                {/* <Breadcrumb /> */}
             </div>
         );
     }

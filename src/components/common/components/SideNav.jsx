@@ -109,7 +109,7 @@ export default class SideNav extends Component {
                                     <li>
                                         <a
                                             onClick={() => {
-                                                this.pageChange("binder");
+                                                this.pageChange("binders");
                                             }}
                                             className=""
                                         >
@@ -119,7 +119,7 @@ export default class SideNav extends Component {
                                     <li>
                                         <a
                                             onClick={() => {
-                                                this.pageChange("activity");
+                                                this.pageChange("activities");
                                             }}
                                             className=""
                                         >
