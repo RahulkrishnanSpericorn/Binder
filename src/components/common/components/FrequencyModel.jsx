@@ -105,7 +105,7 @@ class FrequencyModel extends Component {
         const {
             rRuleGen: { byweekday }
         } = this.state;
-        if (byweekday.find(item => item.weekday === value)) return true;
+        if (byweekday && byweekday.find(item => item && item.weekday === value)) return true;
         return false;
     };
 
@@ -148,7 +148,7 @@ class FrequencyModel extends Component {
                                     <div className="frm-modal">
                                         <div className="form-group">
                                             <label>Select Frequency</label>
-                                            <div className="bck-ara">
+                                            <div className="bck-ara frequency">
                                                 {frequencyList.map((item, i) => (
                                                     <button
                                                         className={`btn btn-frm ${rRuleGen.freq === item.value ? "active" : ""}`}
@@ -239,7 +239,7 @@ class FrequencyModel extends Component {
                                     <div className="frm-modal">
                                         <div className="form-group">
                                             <label>Frequency</label>
-                                            <div className="bck-ara">
+                                            <div className="bck-ara frequency">
                                                 {frequencyList.map((item, i) => (
                                                     <button className={`btn btn-frm ${rRuleGen.freq === item.value ? "active" : ""}`}>
                                                         {item.name}

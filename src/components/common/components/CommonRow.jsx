@@ -31,35 +31,42 @@ class CommonRow extends Component {
         return returnData;
     };
 
+    renderTooltipContent = (type, data) => {
+        let renderData = this.renderCellData(type, data);
+        if (renderData.length <= 25) {
+            renderData = null;
+        }
+        return renderData;
+    };
+
     render() {
         const { viewItem, editItem, deleteItem, rowData, keys, config } = this.props;
         return (
             <tr onDoubleClick={() => viewItem(rowData)}>
-                <td class="img-sq-box cursor-pointer" onClick={() => viewItem(rowData)}>
+                <td className="img-sq-box cursor-pointer" onClick={() => viewItem(rowData)} title="View">
                     <img src="/images/table-blue-dots.svg" alt="" />
                 </td>
                 {keys &&
                     keys.map((keyItem, i) => {
                         return config && config[keyItem] && config[keyItem].isVisible ? (
-                            <td class="">{this.renderCellData(config[keyItem].type, rowData[keyItem])}</td>
+                            <td className="">
+                                {/* Rendering Cell Content */}
+                                {this.renderCellData(config[keyItem].type, rowData[keyItem]).length > 25
+                                    ? this.renderCellData(config[keyItem].type, rowData[keyItem]).substring(0, 25) + "..."
+                                    : this.renderCellData(config[keyItem].type, rowData[keyItem])}
+
+                                {/* Rendering Tooltip Content */}
+                                {/* {this.renderTooltipContent(config[keyItem].type, rowData[keyItem]) ? (
+                                    <span class="tooltiptext">{this.renderTooltipContent(config[keyItem].type, rowData[keyItem])}</span>
+                                ) : null} */}
+                            </td>
                         ) : null;
                     })}
-                <td class="action">
-                    <img src="/images/three-dots.svg" data-toggle="dropdown" alt="" />
-                    <ul class="dropdown-menu" role="menu">
-                        <li>
-                            <span onClick={() => editItem(rowData)}>
-                                <img src="/images/edit.svg" alt="" />
-                                Edit
-                            </span>
-                        </li>
-                        <li>
-                            <span onClick={() => deleteItem(rowData)}>
-                                <img src="/images/delete.svg" alt="" />
-                                Delete
-                            </span>
-                        </li>
-                    </ul>
+                <td className="action">
+                    <div className="action-col">
+                        <img className="row-edit-icon" src="/images/edit.svg" alt="" onClick={() => editItem(rowData)} title="Edit" />
+                        <img className="row-delete-icon" src="/images/delete.svg" alt="" onClick={() => deleteItem(rowData)} title="Delete" />
+                    </div>
                 </td>
             </tr>
         );

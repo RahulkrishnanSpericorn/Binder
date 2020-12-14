@@ -5,14 +5,14 @@ class CommonTableHeader extends Component {
         const { config, keys } = this.props;
         return (
             <tr>
-                <th class="img-sq-box">
+                <th className="img-sq-box">
                     <img src="/images/table-blue-dots.svg" alt="" />
                 </th>
                 {keys &&
                     keys.map((keyItem, i) => {
-                        return config && config[keyItem] && config[keyItem].isVisible ? <th class="">{config[keyItem].label}</th> : null;
+                        return config && config[keyItem] && config[keyItem].isVisible ? <th className="">{config[keyItem].label}</th> : null;
                     })}
-                <th class="action">
+                <th className="action">
                     <img src="/images/three-dots.svg" alt="" />
                 </th>
             </tr>

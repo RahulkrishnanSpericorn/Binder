@@ -132,7 +132,6 @@ class CommonView extends Component {
                                         </div>
                                     ))}
                                 </div>
-
                                 <div className="frm btn-sec">
                                     <button onClick={() => goBack()} className="btn btn-submit">
                                         <i className="material-icons tic"> check</i>Go Back

@@ -653,7 +653,7 @@ class addActivity extends Component {
                                     ) : null}
                                 </div>
                                 <div class="btn-sec">
-                                    <button class="btn btn-cncl-back mr-2" onClick={() => history.push("/activity")}>
+                                    <button class="btn btn-cncl-back mr-2" onClick={() => history.push("/activities")}>
                                         <i class="material-icons tic"> close</i>Cancel
                                     </button>
                                     {isEdit ? (

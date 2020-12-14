@@ -4,7 +4,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import TopSlider from "../../common/components/TopSlider";
 import actions from "./actions";
-import "../../../assets/css/list.css";
+// import "../../../assets/css/list.css";
 import history from "../../../config/history";
 import ToastMsg from "../../common/ToastMessage";
 import CommonTable from "../../../components/common/components/CommonTable";
