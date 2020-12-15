@@ -1245,7 +1245,7 @@ header .mnu-ico button[aria-expanded=true] .open {
 header .mnu-ico button[aria-expanded=false] .close {
   display: none;
 }
-header a.navbar-brand {
+header .navbar-brand {
   margin: 0px;
   padding: 0px;
   width: 170px;
@@ -1262,7 +1262,7 @@ header .navbar .mnu-info ul.prf-lst {
   border-bottom-left-radius: 45px;
   border-top-left-radius: 45px;
 }
-header .navbar .mnu-info ul.prf-lst li.nav-item a.nav-link {
+header .navbar .mnu-info ul.prf-lst li.nav-item .nav-link {
   display: flex;
   background-color: #fff;
   border-radius: 30px;
@@ -1270,7 +1270,7 @@ header .navbar .mnu-info ul.prf-lst li.nav-item a.nav-link {
   padding: 8px;
   position: relative;
 }
-header .navbar .mnu-info ul.prf-lst li.nav-item a.nav-link::after {
+header .navbar .mnu-info ul.prf-lst li.nav-item .nav-link::after {
   border: none;
   background-image: url(../images/down-arrow.svg);
   width: 10px;
@@ -1281,13 +1281,13 @@ header .navbar .mnu-info ul.prf-lst li.nav-item a.nav-link::after {
   top: 22px;
   right: 5px;
 }
-header .navbar .mnu-info ul.prf-lst li.nav-item a.nav-link .prf-img {
+header .navbar .mnu-info ul.prf-lst li.nav-item .nav-link .prf-img {
   width: 35px;
   height: 35px;
   border-radius: 100%;
   overflow: hidden;
 }
-header .navbar .mnu-info ul.prf-lst li.nav-item a.nav-link .pdf-name {
+header .navbar .mnu-info ul.prf-lst li.nav-item .nav-link .pdf-name {
   margin-left: 10px;
   margin-right: 20px;
   font-size: 14px;
@@ -3240,6 +3240,9 @@ input[list]::-webkit-calendar-picker-indicator {
   display: block;
   text-align: center;
 }
+.list-area .region-table .action-click img {
+  width: 10px;
+}
 .list-area .region-table .action .show {
   border: none;
   padding: 5px 15px !important;
@@ -3849,6 +3852,15 @@ input[list]::-webkit-calendar-picker-indicator {
 .list-sec .table-section .table {
   min-width: 1200px;
 }
+.list-sec .table-section .table .action {
+  position: sticky;
+  position: -webkit-sticky;
+  right: 0px;
+  background-color: #ffff;
+  border: 1px solid #d6d6d6 !important;
+  z-index: 99;
+  box-shadow: -1px 0px #d6d6d6;
+}
 .list-sec .table-section .table thead tr th {
   font-size: 13px;
   color: #103BB5;
@@ -3866,10 +3878,11 @@ input[list]::-webkit-calendar-picker-indicator {
   max-width: 30px !important;
 }
 .list-sec .table-section .table thead tr th.action {
-  width: 40px;
-  min-width: 40px !important;
-  max-width: 40px !important;
+  width: 60px;
+  min-width: 60px !important;
+  max-width: 60px !important;
   text-align: center;
+  z-index: 9999;
 }
 .list-sec .table-section .table thead tr th span.rop-icon {
   width: 20px;

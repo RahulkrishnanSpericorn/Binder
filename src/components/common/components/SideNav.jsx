@@ -16,7 +16,7 @@ export default class SideNav extends Component {
             <aside className="sidenav navbar-collapse collapse show" id="navbarSupportedContent">
                 <ul className="navbar">
                     <li className="nav-item">
-                        <span
+                        <a
                             className="nav-link"
                             onClick={() => {
                                 this.pageChange("dashboard");
@@ -26,10 +26,10 @@ export default class SideNav extends Component {
                                 <img src="/images/Dashboard.svg" alt="" />
                             </div>
                             <span>Dashboard</span>
-                        </span>
+                        </a>
                     </li>
                     <li className="nav-item">
-                        <span
+                        <a
                             className="nav-link"
                             onClick={() => {
                                 this.pageChange("binders");
@@ -39,10 +39,10 @@ export default class SideNav extends Component {
                                 <img src="/images/user.svg" alt="" />
                             </div>
                             <span>Binders</span>
-                        </span>
+                        </a>
                     </li>
                     <li className="nav-item">
-                        <span
+                        <a
                             className="nav-link"
                             onClick={() => {
                                 this.pageChange("reports");
@@ -52,115 +52,115 @@ export default class SideNav extends Component {
                                 <img src="/images/Report.svg" alt="" />
                             </div>
                             <span>Reports</span>
-                        </span>
+                        </a>
                     </li>
                     <li className="nav-item">
-                        <span href="#setting" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="setting" className="nav-link">
+                        <a href="#setting" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="setting" className="nav-link">
                             <div className="icn-sec">
                                 <img src="/images/setting.svg" alt="" />
                             </div>
                             <span>Settings</span>
-                        </span>
+                        </a>
                         <div className="viw-sub">
                             <div className="collapse" id="setting">
                                 <ul className="view">
                                     <li>
-                                        <span
+                                        <a
                                             onClick={() => {
                                                 this.pageChange("consultancy");
                                             }}
                                             className=""
                                         >
                                             Consultancies
-                                        </span>
+                                        </a>
                                     </li>
                                     <li>
-                                        <span
+                                        <a
                                             onClick={() => {
                                                 this.pageChange("clients");
                                             }}
                                             className=""
                                         >
                                             Clients
-                                        </span>
+                                        </a>
                                     </li>
                                     <li>
-                                        <span
+                                        <a
                                             onClick={() => {
                                                 this.pageChange("regions");
                                             }}
                                             className=""
                                         >
                                             Regions
-                                        </span>
+                                        </a>
                                     </li>
                                     <li>
-                                        <span
+                                        <a
                                             onClick={() => {
                                                 this.pageChange("sites");
                                             }}
                                             className=""
                                         >
                                             Sites
-                                        </span>
+                                        </a>
                                     </li>
 
                                     <li>
-                                        <span
+                                        <a
                                             onClick={() => {
                                                 this.pageChange("buildings");
                                             }}
                                             className=""
                                         >
                                             Buildings
-                                        </span>
+                                        </a>
                                     </li>
                                     <li>
-                                        <span
+                                        <a
                                             onClick={() => {
                                                 this.pageChange("binders");
                                             }}
                                             className=""
                                         >
                                             Binders
-                                        </span>
+                                        </a>
                                     </li>
                                     <li>
-                                        <span
+                                        <a
                                             onClick={() => {
                                                 this.pageChange("activities");
                                             }}
                                             className=""
                                         >
                                             Activities
-                                        </span>
+                                        </a>
                                     </li>
                                     <li>
-                                        <span
+                                        <a
                                             onClick={() => {
                                                 this.pageChange("users");
                                             }}
                                             className=""
                                         >
                                             Users
-                                        </span>
+                                        </a>
                                     </li>
                                     <li>
-                                        <span
+                                        <a
                                             onClick={() => {
                                                 this.pageChange("userPermission");
                                             }}
                                             className=""
                                         >
                                             User Permissions
-                                        </span>
+                                        </a>
                                     </li>
                                 </ul>
                             </div>
                         </div>
                     </li>
                     <li className="nav-item">
-                        <span
+                        <a
                             className="nav-link"
                             onClick={() => {
                                 this.logOut();
@@ -170,7 +170,7 @@ export default class SideNav extends Component {
                                 <img src="/images/logout.svg" alt="" />
                             </div>
                             <span>Logout</span>
-                        </span>
+                        </a>
                     </li>
                 </ul>
             </aside>
