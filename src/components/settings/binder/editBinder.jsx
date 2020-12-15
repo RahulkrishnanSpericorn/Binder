@@ -8,7 +8,6 @@ import history from "../../../config/history";
 import actions from "./actions";
 
 const mapStateToProps = state => {
-    console.log("state", state);
     const { binderReducer, settingsCommonReducer } = state;
     return { binderReducer, settingsCommonReducer };
 };
@@ -40,8 +39,6 @@ class editBinder extends Component {
 
     async componentDidMount() {
         await this.props.getConsultancyDropdown();
-
-        console.log("consultancyDropdownData", this.props.history.location);
         await this.setState({
             consultancyIdList: this.props.settingsCommonReducer.consultancyDropdownData.data,
             color: this.props.history.location.state.binderItem.color,
@@ -77,7 +74,6 @@ class editBinder extends Component {
     };
 
     editBinder = async () => {
-        console.log("this.state", this.state);
         if (this.state.name === "") {
             this.setState({
                 nameErrorMsg: true

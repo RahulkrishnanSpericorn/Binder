@@ -11,7 +11,6 @@ import Pagination from "../../../components/common/components/Pagination";
 import { siteTableData } from "../../../config/tableConfig";
 
 const mapStateToProps = state => {
-    console.log("state", state);
     const { siteReducer } = state;
     return { siteReducer };
 };

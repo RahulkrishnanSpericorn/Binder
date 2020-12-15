@@ -7,7 +7,6 @@ import actions from "./actions";
 import ToastMsg from "../../common/ToastMessage";
 
 const mapStateToProps = state => {
-    console.log("state", state);
     const { consultancyReducer } = state;
     return { consultancyReducer };
 };

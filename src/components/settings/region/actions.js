@@ -1,95 +1,88 @@
-import * as actionTypes from './constants'
-import * as Service from './services'
+import * as actionTypes from "./constants";
+import * as Service from "./services";
 
 const getRegion = params => {
     return async dispatch => {
         try {
-            dispatch({ type: actionTypes.GET_REGION_REQUEST })
-            const res = await Service.getRegion(params)
-            console.log('Regionres', res)
+            dispatch({ type: actionTypes.GET_REGION_REQUEST });
+            const res = await Service.getRegion(params);
             if (res && res.status === 200) {
                 if (res.data) {
-                    dispatch({ type: actionTypes.GET_REGION_SUCCESS, response: res.data })
+                    dispatch({ type: actionTypes.GET_REGION_SUCCESS, response: res.data });
                 } else {
-                    dispatch({ type: actionTypes.GET_REGION_FAILURE, error: res.data })
+                    dispatch({ type: actionTypes.GET_REGION_FAILURE, error: res.data });
                 }
             } else {
-                dispatch({ type: actionTypes.GET_REGION_FAILURE, error: res.response && res.response.data })
+                dispatch({ type: actionTypes.GET_REGION_FAILURE, error: res.response && res.response.data });
             }
         } catch (e) {
-            dispatch({ type: actionTypes.GET_REGION_FAILURE, error: e.response && e.response.data })
+            dispatch({ type: actionTypes.GET_REGION_FAILURE, error: e.response && e.response.data });
         }
-    }
-}
+    };
+};
 const addRegion = params => {
-
     return async dispatch => {
         try {
-            dispatch({ type: actionTypes.ADD_REGION_REQUEST })
-            const res = await Service.addRegion(params)
-            console.log('res', res)
+            dispatch({ type: actionTypes.ADD_REGION_REQUEST });
+            const res = await Service.addRegion(params);
             if (res && res.status === 200) {
                 if (res.data) {
-                    dispatch({ type: actionTypes.ADD_REGION_SUCCESS, response: res.data })
+                    dispatch({ type: actionTypes.ADD_REGION_SUCCESS, response: res.data });
                 } else {
-                    dispatch({ type: actionTypes.ADD_REGION_FAILURE, error: res.data })
+                    dispatch({ type: actionTypes.ADD_REGION_FAILURE, error: res.data });
                 }
             } else {
-                dispatch({ type: actionTypes.ADD_REGION_FAILURE, error: res.data })
+                dispatch({ type: actionTypes.ADD_REGION_FAILURE, error: res.data });
             }
         } catch (e) {
-            dispatch({ type: actionTypes.ADD_REGION_FAILURE, error: e.response && e.response.data })
+            dispatch({ type: actionTypes.ADD_REGION_FAILURE, error: e.response && e.response.data });
         }
-    }
-}
+    };
+};
 
-const editRegionById = (params, id) => { 
+const editRegionById = (params, id) => {
     return async dispatch => {
-
         try {
-            dispatch({ type: actionTypes.EDIT_REGION_BYID_REQUEST })
-            const res = await Service.editRegionById(params, id)
-            console.log('redionUpdate', res)
+            dispatch({ type: actionTypes.EDIT_REGION_BYID_REQUEST });
+            const res = await Service.editRegionById(params, id);
             if (res && res.status === 200) {
                 if (res.data) {
-                    dispatch({ type: actionTypes.EDIT_REGION_BYID_SUCCESS, response: res.data })
+                    dispatch({ type: actionTypes.EDIT_REGION_BYID_SUCCESS, response: res.data });
                 } else {
-                    dispatch({ type: actionTypes.EDIT_REGION_BYID_FAILURE, error: res.data })
+                    dispatch({ type: actionTypes.EDIT_REGION_BYID_FAILURE, error: res.data });
                 }
             } else {
-                dispatch({ type: actionTypes.EDIT_REGION_BYID_FAILURE, error: res.data })
+                dispatch({ type: actionTypes.EDIT_REGION_BYID_FAILURE, error: res.data });
             }
         } catch (e) {
-            dispatch({ type: actionTypes.EDIT_REGION_BYID_FAILURE, error: e.response && e.response.data })
+            dispatch({ type: actionTypes.EDIT_REGION_BYID_FAILURE, error: e.response && e.response.data });
         }
-    }
-}
+    };
+};
 
-const deleteRegion = (id) => { 
+const deleteRegion = id => {
     return async dispatch => {
-
         try {
-            dispatch({ type: actionTypes.DELETE_REGION_BYID_REQUEST })
-            const res = await Service.deleteRegion(id)
-            console.log('redionUpdate', res)
+            dispatch({ type: actionTypes.DELETE_REGION_BYID_REQUEST });
+            const res = await Service.deleteRegion(id);
             if (res && res.status === 200) {
                 if (res.data) {
-                    dispatch({ type: actionTypes.DELETE_REGION_BYID_SUCCESS, response: res.data })
+                    dispatch({ type: actionTypes.DELETE_REGION_BYID_SUCCESS, response: res.data });
                 } else {
-                    dispatch({ type: actionTypes.DELETE_REGION_BYID_FAILURE, error: res.data })
+                    dispatch({ type: actionTypes.DELETE_REGION_BYID_FAILURE, error: res.data });
                 }
             } else {
-                dispatch({ type: actionTypes.DELETE_REGION_BYID_FAILURE, error: res.data })
+                dispatch({ type: actionTypes.DELETE_REGION_BYID_FAILURE, error: res.data });
             }
         } catch (e) {
-            dispatch({ type: actionTypes.DELETE_REGION_BYID_FAILURE, error: e.response && e.response.data })
+            dispatch({ type: actionTypes.DELETE_REGION_BYID_FAILURE, error: e.response && e.response.data });
         }
-    }
-}
+    };
+};
 
 export default {
     getRegion,
     addRegion,
     editRegionById,
     deleteRegion
-}
+};

@@ -1,12 +1,11 @@
-import * as actionTypes from './contstants'
-import * as Service from './services'
+import * as actionTypes from "./contstants";
+import * as Service from "./services";
 
 const login = params => {
     return async dispatch => {
         try {
-            dispatch({ type: actionTypes.LOGIN_REQUEST })
-            const res = await Service.login(params)
-            console.log('res', res)
+            dispatch({ type: actionTypes.LOGIN_REQUEST });
+            const res = await Service.login(params);
             if (res && res.status === 200) {
                 const loginData = res.data;
                 //TODO change loginData.access_token to emailData.success (change api response)
@@ -21,9 +20,9 @@ const login = params => {
         } catch (e) {
             dispatch({ type: actionTypes.LOGIN_FAILURE, error: e.response && e.response.data });
         }
-    }
-}
+    };
+};
 
 export default {
     login
-}
+};

@@ -8,9 +8,6 @@ import history from "../../../config/history";
 
 const mapStateToProps = state => {
     const { buildingReducer, settingsCommonReducer } = state;
-
-    console.log("state", state);
-
     return { buildingReducer, settingsCommonReducer };
 };
 
@@ -58,7 +55,6 @@ class editBuilding extends Component {
     }
 
     componentDidMount = async () => {
-        console.log("this.props.history.location.state", this.props.history.location.state);
         await this.props.getConsultancyDropdown();
         await this.setState({
             consultancyIdList: this.props.settingsCommonReducer.consultancyDropdownData.data,
@@ -125,7 +121,6 @@ class editBuilding extends Component {
         await this.setState({
             siteIdList: this.props.settingsCommonReducer.siteDropdownData.data
         });
-        console.log("this.state.siteIdList", this.state.siteIdList);
     };
 
     selectConsultancyId = async e => {
@@ -154,8 +149,6 @@ class editBuilding extends Component {
     };
 
     editBuilding = async () => {
-        console.log("this.state", this.state);
-
         if (this.state.name === "") {
             this.setState({ nameErrorMsg: true });
         }

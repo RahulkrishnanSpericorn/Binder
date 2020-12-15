@@ -1,8 +1,8 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
+import React, { Component } from "react";
+import { connect } from "react-redux";
 // import Slider from "react-slick";
-import TopSlider from '../common/components/TopSlider';
-import actions from './actions';
+import TopSlider from "../common/components/TopSlider";
+import actions from "./actions";
 
 // const settings = {
 //     // dots: true,
@@ -14,36 +14,32 @@ import actions from './actions';
 // };
 
 const mapStateToProps = state => {
-    console.log('state', state)
     const { dashboardReducer } = state;
     return { dashboardReducer };
-}
+};
 
 class index extends Component {
-
     constructor(props) {
         super(props);
-        this.state = {
-
-        }
+        this.state = {};
     }
 
     async componentDidMount() {
-        await this.getConsultancies()
+        await this.getConsultancies();
     }
     getConsultancies = async () => {
         let params = {
             limit: 10,
             offset: 0
-        }
-        await this.props.getConsultancies(params)
-    }
+        };
+        await this.props.getConsultancies(params);
+    };
 
     render() {
         return (
             <section className="cont-ara">
                 <div className="dash">
-                    <TopSlider/>
+                    <TopSlider />
                     {/* <div className="top-slider">
                         <i class="material-icons" data-toggle="collapse" data-target="#collapseExample" aria-expanded="true" aria-controls="collapseExample">expand_more</i>
                         <div class="collapse show" id="collapseExample">
@@ -347,10 +343,15 @@ class index extends Component {
                             </ul>
                             <ul className="pagnation prv-nxt">
                                 <li>
-                                    <a href="#" className="prv"> <img src="/images/lft-arrow.svg" /> Prev</a>
+                                    <a href="#" className="prv">
+                                        {" "}
+                                        <img src="/images/lft-arrow.svg" /> Prev
+                                    </a>
                                 </li>
                                 <li>
-                                    <a href="#" className="nxt">Next <img src="/images/rgt-arrow.svg" /></a>
+                                    <a href="#" className="nxt">
+                                        Next <img src="/images/rgt-arrow.svg" />
+                                    </a>
                                 </li>
                             </ul>
                         </div>

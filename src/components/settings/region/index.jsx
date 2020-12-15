@@ -13,7 +13,6 @@ import Pagination from "../../../components/common/components/Pagination";
 import { regionTableData } from "../../../config/tableConfig";
 
 const mapStateToProps = state => {
-    console.log("state", state);
     const { regionReducer } = state;
     return { regionReducer };
 };

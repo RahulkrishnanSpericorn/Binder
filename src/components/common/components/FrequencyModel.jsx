@@ -31,7 +31,7 @@ class FrequencyModel extends Component {
                 { name: "Sun", key: "SU" }
             ],
             rRuleGen: {
-                freq: "",
+                freq: 0,
                 interval: "",
                 wkst: RRule.MO,
                 byweekday: [],
@@ -43,6 +43,15 @@ class FrequencyModel extends Component {
 
     componentDidMount = async () => {
         const { frequency, test_frequency } = this.props;
+        await this.setState({
+            rRuleGen: {
+                freq: 0,
+                interval: "",
+                wkst: RRule.MO,
+                byweekday: [],
+                bymonth: []
+            }
+        });
         if (frequency) {
             let rule = RRule.fromString(frequency);
             let rRuleGenObj = rule.origOptions;
@@ -63,7 +72,7 @@ class FrequencyModel extends Component {
         const { onCancel } = this.props;
         await this.setState({
             rRuleGen: {
-                freq: "",
+                freq: 0,
                 interval: "",
                 wkst: RRule.MO,
                 byweekday: [],
@@ -184,7 +193,6 @@ class FrequencyModel extends Component {
                                             <label>By Month</label>
                                             <div className="bck-ara">
                                                 <div className="slider month">
-                                                    {/* <Slider {...this.state.sliderSettings}> */}
                                                     {monthList.map((item, i) => (
                                                         <div className="slide" key={i}>
                                                             <button
@@ -197,7 +205,6 @@ class FrequencyModel extends Component {
                                                             </button>
                                                         </div>
                                                     ))}
-                                                    {/* </Slider> */}
                                                 </div>
                                             </div>
                                         </div>
@@ -241,7 +248,10 @@ class FrequencyModel extends Component {
                                             <label>Frequency</label>
                                             <div className="bck-ara frequency">
                                                 {frequencyList.map((item, i) => (
-                                                    <button className={`btn btn-frm ${rRuleGen.freq === item.value ? "active" : ""}`}>
+                                                    <button
+                                                        className={`btn btn-frm cursor-not-allowed ${rRuleGen.freq === item.value ? "active" : ""}`}
+                                                        disabled={!(rRuleGen.freq === item.value)}
+                                                    >
                                                         {item.name}
                                                     </button>
                                                 ))}
@@ -251,7 +261,13 @@ class FrequencyModel extends Component {
                                             <div className="item">
                                                 <div className="form-group">
                                                     <label>Interval</label>
-                                                    <input type="number" disabled="true" min="1" className="form-control" value={rRuleGen.interval} />
+                                                    <input
+                                                        type="number"
+                                                        disabled="true"
+                                                        min="1"
+                                                        className="form-control cursor-not-allowed"
+                                                        value={rRuleGen.interval}
+                                                    />
                                                 </div>
                                             </div>
                                         </div>
@@ -259,19 +275,18 @@ class FrequencyModel extends Component {
                                             <label>By Month</label>
                                             <div className="bck-ara">
                                                 <div className="slider month">
-                                                    {/* <Slider {...this.state.sliderSettings}> */}
                                                     {monthList.map((item, i) => (
                                                         <div className="slide" key={i}>
                                                             <button
-                                                                className={`btn btn-frm ${
+                                                                className={`btn btn-frm cursor-not-allowed ${
                                                                     rRuleGen && rRuleGen.bymonth.includes(i + 1) ? "active" : ""
                                                                 }`}
+                                                                disabled={!(rRuleGen && rRuleGen.bymonth.includes(i + 1))}
                                                             >
                                                                 {item}
                                                             </button>
                                                         </div>
                                                     ))}
-                                                    {/* </Slider> */}
                                                 </div>
                                             </div>
                                         </div>
@@ -279,13 +294,18 @@ class FrequencyModel extends Component {
                                             <label>By Day</label>
                                             <div className="bck-ara day">
                                                 {dayList.map((item, i) => (
-                                                    <button className={`btn btn-frm ${this.checkRRuleHasDay(i) ? "active" : ""}`}>{item.name}</button>
+                                                    <button
+                                                        className={`btn btn-frm cursor-not-allowed ${this.checkRRuleHasDay(i) ? "active" : ""}`}
+                                                        disabled={!this.checkRRuleHasDay(i)}
+                                                    >
+                                                        {item.name}
+                                                    </button>
                                                 ))}
                                             </div>
                                         </div>
                                         <div className="form-group">
                                             <label>Test Frequency</label>
-                                            <input type="text" disabled="true" value={test_frequency} className="form-control" />
+                                            <input type="text" disabled="true" value={test_frequency} className="form-control cursor-not-allowed" />
                                         </div>
 
                                         <div className="btn-sec">

@@ -128,7 +128,6 @@ class Index extends Component {
                             </div>
                             <div className="form-group col-md-12">
                                 <label className="container-check ml-1">
-                                    {" "}
                                     Remember me
                                     <input type="checkbox" checked={this.state.rememberMe} onClick={() => this.rememberMeClick()} />
                                     <span className="checkmark"></span>

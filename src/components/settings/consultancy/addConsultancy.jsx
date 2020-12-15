@@ -8,7 +8,6 @@ import ToastMsg from "../../common/ToastMessage";
 import _ from "lodash";
 
 const mapStateToProps = state => {
-    console.log("state", state);
     const { consultancyReducer } = state;
     return { consultancyReducer };
 };

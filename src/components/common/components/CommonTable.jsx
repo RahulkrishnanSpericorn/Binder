@@ -7,7 +7,6 @@ import CommonTableHeader from "./CommonTableHeader";
 class CommonTable extends Component {
     render() {
         const { viewItem, deleteItem, editItem, tableData } = this.props;
-        console.log("tableData", tableData);
         return (
             <React.Fragment>
                 <ReactTooltip place="top" type="info" effect="solid" />

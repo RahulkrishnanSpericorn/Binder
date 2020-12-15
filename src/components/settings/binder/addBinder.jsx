@@ -8,7 +8,6 @@ import history from "../../../config/history";
 import actions from "./actions";
 
 const mapStateToProps = state => {
-    console.log("state", state);
     const { binderReducer, settingsCommonReducer } = state;
     return { binderReducer, settingsCommonReducer };
 };
@@ -57,7 +56,6 @@ class addBinder extends Component {
     };
 
     addBinder = async () => {
-        console.log("this.state", this.state);
         if (this.state.name === "") {
             this.setState({
                 nameErrorMsg: true

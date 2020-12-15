@@ -91,7 +91,6 @@ class editClients extends Component {
     };
 
     async radioChanged(e) {
-        console.log("e.target.name", e.target.value);
         if (e.target.name === "modify_next_due_date") {
             if (e.target.value === "true") {
                 await this.setState({ modify_next_due_date: true });

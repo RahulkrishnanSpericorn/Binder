@@ -409,7 +409,6 @@ class addActivity extends Component {
                                                 type="text"
                                                 disabled="true"
                                                 class="form-control cursor-not-allowed"
-                                                placeholder="Test Frequency"
                                                 value={activityParams.test_frequency}
                                             />
                                         </div>

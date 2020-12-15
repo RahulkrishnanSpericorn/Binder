@@ -92,7 +92,6 @@ class index extends Component {
 }
 
 const mapStateToProps = state => {
-    console.log("state", state);
     const { clientReducer } = state;
     return { clientReducer };
 };

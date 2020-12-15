@@ -4,7 +4,6 @@ import history from "../../../config/history";
 export default class SideNav extends Component {
     logOut = () => {
         localStorage.clear();
-        console.log("log", history);
         history.push("/login");
     };
 
@@ -17,151 +16,161 @@ export default class SideNav extends Component {
             <aside className="sidenav navbar-collapse collapse show" id="navbarSupportedContent">
                 <ul className="navbar">
                     <li className="nav-item">
-                        <a
+                        <span
                             className="nav-link"
                             onClick={() => {
                                 this.pageChange("dashboard");
                             }}
                         >
                             <div className="icn-sec">
-                                <img src="/images/Dashboard.svg" />
+                                <img src="/images/Dashboard.svg" alt="" />
                             </div>
                             <span>Dashboard</span>
-                        </a>
+                        </span>
                     </li>
                     <li className="nav-item">
-                        <a className="nav-link" href="#">
+                        <span
+                            className="nav-link"
+                            onClick={() => {
+                                this.pageChange("binders");
+                            }}
+                        >
                             <div className="icn-sec">
-                                <img src="/images/user.svg" />
+                                <img src="/images/user.svg" alt="" />
                             </div>
                             <span>Binders</span>
-                        </a>
+                        </span>
                     </li>
                     <li className="nav-item">
-                        <a className="nav-link" href="#">
+                        <span
+                            className="nav-link"
+                            onClick={() => {
+                                this.pageChange("reports");
+                            }}
+                        >
                             <div className="icn-sec">
-                                <img src="/images/Report.svg" />
+                                <img src="/images/Report.svg" alt="" />
                             </div>
                             <span>Reports</span>
-                        </a>
+                        </span>
                     </li>
                     <li className="nav-item">
-                        <a href="#setting" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="setting" className="nav-link">
+                        <span href="#setting" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="setting" className="nav-link">
                             <div className="icn-sec">
-                                <img src="/images/setting.svg" />
+                                <img src="/images/setting.svg" alt="" />
                             </div>
                             <span>Settings</span>
-                        </a>
+                        </span>
                         <div className="viw-sub">
                             <div className="collapse" id="setting">
                                 <ul className="view">
                                     <li>
-                                        <a
+                                        <span
                                             onClick={() => {
                                                 this.pageChange("consultancy");
                                             }}
                                             className=""
                                         >
                                             Consultancies
-                                        </a>
+                                        </span>
                                     </li>
                                     <li>
-                                        <a
+                                        <span
                                             onClick={() => {
                                                 this.pageChange("clients");
                                             }}
                                             className=""
                                         >
                                             Clients
-                                        </a>
+                                        </span>
                                     </li>
                                     <li>
-                                        <a
+                                        <span
                                             onClick={() => {
                                                 this.pageChange("regions");
                                             }}
                                             className=""
                                         >
                                             Regions
-                                        </a>
+                                        </span>
                                     </li>
                                     <li>
-                                        <a
+                                        <span
                                             onClick={() => {
                                                 this.pageChange("sites");
                                             }}
                                             className=""
                                         >
                                             Sites
-                                        </a>
+                                        </span>
                                     </li>
 
                                     <li>
-                                        <a
+                                        <span
                                             onClick={() => {
                                                 this.pageChange("buildings");
                                             }}
                                             className=""
                                         >
                                             Buildings
-                                        </a>
+                                        </span>
                                     </li>
                                     <li>
-                                        <a
+                                        <span
                                             onClick={() => {
                                                 this.pageChange("binders");
                                             }}
                                             className=""
                                         >
                                             Binders
-                                        </a>
+                                        </span>
                                     </li>
                                     <li>
-                                        <a
+                                        <span
                                             onClick={() => {
                                                 this.pageChange("activities");
                                             }}
                                             className=""
                                         >
                                             Activities
-                                        </a>
+                                        </span>
                                     </li>
                                     <li>
-                                        <a
+                                        <span
                                             onClick={() => {
                                                 this.pageChange("users");
                                             }}
                                             className=""
                                         >
                                             Users
-                                        </a>
+                                        </span>
                                     </li>
                                     <li>
-                                        <a
+                                        <span
                                             onClick={() => {
                                                 this.pageChange("userPermission");
                                             }}
                                             className=""
                                         >
                                             User Permissions
-                                        </a>
+                                        </span>
                                     </li>
                                 </ul>
                             </div>
                         </div>
                     </li>
                     <li className="nav-item">
-                        <a
+                        <span
                             className="nav-link"
                             onClick={() => {
                                 this.logOut();
                             }}
                         >
                             <div className="icn-sec">
-                                <img src="/images/logout.svg" />
+                                <img src="/images/logout.svg" alt="" />
                             </div>
                             <span>Logout</span>
-                        </a>
+                        </span>
                     </li>
                 </ul>
             </aside>

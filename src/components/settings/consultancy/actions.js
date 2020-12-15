@@ -1,124 +1,106 @@
-import * as actionTypes from './constants'
-import * as Service from './services'
+import * as actionTypes from "./constants";
+import * as Service from "./services";
 
 const getConsultancies = params => {
-
     return async dispatch => {
         try {
-            dispatch({ type: actionTypes.GET_CONSULTANCIES_REQUEST })
-            const res = await Service.getConsultancies(params)
-            console.log('resgetcon', res)
+            dispatch({ type: actionTypes.GET_CONSULTANCIES_REQUEST });
+            const res = await Service.getConsultancies(params);
             if (res && res.status === 200) {
                 const getConsultancyData = res.data;
                 if (getConsultancyData) {
-                    dispatch({ type: actionTypes.GET_CONSULTANCIES_SUCCESS, response: getConsultancyData })
+                    dispatch({ type: actionTypes.GET_CONSULTANCIES_SUCCESS, response: getConsultancyData });
                 } else {
-                    dispatch({ type: actionTypes.GET_CONSULTANCIES_FAILURE, error: getConsultancyData })
+                    dispatch({ type: actionTypes.GET_CONSULTANCIES_FAILURE, error: getConsultancyData });
                 }
             } else {
-                dispatch({ type: actionTypes.GET_CONSULTANCIES_FAILURE, error: res.response && res.response.data })
+                dispatch({ type: actionTypes.GET_CONSULTANCIES_FAILURE, error: res.response && res.response.data });
             }
-
         } catch (e) {
-            dispatch({ type: actionTypes.GET_CONSULTANCIES_FAILURE, error: e.response && e.response.data })
+            dispatch({ type: actionTypes.GET_CONSULTANCIES_FAILURE, error: e.response && e.response.data });
         }
-    }
-}
+    };
+};
 
 const addConsultancies = params => {
-
     return async dispatch => {
         try {
-            dispatch({ type: actionTypes.ADD_CONSULTANCIES_REQUEST })
-            const res = await Service.addConsultancies(params)
-            console.log('res', res)
+            dispatch({ type: actionTypes.ADD_CONSULTANCIES_REQUEST });
+            const res = await Service.addConsultancies(params);
             if (res && res.status === 200) {
                 if (res.data) {
-                    dispatch({ type: actionTypes.ADD_CONSULTANCIES_SUCCESS, response: res.data })
+                    dispatch({ type: actionTypes.ADD_CONSULTANCIES_SUCCESS, response: res.data });
                 } else {
-                    dispatch({ type: actionTypes.ADD_CONSULTANCIES_FAILURE, error: res.data })
+                    dispatch({ type: actionTypes.ADD_CONSULTANCIES_FAILURE, error: res.data });
                 }
             } else {
-                dispatch({ type: actionTypes.ADD_CONSULTANCIES_FAILURE, error: res.data })
+                dispatch({ type: actionTypes.ADD_CONSULTANCIES_FAILURE, error: res.data });
             }
         } catch (e) {
-            dispatch({ type: actionTypes.ADD_CONSULTANCIES_FAILURE, error: e.response && e.response.data })
+            dispatch({ type: actionTypes.ADD_CONSULTANCIES_FAILURE, error: e.response && e.response.data });
         }
-    }
-}
+    };
+};
 
 const getConsultanciesById = id => {
-
     return async dispatch => {
-
         try {
-            dispatch({ type: actionTypes.GET_CONSULTANCIES_BYID_REQUEST })
-            const res = await Service.getConsultanciesById(id)
-            console.log('resbyId', res)
+            dispatch({ type: actionTypes.GET_CONSULTANCIES_BYID_REQUEST });
+            const res = await Service.getConsultanciesById(id);
             if (res && res.status === 200) {
                 if (res.data) {
-                    dispatch({ type: actionTypes.GET_CONSULTANCIES_BYID_SUCCESS, response: res.data })
+                    dispatch({ type: actionTypes.GET_CONSULTANCIES_BYID_SUCCESS, response: res.data });
                 } else {
-                    dispatch({ type: actionTypes.GET_CONSULTANCIES_BYID_FAILURE, error: res.data })
+                    dispatch({ type: actionTypes.GET_CONSULTANCIES_BYID_FAILURE, error: res.data });
                 }
             } else {
-                dispatch({ type: actionTypes.GET_CONSULTANCIES_BYID_FAILURE, error: res.data })
+                dispatch({ type: actionTypes.GET_CONSULTANCIES_BYID_FAILURE, error: res.data });
             }
         } catch (e) {
-            dispatch({ type: actionTypes.GET_CONSULTANCIES_BYID_FAILURE, error: e.response && e.response.data })
+            dispatch({ type: actionTypes.GET_CONSULTANCIES_BYID_FAILURE, error: e.response && e.response.data });
         }
-    }
-}
+    };
+};
 
-const deleteConsultancy = (id) => {
-
+const deleteConsultancy = id => {
     return async dispatch => {
-
         try {
-            dispatch({ type: actionTypes.DELETE_CONSULTANCIES_BYID_REQUEST })
-            const res = await Service.deleteConsultancy(id)
-            console.log('resUpdate', res)
+            dispatch({ type: actionTypes.DELETE_CONSULTANCIES_BYID_REQUEST });
+            const res = await Service.deleteConsultancy(id);
             if (res && res.status === 200) {
                 if (res.data) {
-                    dispatch({ type: actionTypes.DELETE_CONSULTANCIES_BYID_SUCCESS, response: res.data })
+                    dispatch({ type: actionTypes.DELETE_CONSULTANCIES_BYID_SUCCESS, response: res.data });
                 } else {
-                    dispatch({ type: actionTypes.DELETE_CONSULTANCIES_BYID_FAILURE, error: res.data })
+                    dispatch({ type: actionTypes.DELETE_CONSULTANCIES_BYID_FAILURE, error: res.data });
                 }
             } else {
-                dispatch({ type: actionTypes.DELETE_CONSULTANCIES_BYID_FAILURE, error: res.data })
+                dispatch({ type: actionTypes.DELETE_CONSULTANCIES_BYID_FAILURE, error: res.data });
             }
         } catch (e) {
-            dispatch({ type: actionTypes.DELETE_CONSULTANCIES_BYID_FAILURE, error: e.response && e.response.data })
+            dispatch({ type: actionTypes.DELETE_CONSULTANCIES_BYID_FAILURE, error: e.response && e.response.data });
         }
-    }
-}
+    };
+};
 
 const editConsultanciesById = (params, id) => {
-
     return async dispatch => {
-
         try {
-            dispatch({ type: actionTypes.EDIT_CONSULTANCIES_BYID_REQUEST })
-            const res = await Service.editConsultanciesById(params, id)
-            console.log('resUpdate', res)
+            dispatch({ type: actionTypes.EDIT_CONSULTANCIES_BYID_REQUEST });
+            const res = await Service.editConsultanciesById(params, id);
             if (res && res.status === 200) {
                 if (res.data) {
-                    dispatch({ type: actionTypes.EDIT_CONSULTANCIES_BYID_SUCCESS, response: res.data })
+                    dispatch({ type: actionTypes.EDIT_CONSULTANCIES_BYID_SUCCESS, response: res.data });
                 } else {
-                    dispatch({ type: actionTypes.EDIT_CONSULTANCIES_BYID_FAILURE, error: res.data })
+                    dispatch({ type: actionTypes.EDIT_CONSULTANCIES_BYID_FAILURE, error: res.data });
                 }
             } else {
-                dispatch({ type: actionTypes.EDIT_CONSULTANCIES_BYID_FAILURE, error: res.data })
+                dispatch({ type: actionTypes.EDIT_CONSULTANCIES_BYID_FAILURE, error: res.data });
             }
         } catch (e) {
-            dispatch({ type: actionTypes.EDIT_CONSULTANCIES_BYID_FAILURE, error: e.response && e.response.data })
+            dispatch({ type: actionTypes.EDIT_CONSULTANCIES_BYID_FAILURE, error: e.response && e.response.data });
         }
-    }
-}
-
-
-
-
+    };
+};
 
 export default {
     getConsultancies,
@@ -126,4 +108,4 @@ export default {
     getConsultanciesById,
     editConsultanciesById,
     deleteConsultancy
-}
+};

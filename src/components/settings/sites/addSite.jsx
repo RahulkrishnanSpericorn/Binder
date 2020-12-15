@@ -8,7 +8,6 @@ import history from "../../../config/history";
 import commonActions from "../actions";
 
 const mapStateToProps = state => {
-    console.log("state", state);
     const { siteReducer, settingsCommonReducer } = state;
     return { siteReducer, settingsCommonReducer };
 };
@@ -41,7 +40,6 @@ class addSite extends Component {
     }
 
     addSite = async () => {
-        console.log("this.state", this.state);
         if (this.state.name === "") {
             this.setState({
                 nameErrorMsg: true

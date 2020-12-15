@@ -8,7 +8,6 @@ import { ToastContainer } from "react-toastify";
 import ToastMsg from "../../common/ToastMessage";
 
 const mapStateToProps = state => {
-    console.log("state", state);
     const { regionReducer, settingsCommonReducer } = state;
     return { regionReducer, settingsCommonReducer };
 };

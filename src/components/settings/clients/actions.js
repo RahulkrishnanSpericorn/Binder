@@ -1,97 +1,89 @@
-import * as actionTypes from './constants'
-import * as Service from './services'
+import * as actionTypes from "./constants";
+import * as Service from "./services";
 
 const getClients = params => {
     return async dispatch => {
         try {
-            dispatch({ type: actionTypes.GET_CLIENTS_REQUEST })
-            const res = await Service.getClients(params)
-            console.log('Clientres', res)
+            dispatch({ type: actionTypes.GET_CLIENTS_REQUEST });
+            const res = await Service.getClients(params);
             if (res && res.status === 200) {
                 if (res.data) {
-                    dispatch({ type: actionTypes.GET_CLIENTS_SUCCESS, response: res.data })
+                    dispatch({ type: actionTypes.GET_CLIENTS_SUCCESS, response: res.data });
                 } else {
-                    dispatch({ type: actionTypes.GET_CLIENTS_FAILURE, error: res.data })
+                    dispatch({ type: actionTypes.GET_CLIENTS_FAILURE, error: res.data });
                 }
             } else {
-                dispatch({ type: actionTypes.GET_CLIENTS_FAILURE, error: res.response && res.response.data })
+                dispatch({ type: actionTypes.GET_CLIENTS_FAILURE, error: res.response && res.response.data });
             }
         } catch (e) {
-            dispatch({ type: actionTypes.GET_CLIENTS_FAILURE, error: e.response && e.response.data })
+            dispatch({ type: actionTypes.GET_CLIENTS_FAILURE, error: e.response && e.response.data });
         }
-    }
-}
+    };
+};
 
 const addClients = params => {
-
     return async dispatch => {
         try {
-            dispatch({ type: actionTypes.ADD_CLIENTS_REQUEST })
-            const res = await Service.addClients(params)
-            console.log('res', res)
+            dispatch({ type: actionTypes.ADD_CLIENTS_REQUEST });
+            const res = await Service.addClients(params);
             if (res && res.status === 200) {
                 if (res.data) {
-                    dispatch({ type: actionTypes.ADD_CLIENTS_SUCCESS, response: res.data })
+                    dispatch({ type: actionTypes.ADD_CLIENTS_SUCCESS, response: res.data });
                 } else {
-                    dispatch({ type: actionTypes.ADD_CLIENTS_FAILURE, error: res.data })
+                    dispatch({ type: actionTypes.ADD_CLIENTS_FAILURE, error: res.data });
                 }
             } else {
-                dispatch({ type: actionTypes.ADD_CLIENTS_FAILURE, error: res.data })
+                dispatch({ type: actionTypes.ADD_CLIENTS_FAILURE, error: res.data });
             }
         } catch (e) {
-            dispatch({ type: actionTypes.ADD_CLIENTS_FAILURE, error: e.response && e.response.data })
+            dispatch({ type: actionTypes.ADD_CLIENTS_FAILURE, error: e.response && e.response.data });
         }
-    }
-}
+    };
+};
 
-const editClientsById = (params,id) => {
-
+const editClientsById = (params, id) => {
     return async dispatch => {
         try {
-            dispatch({ type: actionTypes.EDIT_CLIENTS_BYID_REQUEST })
-            const res = await Service.editClientsById(params,id)
-            console.log('ClientUpdtres', res)
+            dispatch({ type: actionTypes.EDIT_CLIENTS_BYID_REQUEST });
+            const res = await Service.editClientsById(params, id);
             if (res && res.status === 200) {
                 if (res.data) {
-                    dispatch({ type: actionTypes.EDIT_CLIENTS_BYID_SUCCESS, response: res.data })
+                    dispatch({ type: actionTypes.EDIT_CLIENTS_BYID_SUCCESS, response: res.data });
                 } else {
-                    dispatch({ type: actionTypes.EDIT_CLIENTS_BYID_FAILURE, error: res.data })
+                    dispatch({ type: actionTypes.EDIT_CLIENTS_BYID_FAILURE, error: res.data });
                 }
             } else {
-                dispatch({ type: actionTypes.EDIT_CLIENTS_BYID_FAILURE, error: res.data })
+                dispatch({ type: actionTypes.EDIT_CLIENTS_BYID_FAILURE, error: res.data });
             }
         } catch (e) {
-            dispatch({ type: actionTypes.EDIT_CLIENTS_BYID_FAILURE, error: e.response && e.response.data })
+            dispatch({ type: actionTypes.EDIT_CLIENTS_BYID_FAILURE, error: e.response && e.response.data });
         }
-    }
-}
+    };
+};
 
-const deleteClient = (id) => {
-
+const deleteClient = id => {
     return async dispatch => {
-
         try {
-            dispatch({ type: actionTypes.DELETE_CLIENTS_BYID_REQUEST })
-            const res = await Service.deleteClient(id)
-            console.log('deleteCLient', res)
+            dispatch({ type: actionTypes.DELETE_CLIENTS_BYID_REQUEST });
+            const res = await Service.deleteClient(id);
             if (res && res.status === 200) {
                 if (res.data) {
-                    dispatch({ type: actionTypes.DELETE_CLIENTS_BYID_SUCCESS, response: res.data })
+                    dispatch({ type: actionTypes.DELETE_CLIENTS_BYID_SUCCESS, response: res.data });
                 } else {
-                    dispatch({ type: actionTypes.DELETE_CLIENTS_BYID_FAILURE, error: res.data })
+                    dispatch({ type: actionTypes.DELETE_CLIENTS_BYID_FAILURE, error: res.data });
                 }
             } else {
-                dispatch({ type: actionTypes.DELETE_CLIENTS_BYID_FAILURE, error: res.data })
+                dispatch({ type: actionTypes.DELETE_CLIENTS_BYID_FAILURE, error: res.data });
             }
         } catch (e) {
-            dispatch({ type: actionTypes.DELETE_CLIENTS_BYID_FAILURE, error: e.response && e.response.data })
+            dispatch({ type: actionTypes.DELETE_CLIENTS_BYID_FAILURE, error: e.response && e.response.data });
         }
-    }
-}
+    };
+};
 
 export default {
     getClients,
     addClients,
     editClientsById,
     deleteClient
-}
+};

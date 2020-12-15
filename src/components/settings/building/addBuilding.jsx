@@ -8,9 +8,6 @@ import history from "../../../config/history";
 
 const mapStateToProps = state => {
     const { buildingReducer, settingsCommonReducer } = state;
-
-    console.log("state", state);
-
     return { buildingReducer, settingsCommonReducer };
 };
 
@@ -93,12 +90,9 @@ class index extends Component {
         await this.setState({
             siteIdList: this.props.settingsCommonReducer.siteDropdownData.data
         });
-        console.log("this.state.siteIdList", this.state.siteIdList);
     };
 
     addBuilding = async () => {
-        console.log("this.state", this.state);
-
         if (this.state.name === "") {
             this.setState({ nameErrorMsg: true });
         }
