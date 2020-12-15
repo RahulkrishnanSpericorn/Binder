@@ -62,10 +62,14 @@ class addActivity extends Component {
         if (this.props.history.location.state && this.props.history.location.state.activityItem) {
             await this.getClientDropDown(this.props.history.location.state.consultancy_id);
             await this.getBinderDropDown(this.props.history.location.state.client_id);
+
             let tempActivityParam = this.props.history.location.state.activityItem;
             tempActivityParam.binder_id = tempActivityParam.binder.id;
             tempActivityParam.client_id = tempActivityParam.client.id;
             tempActivityParam.consultancy_id = tempActivityParam.consultancy.id;
+            if (tempActivityParam.start_date) tempActivityParam.start_date = new Date(tempActivityParam.start_date);
+            if (tempActivityParam.end_date) tempActivityParam.end_date = new Date(tempActivityParam.end_date);
+
             await this.setState({
                 activityParams: tempActivityParam,
                 isEdit: true
@@ -193,42 +197,48 @@ class addActivity extends Component {
         const { binderIdList, activityParams, isEdit, showErrorBorder, errorParams } = this.state;
         return (
             <React.Fragment>
-                <section class="cont-ara act-main">
-                    <div class="list-area">
+                <section className="cont-ara act-main">
+                    <div className="list-area">
                         <ToastContainer />
                         <TopSlider />
-                        <div class="lst-bt-nav create">
-                            <div class="table table-ara">
-                                <div class="list-sec">
-                                    <div class="nav-ara">
-                                        <div class="head">
+                        <div className="lst-bt-nav create">
+                            <div className="table table-ara">
+                                <div className="list-sec">
+                                    <div className="nav-ara">
+                                        <div className="head">
                                             <h4>Activity</h4>
                                         </div>
-                                        <div class="pagenation">
+                                        <div className="pagenation">
                                             <ul>
                                                 <li>
                                                     <a>Home </a>
                                                 </li>
-                                                <li class="active">
+                                                <li className="active">
                                                     <a>Activity</a>
                                                 </li>
                                             </ul>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="activity">
+                                <div className="activity">
                                     {isEdit ? (
-                                        <div class="itm">
-                                            <div class="form-group">
+                                        <div className="itm">
+                                            <div className="form-group">
                                                 <label>Code</label>
-                                                <input type="text" class="form-control" placeholder="" value={activityParams.code} disabled="true" />
+                                                <input
+                                                    type="text"
+                                                    className="form-control"
+                                                    placeholder=""
+                                                    value={activityParams.code}
+                                                    disabled={true}
+                                                />
                                             </div>
                                         </div>
                                     ) : null}
-                                    <div class="itm">
-                                        <div class="form-group">
+                                    <div className="itm">
+                                        <div className="form-group">
                                             <label className={showErrorBorder && errorParams.consultancy_id ? "text-red" : ""}>Consultancy *</label>
-                                            <div class="custom-selecbox">
+                                            <div className="custom-selecbox">
                                                 <select
                                                     className="custom-selecbox form-control"
                                                     value={activityParams.consultancy_id}
@@ -249,10 +259,10 @@ class addActivity extends Component {
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="itm">
-                                        <div class="form-group">
+                                    <div className="itm">
+                                        <div className="form-group">
                                             <label className={showErrorBorder && errorParams.client_id ? "text-red" : ""}>Client *</label>
-                                            <div class="custom-selecbox">
+                                            <div className="custom-selecbox">
                                                 <select
                                                     className="custom-selecbox form-control"
                                                     value={activityParams.client_id}
@@ -279,12 +289,12 @@ class addActivity extends Component {
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="itm">
-                                        <div class="form-group">
+                                    <div className="itm">
+                                        <div className="form-group">
                                             <label>Activity Type</label>
                                             <input
                                                 type="text"
-                                                class="form-control"
+                                                className="form-control"
                                                 placeholder=" "
                                                 value={activityParams.activity_type}
                                                 onChange={e =>
@@ -298,13 +308,13 @@ class addActivity extends Component {
                                             />
                                         </div>
                                     </div>
-                                    <div class="itm">
-                                        <div class="form-group">
+                                    <div className="itm">
+                                        <div className="form-group">
                                             <label>Display Order</label>
                                             <input
                                                 type="number"
                                                 min="0"
-                                                class="form-control"
+                                                className="form-control"
                                                 placeholder=" "
                                                 value={activityParams.display_order}
                                                 onChange={e =>
@@ -318,12 +328,12 @@ class addActivity extends Component {
                                             />
                                         </div>
                                     </div>
-                                    <div class="itm">
-                                        <div class="form-group">
+                                    <div className="itm">
+                                        <div className="form-group">
                                             <label>Reference</label>
                                             <input
                                                 type="text"
-                                                class="form-control"
+                                                className="form-control"
                                                 placeholder=" "
                                                 value={activityParams.reference}
                                                 onChange={e =>
@@ -337,12 +347,12 @@ class addActivity extends Component {
                                             />
                                         </div>
                                     </div>
-                                    <div class="itm wid-50">
-                                        <div class="form-group">
+                                    <div className="itm wid-50">
+                                        <div className="form-group">
                                             <label>Activity Description</label>
                                             <input
                                                 type="text"
-                                                class="form-control"
+                                                className="form-control"
                                                 placeholder=" "
                                                 value={activityParams.activity_description}
                                                 onChange={e =>
@@ -356,12 +366,12 @@ class addActivity extends Component {
                                             />
                                         </div>
                                     </div>
-                                    <div class="itm">
-                                        <div class="form-group">
+                                    <div className="itm">
+                                        <div className="form-group">
                                             <label>Activity text</label>
                                             <input
                                                 type="text"
-                                                class="form-control"
+                                                className="form-control"
                                                 placeholder=" "
                                                 value={activityParams.activity_text}
                                                 onChange={e =>
@@ -375,12 +385,12 @@ class addActivity extends Component {
                                             />
                                         </div>
                                     </div>
-                                    <div class="itm">
-                                        <div class="form-group">
+                                    <div className="itm">
+                                        <div className="form-group">
                                             <label>Activity Tooltip</label>
                                             <input
                                                 type="text"
-                                                class="form-control"
+                                                className="form-control"
                                                 placeholder=" "
                                                 value={activityParams.activity_tooltip}
                                                 onChange={e =>
@@ -394,32 +404,32 @@ class addActivity extends Component {
                                             />
                                         </div>
                                     </div>
-                                    <div class="itm">
-                                        <div class="form-group">
+                                    <div className="itm">
+                                        <div className="form-group">
                                             <label>Frequency</label>
-                                            <button class="btn btn-frqy" onClick={() => this.toggleShowFrequencyModal()}>
+                                            <button className="btn btn-frqy" onClick={() => this.toggleShowFrequencyModal()}>
                                                 Set Frequency
                                             </button>
                                         </div>
                                     </div>
-                                    <div class="itm">
-                                        <div class="form-group">
+                                    <div className="itm">
+                                        <div className="form-group">
                                             <label>Test Frequency</label>
                                             <input
                                                 type="text"
-                                                disabled="true"
-                                                class="form-control cursor-not-allowed"
+                                                disabled={true}
+                                                className="form-control cursor-not-allowed"
                                                 value={activityParams.test_frequency}
                                             />
                                         </div>
                                     </div>
-                                    <div class="itm">
-                                        <div class="form-group">
+                                    <div className="itm">
+                                        <div className="form-group">
                                             <label>Completion Threshold</label>
                                             <input
                                                 type="number"
                                                 min="0"
-                                                class="form-control"
+                                                className="form-control"
                                                 placeholder=" "
                                                 value={activityParams.completion_threshold}
                                                 onChange={e =>
@@ -433,13 +443,13 @@ class addActivity extends Component {
                                             />
                                         </div>
                                     </div>
-                                    <div class="itm">
-                                        <div class="form-group">
+                                    <div className="itm">
+                                        <div className="form-group">
                                             <label>Email Threshold</label>
                                             <input
                                                 type="number"
                                                 min="0"
-                                                class="form-control"
+                                                className="form-control"
                                                 placeholder=" "
                                                 value={activityParams.email_threshold}
                                                 onChange={e =>
@@ -453,12 +463,12 @@ class addActivity extends Component {
                                             />
                                         </div>
                                     </div>
-                                    <div class="itm">
-                                        <div class="form-group">
+                                    <div className="itm">
+                                        <div className="form-group">
                                             <label>Code Reference</label>
                                             <input
                                                 type="text"
-                                                class="form-control"
+                                                className="form-control"
                                                 placeholder=" "
                                                 value={activityParams.code_reference}
                                                 onChange={e =>
@@ -472,12 +482,12 @@ class addActivity extends Component {
                                             />
                                         </div>
                                     </div>
-                                    <div class="itm">
-                                        <div class="form-group">
+                                    <div className="itm">
+                                        <div className="form-group">
                                             <label>Code Reference Tooltip</label>
                                             <input
                                                 type="text"
-                                                class="form-control"
+                                                className="form-control"
                                                 placeholder=" "
                                                 value={activityParams.code_reference_tooltip}
                                                 onChange={e =>
@@ -491,8 +501,8 @@ class addActivity extends Component {
                                             />
                                         </div>
                                     </div>
-                                    <div class="itm">
-                                        <div class="form-group">
+                                    <div className="itm">
+                                        <div className="form-group">
                                             <label>Quarterly View</label>
                                             <select
                                                 className="custom-selecbox form-control"
@@ -512,8 +522,8 @@ class addActivity extends Component {
                                             </select>
                                         </div>
                                     </div>
-                                    <div class="itm">
-                                        <div class="form-group">
+                                    <div className="itm">
+                                        <div className="form-group">
                                             <label>Edit form</label>
                                             <select
                                                 className="custom-selecbox form-control"
@@ -532,13 +542,13 @@ class addActivity extends Component {
                                             </select>
                                         </div>
                                     </div>
-                                    <div class="itm">
-                                        <div class="form-group">
+                                    <div className="itm">
+                                        <div className="form-group">
                                             <label>Default Total Devices</label>
                                             <input
                                                 type="number"
                                                 min="0"
-                                                class="form-control"
+                                                className="form-control"
                                                 placeholder=" "
                                                 value={activityParams.default_total_devices}
                                                 onChange={e =>
@@ -553,8 +563,8 @@ class addActivity extends Component {
                                         </div>
                                     </div>
 
-                                    <div class="itm">
-                                        <div class="form-group calendar">
+                                    <div className="itm">
+                                        <div className="form-group calendar">
                                             <label>Valid From</label>
                                             <DatePicker
                                                 className="form-control"
@@ -570,8 +580,8 @@ class addActivity extends Component {
                                             />
                                         </div>
                                     </div>
-                                    <div class="itm">
-                                        <div class="form-group calendar">
+                                    <div className="itm">
+                                        <div className="form-group calendar">
                                             <label>Valid To</label>
                                             <DatePicker
                                                 className="form-control"
@@ -587,10 +597,10 @@ class addActivity extends Component {
                                             />
                                         </div>
                                     </div>
-                                    <div class="itm">
-                                        <div class="form-group calendar">
+                                    <div className="itm">
+                                        <div className="form-group calendar">
                                             <label className={showErrorBorder && errorParams.binder_id ? "text-red" : ""}>Binder *</label>
-                                            <div class="custom-selecbox">
+                                            <div className="custom-selecbox">
                                                 <select
                                                     className="custom-selecbox form-control"
                                                     value={activityParams.binder_id}
@@ -618,32 +628,32 @@ class addActivity extends Component {
                                     </div>
                                     {isEdit ? (
                                         <React.Fragment>
-                                            <div class="itm">
-                                                <div class="form-group calendar">
+                                            <div className="itm">
+                                                <div className="form-group calendar">
                                                     <label>Created At</label>
                                                     <input
                                                         type="text"
                                                         disabled="true"
                                                         value={activityParams.created_at}
-                                                        class="form-control"
+                                                        className="form-control cursor-not-allowed"
                                                         placeholder=" "
                                                     />
-                                                    <div class="icon" data-toggle="modal" data-target="#myModal">
+                                                    <div className="icon" data-toggle="modal" data-target="#myModal">
                                                         <img src="/images/calendar-gray.svg" alt="" />
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="itm">
-                                                <div class="form-group calendar">
+                                            <div className="itm">
+                                                <div className="form-group calendar">
                                                     <label>Updated At</label>
                                                     <input
                                                         type="text"
                                                         disabled="true"
                                                         value={activityParams.updated_at}
-                                                        class="form-control"
+                                                        className="form-control cursor-not-allowed"
                                                         placeholder=" "
                                                     />
-                                                    <div class="icon" data-toggle="modal" data-target="#myModal">
+                                                    <div className="icon" data-toggle="modal" data-target="#myModal">
                                                         <img src="/images/calendar-gray.svg" alt="" />
                                                     </div>
                                                 </div>
@@ -651,17 +661,17 @@ class addActivity extends Component {
                                         </React.Fragment>
                                     ) : null}
                                 </div>
-                                <div class="btn-sec">
-                                    <button class="btn btn-cncl-back mr-2" onClick={() => history.push("/activities")}>
-                                        <i class="material-icons tic"> close</i>Cancel
+                                <div className="btn-sec">
+                                    <button className="btn btn-cncl-back mr-2" onClick={() => history.push("/activities")}>
+                                        <i className="material-icons tic"> close</i>Cancel
                                     </button>
                                     {isEdit ? (
-                                        <button class="btn btn-create" onClick={() => this.editActivity()}>
-                                            <i class="material-icons tic"> check</i> Update Activity
+                                        <button className="btn btn-create" onClick={() => this.editActivity()}>
+                                            <i className="material-icons tic"> check</i> Update Activity
                                         </button>
                                     ) : (
-                                        <button class="btn btn-create" onClick={() => this.addActivity()}>
-                                            <i class="material-icons tic"> check</i> Add Activity
+                                        <button className="btn btn-create" onClick={() => this.addActivity()}>
+                                            <i className="material-icons tic"> check</i> Add Activity
                                         </button>
                                     )}
                                 </div>

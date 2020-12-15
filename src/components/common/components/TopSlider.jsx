@@ -10,12 +10,18 @@ const settings = {
 class TopSlider extends Component {
     render() {
         return (
-            <div class="top-slider">
-                <i class="material-icons" data-toggle="collapse" data-target="#collapseExample" aria-expanded="true" aria-controls="collapseExample">
+            <div className="top-slider">
+                <i
+                    className="material-icons"
+                    data-toggle="collapse"
+                    data-target="#collapseExample"
+                    aria-expanded="true"
+                    aria-controls="collapseExample"
+                >
                     expand_more
                 </i>
-                <div class="collapse show" id="collapseExample">
-                    <div class="customer-logos slider">
+                <div className="collapse show" id="collapseExample">
+                    <div className="customer-logos slider">
                         <Slider className="customer-logos slider" {...settings}>
                             <div className="slide">
                                 <span>Fire Systems Testing</span>

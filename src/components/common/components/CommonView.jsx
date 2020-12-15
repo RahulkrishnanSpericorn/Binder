@@ -81,7 +81,7 @@ class CommonView extends Component {
                 break;
             case "rrule":
                 returnData = data ? (
-                    <button class="btn btn-frqy" onClick={() => this.toggleShowFrequencyModal()}>
+                    <button className="btn btn-frqy" onClick={() => this.toggleShowFrequencyModal()}>
                         View Frequency
                     </button>
                 ) : (
@@ -123,7 +123,7 @@ class CommonView extends Component {
                                             </div>
                                             <div className="itm-cnt">
                                                 <div className="form-group">
-                                                    <label className="form-control-placeholder" for="f-name">
+                                                    <label className="form-control-placeholder" htmlFor="f-name">
                                                         {config[keyItem].label}
                                                     </label>
                                                     {this.renderData(config[keyItem].type, item[keyItem])}

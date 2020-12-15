@@ -33,8 +33,8 @@ import addBinder from "./components/settings/binder/addBinder";
 import editBinder from "./components/settings/binder/editBinder";
 import viewBinder from "./components/settings/binder/viewBinder";
 import activity from "./components/settings/activity/index";
-import addActivity from "./components/settings/activity/addActivity";
-import editActivity from "./components/settings/activity/addActivity";
+import addActivity from "./components/settings/activity/activityForm";
+import editActivity from "./components/settings/activity/activityForm";
 import viewActivity from "./components/settings/activity/viewActivity";
 
 function App() {

@@ -49,7 +49,7 @@ class CommonRow extends Component {
                 {keys &&
                     keys.map((keyItem, i) => {
                         return config && config[keyItem] && config[keyItem].isVisible ? (
-                            <td className="">
+                            <td className="" key={i}>
                                 {/* Rendering Cell Content */}
                                 {this.renderCellData(config[keyItem].type, rowData[keyItem]).length > 25
                                     ? this.renderCellData(config[keyItem].type, rowData[keyItem]).substring(0, 25) + "..."

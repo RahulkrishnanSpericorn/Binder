@@ -10,7 +10,11 @@ class CommonTableHeader extends Component {
                 </th>
                 {keys &&
                     keys.map((keyItem, i) => {
-                        return config && config[keyItem] && config[keyItem].isVisible ? <th className="">{config[keyItem].label}</th> : null;
+                        return config && config[keyItem] && config[keyItem].isVisible ? (
+                            <th className="" key={i}>
+                                {config[keyItem].label}
+                            </th>
+                        ) : null;
                     })}
                 <th className="action">
                     <img src="/images/three-dots.svg" alt="" />

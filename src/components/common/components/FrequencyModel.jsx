@@ -56,10 +56,10 @@ class FrequencyModel extends Component {
             let rule = RRule.fromString(frequency);
             let rRuleGenObj = rule.origOptions;
             if (!Array.isArray(rRuleGenObj.bymonth)) {
-                rRuleGenObj.bymonth = [rRuleGenObj.bymonth];
+                rRuleGenObj.bymonth = rRuleGenObj.bymonth ? [rRuleGenObj.bymonth] : [];
             }
             if (!Array.isArray(rRuleGenObj.byweekday)) {
-                rRuleGenObj.byweekday = [rRuleGenObj.byweekday];
+                rRuleGenObj.byweekday = rRuleGenObj.byweekday ? [rRuleGenObj.byweekday] : [];
             }
             await this.setState({
                 rRuleGen: rRuleGenObj,
@@ -144,7 +144,7 @@ class FrequencyModel extends Component {
         return (
             <React.Fragment>
                 <div className="modal" role="dialog" style={{ display: "block" }} id="modalId">
-                    <div className="modal-dialog">
+                    <div className="modal-dialog modal-dialog-centered">
                         <div className="modal-content">
                             <div className="modal-header">
                                 <h4 className="modal-title">Frequency</h4>
@@ -160,6 +160,7 @@ class FrequencyModel extends Component {
                                             <div className="bck-ara frequency">
                                                 {frequencyList.map((item, i) => (
                                                     <button
+                                                        key={i}
                                                         className={`btn btn-frm ${rRuleGen.freq === item.value ? "active" : ""}`}
                                                         onClick={() => this.setState({ rRuleGen: { ...rRuleGen, freq: RRule[item.key] } })}
                                                     >
@@ -213,6 +214,7 @@ class FrequencyModel extends Component {
                                             <div className="bck-ara day">
                                                 {dayList.map((item, i) => (
                                                     <button
+                                                        key={i}
                                                         className={`btn btn-frm ${this.checkRRuleHasDay(i) ? "active" : ""}`}
                                                         onClick={() => this.setByDayForRRuleGen(i)}
                                                     >
