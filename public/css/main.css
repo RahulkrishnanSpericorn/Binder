@@ -3850,7 +3850,7 @@ input[list]::-webkit-calendar-picker-indicator {
   height: calc(100vh - 250px);
 }
 .list-sec .table-section .table {
-  min-width: 1200px;
+  min-width: 1205px;
 }
 .list-sec .table-section .table .action {
   position: sticky;
@@ -3865,7 +3865,7 @@ input[list]::-webkit-calendar-picker-indicator {
   font-size: 13px;
   color: #103BB5;
   font-family: "Inter", sans-serif;
-  background-color: #f5f5f5;
+  background-color: #f5f5f5 !important;
   padding: 15px 10px;
   position: sticky;
   top: 0;
@@ -3883,6 +3883,9 @@ input[list]::-webkit-calendar-picker-indicator {
   max-width: 60px !important;
   text-align: center;
   z-index: 9999;
+}
+.list-sec .table-section .table thead tr th.action img {
+  height: 18px;
 }
 .list-sec .table-section .table thead tr th span.rop-icon {
   width: 20px;

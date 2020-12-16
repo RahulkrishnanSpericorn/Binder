@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import ReactTooltip from "react-tooltip";
+// import ReactTooltip from "react-tooltip";
 
 import CommonRow from "./CommonRow";
 import CommonTableHeader from "./CommonTableHeader";
@@ -9,7 +9,6 @@ class CommonTable extends Component {
         const { viewItem, deleteItem, editItem, tableData } = this.props;
         return (
             <React.Fragment>
-                <ReactTooltip place="top" type="info" effect="solid" />
                 <table class="table table-bordered">
                     <thead>
                         <CommonTableHeader config={tableData.config} keys={tableData.keys} />
