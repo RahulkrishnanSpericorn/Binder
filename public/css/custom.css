@@ -93,3 +93,45 @@
     width: 1.5rem !important;
     height: 1.5rem !important;
 }
+
+.form-area {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 15px 0px 15px 30px;
+}
+.form-area .head h3 {
+    color: #576691;
+    font-family: "Inter", sans-serif;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 24px;
+    margin-bottom: 0px;
+    position: relative;
+    text-transform: uppercase;
+    padding: 0 10px;
+}
+.form-area .head {
+    width: 100%;
+    overflow: hidden;
+    margin-bottom: 15px;
+}
+.form-area .head h3::after {
+    content: "";
+    width: 100%;
+    height: 1px;
+    background-color: #0000000f;
+    position: absolute;
+    top: 13px;
+    margin-left: 10px;
+}
+
+.form-area .itm {
+    width: calc(100% / 4 - 10px);
+    padding: 10px;
+}
+#multiselectContainerReact div:first-child {
+    height: 50px !important;
+    padding: 10px !important;
+    background-color: #f7f7f9;
+    border: none;
+}

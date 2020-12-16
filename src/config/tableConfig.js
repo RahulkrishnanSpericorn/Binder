@@ -1125,7 +1125,7 @@ export const buildingTableData = {
             label: "Building Number",
             class: "",
             searchKey: "buildings.number",
-            type: "number",
+            type: "string",
             hasWildCardSearch: true,
             hasCommonSearch: false,
             getListTable: "buildings",

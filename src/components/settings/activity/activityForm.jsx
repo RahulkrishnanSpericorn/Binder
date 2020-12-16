@@ -10,6 +10,7 @@ import history from "../../../config/history";
 import actions from "./actions";
 import Portal from "../../common/components/Portal";
 import FrequencyModel from "../../common/components/FrequencyModel";
+import Breadcrumb from "../../common/components/Breadcrumb";
 
 class addActivity extends Component {
     constructor(props) {
@@ -206,18 +207,9 @@ class addActivity extends Component {
                                 <div className="list-sec">
                                     <div className="nav-ara">
                                         <div className="head">
-                                            <h4>Activity</h4>
+                                            <h4>{isEdit ? "Edit" : "Add"} Activity</h4>
                                         </div>
-                                        <div className="pagenation">
-                                            <ul>
-                                                <li>
-                                                    <a>Home </a>
-                                                </li>
-                                                <li className="active">
-                                                    <a>Activity</a>
-                                                </li>
-                                            </ul>
-                                        </div>
+                                        {/* <Breadcrumb /> */}
                                     </div>
                                 </div>
                                 <div className="activity">

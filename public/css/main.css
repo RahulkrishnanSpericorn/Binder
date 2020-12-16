@@ -1327,7 +1327,7 @@ aside ul.navbar {
   padding-right: 0px;
 }
 aside ul.navbar li.nav-item {
-  padding-left: 15px;
+  padding-left: 10px;
   padding-right: 15px;
   margin-bottom: 3vh;
   width: 100%;
@@ -1440,7 +1440,7 @@ aside.navbar-collapse.show .viw-sub {
 }
 
 .sidenav.navbar-collapse.collapse.show ~ .cont-ara {
-  padding-left: 120px;
+  padding-left: 100px;
   -webkit-transition: all 0.2s ease;
   transition: all 0.2s ease;
 }
@@ -2107,7 +2107,7 @@ input[list]::-webkit-calendar-picker-indicator {
 .table-ara {
   background-color: #fff;
   border-radius: 20px;
-  height: calc(100vh - 190px);
+  height: auto;
 }
 
 .top-fil-ara {
@@ -2310,7 +2310,7 @@ input[list]::-webkit-calendar-picker-indicator {
 }
 .list-area .lst-bt-nav {
   background-color: #E6EAF2;
-  padding: 30px 20px 0px;
+  padding: 30px 20px 20px;
   border-top-left-radius: 20px;
   height: 100%;
 }
@@ -2466,9 +2466,6 @@ input[list]::-webkit-calendar-picker-indicator {
   display: none !important;
 }
 
-.act-main .table-ara {
-  height: auto;
-}
 .act-main .table-ara .activity {
   display: flex;
   flex-wrap: wrap;
@@ -3516,7 +3513,11 @@ input[list]::-webkit-calendar-picker-indicator {
   }
 
   .list-area .top-fil-ara .right-cont .btn-section-2 .btn.btn-top {
-    font-size: 12px;
+    font-size: 11px;
+  }
+
+  .list-area .top-fil-ara .right-cont .btn-section-2 .btn.btn-top img {
+    margin-right: 5px;
   }
 
   .list-area .top-fil-ara .right-cont .btn-section .green-btn {
@@ -3841,6 +3842,18 @@ input[list]::-webkit-calendar-picker-indicator {
     padding: 5px 10px 0px;
   }
 }
+.form-group.calendar .react-date-picker__wrapper {
+  border: none !important;
+}
+
+.form-group.calendar svg.react-date-picker__clear-button__icon.react-date-picker__button__icon {
+  width: 13px;
+}
+
+.form-group.calendar svg.react-date-picker__calendar-button__icon.react-date-picker__button__icon {
+  stroke: #999ba0;
+}
+
 .list-sec {
   padding: 0px 10px 10px;
   overflow: hidden;
