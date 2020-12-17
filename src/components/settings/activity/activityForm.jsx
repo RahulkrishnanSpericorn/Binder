@@ -212,7 +212,7 @@ class addActivity extends Component {
                                         {/* <Breadcrumb /> */}
                                     </div>
                                 </div>
-                                <div className="activity">
+                                <div className="activity form-area">
                                     {isEdit ? (
                                         <div className="itm">
                                             <div className="form-group">
