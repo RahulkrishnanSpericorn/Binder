@@ -2514,11 +2514,26 @@ input[list]::-webkit-calendar-picker-indicator {
   width: calc(100% / 4 - 10px);
   padding: 10px;
 }
-.form-area.wid-50 {
+@media (max-width: 767px) {
+  .form-area .itm {
+    width: calc(100% / 2 - 0px) !important;
+  }
+}
+@media (max-width: 500px) {
+  .form-area .itm {
+    width: 100% !important;
+  }
+}
+.form-area .itm.wid-50 {
   width: calc(50% - 20px);
 }
 .form-area .form-group label {
   font-weight: 400;
+  font-family: "Inter", sans-serif;
+}
+.form-area input.form-control::placeholder {
+  font-weight: 500;
+  color: #acadae;
   font-family: "Inter", sans-serif;
 }
 
@@ -3896,7 +3911,7 @@ input[list]::-webkit-calendar-picker-indicator {
 }
 
 .lst-bt-nav.create .table-ara {
-  height: 97%;
+  min-height: 97%;
 }
 
 .list-sec {

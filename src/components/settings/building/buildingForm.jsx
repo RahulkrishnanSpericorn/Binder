@@ -80,15 +80,10 @@ class editBuilding extends Component {
             this.getClientDropdown(this.props.history.location.state.consultancy_id);
             this.getRegionDropdown(this.props.history.location.state.client_id);
             this.getSiteDropdown(this.props.history.location.state.region_id);
-            let selectedBinders = [];
-            this.props.settingsCommonReducer.binderDropdownData.data &&
-                this.props.settingsCommonReducer.binderDropdownData.data.map(
-                    item => tempBuildingParam.binder_ids && tempBuildingParam.binder_ids.includes(item.id) && selectedBinders.push(item)
-                );
             await this.setState({
                 buildingParams: tempBuildingParam,
                 isEdit: true,
-                selectedBinders
+                selectedBinders: tempBuildingParam.binders
             });
         }
     };
