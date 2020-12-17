@@ -1327,7 +1327,7 @@ aside ul.navbar {
   padding-right: 0px;
 }
 aside ul.navbar li.nav-item {
-  padding-left: 10px;
+  padding-left: 15px;
   padding-right: 15px;
   margin-bottom: 3vh;
   width: 100%;
@@ -2107,7 +2107,7 @@ input[list]::-webkit-calendar-picker-indicator {
 .table-ara {
   background-color: #fff;
   border-radius: 20px;
-  height: auto;
+  height: calc(100vh - 190px);
 }
 
 .top-fil-ara {
@@ -2310,7 +2310,7 @@ input[list]::-webkit-calendar-picker-indicator {
 }
 .list-area .lst-bt-nav {
   background-color: #E6EAF2;
-  padding: 30px 20px 20px;
+  padding: 30px 20px 0px;
   border-top-left-radius: 20px;
   height: 100%;
 }
@@ -2419,11 +2419,16 @@ input[list]::-webkit-calendar-picker-indicator {
   width: 200px;
 }
 .list-area .usr-vw .usr-sld .slider {
-  width: 310px;
+  width: 260px;
   padding: 0px 20px;
   display: flex;
   align-items: center;
   height: 50px;
+}
+@media (max-width: 1440px) {
+  .list-area .usr-vw .usr-sld .slider {
+    width: 215px;
+  }
 }
 .list-area .usr-vw .usr-sld .slider .slick-list .slide {
   border-radius: 5px;
@@ -2466,6 +2471,9 @@ input[list]::-webkit-calendar-picker-indicator {
   display: none !important;
 }
 
+.act-main .table-ara {
+  height: auto;
+}
 .act-main .table-ara .activity {
   display: flex;
   flex-wrap: wrap;
@@ -3218,7 +3226,6 @@ input[list]::-webkit-calendar-picker-indicator {
 }
 .list-area .region-table thead th {
   background-color: rgba(230, 234, 242, 0.8) !important;
-  border: none;
   font-size: 14px !important;
 }
 @media (max-width: 1679px) {
@@ -3513,11 +3520,7 @@ input[list]::-webkit-calendar-picker-indicator {
   }
 
   .list-area .top-fil-ara .right-cont .btn-section-2 .btn.btn-top {
-    font-size: 11px;
-  }
-
-  .list-area .top-fil-ara .right-cont .btn-section-2 .btn.btn-top img {
-    margin-right: 5px;
+    font-size: 12px;
   }
 
   .list-area .top-fil-ara .right-cont .btn-section .green-btn {
@@ -3854,6 +3857,10 @@ input[list]::-webkit-calendar-picker-indicator {
   stroke: #999ba0;
 }
 
+.lst-bt-nav.create .table-ara {
+  height: 97%;
+}
+
 .list-sec {
   padding: 0px 10px 10px;
   overflow: hidden;
@@ -3861,18 +3868,19 @@ input[list]::-webkit-calendar-picker-indicator {
 .list-sec .table-section {
   overflow: auto;
   height: calc(100vh - 250px);
+  border-top: 1px solid #E6EAF2;
 }
 .list-sec .table-section .table {
   min-width: 1205px;
 }
 .list-sec .table-section .table .action {
-  position: sticky;
   position: -webkit-sticky;
   right: 0px;
   background-color: #ffff;
-  border: 1px solid #d6d6d6 !important;
-  z-index: 99;
-  box-shadow: -1px 0px #d6d6d6;
+  z-index: 2;
+}
+.list-sec .table-section .table th, .list-sec .table-section .table td {
+  border-color: #E6EAF2;
 }
 .list-sec .table-section .table thead tr th {
   font-size: 13px;
@@ -3881,8 +3889,18 @@ input[list]::-webkit-calendar-picker-indicator {
   background-color: #f5f5f5 !important;
   padding: 15px 10px;
   position: sticky;
-  top: 0;
-  z-index: 2;
+  top: -1px;
+  z-index: 1;
+  border-top-color: #fff !important;
+  border-bottom-color: #fff !important;
+}
+.list-sec .table-section .table thead tr th::after {
+  position: absolute;
+  bottom: 0px;
+  content: "";
+  width: 100%;
+  border-top: 1px solid #E6EAF2;
+  left: 0px;
 }
 .list-sec .table-section .table thead tr th.img-sq-box {
   width: 30px;
@@ -3895,7 +3913,7 @@ input[list]::-webkit-calendar-picker-indicator {
   min-width: 60px !important;
   max-width: 60px !important;
   text-align: center;
-  z-index: 9999;
+  z-index: 9;
 }
 .list-sec .table-section .table thead tr th.action img {
   height: 18px;
@@ -3905,7 +3923,6 @@ input[list]::-webkit-calendar-picker-indicator {
   position: absolute;
   right: 10px;
   background: #FFFFFF 0% 0% no-repeat padding-box;
-  box-shadow: 0px 1px 2px #00000017;
   text-align: center;
   border-radius: 3px;
   cursor: pointer;
@@ -3925,6 +3942,8 @@ input[list]::-webkit-calendar-picker-indicator {
   min-width: 40px !important;
   max-width: 40px !important;
   text-align: center;
+  z-index: 2;
+  position: sticky;
 }
 .list-sec .table-section .table tbody tr td.img-sq-box {
   width: 54px;
@@ -3935,10 +3954,6 @@ input[list]::-webkit-calendar-picker-indicator {
 
 .client .table {
   width: 2500px;
-}
-
-.table-bordered th, .table-bordered td {
-  border: 1px solid #d6d6d6 !important;
 }
 
 @media (max-width: 1559px) {
