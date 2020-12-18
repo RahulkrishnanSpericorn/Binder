@@ -15,15 +15,11 @@ class editBuilding extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            consultancy_id: "",
             consultancyIdList: [],
             binderIdList: [],
             clientIdList: [],
             regionIdList: [],
-            client_id: "",
-            region_id: "",
             siteIdList: [],
-            site_id: "",
 
             siteErrorMsg: false,
             consultancyErrorMsg: false,
@@ -60,6 +56,8 @@ class editBuilding extends Component {
                 site_id: false
             },
             selectedBinders: [],
+
+            showErrorBorder: false,
             isEdit: false
         };
     }

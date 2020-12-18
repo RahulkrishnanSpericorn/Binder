@@ -3,13 +3,13 @@ import { connect } from "react-redux";
 import { ToastContainer } from "react-toastify";
 import DatePicker from "react-date-picker";
 
+import history from "../../../config/history";
+import Portal from "../../common/components/Portal";
+import ToastMsg from "../../common/ToastMessage";
+import FrequencyModel from "../../common/components/FrequencyModel";
 import TopSlider from "../../common/components/TopSlider";
 import commonActions from "../actions";
-import ToastMsg from "../../common/ToastMessage";
-import history from "../../../config/history";
 import actions from "./actions";
-import Portal from "../../common/components/Portal";
-import FrequencyModel from "../../common/components/FrequencyModel";
 import Breadcrumb from "../../common/components/Breadcrumb";
 
 class addActivity extends Component {
