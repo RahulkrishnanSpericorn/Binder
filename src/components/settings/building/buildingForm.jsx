@@ -275,6 +275,14 @@ class editBuilding extends Component {
                                 <div className="head">
                                     <h3>Basic Info</h3>
                                 </div>
+                                {isEdit ? (
+                                    <div className="itm">
+                                        <div className="form-group">
+                                            <label>Code</label>
+                                            <input type="text" className="form-control" placeholder="" value={buildingParams.code} disabled={true} />
+                                        </div>
+                                    </div>
+                                ) : null}
                                 <div className="itm">
                                     <div className="form-group">
                                         <label className={`${showErrorBorder && errorParams.name ? "text-red " : ""}form-control-placeholder`}>
