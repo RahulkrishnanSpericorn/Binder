@@ -55,7 +55,7 @@ class addActivity extends Component {
         };
     }
 
-    async componentDidMount() {
+    componentDidMount = async () => {
         await this.props.getConsultancyDropdown();
         await this.setState({
             consultancyIdList: this.props.settingsCommonReducer.consultancyDropdownData.data
@@ -76,7 +76,7 @@ class addActivity extends Component {
                 isEdit: true
             });
         }
-    }
+    };
 
     renderFrequencyModal = () => {
         const { showFrequencyModal, activityParams } = this.state;
