@@ -230,11 +230,11 @@ class editConsultancy extends Component {
                                 </button>
                                 {isEdit ? (
                                     <button className="btn btn-create" onClick={() => this.updateConsultancies()}>
-                                        <i className="material-icons tic"> check</i> Update Activity
+                                        <i className="material-icons tic"> check</i> Update Consultancy
                                     </button>
                                 ) : (
                                     <button className="btn btn-create" onClick={() => this.addConsultancies()}>
-                                        <i className="material-icons tic"> check</i> Add Activity
+                                        <i className="material-icons tic"> check</i> Add Consultancy
                                     </button>
                                 )}
                             </div>
