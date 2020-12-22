@@ -2879,7 +2879,14 @@ input[list]::-webkit-calendar-picker-indicator {
 }
 
 /*File system table*/
+.file-calendar-cover.cal-tab-active th {
+  padding: 14px !important;
+}
+
 .file-system-table-cover {
+  overflow-y: auto;
+  overflow-x: hidden;
+  max-height: calc(100vh - 250px);
   display: -webkit-box;
   display: -moz-box;
   display: -ms-flexbox;
@@ -2887,11 +2894,29 @@ input[list]::-webkit-calendar-picker-indicator {
   display: flex;
 }
 .file-system-table-cover .file-system-sec-right {
-  flex: 0 0 140px;
+  overflow-x: scroll;
+  overflow-y: hidden;
+  height: 100%;
+}
+.file-system-table-cover .table.file-system-table {
+  margin-bottom: 2px !important;
+}
+.file-system-table-cover .file-system-sec-left.outer-width {
+  width: 50% !important;
+}
+.file-system-table-cover .file-system-sec-left.outer-width .table-section .file-system-table td {
+  white-space: nowrap;
 }
 .file-system-table-cover .file-system-sec-left {
   flex: 1 1 auto;
   width: calc(100% - 140px);
+}
+.file-system-table-cover .file-system-sec-left .table-section {
+  overflow-y: hidden;
+  height: auto;
+}
+.file-system-table-cover .file-system-table th.d-count {
+  width: 115px;
 }
 .file-system-table-cover .file-system-table thead .ref {
   width: 65px;
@@ -2915,9 +2940,12 @@ input[list]::-webkit-calendar-picker-indicator {
     font-size: 13px !important;
   }
 }
+.file-system-table-cover .file-system-table td {
+  white-space: nowrap;
+}
 .file-system-table-cover .file-system-table .filter-box {
   text-align: right;
-  padding: 5px;
+  padding: 11px 5px;
 }
 .file-system-table-cover .file-system-table .filter-box .form-group {
   position: relative;
@@ -2958,6 +2986,34 @@ input[list]::-webkit-calendar-picker-indicator {
   background-color: #E6EAF2;
   border: none;
 }
+.file-system-table-cover .rt-btn {
+  position: relative;
+}
+.file-system-table-cover .tab-toggle-btn {
+  width: 53px;
+  height: 53px;
+  background-color: #fff;
+  z-index: 101;
+  box-shadow: 0px 3px 6px #00000029;
+  position: absolute;
+  left: -22px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  outline: none;
+  border: none;
+  top: 50%;
+}
+.file-system-table-cover .tab-toggle-btn span {
+  color: #103BB5;
+  font-size: 25px;
+  transition: 0.3s;
+}
+.file-system-table-cover .tab-toggle-btn.active span {
+  -webkit-transform: scaleX(-1);
+  transform: scaleX(-1);
+}
 .file-system-table-cover .file-system-sec-right {
   background-color: #E6EAF2;
   display: flex;
@@ -2986,57 +3042,22 @@ input[list]::-webkit-calendar-picker-indicator {
   flex: 1 1 auto;
 }
 .file-system-table-cover .file-calendar-cover {
+  /*justify-content: flex-end;*/
   height: 100%;
-  position: absolute;
+  position: relative;
   right: 0;
-  top: 0;
-  width: 121px;
-  z-index: 100;
-  transition: 0.3s;
-  padding-bottom: 18px;
-}
-.file-system-table-cover .file-calendar-cover.cal-tab-active {
-  width: 1300px;
-}
-.file-system-table-cover .file-calendar-cover.cal-tab-active .calendar-tab-cover {
-  width: 100%;
-}
-.file-system-table-cover .file-calendar-cover .tab-toggle-btn {
-  width: 53px;
-  height: 53px;
-  background-color: #fff;
-  z-index: 101;
-  box-shadow: 0px 3px 6px #00000029;
-  position: absolute;
-  left: -22px;
-  border-radius: 50%;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  outline: none;
-  border: none;
-  top: 50%;
-}
-.file-system-table-cover .file-calendar-cover .tab-toggle-btn span {
-  color: #103BB5;
-  font-size: 25px;
-  transition: 0.3s;
-}
-.file-system-table-cover .file-calendar-cover .tab-toggle-btn.active span {
-  -webkit-transform: scaleX(-1);
-  transform: scaleX(-1);
+  width: 140px;
+  overflow: hidden;
 }
 .file-system-table-cover .file-calendar-cover .calendar-tab-cover {
-  transition: 0.3s;
+  /*transition: .3s;*/
   padding: 0 10px 10px;
   border-radius: 5px;
   background-color: #103BB5;
   color: #fff;
   display: flex;
   justify-content: flex-end;
-  overflow: hidden;
-  overflow-y: auto;
-  max-height: 100%;
+  width: inherit;
 }
 .file-system-table-cover .file-calendar-cover .calendar-tab-cover .calendar-table {
   width: 100%;
@@ -3069,16 +3090,15 @@ input[list]::-webkit-calendar-picker-indicator {
   text-align: left;
 }
 .file-system-table-cover .file-calendar-cover .calendar-tab-cover .calendar-table tbody tr td {
-  padding: 0;
   border: none;
   border-radius: 5px;
   background-color: rgba(255, 255, 255, 0.09);
   position: relative;
+  /*padding: 20px 15px;*/
 }
 .file-system-table-cover .file-calendar-cover .calendar-tab-cover .calendar-table tbody tr td:first-child {
   background-color: rgba(0, 0, 0, 0.25);
   border-radius: 5px;
-  padding: 10px 15px;
 }
 .file-system-table-cover .file-calendar-cover .calendar-tab-cover .calendar-table tbody tr td .cal-note {
   position: relative;
@@ -3132,6 +3152,14 @@ input[list]::-webkit-calendar-picker-indicator {
 .file-system-table-cover .file-calendar-cover .tab-title {
   font-size: 14px;
   font-weight: 400;
+}
+.file-system-table-cover .file-calendar-cover.cal-tab-active {
+  width: 1300px;
+  min-width: min-content;
+  overflow: auto;
+}
+.file-system-table-cover .file-calendar-cover.cal-tab-active .calendar-tab-cover {
+  display: block;
 }
 
 .list-area .top-header-list ul {
@@ -3395,8 +3423,8 @@ input[list]::-webkit-calendar-picker-indicator {
     width: calc(100vw - 250px);
   }
   .file-system-table-cover .file-calendar-cover.cal-tab-active .calendar-tab-cover {
-    justify-content: flex-start;
-    overflow: auto;
+    /*justify-content: flex-start;*/
+    overflow: hidden;
   }
 
   .file-system-table-cover .file-calendar-cover .calendar-tab-cover .calendar-table {
@@ -3415,10 +3443,6 @@ input[list]::-webkit-calendar-picker-indicator {
 
   .list-area .file-calendar-cover.cal-tab-active {
     width: calc(100vw - 250px);
-  }
-  .list-area .file-calendar-cover.cal-tab-active .calendar-tab-cover {
-    justify-content: flex-start;
-    overflow: auto;
   }
 
   .list-area .file-calendar-cover .calendar-tab-cover .calendar-table {
@@ -3615,7 +3639,7 @@ input[list]::-webkit-calendar-picker-indicator {
     font-size: 16px;
   }
 }
-@media screen and (max-width: 991px) {
+@media screen and (max-width: 600px) {
   .title-btn-wrapper .sr-sec,
 .title-btn-wrapper .btn-section-2 {
     display: none !important;
@@ -3639,8 +3663,20 @@ input[list]::-webkit-calendar-picker-indicator {
     display: none;
   }
 
+  .file-system-table-cover .file-system-sec-right.mob-sec .system-right-title {
+    display: block;
+    text-align: left;
+  }
+
+  .file-system-sec-right.mob-sec {
+    overflow: hidden !important;
+  }
+
+  .file-system-table-cover .file-calendar-cover.cal-tab-active .calendar-tab-cover {
+    overflow-x: scroll;
+  }
+
   .file-system-table-cover .file-calendar-cover.cal-tab-active {
-    width: calc(100vw - 70px);
     opacity: 1;
     max-height: 100%;
     overflow: auto;
@@ -4278,6 +4314,15 @@ input[list]::-webkit-calendar-picker-indicator {
   max-width: 60px !important;
   text-align: center;
   z-index: 9;
+  border-left-width: 0px;
+}
+.list-sec .table-section .table thead tr th.action::after {
+  position: absolute;
+  left: 0px;
+  border-left: 1px solid #E6EAF2;
+  height: 100%;
+  content: "";
+  top: 0px;
 }
 .list-sec .table-section .table thead tr th.action img {
   height: 18px;
@@ -4308,6 +4353,15 @@ input[list]::-webkit-calendar-picker-indicator {
   text-align: center;
   z-index: 2;
   position: sticky;
+  border-left-width: 0px;
+}
+.list-sec .table-section .table tbody tr td.action::after {
+  position: absolute;
+  left: 0px;
+  border-left: 1px solid #E6EAF2;
+  height: 100%;
+  content: "";
+  top: 0px;
 }
 .list-sec .table-section .table tbody tr td.img-sq-box {
   width: 54px;
