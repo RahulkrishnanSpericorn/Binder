@@ -92,7 +92,7 @@ class CommonView extends Component {
                 returnData =
                     data && data.url ? (
                         <h3 className="cursor-pointer" onClick={() => this.toggleShowImageModal()}>
-                            {data.description || data.name}
+                            {data.name || data.description}
                             {this.renderImageModall(data)}
                         </h3>
                     ) : (

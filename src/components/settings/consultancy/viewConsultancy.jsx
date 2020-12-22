@@ -17,7 +17,7 @@ class viewConsultancy extends Component {
     };
 
     goBack = () => {
-        history.push("/consultancy");
+        history.push("/consultancies");
     };
 
     render() {

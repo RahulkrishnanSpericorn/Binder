@@ -9,8 +9,8 @@ import LoginForm from "./components/login/index";
 import Dashboard from "./components/dashboard/index";
 
 import Consultancy from "./components/settings/consultancy/index";
-import AddConsultancy from "./components/settings/consultancy/addConsultancy";
-import editConsultancy from "./components/settings/consultancy/editConsultancy";
+import AddConsultancy from "./components/settings/consultancy/consultancyForm";
+import editConsultancy from "./components/settings/consultancy/consultancyForm";
 import viewConsultancy from "./components/settings/consultancy/viewConsultancy";
 
 import Clients from "./components/settings/clients/index";
@@ -55,7 +55,7 @@ function App() {
                 <PublicRoute exact path="/login" component={LoginForm} />
                 <PrivateRoute exact path="/dashboard" component={Dashboard} />
 
-                <PrivateRoute exact path="/consultancy" component={Consultancy} />
+                <PrivateRoute exact path="/consultancies" component={Consultancy} />
                 <PrivateRoute exact path="/addConsultancy" component={AddConsultancy} />
                 <PrivateRoute exact path="/editConsultancy" component={editConsultancy} />
                 <PrivateRoute exact path="/consultancy/:section" component={viewConsultancy} />

@@ -67,7 +67,7 @@ export default class SideNav extends Component {
                                     <li>
                                         <a
                                             onClick={() => {
-                                                this.pageChange("consultancy");
+                                                this.pageChange("consultancies");
                                             }}
                                             className=""
                                         >
