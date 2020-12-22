@@ -56,11 +56,11 @@ class index extends Component {
     };
 
     editItem = async item => {
-        history.push("/editCLients", { clientItem: item, consultancy_id: item.consultancy.id });
+        history.push("/editCLient", { clientItem: item, consultancy_id: item.consultancy.id });
     };
 
     addItem = async item => {
-        this.props.history.push("/addClients");
+        this.props.history.push("/addClient");
     };
 
     render() {

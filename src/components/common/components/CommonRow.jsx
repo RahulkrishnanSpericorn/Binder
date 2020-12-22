@@ -16,7 +16,7 @@ class CommonRow extends Component {
                 returnData = data.name || "-";
                 break;
             case "boolean":
-                returnData = data === "true" || data === true ? "Yes" : "No";
+                returnData = data === "true" || data === true || data === "yes" ? "Yes" : "No";
                 break;
             case "number":
                 returnData = data ? formatNumber(parseInt(data)) : "-";

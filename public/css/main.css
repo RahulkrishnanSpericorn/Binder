@@ -1461,7 +1461,7 @@ aside.navbar-collapse.show .viw-sub {
   border-radius: 100%;
   border: 1px solid #fff;
   transition: transform 0.3s ease-in-out, opacity 0.25s ease-in-out 0.1s, -webkit-transform 0.3s ease-in-out;
-  z-index: 9999;
+  z-index: 100;
   transform: rotate(180deg) !important;
   color: #fff;
   cursor: pointer;
@@ -2568,8 +2568,8 @@ input[list]::-webkit-calendar-picker-indicator {
 }
 .modal .modal-dialog .modal-content .modal-header h4 {
   font-family: "Inter", sans-serif;
-  color: #103BB5;
-  font-weight: 400;
+  color: #0730A5;
+  font-weight: 600;
   font-size: 18px;
   margin-bottom: 0px;
   padding: 15px 55px 15px 25px;
@@ -3914,6 +3914,317 @@ input[list]::-webkit-calendar-picker-indicator {
   min-height: 97%;
 }
 
+.modal.schedule-modal .modal-dialog {
+  max-width: 1440px !important;
+}
+@media (max-width: 1440px) {
+  .modal.schedule-modal .modal-dialog {
+    max-width: 95% !important;
+  }
+}
+.modal.schedule-modal .modal-body {
+  padding-top: 0px !important;
+}
+.modal.schedule-modal .outer-table-section {
+  display: flex;
+}
+.modal.schedule-modal .outer-table-section .total {
+  background: #D7DEEB;
+  min-height: 60px;
+  text-align: right;
+}
+.modal.schedule-modal .outer-table-section .total h3 {
+  margin-bottom: 0px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  color: #103BB5;
+}
+.modal.schedule-modal .outer-table-section .total h3 .txt {
+  padding-right: 14px;
+}
+.modal.schedule-modal .outer-table-section .total .tot {
+  min-height: 60px;
+  background: #ABBCDB;
+  display: flex;
+  align-items: center;
+  padding: 0px 19px;
+  font-weight: 700;
+}
+.modal.schedule-modal .outer-table-section .table-com {
+  background: #E6EAF2;
+  padding: 15px;
+  border-radius: 5px;
+}
+.modal.schedule-modal .outer-table-section .table-com td .container-check {
+  top: -4px;
+}
+.modal.schedule-modal .outer-table-section .table-com .button-section {
+  border-bottom: 1px solid #d7d0d0;
+}
+.modal.schedule-modal .outer-table-section .table-com .button-section .blue-btn {
+  background: #103BB5;
+  color: #fff;
+  padding: 8px 12px;
+  border: 2px solid #103bb5;
+  margin-bottom: 9px;
+  border-radius: 5px;
+  font-family: "Inter", sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+}
+@media (max-width: 1440px) {
+  .modal.schedule-modal .outer-table-section .table-com .button-section .blue-btn {
+    padding: 8px 8px;
+    font-size: 12px;
+  }
+}
+.modal.schedule-modal .outer-table-section .table-com .button-section .blue-btn:hover {
+  background: #fff;
+  color: #103BB5;
+}
+.modal.schedule-modal .outer-table-section .table-com .button-section .grey-btn {
+  background-color: #8D96AE;
+  color: #fff;
+  padding: 8px 12px;
+  border: 2px solid #8d96ae;
+  margin-bottom: 9px;
+  border-radius: 5px;
+  font-family: "Inter", sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+}
+@media (max-width: 1440px) {
+  .modal.schedule-modal .outer-table-section .table-com .button-section .grey-btn {
+    padding: 8px 8px;
+    font-size: 12px;
+  }
+}
+.modal.schedule-modal .outer-table-section .table-com .button-section .grey-btn:hover {
+  background: #fff;
+  color: #103BB5;
+}
+.modal.schedule-modal .outer-table-section .table-com .search-section {
+  margin-top: 15px;
+  background: #fff;
+  padding: 15px !important;
+  box-shadow: 0px 3px 6px #0000000A;
+  border-radius: 5px;
+  display: flex !important;
+  align-items: center;
+  position: relative;
+}
+.modal.schedule-modal .outer-table-section .table-com .search-section .form-control {
+  width: 290px !important;
+  background: #E5E9F1;
+}
+@media (max-width: 1440px) {
+  .modal.schedule-modal .outer-table-section .table-com .search-section .form-control {
+    font-size: 13px;
+  }
+}
+.modal.schedule-modal .outer-table-section .table-com .search-section .btn-search {
+  position: absolute;
+  left: 269px;
+  padding: 0;
+  margin-top: -6px;
+  box-shadow: none;
+}
+.modal.schedule-modal .outer-table-section .table-com .search-section .clear-btn {
+  padding-left: 15px;
+  text-decoration: underline;
+  color: #103BB5;
+  font-family: "Inter", sans-serif;
+  cursor: pointer;
+}
+.modal.schedule-modal .outer-table-section .table-section {
+  margin-top: 6px;
+  max-height: 500px;
+}
+.modal.schedule-modal .outer-table-section .table-section table {
+  min-width: auto !important;
+  margin-bottom: 0;
+}
+.modal.schedule-modal .outer-table-section .table-section .dropdown-menu {
+  top: 13px !important;
+  width: 100% !important;
+  font-size: 13px;
+  padding: 0px 14px;
+  left: -12px !important;
+}
+.modal.schedule-modal .outer-table-section .table-section .dropdown-menu .dropdown-item {
+  padding: 4px 0px;
+}
+.modal.schedule-modal .outer-table-section .table-section .dropdown-toggle {
+  width: 100%;
+  display: inline-block;
+  text-decoration: none !important;
+}
+.modal.schedule-modal .outer-table-section .table-section .dropdown-toggle::after {
+  content: "keyboard_arrow_down ";
+  position: absolute;
+  z-index: 1;
+  left: auto;
+  pointer-events: none;
+  right: 15px;
+  top: 15px;
+  font-family: "Material Icons";
+  font-weight: normal;
+  font-style: normal;
+  background-color: #fff;
+  box-shadow: 0px 1px 2px #00000017;
+  border-radius: 6px;
+  color: #103BB5;
+  font-size: 16px;
+  padding: 3px;
+  width: 20px;
+  height: 20px;
+  line-height: 13px;
+  border: none;
+}
+.modal.schedule-modal .outer-table-section .table-section td {
+  background: #fff;
+}
+.modal.schedule-modal .outer-table-section .table-sec-1 {
+  flex: 1 1 auto;
+  padding: 0;
+  margin-right: 5px;
+}
+@media (max-width: 1440px) {
+  .modal.schedule-modal .outer-table-section .table-sec-1 .table-section table {
+    min-width: 555px !important;
+  }
+}
+.modal.schedule-modal .outer-table-section .table-sec-2 {
+  width: 350px;
+  padding: 0;
+  margin-right: 5px;
+}
+.modal.schedule-modal .outer-table-section .table-sec-2 .search-section .form-control {
+  width: 195px !important;
+}
+.modal.schedule-modal .outer-table-section .table-sec-2 .search-section .btn-search {
+  left: 170px;
+}
+.modal.schedule-modal .outer-table-section .table-sec-3 {
+  width: 350px;
+  padding: 0;
+}
+.modal.schedule-modal .outer-table-section .table-sec-3 .search-section .form-control {
+  width: 195px;
+}
+.modal.schedule-modal .outer-table-section .table-sec-3 .search-section .btn-search {
+  left: 170px;
+}
+
+/* The container */
+.container-check {
+  display: block;
+  position: relative;
+  padding-left: 35px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  font-size: 22px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  left: 6px;
+  top: -8px;
+}
+
+/* Hide the browser's default checkbox */
+.container-check input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+/* Create a custom checkbox */
+.container-check .checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 19px !important;
+  width: 19px !important;
+  background-color: #fff !important;
+  border-radius: 0 !important;
+  border: 1px solid #d9dbdf;
+}
+
+/* On mouse-over, add a grey background color */
+.container-check:hover input ~ .checkmark {
+  background-color: #ccc;
+}
+
+/* When the checkbox is checked, add a blue background */
+.container-check input:checked ~ .checkmark {
+  background-color: #2196F3;
+}
+
+/* Create the checkmark/indicator (hidden when not checked) */
+.container-check .checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+/* Show the checkmark when checked */
+.container-check input:checked ~ .checkmark:after {
+  display: block;
+}
+
+/* Style the checkmark/indicator */
+.container-check .checkmark:after {
+  left: 6px;
+  top: 1px;
+  width: 5px;
+  height: 10px;
+  border: solid #103bb5;
+  border-width: 0 1px 1px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+@media (max-width: 1440px) {
+  .modal .modal-dialog .modal-content .modal-body {
+    padding: 10px 22px;
+  }
+}
+@media (max-width: 1190px) {
+  .modal.schedule-modal .outer-table-section .table-sec-1 {
+    width: 100%;
+  }
+
+  .modal.schedule-modal .outer-table-section .table-sec-2 {
+    width: 49%;
+    margin-top: 5px;
+  }
+
+  .modal.schedule-modal .outer-table-section .table-sec-3 {
+    width: 50%;
+    margin-top: 5px;
+  }
+
+  .modal.schedule-modal .outer-table-section {
+    flex-wrap: wrap;
+  }
+}
+@media (max-width: 700px) {
+  .modal.schedule-modal .outer-table-section .table-sec-2 {
+    width: 100%;
+    margin-right: 0px;
+  }
+
+  .modal.schedule-modal .outer-table-section .table-sec-3 {
+    width: 100%;
+  }
+}
 .list-sec {
   padding: 0px 10px 10px;
   overflow: hidden;

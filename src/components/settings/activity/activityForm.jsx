@@ -21,7 +21,7 @@ class addActivity extends Component {
             consultancyIdList: [],
             clientIdList: [],
             binderIdList: [],
-            activityParams: {
+            formParams: {
                 activity_type: null,
                 display_order: null,
                 reference: null,
@@ -64,22 +64,22 @@ class addActivity extends Component {
             await this.getClientDropDown(this.props.history.location.state.consultancy_id);
             await this.getBinderDropDown(this.props.history.location.state.client_id);
 
-            let tempActivityParam = this.props.history.location.state.activityItem;
-            tempActivityParam.binder_id = tempActivityParam.binder.id;
-            tempActivityParam.client_id = tempActivityParam.client.id;
-            tempActivityParam.consultancy_id = tempActivityParam.consultancy.id;
-            if (tempActivityParam.start_date) tempActivityParam.start_date = new Date(tempActivityParam.start_date);
-            if (tempActivityParam.end_date) tempActivityParam.end_date = new Date(tempActivityParam.end_date);
+            let tempFormParam = this.props.history.location.state.activityItem;
+            tempFormParam.binder_id = tempFormParam.binder.id;
+            tempFormParam.client_id = tempFormParam.client.id;
+            tempFormParam.consultancy_id = tempFormParam.consultancy.id;
+            if (tempFormParam.start_date) tempFormParam.start_date = new Date(tempFormParam.start_date);
+            if (tempFormParam.end_date) tempFormParam.end_date = new Date(tempFormParam.end_date);
 
             await this.setState({
-                activityParams: tempActivityParam,
+                formParams: tempFormParam,
                 isEdit: true
             });
         }
     };
 
     renderFrequencyModal = () => {
-        const { showFrequencyModal, activityParams } = this.state;
+        const { showFrequencyModal, formParams } = this.state;
         if (!showFrequencyModal) return null;
 
         return (
@@ -88,8 +88,8 @@ class addActivity extends Component {
                     <FrequencyModel
                         onCancel={this.toggleShowFrequencyModal}
                         setFrequencyData={this.setFrequencyData}
-                        frequency={activityParams.frequency}
-                        test_frequency={activityParams.test_frequency}
+                        frequency={formParams.frequency}
+                        test_frequency={formParams.test_frequency}
                         type={"form"}
                     />
                 }
@@ -106,10 +106,10 @@ class addActivity extends Component {
     };
 
     setFrequencyData = (frequency, test_frequency) => {
-        const { activityParams } = this.state;
+        const { formParams } = this.state;
         this.setState({
-            activityParams: {
-                ...activityParams,
+            formParams: {
+                ...formParams,
                 frequency,
                 test_frequency
             }
@@ -133,10 +133,10 @@ class addActivity extends Component {
     };
 
     selectConsultancyId = async consultancy_id => {
-        const { activityParams } = this.state;
+        const { formParams } = this.state;
         await this.setState({
-            activityParams: {
-                ...activityParams,
+            formParams: {
+                ...formParams,
                 consultancy_id
             }
         });
@@ -144,22 +144,22 @@ class addActivity extends Component {
     };
 
     validate = () => {
-        const { activityParams } = this.state;
+        const { formParams } = this.state;
         let errorParams = {
             binder_id: false,
             consultancy_id: false,
             client_id: false
         };
         let showErrorBorder = false;
-        if (!activityParams.binder_id || !activityParams.binder_id.trim().length) {
+        if (!formParams.binder_id || !formParams.binder_id.trim().length) {
             errorParams.binder_id = true;
             showErrorBorder = true;
         }
-        if (!activityParams.consultancy_id || !activityParams.consultancy_id.trim().length) {
+        if (!formParams.consultancy_id || !formParams.consultancy_id.trim().length) {
             errorParams.consultancy_id = true;
             showErrorBorder = true;
         }
-        if (!activityParams.client_id || !activityParams.client_id.trim().length) {
+        if (!formParams.client_id || !formParams.client_id.trim().length) {
             errorParams.client_id = true;
             showErrorBorder = true;
         }
@@ -173,9 +173,9 @@ class addActivity extends Component {
     };
 
     addActivity = async () => {
-        const { activityParams } = this.state;
+        const { formParams } = this.state;
         if (this.validate()) {
-            await this.props.addActivity(activityParams);
+            await this.props.addActivity(formParams);
             ToastMsg(this.props.activityReducer.addActivityData.message, "info");
             if (this.props.activityReducer.addActivityData.success) {
                 history.push("/activities");
@@ -184,9 +184,9 @@ class addActivity extends Component {
     };
 
     editActivity = async () => {
-        const { activityParams } = this.state;
+        const { formParams } = this.state;
         if (this.validate()) {
-            await this.props.editActivity(activityParams, activityParams.id);
+            await this.props.editActivity(formParams, formParams.id);
             ToastMsg(this.props.activityReducer.editActivityData.message, "info");
             if (this.props.activityReducer.editActivityData.success) {
                 history.push("/activities");
@@ -195,7 +195,7 @@ class addActivity extends Component {
     };
 
     render() {
-        const { binderIdList, activityParams, isEdit, showErrorBorder, errorParams } = this.state;
+        const { binderIdList, formParams, isEdit, showErrorBorder, errorParams } = this.state;
         return (
             <React.Fragment>
                 <section className="cont-ara act-main">
@@ -217,13 +217,7 @@ class addActivity extends Component {
                                         <div className="itm">
                                             <div className="form-group">
                                                 <label>Code</label>
-                                                <input
-                                                    type="text"
-                                                    className="form-control"
-                                                    placeholder=""
-                                                    value={activityParams.code}
-                                                    disabled={true}
-                                                />
+                                                <input type="text" className="form-control" placeholder="" value={formParams.code} disabled={true} />
                                             </div>
                                         </div>
                                     ) : null}
@@ -233,7 +227,7 @@ class addActivity extends Component {
                                             <div className="custom-selecbox">
                                                 <select
                                                     className="custom-selecbox form-control"
-                                                    value={activityParams.consultancy_id}
+                                                    value={formParams.consultancy_id}
                                                     onChange={e => {
                                                         this.selectConsultancyId(e.target.value);
                                                     }}
@@ -257,11 +251,11 @@ class addActivity extends Component {
                                             <div className="custom-selecbox">
                                                 <select
                                                     className="custom-selecbox form-control"
-                                                    value={activityParams.client_id}
+                                                    value={formParams.client_id}
                                                     onChange={e => {
                                                         this.setState({
-                                                            activityParams: {
-                                                                ...activityParams,
+                                                            formParams: {
+                                                                ...formParams,
                                                                 client_id: e.target.value
                                                             }
                                                         });
@@ -288,11 +282,11 @@ class addActivity extends Component {
                                                 type="text"
                                                 className="form-control"
                                                 placeholder=" "
-                                                value={activityParams.activity_type}
+                                                value={formParams.activity_type}
                                                 onChange={e =>
                                                     this.setState({
-                                                        activityParams: {
-                                                            ...activityParams,
+                                                        formParams: {
+                                                            ...formParams,
                                                             activity_type: e.target.value
                                                         }
                                                     })
@@ -308,11 +302,11 @@ class addActivity extends Component {
                                                 min="0"
                                                 className="form-control"
                                                 placeholder=" "
-                                                value={activityParams.display_order}
+                                                value={formParams.display_order}
                                                 onChange={e =>
                                                     this.setState({
-                                                        activityParams: {
-                                                            ...activityParams,
+                                                        formParams: {
+                                                            ...formParams,
                                                             display_order: e.target.value
                                                         }
                                                     })
@@ -327,11 +321,11 @@ class addActivity extends Component {
                                                 type="text"
                                                 className="form-control"
                                                 placeholder=" "
-                                                value={activityParams.reference}
+                                                value={formParams.reference}
                                                 onChange={e =>
                                                     this.setState({
-                                                        activityParams: {
-                                                            ...activityParams,
+                                                        formParams: {
+                                                            ...formParams,
                                                             reference: e.target.value
                                                         }
                                                     })
@@ -346,11 +340,11 @@ class addActivity extends Component {
                                                 type="text"
                                                 className="form-control"
                                                 placeholder=" "
-                                                value={activityParams.activity_description}
+                                                value={formParams.activity_description}
                                                 onChange={e =>
                                                     this.setState({
-                                                        activityParams: {
-                                                            ...activityParams,
+                                                        formParams: {
+                                                            ...formParams,
                                                             activity_description: e.target.value
                                                         }
                                                     })
@@ -365,11 +359,11 @@ class addActivity extends Component {
                                                 type="text"
                                                 className="form-control"
                                                 placeholder=" "
-                                                value={activityParams.activity_text}
+                                                value={formParams.activity_text}
                                                 onChange={e =>
                                                     this.setState({
-                                                        activityParams: {
-                                                            ...activityParams,
+                                                        formParams: {
+                                                            ...formParams,
                                                             activity_text: e.target.value
                                                         }
                                                     })
@@ -384,11 +378,11 @@ class addActivity extends Component {
                                                 type="text"
                                                 className="form-control"
                                                 placeholder=" "
-                                                value={activityParams.activity_tooltip}
+                                                value={formParams.activity_tooltip}
                                                 onChange={e =>
                                                     this.setState({
-                                                        activityParams: {
-                                                            ...activityParams,
+                                                        formParams: {
+                                                            ...formParams,
                                                             activity_tooltip: e.target.value
                                                         }
                                                     })
@@ -411,7 +405,7 @@ class addActivity extends Component {
                                                 type="text"
                                                 disabled={true}
                                                 className="form-control cursor-not-allowed"
-                                                value={activityParams.test_frequency}
+                                                value={formParams.test_frequency}
                                             />
                                         </div>
                                     </div>
@@ -423,11 +417,11 @@ class addActivity extends Component {
                                                 min="0"
                                                 className="form-control"
                                                 placeholder=" "
-                                                value={activityParams.completion_threshold}
+                                                value={formParams.completion_threshold}
                                                 onChange={e =>
                                                     this.setState({
-                                                        activityParams: {
-                                                            ...activityParams,
+                                                        formParams: {
+                                                            ...formParams,
                                                             completion_threshold: e.target.value
                                                         }
                                                     })
@@ -443,11 +437,11 @@ class addActivity extends Component {
                                                 min="0"
                                                 className="form-control"
                                                 placeholder=" "
-                                                value={activityParams.email_threshold}
+                                                value={formParams.email_threshold}
                                                 onChange={e =>
                                                     this.setState({
-                                                        activityParams: {
-                                                            ...activityParams,
+                                                        formParams: {
+                                                            ...formParams,
                                                             email_threshold: e.target.value
                                                         }
                                                     })
@@ -462,11 +456,11 @@ class addActivity extends Component {
                                                 type="text"
                                                 className="form-control"
                                                 placeholder=" "
-                                                value={activityParams.code_reference}
+                                                value={formParams.code_reference}
                                                 onChange={e =>
                                                     this.setState({
-                                                        activityParams: {
-                                                            ...activityParams,
+                                                        formParams: {
+                                                            ...formParams,
                                                             code_reference: e.target.value
                                                         }
                                                     })
@@ -481,11 +475,11 @@ class addActivity extends Component {
                                                 type="text"
                                                 className="form-control"
                                                 placeholder=" "
-                                                value={activityParams.code_reference_tooltip}
+                                                value={formParams.code_reference_tooltip}
                                                 onChange={e =>
                                                     this.setState({
-                                                        activityParams: {
-                                                            ...activityParams,
+                                                        formParams: {
+                                                            ...formParams,
                                                             code_reference_tooltip: e.target.value
                                                         }
                                                     })
@@ -498,11 +492,11 @@ class addActivity extends Component {
                                             <label>Quarterly View</label>
                                             <select
                                                 className="custom-selecbox form-control"
-                                                value={activityParams.quarterly_view}
+                                                value={formParams.quarterly_view}
                                                 onChange={e =>
                                                     this.setState({
-                                                        activityParams: {
-                                                            ...activityParams,
+                                                        formParams: {
+                                                            ...formParams,
                                                             quarterly_view: e.target.value
                                                         }
                                                     })
@@ -519,11 +513,11 @@ class addActivity extends Component {
                                             <label>Edit form</label>
                                             <select
                                                 className="custom-selecbox form-control"
-                                                value={activityParams.edit_form}
+                                                value={formParams.edit_form}
                                                 onChange={e =>
                                                     this.setState({
-                                                        activityParams: {
-                                                            ...activityParams,
+                                                        formParams: {
+                                                            ...formParams,
                                                             edit_form: e.target.value
                                                         }
                                                     })
@@ -542,11 +536,11 @@ class addActivity extends Component {
                                                 min="0"
                                                 className="form-control"
                                                 placeholder=" "
-                                                value={activityParams.default_total_devices}
+                                                value={formParams.default_total_devices}
                                                 onChange={e =>
                                                     this.setState({
-                                                        activityParams: {
-                                                            ...activityParams,
+                                                        formParams: {
+                                                            ...formParams,
                                                             default_total_devices: e.target.value
                                                         }
                                                     })
@@ -562,13 +556,13 @@ class addActivity extends Component {
                                                 className="form-control"
                                                 onChange={value => {
                                                     this.setState({
-                                                        activityParams: {
-                                                            ...activityParams,
+                                                        formParams: {
+                                                            ...formParams,
                                                             start_date: value
                                                         }
                                                     });
                                                 }}
-                                                value={activityParams.start_date && new Date(activityParams.start_date)}
+                                                value={formParams.start_date && new Date(formParams.start_date)}
                                             />
                                         </div>
                                     </div>
@@ -579,13 +573,13 @@ class addActivity extends Component {
                                                 className="form-control"
                                                 onChange={value => {
                                                     this.setState({
-                                                        activityParams: {
-                                                            ...activityParams,
+                                                        formParams: {
+                                                            ...formParams,
                                                             end_date: value
                                                         }
                                                     });
                                                 }}
-                                                value={activityParams.end_date && new Date(activityParams.end_date)}
+                                                value={formParams.end_date && new Date(formParams.end_date)}
                                             />
                                         </div>
                                     </div>
@@ -595,11 +589,11 @@ class addActivity extends Component {
                                             <div className="custom-selecbox">
                                                 <select
                                                     className="custom-selecbox form-control"
-                                                    value={activityParams.binder_id}
+                                                    value={formParams.binder_id}
                                                     onChange={e =>
                                                         this.setState({
-                                                            activityParams: {
-                                                                ...activityParams,
+                                                            formParams: {
+                                                                ...formParams,
                                                                 binder_id: e.target.value
                                                             }
                                                         })
@@ -626,7 +620,7 @@ class addActivity extends Component {
                                                     <input
                                                         type="text"
                                                         disabled="true"
-                                                        value={activityParams.created_at}
+                                                        value={formParams.created_at}
                                                         className="form-control cursor-not-allowed"
                                                         placeholder=" "
                                                     />
@@ -641,7 +635,7 @@ class addActivity extends Component {
                                                     <input
                                                         type="text"
                                                         disabled="true"
-                                                        value={activityParams.updated_at}
+                                                        value={formParams.updated_at}
                                                         className="form-control cursor-not-allowed"
                                                         placeholder=" "
                                                     />
