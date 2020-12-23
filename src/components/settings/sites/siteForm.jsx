@@ -13,7 +13,7 @@ class editSite extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            siteParams: {
+            formParams: {
                 name: null,
                 display_name: null,
                 consultancy_id: null,
@@ -39,14 +39,14 @@ class editSite extends Component {
             consultancyIdList: this.props.settingsCommonReducer.consultancyDropdownData.data
         });
         if (this.props.history.location.state && this.props.history.location.state.siteItem) {
-            let tempSiteParam = this.props.history.location.state.siteItem;
-            tempSiteParam.client_id = tempSiteParam.client.id;
-            tempSiteParam.consultancy_id = tempSiteParam.consultancy.id;
-            tempSiteParam.region_id = tempSiteParam.region.id;
+            let tempFormParam = this.props.history.location.state.siteItem;
+            tempFormParam.client_id = tempFormParam.client.id;
+            tempFormParam.consultancy_id = tempFormParam.consultancy.id;
+            tempFormParam.region_id = tempFormParam.region.id;
             this.getClientDropdown(this.props.history.location.state.consultancy_id);
             this.getRegionDataDropdown(this.props.history.location.state.client_id);
             await this.setState({
-                siteParams: tempSiteParam,
+                formParams: tempFormParam,
                 isEdit: true
             });
         }
@@ -67,10 +67,10 @@ class editSite extends Component {
     };
 
     selectConsultancyId = async consultancy_id => {
-        const { siteParams } = this.state;
+        const { formParams } = this.state;
         await this.setState({
-            siteParams: {
-                ...siteParams,
+            formParams: {
+                ...formParams,
                 consultancy_id
             }
         });
@@ -78,10 +78,10 @@ class editSite extends Component {
     };
 
     selectClientId = async client_id => {
-        const { siteParams } = this.state;
+        const { formParams } = this.state;
         await this.setState({
-            siteParams: {
-                ...siteParams,
+            formParams: {
+                ...formParams,
                 client_id
             }
         });
@@ -89,7 +89,7 @@ class editSite extends Component {
     };
 
     validate = () => {
-        const { siteParams } = this.state;
+        const { formParams } = this.state;
         let errorParams = {
             name: false,
             consultancy_id: false,
@@ -97,19 +97,19 @@ class editSite extends Component {
             region_id: false
         };
         let showErrorBorder = false;
-        if (!siteParams.name || !siteParams.name.trim().length) {
+        if (!formParams.name || !formParams.name.trim().length) {
             errorParams.name = true;
             showErrorBorder = true;
         }
-        if (!siteParams.consultancy_id || !siteParams.consultancy_id.trim().length) {
+        if (!formParams.consultancy_id || !formParams.consultancy_id.trim().length) {
             errorParams.consultancy_id = true;
             showErrorBorder = true;
         }
-        if (!siteParams.client_id || !siteParams.client_id.trim().length) {
+        if (!formParams.client_id || !formParams.client_id.trim().length) {
             errorParams.client_id = true;
             showErrorBorder = true;
         }
-        if (!siteParams.region_id || !siteParams.region_id.trim().length) {
+        if (!formParams.region_id || !formParams.region_id.trim().length) {
             errorParams.region_id = true;
             showErrorBorder = true;
         }
@@ -123,9 +123,9 @@ class editSite extends Component {
     };
 
     editSite = async () => {
-        const { siteParams } = this.state;
+        const { formParams } = this.state;
         if (this.validate()) {
-            await this.props.editSiteById(siteParams, siteParams.id);
+            await this.props.editSiteById(formParams, formParams.id);
             ToastMsg(this.props.siteReducer.editSiteData.message, "info");
             if (this.props.siteReducer.editSiteData.success) {
                 history.push("/sites");
@@ -134,9 +134,9 @@ class editSite extends Component {
     };
 
     addSite = async () => {
-        const { siteParams } = this.state;
+        const { formParams } = this.state;
         if (this.validate()) {
-            await this.props.addSite(siteParams);
+            await this.props.addSite(formParams);
             ToastMsg(this.props.siteReducer.addSiteData.message, "info");
             if (this.props.siteReducer.addSiteData.success) {
                 history.push("/sites");
@@ -145,7 +145,7 @@ class editSite extends Component {
     };
 
     render() {
-        const { siteParams, consultancyIdList, clientIdList, showErrorBorder, errorParams, isEdit, regionIdList } = this.state;
+        const { formParams, consultancyIdList, clientIdList, showErrorBorder, errorParams, isEdit, regionIdList } = this.state;
         return (
             <section className="cont-ara act-main">
                 <div className="list-area">
@@ -166,7 +166,7 @@ class editSite extends Component {
                                     <div className="itm">
                                         <div className="form-group">
                                             <label>Code</label>
-                                            <input type="text" className="form-control" placeholder="" value={siteParams.code} disabled={true} />
+                                            <input type="text" className="form-control" placeholder="" value={formParams.code} disabled={true} />
                                         </div>
                                     </div>
                                 ) : null}
@@ -177,11 +177,11 @@ class editSite extends Component {
                                         </label>
                                         <input
                                             type="text"
-                                            value={siteParams.name}
+                                            value={formParams.name}
                                             onChange={e => {
                                                 this.setState({
-                                                    siteParams: {
-                                                        ...siteParams,
+                                                    formParams: {
+                                                        ...formParams,
                                                         name: e.target.value
                                                     }
                                                 });
@@ -197,11 +197,11 @@ class editSite extends Component {
                                         <label className="form-control-placeholder">Display Name</label>
                                         <input
                                             type="text"
-                                            value={siteParams.display_name}
+                                            value={formParams.display_name}
                                             onChange={e => {
                                                 this.setState({
-                                                    siteParams: {
-                                                        ...siteParams,
+                                                    formParams: {
+                                                        ...formParams,
                                                         display_name: e.target.value
                                                     }
                                                 });
@@ -222,7 +222,7 @@ class editSite extends Component {
                                         <div className="custom-selecbox">
                                             <select
                                                 className="form-control custom-selecbox"
-                                                value={siteParams.consultancy_id}
+                                                value={formParams.consultancy_id}
                                                 onChange={e => {
                                                     this.selectConsultancyId(e.target.value);
                                                 }}
@@ -245,7 +245,7 @@ class editSite extends Component {
                                         <div className="custom-selecbox">
                                             <select
                                                 className="form-control custom-selecbox"
-                                                value={siteParams.client_id}
+                                                value={formParams.client_id}
                                                 onChange={e => {
                                                     this.selectClientId(e.target.value);
                                                 }}
@@ -267,11 +267,11 @@ class editSite extends Component {
                                         </label>
                                         <select
                                             className="form-control custom-selecbox"
-                                            value={siteParams.region_id}
+                                            value={formParams.region_id}
                                             onChange={e => {
                                                 this.setState({
-                                                    siteParams: {
-                                                        ...siteParams,
+                                                    formParams: {
+                                                        ...formParams,
                                                         region_id: e.target.value
                                                     }
                                                 });
@@ -321,11 +321,11 @@ class editSite extends Component {
                                         <label className="form-control-placeholder">Comments</label>
                                         <textarea
                                             type="text-area"
-                                            value={siteParams.comments}
+                                            value={formParams.comments}
                                             onChange={e => {
                                                 this.setState({
-                                                    siteParams: {
-                                                        ...siteParams,
+                                                    formParams: {
+                                                        ...formParams,
                                                         comments: e.target.value
                                                     }
                                                 });

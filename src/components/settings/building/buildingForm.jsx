@@ -20,13 +20,7 @@ class editBuilding extends Component {
             clientIdList: [],
             regionIdList: [],
             siteIdList: [],
-
-            siteErrorMsg: false,
-            consultancyErrorMsg: false,
-            clientErrorMsg: false,
-            regionErrorMsg: false,
-            nameErrorMsg: false,
-            buildingParams: {
+            formParams: {
                 name: null,
                 display_name: null,
                 zip_code: null,
@@ -68,20 +62,20 @@ class editBuilding extends Component {
             consultancyIdList: this.props.settingsCommonReducer.consultancyDropdownData.data
         });
         if (this.props.history.location.state && this.props.history.location.state.buildingItem) {
-            let tempBuildingParam = this.props.history.location.state.buildingItem;
-            tempBuildingParam.region_id = tempBuildingParam.region.id;
-            tempBuildingParam.site_id = tempBuildingParam.site.id;
-            tempBuildingParam.client_id = tempBuildingParam.client.id;
-            tempBuildingParam.consultancy_id = tempBuildingParam.consultancy.id;
+            let tempFormParam = this.props.history.location.state.buildingItem;
+            tempFormParam.region_id = tempFormParam.region.id;
+            tempFormParam.site_id = tempFormParam.site.id;
+            tempFormParam.client_id = tempFormParam.client.id;
+            tempFormParam.consultancy_id = tempFormParam.consultancy.id;
 
             this.getBinderDropDown(this.props.history.location.state.client_id);
             this.getClientDropdown(this.props.history.location.state.consultancy_id);
             this.getRegionDropdown(this.props.history.location.state.client_id);
             this.getSiteDropdown(this.props.history.location.state.region_id);
             await this.setState({
-                buildingParams: tempBuildingParam,
+                formParams: tempFormParam,
                 isEdit: true,
-                selectedBinders: tempBuildingParam.binders
+                selectedBinders: tempFormParam.binders
             });
         }
     };
@@ -116,10 +110,10 @@ class editBuilding extends Component {
     };
 
     selectConsultancyId = async value => {
-        const { buildingParams } = this.state;
+        const { formParams } = this.state;
         await this.setState({
-            buildingParams: {
-                ...buildingParams,
+            formParams: {
+                ...formParams,
                 consultancy_id: value
             }
         });
@@ -127,10 +121,10 @@ class editBuilding extends Component {
     };
 
     selectClientId = async value => {
-        const { buildingParams } = this.state;
+        const { formParams } = this.state;
         await this.setState({
-            buildingParams: {
-                ...buildingParams,
+            formParams: {
+                ...formParams,
                 client_id: value
             }
         });
@@ -139,10 +133,10 @@ class editBuilding extends Component {
     };
 
     selectRegionId = async value => {
-        const { buildingParams } = this.state;
+        const { formParams } = this.state;
         await this.setState({
-            buildingParams: {
-                ...buildingParams,
+            formParams: {
+                ...formParams,
                 region_id: value
             }
         });
@@ -150,7 +144,7 @@ class editBuilding extends Component {
     };
 
     validate = () => {
-        const { buildingParams } = this.state;
+        const { formParams } = this.state;
         let errorParams = {
             name: false,
             consultancy_id: false,
@@ -160,27 +154,27 @@ class editBuilding extends Component {
             binder_id: false
         };
         let showErrorBorder = false;
-        if (!buildingParams.name || !buildingParams.name.trim().length) {
+        if (!formParams.name || !formParams.name.trim().length) {
             errorParams.name = true;
             showErrorBorder = true;
         }
-        if (!buildingParams.binder_ids || !buildingParams.binder_ids.length) {
+        if (!formParams.binder_ids || !formParams.binder_ids.length) {
             errorParams.binder_ids = true;
             showErrorBorder = true;
         }
-        if (!buildingParams.consultancy_id || !buildingParams.consultancy_id.trim().length) {
+        if (!formParams.consultancy_id || !formParams.consultancy_id.trim().length) {
             errorParams.consultancy_id = true;
             showErrorBorder = true;
         }
-        if (!buildingParams.client_id || !buildingParams.client_id.trim().length) {
+        if (!formParams.client_id || !formParams.client_id.trim().length) {
             errorParams.client_id = true;
             showErrorBorder = true;
         }
-        if (!buildingParams.region_id || !buildingParams.region_id.trim().length) {
+        if (!formParams.region_id || !formParams.region_id.trim().length) {
             errorParams.region_id = true;
             showErrorBorder = true;
         }
-        if (!buildingParams.site_id || !buildingParams.site_id.trim().length) {
+        if (!formParams.site_id || !formParams.site_id.trim().length) {
             errorParams.site_id = true;
             showErrorBorder = true;
         }
@@ -194,9 +188,9 @@ class editBuilding extends Component {
     };
 
     editBuilding = async () => {
-        const { buildingParams } = this.state;
+        const { formParams } = this.state;
         if (this.validate()) {
-            await this.props.editBuilding({ building: buildingParams }, buildingParams.id);
+            await this.props.editBuilding({ building: formParams }, formParams.id);
             ToastMsg(this.props.buildingReducer.editBuildingData.message, "info");
             if (this.props.buildingReducer.editBuildingData.success) {
                 history.push("/buildings");
@@ -205,9 +199,9 @@ class editBuilding extends Component {
     };
 
     addBuilding = async () => {
-        const { buildingParams } = this.state;
+        const { formParams } = this.state;
         if (this.validate()) {
-            await this.props.addBuilding({ building: buildingParams });
+            await this.props.addBuilding({ building: formParams });
             ToastMsg(this.props.buildingReducer.addBuildingData.message, "info");
             if (this.props.buildingReducer.addBuildingData.success) {
                 history.push("/buildings");
@@ -216,12 +210,12 @@ class editBuilding extends Component {
     };
 
     onBinderSelect = async selectedList => {
-        const { buildingParams } = this.state;
+        const { formParams } = this.state;
         let tempBinderList = [];
         selectedList.map(item => tempBinderList.push(item.id));
         await this.setState({
-            buildingParams: {
-                ...buildingParams,
+            formParams: {
+                ...formParams,
                 binder_ids: tempBinderList
             },
             selectedBinders: selectedList
@@ -229,12 +223,12 @@ class editBuilding extends Component {
     };
 
     onBinderRemove = async selectedList => {
-        const { buildingParams } = this.state;
+        const { formParams } = this.state;
         let tempBinderList = [];
         selectedList.map(item => tempBinderList.push(item.id));
         await this.setState({
-            buildingParams: {
-                ...buildingParams,
+            formParams: {
+                ...formParams,
                 binder_ids: tempBinderList
             },
             selectedBinders: selectedList
@@ -244,7 +238,7 @@ class editBuilding extends Component {
     render() {
         const {
             isEdit,
-            buildingParams,
+            formParams,
             showErrorBorder,
             errorParams,
             consultancyIdList,
@@ -277,7 +271,7 @@ class editBuilding extends Component {
                                     <div className="itm">
                                         <div className="form-group">
                                             <label>Code</label>
-                                            <input type="text" className="form-control" placeholder="" value={buildingParams.code} disabled={true} />
+                                            <input type="text" className="form-control" placeholder="" value={formParams.code} disabled={true} />
                                         </div>
                                     </div>
                                 ) : null}
@@ -288,11 +282,11 @@ class editBuilding extends Component {
                                         </label>
                                         <input
                                             type="text"
-                                            value={buildingParams.name}
+                                            value={formParams.name}
                                             onChange={e => {
                                                 this.setState({
-                                                    buildingParams: {
-                                                        ...buildingParams,
+                                                    formParams: {
+                                                        ...formParams,
                                                         name: e.target.value
                                                     }
                                                 });
@@ -312,7 +306,7 @@ class editBuilding extends Component {
                                         <div className="custom-selecbox">
                                             <select
                                                 className="custom-selecbox form-control"
-                                                value={buildingParams.consultancy_id}
+                                                value={formParams.consultancy_id}
                                                 onChange={e => this.selectConsultancyId(e.target.value)}
                                             >
                                                 <option value="">Select</option>
@@ -336,7 +330,7 @@ class editBuilding extends Component {
                                         <div className="custom-selecbox">
                                             <select
                                                 className="form-control custom-selecbox"
-                                                value={buildingParams.client_id}
+                                                value={formParams.client_id}
                                                 onChange={e => {
                                                     this.selectClientId(e.target.value);
                                                 }}
@@ -363,7 +357,7 @@ class editBuilding extends Component {
                                         <div className="custom-selecbox">
                                             <select
                                                 className="form-control custom-selecbox"
-                                                value={buildingParams.region_id}
+                                                value={formParams.region_id}
                                                 onChange={e => {
                                                     this.selectRegionId(e.target.value);
                                                 }}
@@ -386,11 +380,11 @@ class editBuilding extends Component {
                                         <div className="custom-selecbox">
                                             <select
                                                 className="form-control custom-selecbox"
-                                                value={buildingParams.site_id}
+                                                value={formParams.site_id}
                                                 onChange={e => {
                                                     this.setState({
-                                                        buildingParams: {
-                                                            ...buildingParams,
+                                                        formParams: {
+                                                            ...formParams,
                                                             site_id: e.target.value
                                                         }
                                                     });
@@ -411,11 +405,11 @@ class editBuilding extends Component {
                                         <label className="form-control-placeholder">Display Name</label>
                                         <input
                                             type="text"
-                                            value={buildingParams.display_name}
+                                            value={formParams.display_name}
                                             onChange={e => {
                                                 this.setState({
-                                                    buildingParams: {
-                                                        ...buildingParams,
+                                                    formParams: {
+                                                        ...formParams,
                                                         display_name: e.target.value
                                                     }
                                                 });
@@ -433,11 +427,11 @@ class editBuilding extends Component {
                                         <label className="form-control-placeholder">Description</label>
                                         <input
                                             type="text"
-                                            value={buildingParams.description}
+                                            value={formParams.description}
                                             onChange={e => {
                                                 this.setState({
-                                                    buildingParams: {
-                                                        ...buildingParams,
+                                                    formParams: {
+                                                        ...formParams,
                                                         description: e.target.value
                                                     }
                                                 });
@@ -452,11 +446,11 @@ class editBuilding extends Component {
                                         <label className="form-control-placeholder">Building Number</label>
                                         <input
                                             type="text"
-                                            value={buildingParams.number}
+                                            value={formParams.number}
                                             onChange={e => {
                                                 this.setState({
-                                                    buildingParams: {
-                                                        ...buildingParams,
+                                                    formParams: {
+                                                        ...formParams,
                                                         number: e.target.value
                                                     }
                                                 });
@@ -520,7 +514,7 @@ class editBuilding extends Component {
                                     <div className="form-group">
                                         <label className="form-control-placeholder">Area (Sq)</label>
                                         <NumberFormat
-                                            value={parseInt(buildingParams.area)}
+                                            value={parseInt(formParams.area)}
                                             thousandSeparator={true}
                                             decimalScale={0}
                                             className="form-control"
@@ -528,8 +522,8 @@ class editBuilding extends Component {
                                             onValueChange={values => {
                                                 const { value } = values;
                                                 this.setState({
-                                                    buildingParams: {
-                                                        ...buildingParams,
+                                                    formParams: {
+                                                        ...formParams,
                                                         area: value
                                                     }
                                                 });
@@ -541,17 +535,17 @@ class editBuilding extends Component {
                                     <div className="form-group">
                                         <label className="form-control-placeholder">Cost</label>
                                         <NumberFormat
-                                            value={buildingParams.cost}
+                                            value={formParams.cost}
                                             thousandSeparator={true}
                                             decimalScale={0}
                                             className="form-control"
                                             placeholder="Enter Cost"
-                                            prefix={buildingParams.cost && buildingParams.cost.length ? "$ " : ""}
+                                            prefix={formParams.cost && formParams.cost.length ? "$ " : ""}
                                             onValueChange={values => {
                                                 const { value } = values;
                                                 this.setState({
-                                                    buildingParams: {
-                                                        ...buildingParams,
+                                                    formParams: {
+                                                        ...formParams,
                                                         cost: value
                                                     }
                                                 });
@@ -564,11 +558,11 @@ class editBuilding extends Component {
                                         <label className="form-control-placeholder">Enterprice Index</label>
                                         <input
                                             type="text"
-                                            value={buildingParams.enterprise_index}
+                                            value={formParams.enterprise_index}
                                             onChange={e => {
                                                 this.setState({
-                                                    buildingParams: {
-                                                        ...buildingParams,
+                                                    formParams: {
+                                                        ...formParams,
                                                         enterprise_index: e.target.value
                                                     }
                                                 });
@@ -584,11 +578,11 @@ class editBuilding extends Component {
                                         <label className="form-control-placeholder">Ownership</label>
                                         <input
                                             type="text"
-                                            value={buildingParams.ownership}
+                                            value={formParams.ownership}
                                             onChange={e => {
                                                 this.setState({
-                                                    buildingParams: {
-                                                        ...buildingParams,
+                                                    formParams: {
+                                                        ...formParams,
                                                         ownership: e.target.value
                                                     }
                                                 });
@@ -604,11 +598,11 @@ class editBuilding extends Component {
                                         <label className="form-control-placeholder">Ownership Type</label>
                                         <input
                                             type="text"
-                                            value={buildingParams.ownership_type}
+                                            value={formParams.ownership_type}
                                             onChange={e => {
                                                 this.setState({
-                                                    buildingParams: {
-                                                        ...buildingParams,
+                                                    formParams: {
+                                                        ...formParams,
                                                         ownership_type: e.target.value
                                                     }
                                                 });
@@ -624,11 +618,11 @@ class editBuilding extends Component {
                                         <label className="form-control-placeholder">Use</label>
                                         <input
                                             type="text"
-                                            value={buildingParams.use}
+                                            value={formParams.use}
                                             onChange={e => {
                                                 this.setState({
-                                                    buildingParams: {
-                                                        ...buildingParams,
+                                                    formParams: {
+                                                        ...formParams,
                                                         use: e.target.value
                                                     }
                                                 });
@@ -643,11 +637,11 @@ class editBuilding extends Component {
                                         <label className="form-control-placeholder">Manager</label>
                                         <input
                                             type="text"
-                                            value={buildingParams.manager}
+                                            value={formParams.manager}
                                             onChange={e => {
                                                 this.setState({
-                                                    buildingParams: {
-                                                        ...buildingParams,
+                                                    formParams: {
+                                                        ...formParams,
                                                         manager: e.target.value
                                                     }
                                                 });
@@ -661,7 +655,7 @@ class editBuilding extends Component {
                                     <div className="form-group">
                                         <label className="form-control-placeholder">Year Built</label>
                                         <NumberFormat
-                                            value={buildingParams.year}
+                                            value={formParams.year}
                                             thousandSeparator={false}
                                             className="form-control"
                                             placeholder="Enter Year Built"
@@ -670,8 +664,8 @@ class editBuilding extends Component {
                                                 const { value } = values;
                                                 if (parseInt(value.length) < 5) {
                                                     this.setState({
-                                                        buildingParams: {
-                                                            ...buildingParams,
+                                                        formParams: {
+                                                            ...formParams,
                                                             year: parseInt(value)
                                                         }
                                                     });
@@ -685,11 +679,11 @@ class editBuilding extends Component {
                                         <label className="form-control-placeholder">Ministry</label>
                                         <input
                                             type="text"
-                                            value={buildingParams.ministry}
+                                            value={formParams.ministry}
                                             onChange={e => {
                                                 this.setState({
-                                                    buildingParams: {
-                                                        ...buildingParams,
+                                                    formParams: {
+                                                        ...formParams,
                                                         ministry: e.target.value
                                                     }
                                                 });
@@ -708,11 +702,11 @@ class editBuilding extends Component {
                                         <label className="form-control-placeholder">Street</label>
                                         <input
                                             type="text"
-                                            value={buildingParams.street}
+                                            value={formParams.street}
                                             onChange={e => {
                                                 this.setState({
-                                                    buildingParams: {
-                                                        ...buildingParams,
+                                                    formParams: {
+                                                        ...formParams,
                                                         street: e.target.value
                                                     }
                                                 });
@@ -727,11 +721,11 @@ class editBuilding extends Component {
                                         <label className="form-control-placeholder">City</label>
                                         <input
                                             type="text"
-                                            value={buildingParams.city}
+                                            value={formParams.city}
                                             onChange={e => {
                                                 this.setState({
-                                                    buildingParams: {
-                                                        ...buildingParams,
+                                                    formParams: {
+                                                        ...formParams,
                                                         city: e.target.value
                                                     }
                                                 });
@@ -746,11 +740,11 @@ class editBuilding extends Component {
                                         <label className="form-control-placeholder">State</label>
                                         <input
                                             type="text"
-                                            value={buildingParams.state}
+                                            value={formParams.state}
                                             onChange={e => {
                                                 this.setState({
-                                                    buildingParams: {
-                                                        ...buildingParams,
+                                                    formParams: {
+                                                        ...formParams,
                                                         state: e.target.value
                                                     }
                                                 });
@@ -768,13 +762,13 @@ class editBuilding extends Component {
                                             type="text"
                                             onChange={e => {
                                                 this.setState({
-                                                    buildingParams: {
-                                                        ...buildingParams,
+                                                    formParams: {
+                                                        ...formParams,
                                                         country: e.target.value
                                                     }
                                                 });
                                             }}
-                                            value={buildingParams.country}
+                                            value={formParams.country}
                                             className="form-control"
                                             placeholder="Enter Country"
                                         />
@@ -785,7 +779,7 @@ class editBuilding extends Component {
                                     <div className="form-group">
                                         <label className="form-control-placeholder">Zip Code</label>
                                         <NumberFormat
-                                            value={buildingParams.zip_code}
+                                            value={formParams.zip_code}
                                             thousandSeparator={false}
                                             className="form-control"
                                             placeholder="Zipcode"
@@ -793,8 +787,8 @@ class editBuilding extends Component {
                                             onValueChange={values => {
                                                 const { value } = values;
                                                 this.setState({
-                                                    buildingParams: {
-                                                        ...buildingParams,
+                                                    formParams: {
+                                                        ...formParams,
                                                         zip_code: value
                                                     }
                                                 });
@@ -810,13 +804,13 @@ class editBuilding extends Component {
                                             type="text"
                                             onChange={e => {
                                                 this.setState({
-                                                    buildingParams: {
-                                                        ...buildingParams,
+                                                    formParams: {
+                                                        ...formParams,
                                                         comments: e.target.value
                                                     }
                                                 });
                                             }}
-                                            value={buildingParams.comments}
+                                            value={formParams.comments}
                                             className="form-control"
                                             placeholder="Enter Comments "
                                         />

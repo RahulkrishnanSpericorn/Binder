@@ -137,7 +137,8 @@ class addActivity extends Component {
         await this.setState({
             formParams: {
                 ...formParams,
-                consultancy_id
+                consultancy_id,
+                client_id: null
             }
         });
         this.getClientDropDown(consultancy_id);
@@ -490,22 +491,24 @@ class addActivity extends Component {
                                     <div className="itm">
                                         <div className="form-group">
                                             <label>Quarterly View</label>
-                                            <select
-                                                className="custom-selecbox form-control"
-                                                value={formParams.quarterly_view}
-                                                onChange={e =>
-                                                    this.setState({
-                                                        formParams: {
-                                                            ...formParams,
-                                                            quarterly_view: e.target.value
-                                                        }
-                                                    })
-                                                }
-                                            >
-                                                <option value="">Select</option>
-                                                <option value="YES">YES</option>
-                                                <option value="NO">NO</option>
-                                            </select>
+                                            <div className="custom-selecbox">
+                                                <select
+                                                    className="custom-selecbox form-control"
+                                                    value={formParams.quarterly_view}
+                                                    onChange={e =>
+                                                        this.setState({
+                                                            formParams: {
+                                                                ...formParams,
+                                                                quarterly_view: e.target.value
+                                                            }
+                                                        })
+                                                    }
+                                                >
+                                                    <option value="">Select</option>
+                                                    <option value="YES">YES</option>
+                                                    <option value="NO">NO</option>
+                                                </select>
+                                            </div>
                                         </div>
                                     </div>
                                     <div className="itm">

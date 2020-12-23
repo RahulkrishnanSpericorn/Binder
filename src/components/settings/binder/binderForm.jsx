@@ -13,7 +13,7 @@ class editBinder extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            binderParams: {
+            formParams: {
                 name: null,
                 comments: null,
                 display_name: null,
@@ -42,12 +42,12 @@ class editBinder extends Component {
             consultancyIdList: this.props.settingsCommonReducer.consultancyDropdownData.data
         });
         if (this.props.history.location.state && this.props.history.location.state.binderItem) {
-            let tempBinderParam = this.props.history.location.state.binderItem;
-            tempBinderParam.client_id = tempBinderParam.client.id;
-            tempBinderParam.consultancy_id = tempBinderParam.consultancy.id;
+            let tempFormParam = this.props.history.location.state.binderItem;
+            tempFormParam.client_id = tempFormParam.client.id;
+            tempFormParam.consultancy_id = tempFormParam.consultancy.id;
             this.getClientDropdown(this.props.history.location.state.consultancy_id);
             await this.setState({
-                binderParams: tempBinderParam,
+                formParams: tempFormParam,
                 isEdit: true
             });
         }
@@ -61,10 +61,10 @@ class editBinder extends Component {
     };
 
     selectConsultancyId = async consultancy_id => {
-        const { binderParams } = this.state;
+        const { formParams } = this.state;
         await this.setState({
-            binderParams: {
-                ...binderParams,
+            formParams: {
+                ...formParams,
                 consultancy_id
             }
         });
@@ -72,23 +72,23 @@ class editBinder extends Component {
     };
 
     validate = () => {
-        const { binderParams } = this.state;
+        const { formParams } = this.state;
         let errorParams = {
             name: false,
             consultancy_id: false,
             client_id: false
         };
         let showErrorBorder = false;
-        if (!binderParams.name || !binderParams.name.trim().length) {
+        if (!formParams.name || !formParams.name.trim().length) {
             errorParams.name = true;
             showErrorBorder = true;
         }
 
-        if (!binderParams.consultancy_id || !binderParams.consultancy_id.trim().length) {
+        if (!formParams.consultancy_id || !formParams.consultancy_id.trim().length) {
             errorParams.consultancy_id = true;
             showErrorBorder = true;
         }
-        if (!binderParams.client_id || !binderParams.client_id.trim().length) {
+        if (!formParams.client_id || !formParams.client_id.trim().length) {
             errorParams.client_id = true;
             showErrorBorder = true;
         }
@@ -103,9 +103,9 @@ class editBinder extends Component {
     };
 
     editBinder = async () => {
-        const { binderParams } = this.state;
+        const { formParams } = this.state;
         if (this.validate()) {
-            await this.props.editBinder(binderParams, binderParams.id);
+            await this.props.editBinder(formParams, formParams.id);
             ToastMsg(this.props.binderReducer.editBinderData.message, "info");
             if (this.props.binderReducer.editBinderData.success) {
                 history.push("/binders");
@@ -114,9 +114,9 @@ class editBinder extends Component {
     };
 
     addBinder = async () => {
-        const { binderParams } = this.state;
+        const { formParams } = this.state;
         if (this.validate()) {
-            await this.props.addBinder(binderParams);
+            await this.props.addBinder(formParams);
             ToastMsg(this.props.binderReducer.addBinderData.message, "info");
             if (this.props.binderReducer.addBinderData.success) {
                 history.push("/binders");
@@ -125,7 +125,7 @@ class editBinder extends Component {
     };
 
     render() {
-        const { binderParams, consultancyIdList, clientIdList, showErrorBorder, errorParams, isEdit } = this.state;
+        const { formParams, consultancyIdList, clientIdList, showErrorBorder, errorParams, isEdit } = this.state;
         return (
             <section className="cont-ara act-main">
                 <div className="list-area">
@@ -146,7 +146,7 @@ class editBinder extends Component {
                                     <div className="itm">
                                         <div className="form-group">
                                             <label>Code</label>
-                                            <input type="text" className="form-control" placeholder="" value={binderParams.code} disabled={true} />
+                                            <input type="text" className="form-control" placeholder="" value={formParams.code} disabled={true} />
                                         </div>
                                     </div>
                                 ) : null}
@@ -158,11 +158,11 @@ class editBinder extends Component {
                                         <input
                                             type="text"
                                             id="text"
-                                            value={binderParams.name}
+                                            value={formParams.name}
                                             onChange={e => {
                                                 this.setState({
-                                                    binderParams: {
-                                                        ...binderParams,
+                                                    formParams: {
+                                                        ...formParams,
                                                         name: e.target.value
                                                     }
                                                 });
@@ -179,11 +179,11 @@ class editBinder extends Component {
                                         <input
                                             type="text"
                                             id="text"
-                                            value={binderParams.display_name}
+                                            value={formParams.display_name}
                                             onChange={e => {
                                                 this.setState({
-                                                    binderParams: {
-                                                        ...binderParams,
+                                                    formParams: {
+                                                        ...formParams,
                                                         display_name: e.target.value
                                                     }
                                                 });
@@ -204,7 +204,7 @@ class editBinder extends Component {
                                         <div className="custom-selecbox">
                                             <select
                                                 className="form-control custom-selecbox"
-                                                value={binderParams.consultancy_id}
+                                                value={formParams.consultancy_id}
                                                 onChange={e => {
                                                     this.selectConsultancyId(e.target.value);
                                                 }}
@@ -231,11 +231,11 @@ class editBinder extends Component {
                                         <div className="custom-selecbox">
                                             <select
                                                 className="form-control custom-selecbox"
-                                                value={binderParams.client_id}
+                                                value={formParams.client_id}
                                                 onChange={e => {
                                                     this.setState({
-                                                        binderParams: {
-                                                            ...binderParams,
+                                                        formParams: {
+                                                            ...formParams,
                                                             client_id: e.target.value
                                                         }
                                                     });
@@ -291,11 +291,11 @@ class editBinder extends Component {
                                         <label className="form-control-placeholder">Color</label>
                                         <input
                                             type="text"
-                                            value={binderParams.color}
+                                            value={formParams.color}
                                             onChange={e => {
                                                 this.setState({
-                                                    binderParams: {
-                                                        ...binderParams,
+                                                    formParams: {
+                                                        ...formParams,
                                                         color: e.target.value
                                                     }
                                                 });
@@ -311,11 +311,11 @@ class editBinder extends Component {
                                         <label className="form-control-placeholder">Text Color</label>
                                         <input
                                             type="text"
-                                            value={binderParams.text_color}
+                                            value={formParams.text_color}
                                             onChange={e => {
                                                 this.setState({
-                                                    binderParams: {
-                                                        ...binderParams,
+                                                    formParams: {
+                                                        ...formParams,
                                                         text_color: e.target.value
                                                     }
                                                 });
@@ -330,11 +330,11 @@ class editBinder extends Component {
                                         <label className="form-control-placeholder">Line</label>
                                         <input
                                             type="number"
-                                            value={binderParams.line}
+                                            value={formParams.line}
                                             onChange={e => {
                                                 this.setState({
-                                                    binderParams: {
-                                                        ...binderParams,
+                                                    formParams: {
+                                                        ...formParams,
                                                         line: e.target.value
                                                     }
                                                 });
@@ -349,11 +349,11 @@ class editBinder extends Component {
                                         <label className="form-control-placeholder">Order</label>
                                         <input
                                             type="number"
-                                            value={binderParams.order}
+                                            value={formParams.order}
                                             onChange={e => {
                                                 this.setState({
-                                                    binderParams: {
-                                                        ...binderParams,
+                                                    formParams: {
+                                                        ...formParams,
                                                         order: e.target.value
                                                     }
                                                 });
@@ -367,11 +367,11 @@ class editBinder extends Component {
                                     <div className="form-group">
                                         <label className="form-control-placeholder">Comments</label>
                                         <textarea
-                                            value={binderParams.comments}
+                                            value={formParams.comments}
                                             onChange={e => {
                                                 this.setState({
-                                                    binderParams: {
-                                                        ...binderParams,
+                                                    formParams: {
+                                                        ...formParams,
                                                         comments: e.target.value
                                                     }
                                                 });

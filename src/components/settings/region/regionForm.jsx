@@ -15,7 +15,7 @@ class editRegion extends Component {
         this.state = {
             consultancyIdList: [],
             clientIdList: [],
-            regionParams: {
+            formParams: {
                 name: "",
                 display_name: "",
                 consultancy_id: "",
@@ -40,11 +40,11 @@ class editRegion extends Component {
         if (this.props.history.location.state && this.props.history.location.state.regionItem) {
             await this.getClientDropDown(this.props.history.location.state.consultancy_id);
 
-            let tempRegionParam = this.props.history.location.state.regionItem;
-            tempRegionParam.client_id = tempRegionParam.client.id;
-            tempRegionParam.consultancy_id = tempRegionParam.consultancy.id;
+            let tempFormParam = this.props.history.location.state.regionItem;
+            tempFormParam.client_id = tempFormParam.client.id;
+            tempFormParam.consultancy_id = tempFormParam.consultancy.id;
             await this.setState({
-                regionParams: tempRegionParam,
+                formParams: tempFormParam,
                 isEdit: true
             });
         }
@@ -58,22 +58,22 @@ class editRegion extends Component {
     };
 
     validate = () => {
-        const { regionParams } = this.state;
+        const { formParams } = this.state;
         let errorParams = {
             name: false,
             consultancy_id: false,
             client_id: false
         };
         let showErrorBorder = false;
-        if (!regionParams.name || !regionParams.name.trim().length) {
+        if (!formParams.name || !formParams.name.trim().length) {
             errorParams.name = true;
             showErrorBorder = true;
         }
-        if (!regionParams.consultancy_id || !regionParams.consultancy_id.trim().length) {
+        if (!formParams.consultancy_id || !formParams.consultancy_id.trim().length) {
             errorParams.consultancy_id = true;
             showErrorBorder = true;
         }
-        if (!regionParams.client_id || !regionParams.client_id.trim().length) {
+        if (!formParams.client_id || !formParams.client_id.trim().length) {
             errorParams.client_id = true;
             showErrorBorder = true;
         }
@@ -87,9 +87,9 @@ class editRegion extends Component {
     };
 
     addRegion = async () => {
-        const { regionParams } = this.state;
+        const { formParams } = this.state;
         if (this.validate()) {
-            await this.props.addRegion({ region: regionParams });
+            await this.props.addRegion({ region: formParams });
             ToastMsg(this.props.regionReducer.addRegionData.message, "info");
             if (this.props.regionReducer.addRegionData.success) {
                 history.push("/regions");
@@ -98,9 +98,9 @@ class editRegion extends Component {
     };
 
     editRegion = async () => {
-        const { regionParams } = this.state;
+        const { formParams } = this.state;
         if (this.validate()) {
-            await this.props.editRegionById({ region: regionParams }, regionParams.id);
+            await this.props.editRegionById({ region: formParams }, formParams.id);
             ToastMsg(this.props.regionReducer.editRegionData.message, "info");
             if (this.props.regionReducer.editRegionData.success) {
                 history.push("/regions");
@@ -109,10 +109,10 @@ class editRegion extends Component {
     };
 
     selectConsultancyId = async consultancy_id => {
-        const { regionParams } = this.state;
+        const { formParams } = this.state;
         await this.setState({
-            regionParams: {
-                ...regionParams,
+            formParams: {
+                ...formParams,
                 consultancy_id
             }
         });
@@ -120,7 +120,7 @@ class editRegion extends Component {
     };
 
     render() {
-        const { consultancyIdList, clientIdList, regionParams, errorParams, isEdit, showErrorBorder } = this.state;
+        const { consultancyIdList, clientIdList, formParams, errorParams, isEdit, showErrorBorder } = this.state;
         return (
             <section className="cont-ara act-main">
                 <div className="list-area">
@@ -141,7 +141,7 @@ class editRegion extends Component {
                                     <div className="itm">
                                         <div className="form-group">
                                             <label>Code</label>
-                                            <input type="text" className="form-control" placeholder="" value={regionParams.code} disabled={true} />
+                                            <input type="text" className="form-control" placeholder="" value={formParams.code} disabled={true} />
                                         </div>
                                     </div>
                                 ) : null}
@@ -151,11 +151,11 @@ class editRegion extends Component {
                                         <input
                                             type="text"
                                             id="text"
-                                            value={regionParams.name}
+                                            value={formParams.name}
                                             onChange={e => {
                                                 this.setState({
-                                                    regionParams: {
-                                                        ...regionParams,
+                                                    formParams: {
+                                                        ...formParams,
                                                         name: e.target.value
                                                     }
                                                 });
@@ -172,11 +172,11 @@ class editRegion extends Component {
                                         <input
                                             type="text"
                                             id="text"
-                                            value={regionParams.display_name}
+                                            value={formParams.display_name}
                                             onChange={e => {
                                                 this.setState({
-                                                    regionParams: {
-                                                        ...regionParams,
+                                                    formParams: {
+                                                        ...formParams,
                                                         display_name: e.target.value
                                                     }
                                                 });
@@ -193,7 +193,7 @@ class editRegion extends Component {
                                         <div className="custom-selecbox">
                                             <select
                                                 className="form-control custom-selecbox"
-                                                value={regionParams.consultancy_id}
+                                                value={formParams.consultancy_id}
                                                 onChange={e => {
                                                     this.selectConsultancyId(e.target.value);
                                                 }}
@@ -214,11 +214,11 @@ class editRegion extends Component {
                                         <div className="custom-selecbox">
                                             <select
                                                 className="form-control custom-selecbox"
-                                                value={regionParams.client_id}
+                                                value={formParams.client_id}
                                                 onChange={e => {
                                                     this.setState({
-                                                        regionParams: {
-                                                            ...regionParams,
+                                                        formParams: {
+                                                            ...formParams,
                                                             client_id: e.target.value
                                                         }
                                                     });
@@ -270,11 +270,11 @@ class editRegion extends Component {
                                         <label className="form-control-placeholder">Comments</label>
                                         <textarea
                                             type="text-area"
-                                            value={regionParams.comments}
+                                            value={formParams.comments}
                                             onChange={e => {
                                                 this.setState({
-                                                    regionParams: {
-                                                        ...regionParams,
+                                                    formParams: {
+                                                        ...formParams,
                                                         comments: e.target.value
                                                     }
                                                 });
